@@ -1,2 +1,4 @@
-# Diamant-Eternel
-Mod Menace sur le Royaume de Diamant Eternel pour BG2-ToB, BGT et BG2:EE
+# Diamant-Éternel
+Mod Menace sur le Royaume de Diamant Éternel pour BG2-ToB, BGT et BG2:EE
+
+
