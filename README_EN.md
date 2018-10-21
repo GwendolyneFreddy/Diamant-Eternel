@@ -2,7 +2,7 @@
 
 Mod Menace sur le Royaume de Diamant Éternel pour BG2-ToB, BGT et BG2:EE
 
-<p><strong>Author:</strong> Freddy_Gwendo (aka Gwendolyne)<br />
+<p><strong>Author:</strong> <a href="https://www.baldursgateworld.fr/lacouronne/members/freddy_gwendo.html">Freddy_Gwendo (aka Gwendolyne)</a><br />
 <strong>Version:</strong> 1.0.0 alpha<br />
 <strong>Language :</strong> French<br />
 <a href="README.md">French readme</a><br />
@@ -78,7 +78,7 @@ The installer includes the following components. The number of each is the compo
 
 ## Credits and Acknowledgements
 
-#### Author: <a href="https://www.baldursgateworld.fr/lacouronne/members/draztik.html">DrAzTiK</a>
+#### Author: <a href="https://www.baldursgateworld.fr/lacouronne/members/freddy_gwendo.html">Gwendolyne</a>
 
 #### Special Acknowledgements to:
 

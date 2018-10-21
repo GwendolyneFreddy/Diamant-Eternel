@@ -2,10 +2,10 @@
 
 Mod Menace sur le Royaume de Diamant Éternel pour BG2-ToB, BGT et BG2:EE
 
-<p><strong>Auteur :</strong> Freddy_Gwendo (aka Gwendolyne)<br />
+<p><strong>Auteur :</strong> <a href="https://www.baldursgateworld.fr/lacouronne/members/freddy_gwendo.html">Freddy_Gwendo (aka Gwendolyne)</a><br />
 <strong>Version :</strong> 1.0.0 alpha<br />
 <strong>Langue :</strong> français<br />
-<a href="README-EN.md">English readme</a><br />
+<a href="README_EN.md">English readme</a><br />
 <strong>Plateforme :</strong> Windows</p>
 
 <strong>Forum du mod :</strong> <a href="https://www.baldursgateworld.fr/lacouronne/menace-sur-le-royaume-de-diamant-eternel/">Menace sur le Royaume de Diamant Éternel</a>
@@ -18,6 +18,9 @@ Mod Menace sur le Royaume de Diamant Éternel pour BG2-ToB, BGT et BG2:EE
 ## Compatibilité
 
 Ce mod est conçu pour fonctionner sur les jeux Infinity Engine suivants : Baldur's Gate II: Enhanced Edition (BG2EE), le jeu original Baldur's Gate II (Les Ombres d'Amn : BG2-SoA), avec son extension Trône de Bhaal (Throne of Bhaal : ToB), les mods de conversion Baldur's Gate Trilogy (BGT) et Enhanced Edition Trilogy (EET).
+
+#### Mods pré-requis
+
 
 
 
@@ -78,7 +81,7 @@ Le programme d'installation comprend les composants suivants. Chacun possède un 
 
 ## Crédits et remerciements
 
-#### Auteur : <a href="https://www.baldursgateworld.fr/lacouronne/members/draztik.html">DrAzTiK</a>
+#### Auteur : <a href="https://www.baldursgateworld.fr/lacouronne/members/freddy_gwendo.html">Freddy_Gwendo</a>
 
 #### Remerciements particuliers à :
 
