@@ -1,0 +1,41 @@
+3bo/gw_destrier_black_and_white
+***
+						SOUND
+ATTACK          		gwhor01a nosound
+ATTACK          		2 0
+AWAKE           		gwhor11
+AWAKE           		0
+CAST            		***
+CAST            		0
+CONJURE         		***
+CONJURE         		0
+DAMAGE          		gwhor07 gwhor08
+DAMAGE          		0 0
+DIE             		gwhor09 gwhor10
+DIE             		0 0
+HEAD_TURN       		***
+HEAD_TURN       		0
+READY           		gwhor02d gwhor02g
+READY           		0 0
+SHOOT           		***
+SHOOT           		0
+TWITCH          		***
+TWITCH          		0
+WALK            		***
+WALK            		0
+ATTACK_SLASH    		gwhor03 gwhor04
+ATTACK_SLASH    		2 0
+ATTACK_BACKSLASH		gwhor04 gwhor04
+ATTACK_BACKSLASH		2 0
+ATTACK_JAB      		***
+ATTACK_JAB      		0
+EMERGE          		***
+EMERGE          		0
+HIDE            		***
+HIDE            		0
+SLEEP          			***
+SLEEP          			0
+Battle_Cry      		gwhor01a gwhor01b
+Battle_Cry      		0 0
+Selection       		gwhor02c gwhor02d
+Selection       		0 0
