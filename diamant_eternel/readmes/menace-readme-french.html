@@ -504,7 +504,7 @@
 
 
 		<p id="hintbox" class="boxed" style="display: none">
-			<span style="margin-left: 8px"><strong>En savoir un peu plus</strong></span><input type="submit" value="C'est tout ?" onclick="showNextHint('fr', 'hint')" style="background:#FFBF00;margin-left: 10px"></input>
+			<span style="margin-left: 8px"><strong>En savoir un peu plus&#160;&#160;</strong></span><input type="submit" value="C'est tout ?" onclick="showNextHint('fr', 'hint')" style="background:#FFBF00;margin-left: 10px"></input>
 			<br /><br><span style="margin-left: 15px">&#x25BA; 
 			<span id="hint">...</span></span><br><br>
 		</p><br><br>
@@ -814,16 +814,77 @@
 			Captures d'écran
 		</h2><br>
 
+		<h3>
+			Composant nourriture
+		</h3>
 		<p>
 			<strong></strong>
 		</p>
-		<p>
-			<center></center>
-		</p><br>
 
-		<p>
-			
-		</p><br>
+		<div style="margin: 10px auto;width: 80%; border-style: solid; border-width: 1px; border-color: #FFCC33; margin-top: 32px; padding: 6px; background: #303030;">
+			<div class="quotetitle">
+				Il faudra collecter de la nourriture&#160;&#160;
+				<input value="Afficher" style="margin: 0px; padding: 0px; width: 50px; background:#FFBF00;"
+				onclick="if (this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display != '') { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = ''; this.innerText = ''; this.value = 'Cacher'; } else { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = 'none'; this.innerText = ''; this.value = 'Afficher'; }" type="button" >
+			</div>
+			<div class="quotecontent">
+				<div style="display: none;">
+					<center><img src="images/food/charcfrom.png" title="charcfrom" />&#160; &#160;<img src="images/food/fruits.png" title="fruits" />&#160; &#160;<img src="images/food/legumes.png" title="légumes - vegetables" />&#160; &#160;<img src="images/food/divers.png" title="divers - miscellaneous" /></center><br><br>
+				</div>
+			</div>
+		</div> 
+
+		<div style="margin: 10px auto;width: 80%; border-style: solid; border-width: 1px; border-color: #FFCC33; margin-top: 32px; padding: 6px; background: #303030;">
+			<div class="quotetitle">
+				la chasser, ou la pêcher&#160;&#160;
+				<input value="Afficher" style="margin: 0px; padding: 0px; width: 50px; background:#FFBF00;"
+				onclick="if (this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display != '') { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = ''; this.innerText = ''; this.value = 'Cacher'; } else { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = 'none'; this.innerText = ''; this.value = 'Afficher'; }" type="button" >
+			</div>
+			<div class="quotecontent">
+				<div style="display: none;">
+					<center><img src="images/food/viande.png" title="viande - meat" />&#160; &#160;<img src="images/food/fishes.png" title="poissons - fishes" /></center><br><br>
+				</div>
+			</div>
+		</div> 
+
+		<div style="margin: 10px auto;width: 80%; border-style: solid; border-width: 1px; border-color: #FFCC33; margin-top: 32px; padding: 6px; background: #303030;">
+			<div class="quotetitle">
+				réunir des épices&#160;&#160;
+				<input value="Afficher" style="margin: 0px; padding: 0px; width: 50px; background:#FFBF00;"
+				onclick="if (this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display != '') { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = ''; this.innerText = ''; this.value = 'Cacher'; } else { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = 'none'; this.innerText = ''; this.value = 'Afficher'; }" type="button" >
+			</div>
+			<div class="quotecontent">
+				<div style="display: none;">
+					<center><img src="images/food/epices.png" title="épices - spices" /></center><br><br>
+				</div>
+			</div>
+		</div> 
+
+		<div style="margin: 10px auto;width: 80%; border-style: solid; border-width: 1px; border-color: #FFCC33; margin-top: 32px; padding: 6px; background: #303030;">
+			<div class="quotetitle">
+				pour les cuisiner&#160;&#160;
+				<input value="Afficher" style="margin: 0px; padding: 0px; width: 50px; background:#FFBF00;"
+				onclick="if (this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display != '') { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = ''; this.innerText = ''; this.value = 'Cacher'; } else { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = 'none'; this.innerText = ''; this.value = 'Afficher'; }" type="button" >
+			</div>
+			<div class="quotecontent">
+				<div style="display: none;">
+					<center><img src="images/food/crustaces.png" title="crustacés - shellfishes" />&#160; &#160;<img src="images/food/platsviande.png" title="plats de viandes - meat dishes" />&#160; &#160;<img src="images/food/platsfish.png" title="plats de poissons - fish dishes" />&#160; &#160;<img src="images/food/platsleg.png" title="vegetables dishes" />&#160; &#160;<img src="images/food/plats.png" title="plats - dishes" /></center><br><br>
+				</div>
+			</div>
+		</div> 
+
+		<div style="margin: 10px auto;width: 80%; border-style: solid; border-width: 1px; border-color: #FFCC33; margin-top: 32px; padding: 6px; background: #303030;">
+			<div class="quotetitle">
+				le tout, accompagné de petits plaisirs&#160;&#160;
+				<input value="Afficher" style="margin: 0px; padding: 0px; width: 50px; background:#FFBF00;"
+				onclick="if (this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display != '') { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = ''; this.innerText = ''; this.value = 'Cacher'; } else { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = 'none'; this.innerText = ''; this.value = 'Afficher'; }" type="button" >
+			</div>
+			<div class="quotecontent">
+				<div style="display: none;">
+					<center><img src="images/food/boissons.png" title="boissons - drinks" /></center><br><br>
+				</div>
+			</div>
+		</div><br>
 
 
 			<address>
