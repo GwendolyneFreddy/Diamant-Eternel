@@ -1,0 +1,97 @@
+/* ====================================== *
+ *  GWRAGOUT : Sorts Ragoût de Gargantua  *
+ * ====================================== */
+
+/* ------------------------- *
+ * Ragout1 = Ragoût curatif. *
+ * ------------------------- */
+IF
+	Name("GWRagou1",Myself)
+	Global("GWRagout","LOCALS",0)
+	Delay(2)
+THEN
+	RESPONSE #100
+		StartCutSceneMode()
+		CutSceneId("Myself")
+		ClearAllActions()
+		SetInterrupt(FALSE)
+		ReallyForceSpellRES("gwcsnc33",Myself) // 33 s.
+		Wait(1)
+		ReallyForceSpellRES("gwcsnail",Myself)
+		Wait(6)
+		ReallyForceSpellRES("gwcsnoig",Myself)
+		Wait(6)
+		ReallyForceSpellRES("gwcsncar",Myself)
+		Wait(6)
+		ReallyForceSpellRES("gwcsnplc",Myself)
+		ReallyForceSpellRES("gwcsnvd2",Myself)
+		Wait(6)
+		ReallyForceSpellRES("gwcsnplc",Myself)
+		ReallyForceSpellRES("gwcsnpsl",Myself)
+		Wait(6)
+		ReallyForceSpellRES("gwcsncre",Myself)
+		Wait(1)
+		ReallyForceSpellRES("gwcsnj12",Myself)
+		Wait(5)
+		ReallyForceSpellRES("gwcsnplc",Myself)
+		ReallyForceSpellRES("gwcsnpdt",Myself)
+		Wait(6)
+		ReallyForceSpellRES("gwcsnrg1",Myself)
+		Wait(2)
+		SetGlobal("GWRagout","LOCALS",1)
+		ForceSpellRES("gwragous",Player1)
+		ForceSpellRES("gwragous",Player2)
+		ForceSpellRES("gwragous",Player3)
+		ForceSpellRES("gwragous",Player4)
+		ForceSpellRES("gwragous",Player5)
+		ForceSpellRES("gwragous",Player6)
+		SetInterrupt(TRUE)
+		EndCutSceneMode()
+		DestroySelf()
+END
+
+/* ------------------------------------------- *
+ * Ragout2 = Marmite contre les morts-vivants. *
+ * ------------------------------------------- */
+IF
+	Name("GWRagou2",Myself)
+	Global("GWRagout","LOCALS",0)
+	Delay(2)
+THEN
+	RESPONSE #100
+		StartCutSceneMode()
+		CutSceneId("Myself")
+		ClearAllActions()
+		SetInterrupt(FALSE)
+		ReallyForceSpellRES("gwcsnc24",Myself) // 24 s.
+		Wait(1)
+		ReallyForceSpellRES("gwcsnail",Myself)
+		Wait(6)
+		ReallyForceSpellRES("gwcsnoig",Myself)
+		Wait(6)
+		ReallyForceSpellRES("gwcsnplc",Myself)
+		ReallyForceSpellRES("gwcsnech",Myself)
+		Wait(6)
+		ReallyForceSpellRES("gwcsncar",Myself)
+		Wait(3)
+		ReallyForceSpellRES("gwcsnm22",Myself)
+		Wait(3)
+		ReallyForceSpellRES("gwcsnplc",Myself)
+		ReallyForceSpellRES("gwcsnprx",Myself)
+		Wait(6)
+		ReallyForceSpellRES("gwcsnplc",Myself)
+		ReallyForceSpellRES("gwcsnpsl",Myself)
+		Wait(6)
+		ReallyForceSpellRES("gwcsnto1",Myself)
+		Wait(6)
+		ReallyForceSpellRES("gwcsnto2",Myself)
+		ReallyForceSpellRES("gwcsnr08",Myself)
+		Wait(1)
+		ReallyForceSpellRES("gwcsnplc",Myself)
+		ReallyForceSpellRES("gwcsnpdt",Myself)
+		Wait(7)
+		SetGlobal("GWRagout","LOCALS",1)
+		SetInterrupt(TRUE)
+		EndCutSceneMode()
+		DestroySelf()
+END
