@@ -1,0 +1,8 @@
+2DA V1.0
+****
+					RESRef		Type    
+Feu					GWRESEMF	3
+Froid				GWRESEMG	3
+Electricite			GWRESEME	3
+Acide				GWRESEMA	3
+Poison				GWRESEMP	3
