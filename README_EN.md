@@ -5,8 +5,8 @@ Mod Menace sur le Royaume de Diamant Éternel pour BG2-ToB, BGT et BG2:EE
 <p><strong>Author:</strong> <a href="https://www.baldursgateworld.fr/lacouronne/members/freddy_gwendo.html">Freddy_Gwendo (aka Gwendolyne)</a><br />
 <strong>Version:</strong> 1.0.0 alpha<br />
 <strong>Language:</strong> <a href="README.md">French</a>, English<br />
-<strong>Platform:</strong> Windows</p>
-<strong>Mod forum:</strong> <a href="https://www.baldursgateworld.fr/lacouronne/menace-sur-le-royaume-de-diamant-eternel/">Menace sur le Royaume de Diamant Éternel</a>
+<strong>Platform:</strong> Windows<br />
+<strong>Mod forum:</strong> <a href="https://www.baldursgateworld.fr/lacouronne/menace-sur-le-royaume-de-diamant-eternel/">Menace sur le Royaume de Diamant Éternel</a></p>
 
 
 <center><a href="#intro">Overview</a> &#x2B25; <a href="#compat">Compatibility</a> &#x2B25; <a href="#installation">Installation</a> &#x2B25; <a href="#components">Components</a> &#x2B25; <a href="#images">Screenshots</a> &#x2B25; <a href="#credits">Credits</a> &#x2B25; <a href="#version">Version History</a></center></br></br>
@@ -69,7 +69,7 @@ This mod is designed to work on the following Infinity Engine games: the origina
 
 <em>When installing or uninstalling, <strong>do not close the <acronym title="Disk Operating System">DOS</acronym> window</strong> by clicking on the <strong>X</strong> button! Instead, press the <strong>Enter</strong> key whenever instructed to do so.</em>
 
-<em><strong><strong>Disable any antivirus</strong> or other memory-resident software before installing this or any other mod. Some (particularly avast and Norton!) have a tendency to report false positives with mod activity, resulting in failed installs.</em></br>
+<em>Disable any antivirus</strong> or other memory-resident software before installing this or any other mod. Some (particularly avast and Norton!) have a tendency to report false positives with mod activity, resulting in failed installs.</em></br>
 
 
 

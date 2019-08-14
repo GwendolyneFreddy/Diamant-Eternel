@@ -4,9 +4,9 @@
 
 <p><strong>Auteur :</strong> <a href="https://www.baldursgateworld.fr/lacouronne/members/freddy_gwendo.html">Freddy_Gwendo (aka Gwendolyne)</a><br />
 <strong>Version :</strong> 1.0.0 alpha<br />
-<strong>Langue :</strong> français<br />, <a href="README_EN.md">English</a><br />
-<strong>Plateforme :</strong> Windows</p>
-<strong>Forum du mod :</strong> <a href="https://www.baldursgateworld.fr/lacouronne/menace-sur-le-royaume-de-diamant-eternel/">Menace sur le Royaume de Diamant Éternel</a>
+<strong>Langue :</strong> français, <a href="README_EN.md">English</a><br />
+<strong>Plateforme :</strong> Windows<br />
+<strong>Forum du mod :</strong> <a href="https://www.baldursgateworld.fr/lacouronne/menace-sur-le-royaume-de-diamant-eternel/">Menace sur le Royaume de Diamant Éternel</a></p>
 
 
 <center><a href="#intro">Présentation</a> &#x2B25; <a href="#compat">Compatibilité</a> &#x2B25; <a href="#installation">Installation</a> &#x2B25; <a href="#components">Composants</a> &#x2B25; <a href="#images">Captures d'écran</a> &#x2B25; <a href="#credits">Crédits</a> &#x2B25; <a href="#version">Historique des versions</a></center></br></br>
