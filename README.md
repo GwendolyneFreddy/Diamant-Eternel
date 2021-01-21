@@ -35,7 +35,7 @@
 ## <a name="intro" id="intro"></a>Présentation
 
 <center><img src="diamant_eternel/readmes/images/diamant1.jpg" title="Menace sur le Royaume de Diamant Éternel"></center>
-<p style="font-size: 80%;align:right">Lux et Umbra by Chaos-Draco DeviantArt &copy;2009-2018 Chaos-Draco</p><br>
+<div align="right">Lux et Umbra by Chaos-Draco DeviantArt &copy;2009-2018 Chaos-Draco</div><br>
 
 **Menace sur le royaume de Diamant Éternel** est un mod français conçu à la frontière entre une conversion totale et une énorme quête. Une minuscule partie se situe dans BG2 Les Ombres d'Amn, mais l'essentiel se déroule dans l'extension Trône de Bhaal.<br><br>
 Vous avez tous adoré Excalibur, mais vous êtes-vous jamais demandé pourquoi les seules femmes présentes y sont nuisibles ? Guenièvre l'adultère, Morgane la méchante... Pourquoi les Ordres de Paladins ne comportent-ils que des hommes ?<br><br>

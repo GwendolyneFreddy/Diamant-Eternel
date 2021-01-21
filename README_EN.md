@@ -34,7 +34,7 @@
 ## <a name="intro" id="intro"></a>Overview
 
 <center><img src="diamant_eternel/readmes/images/diamant1.jpg" title="Menace sur le Royaume de Diamant Éternel"></center>
-<p style="font-size: 80%;align:right;">Lux et Umbra by Chaos-Draco DeviantArt &copy;2009-2018 Chaos-Draco</p><br>
+<div align="right">Lux et Umbra by Chaos-Draco DeviantArt &copy;2009-2018 Chaos-Draco</div>
 
 **Menace sur le royaume de Diamant Éternel** is a French mod designed to provide more than a huge quest, without being a total conversion. A tiny part takes place in BG2 Shadows of Amn, but the main part is played in the Throne of Bhaal extension.<br><br>
 You liked Excalibur, did not you? But have you ever wondered why every woman character is treated as a pest? Guinevere adultery, Morgane the wicked... Why do Paladin Orders recrute only men?<br><br>
@@ -45,11 +45,9 @@ The kingdom derives its wealth from its minings and its power from the protectio
 
 *Your mission, should you decide to accept it, is to save the Kingdom of Eternal Diamond.*
 
-
 Well, who would've guessed? Rather unusable, isn't it? &#128541;
 
 If you do, you will face a fearsome coalition bringing together an Order of treacherous and 'misguided' paladins, to say the least, a guild of kamikaze assassins and a company of wizard slayers (nasty business for those fond of arcanes...).
-
 
 But not only... You will also have to face a secret cult, The Fangs of Tiamat, and their fierce and powerful minions. It is up to you to choose the way to handle those encounters: the hard way (at your own risk), or a more subtle way.
 
@@ -80,7 +78,7 @@ Though I am striving to make it compatible with as many other mods as possible, 
 - mod 2
 - ...
 
-#### Insttallation Order
+#### Installation Order
 
 >Classical games players are strongly recommended to also download and install the <a href="https://www.gibberlings3.net/mods/fixes/bg2fixpack/">BG2 Fixpack</a> and <a href="http://www.shsforums.net/files/file/871-bg2tob-throne-of-bhaal-extender/">Throne of Bhaal Extender</a> before proceeding with the installation of this mod.<br>
 
