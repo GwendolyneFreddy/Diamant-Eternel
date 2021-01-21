@@ -34,14 +34,14 @@
 ## <a name="intro" id="intro"></a>Overview
 
 <center><img src="diamant_eternel/readmes/images/diamant1.jpg" title="Menace sur le Royaume de Diamant Éternel"></center>
-<p style="font-size: 80%;text-align:right;margin-right: 40px">Lux et Umbra by Chaos-Draco DeviantArt &copy;2009-2018 Chaos-Draco</p><br>
+<p style="font-size: 80%;align:right;">Lux et Umbra by Chaos-Draco DeviantArt &copy;2009-2018 Chaos-Draco</p><br>
 
-<p style="text-align: justify;font-size: 110%;line-height: 150%;">**Menace sur le royaume de Diamant Éternel** is a French mod designed to provide more than a huge quest, without being a total conversion. A tiny part takes place in BG2 Shadows of Amn, but the main part is played in the Throne of Bhaal extension.<br><br>
+**Menace sur le royaume de Diamant Éternel** is a French mod designed to provide more than a huge quest, without being a total conversion. A tiny part takes place in BG2 Shadows of Amn, but the main part is played in the Throne of Bhaal extension.<br><br>
 You liked Excalibur, did not you? But have you ever wondered why every woman character is treated as a pest? Guinevere adultery, Morgane the wicked... Why do Paladin Orders recrute only men?<br><br>
 And what if those tales were nothing but a fable spread by men to hide the truth?<br><br>
 This mod tries to restore the truth, at least *ITS TRUTH*...<br><br>
 The adventure takes place in a parallel dimension, both 'near' and 'far away' from Faerûn, more precisely in the Kingdom of Eternal Diamond, ruled by a dynasty of paladin kings that a renegade paladin attempts to overthrow. To carry out her betrayal, she has made a pact with rather 'special evil forces'...<br><br>
-The kingdom derives its wealth from its minings and its power from the protection of the silver dragon Diamantor, worshipped by some as a demigod.</p>
+The kingdom derives its wealth from its minings and its power from the protection of the silver dragon Diamantor, worshipped by some as a demigod.
 
 *Your mission, should you decide to accept it, is to save the Kingdom of Eternal Diamond.*
 
@@ -82,7 +82,7 @@ Though I am striving to make it compatible with as many other mods as possible, 
 
 #### Insttallation Order
 
-Classical games players are strongly recommended to also download and install the <a href="https://www.gibberlings3.net/mods/fixes/bg2fixpack/">BG2 Fixpack</a> and <a href="http://www.shsforums.net/files/file/871-bg2tob-throne-of-bhaal-extender/">Throne of Bhaal Extender</a> before proceeding with the installation of this mod.<br>
+>Classical games players are strongly recommended to also download and install the <a href="https://www.gibberlings3.net/mods/fixes/bg2fixpack/">BG2 Fixpack</a> and <a href="http://www.shsforums.net/files/file/871-bg2tob-throne-of-bhaal-extender/">Throne of Bhaal Extender</a> before proceeding with the installation of this mod.<br>
 
 Moreover, Menace sur le Royaume de Diamant Éternel has been specifically designed to make the best use of the modding opportunities provided by the graphical mods <a href="http://www.shsforums.net/files/category/98-infinity-animations/">Infinity Animations</a> and <a href="http://www.shsforums.net/files/category/29-1pp/">One Pixel Productions</a>. Installation process will be aborted if they are not detected.<br>
 <div align="right"><a href="#top">Back to top</a></div>

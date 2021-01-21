@@ -32,25 +32,17 @@
 <hr>
 
 
-
-<div align="center">
-<a href="#intro">Overview</a> &#8226; <a href="#compat">Compatibility</a> &#8226; <a href="#installation">Installation</a> &#8226; <a href="#components">Components</a> &#8226; <a href="#componentslist">Components (alternative presentation)</a> &#8226; <a href="#images">Screenshots</a> &#8226; <a href="#credits">Credits and Acknowledgements</a> &#8226; <a href="#versions">Version History</a><br>
-</div>
-
-<hr>
-
-
 ## <a name="intro" id="intro"></a>Présentation
 
 <center><img src="diamant_eternel/readmes/images/diamant1.jpg" title="Menace sur le Royaume de Diamant Éternel"></center>
-<p style="font-size: 80%;text-align:right;margin-right: 40px">Lux et Umbra by Chaos-Draco DeviantArt &copy;2009-2018 Chaos-Draco</p><br>
+<p style="font-size: 80%;align:right">Lux et Umbra by Chaos-Draco DeviantArt &copy;2009-2018 Chaos-Draco</p><br>
 
-<p style="text-align: justify;font-size: 110%;line-height: 150%;">**Menace sur le royaume de Diamant Éternel** est un mod français conçu à la frontière entre une conversion totale et une énorme quête. Une minuscule partie se situe dans BG2 Les Ombres d'Amn, mais l'essentiel se déroule dans l'extension Trône de Bhaal.<br><br>
+**Menace sur le royaume de Diamant Éternel** est un mod français conçu à la frontière entre une conversion totale et une énorme quête. Une minuscule partie se situe dans BG2 Les Ombres d'Amn, mais l'essentiel se déroule dans l'extension Trône de Bhaal.<br><br>
 Vous avez tous adoré Excalibur, mais vous êtes-vous jamais demandé pourquoi les seules femmes présentes y sont nuisibles ? Guenièvre l'adultère, Morgane la méchante... Pourquoi les Ordres de Paladins ne comportent-ils que des hommes ?<br><br>
 Et si tout ceci n'était qu'une fable racontée par les hommes pour dissimuler la vérité ?<br><br>
 Ce mod tente de rétablir la vérité, du moins *SA VÉRITÉ*...<br><br>
 L'aventure se déroule dans une dimension parallèle, à la fois « proche » et « éloignée » de Féérûne, plus précisément dans le Royaume de Diamant Éternel, un royaume dirigé par une dynastie de rois-paladins que tente de renverser une paladine renégate. Cette dernière a passé un pacte plutôt spécial avec des « forces » pour le moins particulières... <br><br>
-Le royaume tire sa richesse de ses mines et sa puissance de la protection que lui a toujours accordée le dragon d'argent Diamantor, considéré par certains comme un demi-dieu...</p>
+Le royaume tire sa richesse de ses mines et sa puissance de la protection que lui a toujours accordée le dragon d'argent Diamantor, considéré par certains comme un demi-dieu....
 
 *Votre mission, si toutefois vous l'acceptez, est de sauver le Royaume de Diamant Éternel.*
 
@@ -91,7 +83,7 @@ Bien que je m'efforce de rendre Menace sur le Royaume de Damant Éternel compatib
 
 #### Mods pré-requis
 
-<Si vous jouez avec BG2-ToB ou BGT, je vous recommande fortement d'installer la dernière version du <a href="https://www.gibberlings3.net/mods/fixes/bg2fixpack/">BG2 Fixpack</a> et <a href="http://www.shsforums.net/files/file/871-bg2tob-throne-of-bhaal-extender/">Throne of Bhaal Extender</a> avant d'installer ce mod.<br>
+>Si vous jouez avec BG2-ToB ou BGT, je vous recommande fortement d'installer la dernière version du <a href="https://www.gibberlings3.net/mods/fixes/bg2fixpack/">BG2 Fixpack</a> et <a href="http://www.shsforums.net/files/file/871-bg2tob-throne-of-bhaal-extender/">Throne of Bhaal Extender</a> avant d'installer ce mod.<br>
 
 De plus, Menace sur le Royaume de Diamant Éternel a été conçu pour exploiter les possibilités de modding offertes par les mods graphiques <a href="http://www.shsforums.net/files/category/98-infinity-animations/">Infinity Animations</a> et <a href="http://www.shsforums.net/files/category/29-1pp/">One Pixel Productions</a>. Il ne s'installera pas s'il ne les détecte pas, car il ne pourra pas installer les animations de licornes et de chevaux.<br>
 <div align="right"><a href="#top">Retour en haut de page</a></div>
@@ -166,7 +158,7 @@ En plus des méthodes détaillées plus haut pour supprimer des composants, il est 
 
 ###### Les options de configuration nécessaires à l'installation sont lues dans le fichier *<a href="../diamant_eternel-config-default.ini">diamant_eternel-config-default.ini</a>*, ou dans le fichier *diamant_eternel-config-user.ini*, si ce dernier existe.
 
-Pour éviter d'interrompre la procédure d'installation par de nombreux messages vous permettant de personnaliser certains composants à votre convenance (ce qui n'est pas compatible avec la plupart des utilitaires d'installation automatique de mods), ces options ont été externalisées dans le fichier <a href=../diamant_eternel-config-defaut.ini">diamant_eternel-config-defaut.ini</a> situé dans le répertoire :file_folder: **diamant_eternel**. Ce fichier définit une installation « *standard* ».
+Pour éviter d'interrompre la procédure d'installation par de nombreux messages vous permettant de personnaliser certains composants à votre convenance (ce qui n'est pas compatible avec la plupart des utilitaires d'installation automatique de mods), ces options ont été externalisées dans le fichier <a href="../diamant_eternel-config-defaut.ini">diamant_eternel-config-defaut.ini</a> situé dans le répertoire :file_folder: **diamant_eternel**. Ce fichier définit une installation « *standard* ».
 
 Si vous souhaitez choisir d'autres options d'installation, il vous suffit de modifier, avec Notepad ou un autre éditeur de texte, les options de configuration dans le fichier *__diamant_eternel-config-defaut.ini__*, puis de sauvegarder ce dernier sous le nom *__diamant_eternel-config-user.ini__*.
 
