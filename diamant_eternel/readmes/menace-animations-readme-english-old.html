@@ -2,97 +2,437 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-  <head>
+<head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="styles/style_lcc.css" type="text/css">
+	<style type="text/css">
+/*<![CDATA[*/
+	<!-- 
+	body {
+		margin: 0;
+		padding: 0;
+		cursor: default;
+		text-align: center;
+		color: #D1D1D1;
+		background: #000 url('images/bg_lcc2.png');
+	}
+
+/*	En-tête  */
+	#cartouche {
+		text-align: left;
+		margin: 0 auto;
+		margin-top: 20px;
+		width: 88%;
+		font-family: Verdana, Tahoma, Arial, sans-serif;
+		font-size: 12px;
+		color: #D1D1D1;
+/*		background-repeat: repeat-x;
+		background: url("images/degrade_titre.png");*/
+	}
+
+	#header {
+		text-align: center;
+*		background: #303030;
+		background-image: linear-gradient(#666666, #040404);
+		border: 1px solid #FFCC33;
+		border-top: 5px solid #FFCC33;
+		border-bottom: 5px solid #FFCC33;
+		padding: 5px 0 13px 0;
+		height: 310px;
+		border-radius: 3px 4px 3px 3px;
+		box-shadow: 8px 8px 15px black;
+	}
+/*	le décalage horizontal de l'ombre ;
+	le décalage vertical de l'ombre ;
+	l'adoucissement du dégradé ;
+	la couleur de l'ombre.	*/
+
+	#header .about {
+        margin: 7px 0 0 0;
+        padding: 0;
+/*		font-style: italic;
+		color: #555;
+*/		text-decoration: none;
+	}
+	#header .about a:link,
+	#header .about a:visited {
+	}
+	#header .about a:focus,
+	#header .about a:hover {
+		text-decoration: none;
+		color: #deded9;
+		border: 0;
+	}
+
+/*	Menu  */
+	#menu {
+		font-weight: bold;
+		margin: 0;
+		margin-top: 20px;
+		text-align: center;
+		color: #FFCC33;
+		background-repeat: repeat-x;
+		background: url("images/degrade_titre.png");
+		border-radius: 3px 4px 3px 3px;
+*		heigth: 50px;
+		line-height: 400%;
+*		vertical-align:middle;
+	}
+	#menu a:link,
+	#menu a:visited {
+	}
+	#menu a:focus,
+	#menu a:hover {
+		text-decoration: none;
+		color: #deded9;
+		border: 0;
+	}
+
+/*	Sections  */
+	#maindiv {
+		margin: 0 auto;
+		margin-top: -20px;
+		width: 100%;
+	}
+
+	#maindiv .content {
+		color: #deded9;
+		background-color: #5F5F5F;
+		padding: 0 0 25px 0;
+		margin: 50px auto;
+		border-width: 1px 1px 4px 10px;
+		border-style: solid;
+		border-color: #FFBF00;
+/*ou		border: 1px solid #FFCC33;
+		border-left: 10px solid #FFCC33;
+		border-bottom: 4px solid #FFCC33;
+*/		position: relative;
+		border-radius: 4px 4px 4px 5px;
+		box-shadow: 8px 8px 15px black;
+		display: block;
+	}
+
+	#maindiv .important {
+		font-size: 95%;
+		font-family: Verdana;
+		text-align: left;
+*		background-color: #F1F1F1;
+		border-width: 1px 4px 1px 4px;
+		border-style: solid;
+		border-color: #FFBF00;
+/*		border-top: solid 1px #FFBF00;
+		border-bottom: solid 1px #FFBF00;
+		border-left: solid 6px #FFBF00;
+		border-right: solid 6px #FFBF00;
+*/		padding: 10px;
+		margin: 10px auto;
+		width: 80%;
+		line-height: 160%;
+	}
+	#maindiv .important::before {
+		display: none;
+	}
+	#maindiv .important p {
+		width: 100%;
+		font-size: 100%;
+		text-indent: 0px;
+		margin: 5px 0 5px 0;
+		line-height: 180%;
+	}
+	#maindiv .important ol {
+		margin: -10px 0 0 20px;
+	}
+	#maindiv .important ul {
+		margin: -10px 0 0 15px;
+	}
+
+	#maindiv address {
+		font-size: 95%;
+		font-style: normal;
+		font-weight: bold;
+		text-decoration: none;
+		color: #303030;
+		background-color: #FFBF00;
+		padding: 3px 0px 0px;
+		margin: 0px;
+		width: 100%;
+		position: absolute;
+		bottom: -1px;
+		left: 0px;
+		display: block;
+		text-align: right;
+	}
+	#maindiv address a:link,
+	#maindiv address a:visited {
+		font-weight: bold;
+		text-decoration: underline;
+		background-color: transparent;
+		color: #000 !important;
+		padding-right: 5px;
+		padding-left: 6px;
+	}
+	#maindiv address a:focus,
+	#maindiv address a:hover {
+		text-decoration: none;
+		color: #000;
+	}
+
+	/*	Corps de texte  */
+	#maindiv p {
+		text-align: justify;
+		font-size: 110%;
+		font-style: normal;
+		text-decoration: none;
+		line-height: 150%;
+		padding: 0px;
+		margin: 10px auto;
+		width: 90%;
+		display: block;
+	}
+
+	#maindiv p.boxed {
+		border-style: solid;
+		border-width: 1px;
+		border-color: #FFCC33;
+		margin-top: 32px;
+		padding: 6px;
+	}
+
+	/*	Listes  */
+	#maindiv ul {
+		line-height: 170%;
+		margin-left: 4%;
+		width: 87%;
+	}
+	#maindiv ul li {
+		/*margin-right: 0px;*/
+	}
+	#maindiv ul li ul {
+		margin: 0px;
+		width: 96%;
+	}
+	#maindiv ul li ul li {
+	}
+	#maindiv ul li ul li ul {
+		margin-left: -1%;
+		width: 98%;
+	}
+	#maindiv ul li ul li ul li {
+	}
+
+/* INUTILISE = liste numérique
+	#maindiv ol {
+		margin: 0px 0 0 35px;
+		*margin-left: 70px;
+	}
+	#maindiv ol li {
+		line-height: 170%;
+	}
+*/
+
+	/*	Titre des versions  */
+	#maindiv .version {
+		display: block;
+		width: 90%;
+		background-color: transparent;
+		text-align: left;
+/*		text-indent: 30px; */
+		font-weight: bold;
+		padding-top: 3px;
+		padding-bottom: 3px;
+		border-bottom: solid 1px #FFCC33;
+		border-top: solid 1px #FFCC33;
+	}
+
+	/*	Liens internet  */
+	a:link,
+	a:visited {
+		color: #FFCC33;
+		/*font-weight: bold; */
+		text-decoration: none;
+	}
+	a:focus,
+	a:hover {
+		text-decoration: underline;
+		*color: #deded9;
+	}
+
+	h1 {
+		line-height: 170%;
+		font-size: 225%;
+		color: #FFCC33; *5F5F5F
+		padding: 5px 0 5px 0;
+		margin: 0;
+		width: 100%;
+	}
+	/*	Titre de section (160 %)  */
+	h2 {
+		line-height: 170%;
+		display: block;
+		font-family: Verdana, Trebuchet MS, Arial, serif;
+		text-align: left;
+		text-indent: 30px;
+		padding: 0px;
+		margin: 20px 0 0 0;
+		border-bottom: dotted 2px #d0d0d0;
+		background: #303030;
+		font-size: 160%;
+	}
+	h2::first-letter {
+		color: #FFCC33;
+		background-color: transparent;
+	}
+
+	/*	Titres  */
+	h3, h4, h5, h6 {
+		line-height: 170%;
+		margin: 10px auto;
+		width: 90%;
+		padding: 0;
+	}
+	h3 {
+		font-size: 140%;
+	}
+	h4 {
+		font-size: 125%;
+		/*font-style: italic;*/
+	}
+
+	h5 {
+		/*margin: 10px auto;*/
+        font-size: 110%;
+	}
+/*	h5 {
+        font-size: 100%;
+	}*/
+	h6 {
+		font-size: 125%;
+		font-style: italic;
+	}
+
+	/*	Ligne dorée  */
+	hr {
+		/*margin: 10px 10 10px 10;*/
+		margin-top: 20px;
+		margin-bottom: 20px;
+		width: 90%;
+		/*padding: 0; */
+		height: 1px;
+		border: 0;
+		color: #FFCC33;
+		background-color: #FFCC33;
+	}
+
+	/*	Image d'en-tête */
+	img.image_left {
+		float: left;
+		padding:0px 5px 0px 70px;
+		overflow: auto;
+	}
+
+
+	/*	Tableaux */
+	table {
+		/*text-align: center;*/
+		width: 90%;
+		padding: 10px;
+		border-collapse: collapse;
+		/*margin-left: 70px;*/
+		/*padding: 20px 25px;*/
+		/*position: relative;*/
+	}
+	td, th {
+		font-size: 12px;
+		text-align: center;
+		*vertical-align: baseline;
+		padding-top: 4px;
+		padding-bottom: 4px;
+*		border: 1px outset #eee;
+		border: 1px solid #aaa;
+	}
+	th {
+		background-color: #303030; *#000099;
+		*color: #fff;
+		font-weight: bold;
+*		border:none;
+	}
+*	tr {)
+
+/*]]>*/
+
+	</style>
 
 	<title>
 		Menace sur le Royaume de Diamant Éternel - La Couronne de Cuivre
 	</title>
-
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
 
-	<link href="images/logocc.png" rel="icon" type="image/png" />
-  </head>
-
-  <body>
-
-	<script type="module">
-		var test1 = document.getElementById('versionHistory').getElementsByClassName("version")[0].innerText;
-		document.getElementById("latestVersion").innerText = document.getElementById('versionHistory').getElementsByClassName("version")[0].innerText;
-		var versionnb = test1.substring(7, test1.length);
-		document.getElementById("versionnb1").innerText = versionnb;
-	</script>
-
-	<div id="cartouche">
+<body>
+  <div id="cartouche">
 	<a name="top" id="top"></a>
-
-	  <div id="header">
-		<h1 style="text-shadow: 0.1rem 0.1rem 0.25rem black;">
-			Menace sur le Royaume de Diamant Éternel : nouvelles animations (WIP)
-			<a href="menace-animations-readme-english.html">
-				<img src="images/uk-flag-32.png" alt="English version" style="float:right;width:32px;height:16px;margin-right:20px;margin-top:15px;">
+	<div id="header">
+		<h1>
+			Menace sur le Royaume de Diamant Éternel : new animations (WIP)
+			<a href="menace-animations-readme-french.html">
+				<img src="images/fr-flag-32.png" alt="version française" style="float:right;width:32px;height:16px;margin-right:20px;margin-top:15px;">
 			</a>
 		</h1>
 
-		<strong>Un mod développé sur <a href="https://www.baldursgateworld.fr">La Couronne de Cuivre</a> pour Baldur's Gate II : <acronym title="Throne of Bhaal">ToB</acronym>, Baldur's Gate Trilogy, <acronym title="Baldur's Gate 'To Two'">Tutu</acronym>, <acronym title="Baldur's Gate Enhanced Edition">BG2:EE</acronym> et <acronym title="Enhanced Edition Trilogy">EET</acronym></strong>
+		<strong>A <a href="https://www.baldursgateworld.fr">La Couronne de Cuivre</a> mod for Baldur's Gate II: <acronym title="Throne of Bhaal">ToB</acronym>, Baldur's Gate Trilogy, <acronym title="Baldur's Gate 'To Two'">Tutu</acronym> and <acronym title="Baldur's Gate II Enhanced Edition">BG2:EE</acronym></strong>
 
-		<hr>
-
+<hr>
 		<img src="images/logo_lcc.png" title="La Couronne de Cuivre" alt="La Couronne de Cuivre" class="image_left" />
 		<br><br><br>
-		<p class="about" style="text-align: left; margin-left: 70%">
-			<strong>Auteur :</strong> <a href="https://www.baldursgateworld.fr/lacouronne/members/freddy_gwendo.html">Freddy_Gwendo (aka Gwendolyne)</a>
-		</p>
-		<p class="about" style="text-align: left; margin-left: 70%">
-			<strong>Version :</strong> <span id="latestVersion" style="display: none";></span><span id="versionnb1"></span>
-		</p>
-		<p class="about" style="text-align: left; margin-left: 70%">
-			<strong>Langues :</strong> français, anglais
-		</p>
-		<p class="about" style="text-align: left; margin-left: 70%">
-			<strong>Plateformes :</strong> Windows (, Mac <acronym title="Operating System 10">OS X</acronym> et Linux)
-		</p>
-
 		<p class="about" style="text-align: left;margin-left: 70%">
-			<a href="https://www.baldursgateworld.fr">Site internet du mod</a> &#8226; <a href="https://www.baldursgateworld.fr/lacouronne/menace-sur-le-royaume-de-diamant-eternel/">Forum du mod</a> &#8226; <a href="https://www.baldursgateworld.fr/lacouronne/menace-sur-le-royaume-de-diamant-eternel/">Téléchargement</a> &#8226; <a href="https://github.com/GwendolyneFreddy/Diamant-Eternel">GitHub</a>
+			<strong>Author:</strong> <a href="https://www.baldursgateworld.fr/lacouronne/members/freddy_gwendo.html">Freddy_Gwendo (aka Gwendolyne)</a>
+		</p>
+		<p class="about" style="text-align: left;margin-left: 70%">
+			<strong>Version:</strong> Alpha 0.0.1
+		</p>
+		<p class="about" style="text-align: left;margin-left: 70%">
+			<strong>Languages:</strong> French, English
+		</p>
+		<p class="about" style="text-align: left;margin-left: 70%">
+			<strong>Platforms:</strong> Windows (, Mac <acronym title="Operating System 10">OS X</acronym> and Linux)
+		</p>
+		<p class="about" style="text-align: left;margin-left: 70%">
+			<a href="https://www.baldursgateworld.fr">Mod Website</a> &#8226; <a href="https://www.baldursgateworld.fr/lacouronne/menace-sur-le-royaume-de-diamant-eternel/">Mod Forum</a> &#8226; <a href="https://www.baldursgateworld.fr/lacouronne/menace-sur-le-royaume-de-diamant-eternel/">Download</a> &#8226; <a href="https://github.com/GwendolyneFreddy/Diamant-Eternel">GitHub</a>
 		</p>
 
-	  </div>
+	</div>
 
-	  <div id="menu">
-		<a href="#equides">Équidés</a> &#160;&#8226;&#160; <a href="#humanoides">Humanoïdes</a> &#160;&#8226;&#160; <a href="#monsters">Monstres</a> &#160;&#8226;&#160; <a href="#undeads">Morts vivants</a> &#160;&#8226;&#160; <a href="#demons">Démons</a> &#160;&#8226;&#160; <a href="#animals">Animaux</a> &#160;&#8226;&#160; <a href="#misc">Divers</a>
-	  </div>
+	<div id="menu">
+		<a href="#equides">Equidae</a> &#160;&#8226;&#160; <a href="#humanoides">Humanoids</a> &#160;&#8226;&#160; <a href="#monsters">Monsters</a> &#160;&#8226;&#160; <a href="#undeads">Undead</a> &#160;&#8226;&#160; <a href="#demons">Demons</a> &#160;&#8226;&#160; <a href="#animals">Animals</a> &#160;&#8226;&#160; <a href="#misc">Miscellaneous</a>
+	</div>
 
-	 <div id="maindiv">
-
-<!-- ========================= I m a g e s ========================= -->
+	<div id="maindiv">
+	<!-- =================== I m a g e s ==================== -->
 	  <a name="images" id="images"></a>
-	  <div class="content">
-
+		<div class="content">
 		<h2>
-			Nouvelles animations
+			New animations
 		</h2><br>
 
-<!-- ======================== E q u i d e s ======================== -->
-		<h2 style="border-top: dotted 2px #d0d0d0; background-color: rgba(48, 48, 48, 0.6)"><span style="margin-left: 2%;">Équidés</h2><br>
+		<h3>
+			<a name="equides" id="equides"></a>Equidae
+		</h3>
 
 		<table style="margin-left: 80px" summary="Animations de chevaux">
-			<tr style= "line-height: 200%;">
-				<th colspan="6" >Chevaux sauvages</th>
-				<th colspan="4" >Chevaux de guerre</th>
+			<tr style= "line-height: 170%;">
+				<th colspan="6" >Wild horses</th>
+				<th colspan="4" >Warhorses</th>
 			</tr>
 			<tr>
-				<td style ="border-bottom: 0px">Noir et blanc</td>
-				<td style ="border-bottom: 0px">Robe baie</td>
-				<td style ="border-bottom: 0px">Robe noisette</td>
-				<td style ="border-bottom: 0px">Robe tachetée baie</td>
-				<td style ="border-bottom: 0px">Robe grullo</td>
-				<td style ="border-bottom: 0px">Robe bleu rouan</td>
-				<td style ="border-bottom: 0px">Robe baie</td>
-				<td style ="border-bottom: 0px">Robe baie et blanche</td>
-				<td style ="border-bottom: 0px">Noir</td>
-				<td style ="border-bottom: 0px">Gris</td>
+				<td style ="border-bottom: 0px">Black and white</td>
+				<td style ="border-bottom: 0px">Baie</td>
+				<td style ="border-bottom: 0px">Chestnut</td>
+				<td style ="border-bottom: 0px">Blanket baie</td>
+				<td style ="border-bottom: 0px">Grullo</td>
+				<td style ="border-bottom: 0px">Blue roanned</td>
+				<td style ="border-bottom: 0px">Baie</td>
+				<td style ="border-bottom: 0px">Baie and white</td>
+				<td style ="border-bottom: 0px">Black</td>
+				<td style ="border-bottom: 0px">Grey</td>
 			</tr>
 			<tr>
 				<td style ="border-top: 0px"><img src="images/anim/horse1.gif" title="Horse Black and White" /></td>
@@ -108,12 +448,12 @@
 			</tr>
 		</table>
 
-		<table style="margin-left: 80px;margin-top: 20px" summary="Animations de licornes et de destrier">
-			<tr style= "line-height: 200%;">
-				<th>Licorne</th>
-				<th>Licorne noire</th>
-				<th>Licorne de cauchemar</th>
-				<th>Destrier de paladin</th>
+		<table style="margin-left: 80px;margin-top: 4px" summary="Animations de licornes et de destrier">
+			<tr style= "line-height: 170%;">
+				<th>Unicorn</th>
+				<th>Black Unicorn</th>
+				<th>Nightmare Unicorn</th>
+				<th>Paladin Steed</th>
 			</tr>
 			<tr>
 				<td><img src="images/anim/unicorn.gif" title="Unicorn" /></td>
@@ -122,29 +462,28 @@
 				<td><img src="images/anim/destrier1.gif" title="Paladin Mount" /><br></td>
 			</tr>
 		</table><br>
+		<p style="font-size:90%;font-weight: bold;text-align: right;"><a href="#top">Back to index</a>
+		</p>
 
-		<p style="font-size: 90%; text-align: right;"><a href="#top">RETOUR À L"INDEX</a></p>
-
-		<hr><br>
-
-<!-- ===================== H u m a n o i d e s ===================== -->
-		<a name="humanoides" id="humanoides"></a>
-		<h2 style="border-top: dotted 2px #d0d0d0; background-color: rgba(48, 48, 48, 0.6); margin-top: 5px;"><span style="margin-left: 2%;">Humanoïdes</h2><br>
+<hr>
+		<h3>
+			<a name="humanoides" id="humanoides"></a>Humanoids
+		</h3>
 
 		<table style="margin-left: 80px" summary="Animations d'amazones">
-			<tr style= "line-height: 200%;">
-				<th colspan="11" >Amazones</th>
+			<tr style= "line-height: 170%;">
+				<th colspan="11" >Amazons</th>
 			</tr>
 			<tr>
-				<td style ="border-bottom-color: #5F5F5F">avec cimeterre</td>
-				<td style ="border-bottom: 0px">avec falchion</td>
-				<td style ="border-bottom: 0px">avec sabre</td>
-				<td style ="border-bottom: 0px">avec hache</td>
-				<td style ="border-bottom: 0px">avec lance</td>
-				<td style ="border-bottom: 0px">avec trident</td>
+				<td style ="border-bottom-color: #5F5F5F">with scimitar</td>
+				<td style ="border-bottom: 0px">with falchion</td>
+				<td style ="border-bottom: 0px">with saber</td>
+				<td style ="border-bottom: 0px">with axe</td>
+				<td style ="border-bottom: 0px">with pike</td>
+				<td style ="border-bottom: 0px">with trident</td>
 				<td style ="border-bottom: 0px">Novice</td>
-				<td style ="border-bottom: 0px">Archère</td>
-				<td colspan="3" style ="border-bottom: 0px">Prêtresses</td>
+				<td style ="border-bottom: 0px">Archer</td>
+				<td colspan="3" style ="border-bottom: 0px">Priestesses</td>
 			</tr>
 			<tr>
 				<td style ="border-top-color: #5F5F5F"><img src="images/anim/amazon1.gif" title="Amazon with scimitar" /></td>
@@ -161,22 +500,22 @@
 			</tr>
 		</table>
 
-		<table style="margin-left: 80px;margin-top: 20px" summary="Animations exotiques">
-			<tr style= "line-height: 200%;">
-				<th colspan="8" >Femmes panthères</th>
-				<th colspan="3" >Pygmées</th>
+		<table style="margin-left: 80px;margin-top: 4px" summary="Animations exotiques">
+			<tr style= "line-height: 170%;">
+				<th colspan="8" >Panther Women</th>
+				<th colspan="3" >Pygmies</th>
 			</tr>
 			<tr>
 				<td style ="border-bottom: 0px"></td>
-				<td colspan="2" style ="border-bottom: 0px">d'élite</td>
-				<td style ="border-bottom: 0px">avec fouet</td>
-				<td style ="border-bottom: 0px">d'élite avec fouet</td>
-				<td style ="border-bottom: 0px">Chef</td>
-				<td style ="border-bottom: 0px">à distance</td>
-				<td style ="border-bottom: 0px">d'élite à distance</td>
+				<td colspan="2" style ="border-bottom: 0px">elite</td>
+				<td style ="border-bottom: 0px">with wisp</td>
+				<td style ="border-bottom: 0px">elite with wisp</td>
+				<td style ="border-bottom: 0px">Chief</td>
+				<td style ="border-bottom: 0px">range</td>
+				<td style ="border-bottom: 0px">range elite</td>
 				<td style ="border-bottom: 0px"></td>
-				<td style ="border-bottom: 0px">sarbacane</td>
-				<td style ="border-bottom: 0px">chaman</td>
+				<td style ="border-bottom: 0px">Blowpipe</td>
+				<td style ="border-bottom: 0px">Shaman</td>
 			</tr>
 			<tr>
 				<td style ="border-top: 0px"><img src="images/anim/pantherwom1.gif" title="Panther Woman" /></td>
@@ -193,10 +532,10 @@
 			</tr>
 		</table>
 
-		<table style="margin-left: 80px;margin-top: 20px" summary="Animations de zélotes et de pirates">
-			<tr style= "line-height: 200%;">
-				<th colspan="4" >Zélotes</th>
-				<th colspan="4" >Pirates barbares</th>
+		<table style="margin-left: 80px;margin-top: 4px" summary="Animations de zélotes et de pirates">
+			<tr style= "line-height: 170%;">
+				<th colspan="4" >Zealots</th>
+				<th colspan="4" >Barbarian Pirates</th>
 			</tr>
 			<tr>
 				<td><img src="images/anim/zealot1.gif" title="Zealot with axe" /></td>
@@ -209,24 +548,23 @@
 				<td><img src="images/anim/guard4.gif" title="Guard Diablo II with spear" /></td>
 			</tr>
 		</table><br>
+		<p style="font-size:90%;font-weight: bold;text-align: right;"><a href="#top">Back to index</a>
+		</p>
 
-		<p style="font-size: 90%; text-align: right;"><a href="#top">RETOUR À L"INDEX</a></p>
-
-		<hr><br>
-
-<!-- ======================= M o n s t r e s ======================= -->
-		<a name="monsters" id="monsters"></a>
-		<h2 style="border-top: dotted 2px #d0d0d0; background-color: rgba(48, 48, 48, 0.6); margin-top: 5px;"><span style="margin-left: 2%;">Monstres</h2><br>
+<hr>
+		<h3>
+			<a name="monsters" id="monsters"></a>Monsters
+		</h3>
 
 		<table style="margin-left: 80px" summary="Animations de dragons">
-			<tr style= "line-height: 200%;">
+			<tr style= "line-height: 170%;">
 				<th colspan="6" >Dragons</th>
 			</tr>
 			<tr>
-				<td style ="border-bottom: 0px">Dragon noir juvénile</td>
-				<td style ="border-bottom: 0px">Dragon d'argent juvénile</td>
-				<td style ="border-bottom: 0px">Dragon mécanique</td>
-				<td style ="border-bottom: 0px">Demi-dragon d'argent</td>
+				<td style ="border-bottom: 0px">Black Dragon Juvénile</td>
+				<td style ="border-bottom: 0px">Silver Dragon Juvénile</td>
+				<td style ="border-bottom: 0px">Mechanic Dragon</td>
+				<td style ="border-bottom: 0px">Half dragon silver</td>
 			</tr>
 			<tr>
 				<td style ="border-top: 0px"><img src="images/anim/dragonnoirjuv.gif" title="Young Black Dragon" /></td>
@@ -236,8 +574,8 @@
 			</tr>
 		</table>
 
-		<table style="margin-left: 80px;margin-top: 20px" summary="Animations de tarasques">
-			<tr style= "line-height: 200%;">
+		<table style="margin-left: 80px;margin-top: 4px" summary="Animations de tarasques">
+			<tr style= "line-height: 170%;">
 				<th colspan="3" >Tarasques</th>
 			</tr>
 			<tr>
@@ -251,17 +589,17 @@
 			</tr>
 		</table>
 
-		<table style="margin-left: 80px;margin-top: 20px" summary="Animations de minotaures">
-			<tr style= "line-height: 200%;">
-				<th colspan="6" >Minotaures</th>
+		<table style="margin-left: 80px;margin-top: 4px" summary="Animations de minotaures">
+			<tr style= "line-height: 170%;">
+				<th colspan="6" >Minotaurs</th>
 			</tr>
 			<tr>
-				<td style ="border-bottom: 0px">en armure avec deux haches</td>
-				<td style ="border-bottom: 0px">en armure avec deux fléaux</td>
-				<td style ="border-bottom: 0px">en armure avec hache et fléau</td>
-				<td style ="border-bottom: 0px">avec deux haches</td>
-				<td style ="border-bottom: 0px">avec deux fléaux</td>
-				<td style ="border-bottom: 0px">avec hache et fléau</td>
+				<td style ="border-bottom: 0px">armored with two axes</td>
+				<td style ="border-bottom: 0px">armored with two flails</td>
+				<td style ="border-bottom: 0px">armored with axe and flail</td>
+				<td style ="border-bottom: 0px">with two axes</td>
+				<td style ="border-bottom: 0px">with two flails</td>
+				<td style ="border-bottom: 0px">with axe and flail</td>
 			</tr>
 			<tr>
 				<td style ="border-top: 0px"><img src="images/anim/minotaur1.gif" title="Minotaur armor with two axes" /></td>
@@ -273,14 +611,14 @@
 			</tr>
 		</table>
 
-		<table style="margin-left: 80px;margin-top: 20px" summary="Animations de lycanthropes">
-			<tr style= "line-height: 200%;">
+		<table style="margin-left: 80px;margin-top: 4px" summary="Animations de lycanthropes">
+			<tr style= "line-height: 170%;">
 				<th colspan="10" >Lycanthropes</th>
 			</tr>
 			<tr>
 				<td>Mantuock</td>
-				<td colspan="5" >Rats-garous</td>
-				<td colspan="4" >Rats mutants</td>
+				<td colspan="5" >Wererats</td>
+				<td colspan="4" >Mutated Rats</td>
 			</tr>
 			<tr>
 				<td><img src="images/anim/mantuock.gif" title="Mantuock" /></td>
@@ -296,8 +634,8 @@
 			</tr>
 		</table>
 
-		<table style="margin-left: 80px;margin-top: 20px" summary="Animations de golems de bois">
-			<tr style= "line-height: 200%;">
+		<table style="margin-left: 80px;margin-top: 4px" summary="Animations de golems de bois">
+			<tr style= "line-height: 170%;">
 				<th colspan="5" >Thorned Hulks</th>
 			</tr>
 			<tr>
@@ -309,15 +647,15 @@
 			</tr>
 		</table>
 
-		<table style="margin-left: 80px;margin-top: 20px" summary="Animations monstres marins">
-			<tr style= "line-height: 200%;">
-				<th colspan="8" >Monstres marins</th>
+		<table style="margin-left: 80px;margin-top: 4px" summary="Animations monstres marins">
+			<tr style= "line-height: 170%;">
+				<th colspan="8" >Sea Monsters</th>
 			</tr>
-				<td>Requin</td>
-				<td>Requin léopard</td>
-				<td>Serpent de mer</td>
-				<td>Pieuvre</td>
-				<td colspan="4" >Méduses</td>
+				<td>White Shark</td>
+				<td>Leopard Shark</td>
+				<td>Sea Snake</td>
+				<td>Octopus tentacle</td>
+				<td colspan="4" >Jellyfishes</td>
 			<tr>
 			</tr>
 			<tr>
@@ -332,19 +670,19 @@
 			</tr>
 		</table>
 
-		<table style="margin-left: 80px;margin-top: 20px" summary="Animations de monstres reptiliens">
-			<tr style= "line-height: 200%;">
-				<th colspan="8" >Reptiles</th>
+		<table style="margin-left: 80px;margin-top: 4px" summary="Animations de monstres reptiliens">
+			<tr style= "line-height: 170%;">
+				<th colspan="8" >Reptilians</th>
 			</tr>
 			<tr>
-				<td style ="border-bottom: 0px">Naja</td>
-				<td style ="border-bottom: 0px">Naja rouge</td>
-				<td style ="border-bottom: 0px">Naja jaune</td>
+				<td style ="border-bottom: 0px">Naja Snake</td>
+				<td style ="border-bottom: 0px">Red Naja Snake</td>
+				<td style ="border-bottom: 0px">Yellow Naja Snake</td>
 				<td style ="border-bottom: 0px">Claw viper</td>
-				<td style ="border-bottom: 0px">Méduse</td>
-				<td style ="border-bottom: 0px">Méduse verte</td>
-				<td style ="border-bottom: 0px">Reine méduse</td>
-				<td style ="border-bottom: 0px">Déesse</td>
+				<td style ="border-bottom: 0px">Medusa</td>
+				<td style ="border-bottom: 0px">Green Medusa</td>
+				<td style ="border-bottom: 0px">Medusa Queen</td>
+				<td style ="border-bottom: 0px">Goddess</td>
 			</tr>
 			<tr>
 				<td style ="border-top: 0px"><img src="images/anim/naja.gif" title="Naja Snake" /></td>
@@ -358,17 +696,17 @@
 			</tr>
 		</table>
 
-		<table style="margin-left: 80px;margin-top: 20px" summary="Animations de monstres divers">
-			<tr style= "line-height: 200%;">
-				<th colspan="6" >Divers</th>
+		<table style="margin-left: 80px;margin-top: 4px" summary="Animations de monstres divers">
+			<tr style= "line-height: 170%;">
+				<th colspan="6" >Miscellaneous</th>
 			</tr>
 			<tr>
-				<td style ="border-bottom: 0px">Trolls des Ténèbres</td>
+				<td style ="border-bottom: 0px">Darkness Trolls</td>
 				<td style ="border-bottom: 0px">Avatar troll</td>
 				<td style ="border-bottom: 0px">Putrid Defiler</td>
-				<td style ="border-bottom: 0px">Yéti</td>
-				<td style ="border-bottom: 0px">Horreur glacée</td>
-				<td style ="border-bottom: 0px">Hydre de feu</td>
+				<td style ="border-bottom: 0px">Yeti</td>
+				<td style ="border-bottom: 0px">Frozen Horror</td>
+				<td style ="border-bottom: 0px">Hydra Fire</td>
 			</tr>
 			<tr>
 				<td style ="border-top: 0px"><img src="images/anim/trolldark.gif" title="Troll des Ténèbres" /> <img src="images/anim/trolldarksm.gif" title="Petit troll des Ténèbres" /></td>
@@ -380,12 +718,12 @@
 			</tr>
 		</table>
 
-		<table style="margin-left: 80px;margin-top: 20px" summary="Animations d'insectes">
-			<tr style= "line-height: 200%;">
-				<th colspan="9" >Insectes</th>
+		<table style="margin-left: 80px;margin-top: 4px" summary="Animations d'insectes">
+			<tr style= "line-height: 170%;">
+				<th colspan="9" >Insects</th>
 			</tr>
 			<tr>
-				<td>Œuf de scarabée<img src="images/anim/maggotegg.gif" title="Maggot Egg" /></td>
+				<td>Maggot Egg<img src="images/anim/maggotegg.gif" title="Maggot Egg" /></td>
 				<td><img src="images/anim/sandbeetle.gif" title="Sand Beetle" /><img src="images/anim/sandbeetleg.gif" title="Sand Beetle Giant" /></td>
 				<td><img src="images/anim/maggot1.gif" title="Blue Maggot" /><img src="images/anim/maggotg5.gif" title="Giant Blue Maggot" /></td>
 				<td><img src="images/anim/maggot2.gif" title="Black Maggot" /><img src="images/anim/maggotg4.gif" title="Giant Black Maggot" /></td>
@@ -396,39 +734,38 @@
 				<td><img src="images/anim/maggotg3.gif" title="Giant Black and red Maggot" /></td>
 			</tr>
 			<tr>
-				<td>Nuage d'insectes<br><img src="images/anim/insectsswarm.gif" title="Insects swarm" /></td>
-				<td>Moustique géant<br><img src="images/anim/mosquito.gif" title="Mosquito giant" /></td>
+				<td>Insects swarm<br><img src="images/anim/insectsswarm.gif" title="Insects swarm" /></td>
+				<td>Giant Mosquito <br><img src="images/anim/mosquito.gif" title="Mosquito giant" /></td>
 				<td><img src="images/anim/mosquitonest.gif" title="Mosquito nest" /></td>
 				<td>Larva worms<br><img src="images/anim/larva.gif" title="Larva Worm small PsT" /> <img src="images/anim/larvag.gif" title="Larva Worm PsT" /></td>
 			</tr>
 		</table><br>
+		<p style="font-size:90%;font-weight: bold;text-align: right;"><a href="#top">Back to index</a>
+		</p>
 
-		<p style="font-size: 90%; text-align: right;"><a href="#top">RETOUR À L"INDEX</a></p>
-
-		<hr><br>
-
-<!-- ======================== U n d e a d s ======================== -->
-		<a name="undeads" id="undeads"></a>
-		<h2 style="border-top: dotted 2px #d0d0d0; background-color: rgba(48, 48, 48, 0.6); margin-top: 5px;"><span style="margin-left: 2%;">Morts vivants</h2><br>
+<hr>
+		<h3>
+			<a name="undeads" id="undeads"></a>Undead
+		</h3>
 
 		<table style="margin-left: 80px" summary="Animations de squelettes">
-			<tr style= "line-height: 200%;">
-				<th colspan="10" >Squelettes des Armées oubliées</th>
+			<tr style= "line-height: 170%;">
+				<th colspan="10" >Forgotten Armies Skeletons</th>
 			</tr>
 			<tr>
 				<td></td>
-				<td>avec hache</td>
-				<td>avec fléau</td>
-				<td>avec masse</td>
-				<td>avec épée</td>
-				<td>avec faux</td>
+				<td>with axe</td>
+				<td>with flail</td>
+				<td>with mace</td>
+				<td>with sword</td>
+				<td>with scythe</td>
 				<td>archer</td>
-				<td>manchot</td>
-				<td>décapité</td>
-				<td>estropié</td>
+				<td>one armed</td>
+				<td>beheaded</td>
+				<td>ripped-out</td>
 			</tr>
 			<tr>
-				<td>Armée 1</td>
+				<td>Army #1</td>
 				<td><img src="images/anim/skeletona1a.gif" title="Forgotten Army 1 with Axe" /></td>
 				<td><img src="images/anim/skeletona1f.gif" title="Forgotten Army 1 with Flail" /></td>
 				<td><img src="images/anim/skeletona1m.gif" title="Forgotten Army 1 with Mace" /></td>
@@ -440,7 +777,7 @@
 				<td><img src="images/anim/skeletona16.gif" title="Forgotten Army 1 ripped-out" /></td>
 			</tr>
 			<tr>
-				<td>Armée 2</td>
+				<td>Army #2</td>
 				<td><img src="images/anim/skeletona2a.gif" title="Forgotten Army 2 with Axe" /></td>
 				<td><img src="images/anim/skeletona2f.gif" title="Forgotten Army 2 with Flail" /></td>
 				<td><img src="images/anim/skeletona2m.gif" title="Forgotten Army 2 with Mace" /></td>
@@ -452,7 +789,7 @@
 				<td><img src="images/anim/skeletona26.gif" title="Forgotten Army 2 ripped-out" /></td>
 			</tr>
 			<tr>
-				<td>Armée 3</td>
+				<td>Army #3</td>
 				<td><img src="images/anim/skeletona3a.gif" title="Forgotten Army 3 with Axe" /></td>
 				<td><img src="images/anim/skeletona3f.gif" title="Forgotten Army 3 with Flail" /></td>
 				<td><img src="images/anim/skeletona3m.gif" title="Forgotten Army 3 with Mace" /></td>
@@ -464,7 +801,7 @@
 				<td><img src="images/anim/skeletona36.gif" title="Forgotten Army 3 ripped-out" /></td>
 			</tr>
 			<tr>
-				<td>Armée 4</td>
+				<td>Army #4</td>
 				<td><img src="images/anim/skeletona4a.gif" title="Forgotten Army 4 with Axe" /></td>
 				<td><img src="images/anim/skeletona4f.gif" title="Forgotten Army 4 with Flail" /></td>
 				<td><img src="images/anim/skeletona4m.gif" title="Forgotten Army 4 with Mace" /></td>
@@ -477,38 +814,38 @@
 			</tr>
 		</table>
 
-		<table style="margin-left: 80px;margin-top: 20px" summary="Animations de Doom Knights">
-			<tr style= "line-height: 200%;">
+		<table style="margin-left: 80px;margin-top: 4px" summary="Animations de Doom Knights">
+			<tr style= "line-height: 170%;">
 				<th colspan="13" >Doom Knights</th>
 			</tr>
 			<tr>
 				<td><img src="images/anim/doomknight1.gif" title="Doom Knight" /></td>
-				<td>Manchot<img src="images/anim/doomknight2.gif" title="Doom Knight one armed" /></td>
-				<td>Décapité<img src="images/anim/doomknight3.gif" title="Doom Knight beheaded" /></td>
-				<td>Estropié<img src="images/anim/doomknight4.gif" title="Doom Knight ripped out" /></td>
-				<td>Prêtre<img src="images/anim/doomknightp.gif" title="Doom Knight Priest" /></td>
-				<td>du froid<img src="images/anim/doomknightp2.gif" title="Doom Knight Priest Cold" /></td>
-				<td>du feu<img src="images/anim/doomknightp3.gif" title="Doom Knight Priest Fire" /></td>
-				<td>du poison<img src="images/anim/doomknightp4.gif" title="Doom Knight Priest Poison" /></td>
-				<td>maudit<img src="images/anim/doomknightp5.gif" title="Doom Knight Priest Unholy" /></td>
+				<td>one armed<img src="images/anim/doomknight2.gif" title="Doom Knight one armed" /></td>
+				<td>beheaded<img src="images/anim/doomknight3.gif" title="Doom Knight beheaded" /></td>
+				<td>ripped out<img src="images/anim/doomknight4.gif" title="Doom Knight ripped out" /></td>
+				<td>Priest<img src="images/anim/doomknightp.gif" title="Doom Knight Priest" /></td>
+				<td>Cold<img src="images/anim/doomknightp2.gif" title="Doom Knight Priest Cold" /></td>
+				<td>Fire<img src="images/anim/doomknightp3.gif" title="Doom Knight Priest Fire" /></td>
+				<td>Poison<img src="images/anim/doomknightp4.gif" title="Doom Knight Priest Poison" /></td>
+				<td>Unholy<img src="images/anim/doomknightp5.gif" title="Doom Knight Priest Unholy" /></td>
 				<td>Mage<img src="images/anim/doomknightm.gif" title="Doom Knight Priest Mage" /></td>
-				<td>du froid<img src="images/anim/doomknightm2.gif" title="Doom Knight Mage Cold" /></td>
-				<td>du feu<img src="images/anim/doomknightm3.gif" title="Doom Knight Mage Fire" /></td>
-				<td>du poison<img src="images/anim/doomknightm4.gif" title="Doom Knight Mage Poison" /></td>
+				<td>Cold<img src="images/anim/doomknightm2.gif" title="Doom Knight Mage Cold" /></td>
+				<td>Fire<img src="images/anim/doomknightm3.gif" title="Doom Knight Mage Fire" /></td>
+				<td>Poison<img src="images/anim/doomknightm4.gif" title="Doom Knight Mage Poison" /></td>
 			</tr>
 		</table>
 
-		<table style="margin-left: 80px;margin-top: 20px" summary="Animations de morts-vivants divers">
-			<tr style= "line-height: 200%;">
-				<th colspan="6" >Divers</th>
+		<table style="margin-left: 80px;margin-top: 4px" summary="Animations de morts-vivants divers">
+			<tr style= "line-height: 170%;">
+				<th colspan="6" >Miscellaneous</th>
 			</tr>
 			<tr>
-				<td style ="border-bottom: 0px">Liche de feu</td>
-				<td style ="border-bottom: 0px">Momie putride</td>
-				<td style ="border-bottom: 0px">Gardien chacal</td>
-				<td style ="border-bottom: 0px">Gardien zombi</td>
-				<td style ="border-bottom: 0px">Horde réanimée</td>
-				<td style ="border-bottom: 0px">Horde réanimée décapitée</td>
+				<td style ="border-bottom: 0px">Fire Lich</td>
+				<td style ="border-bottom: 0px">Mummy Putride</td>
+				<td style ="border-bottom: 0px">Jackal Guardian</td>
+				<td style ="border-bottom: 0px">Zombie Guardian</td>
+				<td style ="border-bottom: 0px">Reanimated horde</td>
+				<td style ="border-bottom: 0px">Reanimated horde beheaded</td>
 			</tr>
 			<tr>
 				<td style ="border-top: 0px"><img src="images/anim/lichefeu.gif" title="Fire Lich" /></td>
@@ -519,17 +856,16 @@
 				<td style ="border-top: 0px"><img src="images/anim/rehorde2.gif" title="Reanimated horde beheaded" /></td>
 			</tr>
 		</table><br>
+		<p style="font-size:90%;font-weight: bold;text-align: right;"><a href="#top">Back to index</a>
+		</p>
 
-		<p style="font-size: 90%; text-align: right;"><a href="#top">RETOUR À L"INDEX</a></p>
-
-		<hr><br>
-
-<!-- ========================= D e m o n s ========================= -->
-		<a name="demons" id="demons"></a>
-		<h2 style="border-top: dotted 2px #d0d0d0; background-color: rgba(48, 48, 48, 0.6); margin-top: 5px;"><span style="margin-left: 2%;">Démons</h2><br>
+<hr>
+		<h3>
+			<a name="demons" id="demons"></a>Demons
+		</h3>
 
 		<table style="margin-left: 80px" summary="Animations de démons uniques">
-			<tr style= "line-height: 200%;">
+			<tr style= "line-height: 170%;">
 				<th colspan="6" >Uniques</th>
 			</tr>
 			<tr>
@@ -537,7 +873,7 @@
 				<td>Diablo</td>
 				<td>Izual</td>
 				<td>Duriel</td>
-				<td>Méphisto</td>
+				<td>Mephisto</td>
 				<td>Lolth</td>
 			</tr>
 			<tr>
@@ -550,27 +886,27 @@
 			</tr>
 		</table>
 
-		<table style="margin-left: 80px;margin-top: 20px" summary="Animations de mega demons">
-			<tr style= "line-height: 200%;">
-				<th colspan="6" >Mega Démons</th>
+		<table style="margin-left: 80px;margin-top: 4px" summary="Animations de mega demons">
+			<tr style= "line-height: 170%;">
+				<th colspan="6" >Mega Demons</th>
 			</tr>
 			<tr>
-				<td>normal<img src="images/anim/megademon.gif" title="MegaDemon" /></td>
-				<td>avec flamberge<img src="images/anim/megademon1.gif" title="MegaDemon with Flamberge" /></td>
-				<td>avec faux<img src="images/anim/megademon2.gif" title="MegaDemon with Scythe" /></td>
-				<td>avec épée<img src="images/anim/megademon3.gif" title="MegaDemon with Sword" /></td>
-				<td>avec hache<img src="images/anim/megademon4.gif" title="MegaDemon with Axe" /></td>
+				<td>common<img src="images/anim/megademon.gif" title="MegaDemon" /></td>
+				<td>with flamberge<img src="images/anim/megademon1.gif" title="MegaDemon with Flamberge" /></td>
+				<td>with scythe<img src="images/anim/megademon2.gif" title="MegaDemon with Scythe" /></td>
+				<td>with sword<img src="images/anim/megademon3.gif" title="MegaDemon with Sword" /></td>
+				<td>with axe<img src="images/anim/megademon4.gif" title="MegaDemon with Axe" /></td>
 			</tr>
 		</table>
 
-		<table style="margin-left: 80px;margin-top: 20px" summary="Animations d'overseers">
-			<tr style= "line-height: 200%;">
+		<table style="margin-left: 80px;margin-top: 4px" summary="Animations d'overseers">
+			<tr style= "line-height: 170%;">
 				<th colspan="6" >Overseers</th>
 			</tr>
 			<tr>
-				<td>Capitaine</td>
-				<td colspan="3" >Guerriers</td>
-				<td>normal</td>
+				<td>Captaine</td>
+				<td colspan="3" >Warriors</td>
+				<td>common</td>
 				<td>Mage</td>
 			</tr>
 			<tr>
@@ -583,21 +919,21 @@
 			</tr>
 		</table>
 
-		<table style="margin-left: 80px;margin-top: 20px" summary="Animations de diablotins divers">
-			<tr style= "line-height: 200%;">
-				<th colspan="5" >Chauve-souris</th>
+		<table style="margin-left: 80px;margin-top: 4px" summary="Animations de diablotins divers">
+			<tr style= "line-height: 170%;">
+				<th colspan="5" >Bats</th>
 				<th colspan="4" >Gremlins</th>
 			</tr>
 			<tr>
 				<td style ="border-bottom: 0px"></td>
-				<td style ="border-bottom: 0px">noire</td>
-				<td style ="border-bottom: 0px">électrique</td>
-				<td style ="border-bottom: 0px">de feu</td>
-				<td style ="border-bottom: 0px">petite</td>
+				<td style ="border-bottom: 0px">black</td>
+				<td style ="border-bottom: 0px">electrical</td>
+				<td style ="border-bottom: 0px">fire</td>
+				<td style ="border-bottom: 0px">small</td>
 				<td style ="border-bottom: 0px"></td>
-				<td style ="border-bottom: 0px">bleu</td>
-				<td style ="border-bottom: 0px">vert</td>
-				<td style ="border-bottom: 0px">rouge</td>
+				<td style ="border-bottom: 0px">blue</td>
+				<td style ="border-bottom: 0px">green</td>
+				<td style ="border-bottom: 0px">red</td>
 			</tr>
 			<tr>
 				<td style ="border-top: 0px"><img src="images/anim/bat.gif" title="Bat Demon" /></td>
@@ -612,18 +948,18 @@
 			</tr>
 		</table>
 
-		<table style="margin-left: 80px;margin-top: 20px" summary="Animations de démons divers">
-			<tr style= "line-height: 200%;">
+		<table style="margin-left: 80px;margin-top: 4px" summary="Animations de démons divers">
+			<tr style= "line-height: 170%;">
 				<th colspan="8" >Divers</th>
 			</tr>
 			<tr>
-				<td style ="border-bottom: 0px">Succubes</td>
-				<td style ="border-bottom: 0px">Gargouille</td>
-				<td style ="border-bottom: 0px">Bête de siège</td>
+				<td style ="border-bottom: 0px">Succubus</td>
+				<td style ="border-bottom: 0px">Gargoyle</td>
+				<td style ="border-bottom: 0px">Siege Beast</td>
 				<td style ="border-bottom: 0px">Regurgitator</td>
-				<td style ="border-bottom: 0px">Babouin démon</td>
-				<td style ="border-bottom: 0px">Vautour démon</td>
-				<td style ="border-bottom: 0px">Satyres</td>
+				<td style ="border-bottom: 0px">Demon baboon</td>
+				<td style ="border-bottom: 0px">Vulture demon</td>
+				<td style ="border-bottom: 0px">Goatmen</td>
 				<td style ="border-bottom: 0px">Razor spines</td>
 			</tr>
 			<tr>
@@ -637,23 +973,22 @@
 				<td style ="border-top: 0px"><img src="images/anim/razorspine.gif" title="petit" /><img src="images/anim/razorspineg.gif" title="géant" /></td>
 			</tr>
 		</table><br>
+		<p style="font-size:90%;font-weight: bold;text-align: right;"><a href="#top">Back to index</a>
+		</p>
 
-		<p style="font-size: 90%; text-align: right;"><a href="#top">RETOUR À L"INDEX</a></p>
-
-		<hr><br>
-
-<!-- ======================== A n i m a l s ======================== -->
-		<a name="undeads" id="animals"></a>
-		<h2 style="border-top: dotted 2px #d0d0d0; background-color: rgba(48, 48, 48, 0.6); margin-top: 5px;"><span style="margin-left: 2%;">Animaux</h2><br>
+<hr>
+		<h3>
+			<a name="animals" id="animals"></a>Animals
+		</h3>
 
 		<table style="margin-left: 80px" summary="Animations d'animaux">
-			<tr style= "line-height: 200%;">
-				<th>Goéland</th>
-				<th colspan="4" >Poules</th>
-				<th>Rat enragé</th>
-				<th>Cochon</th>
-				<th>Mouton</th>
-				<th colspan="2" >Vaches</th>
+			<tr style= "line-height: 170%;">
+				<th>Goeland Gull</th>
+				<th colspan="4" >Chickens</th>
+				<th>Rabid Rat</th>
+				<th>Pig</th>
+				<th>Sheep</th>
+				<th colspan="2" >Cows</th>
 			</tr>
 			<tr>
 				<td><img src="images/anim/goeland.gif" title="Goéland, par Luren" /></td>
@@ -669,9 +1004,9 @@
 			</tr>
 		</table>
 
-		<table style="margin-left: 80px;margin-top: 20px" summary="Animations de batraciens">
-			<tr style= "line-height: 200%;">
-				<th colspan="6" >Crapeaux et Grenouilles</th>
+		<table style="margin-left: 80px;margin-top: 4px" summary="Animations de batraciens">
+			<tr style= "line-height: 170%;">
+				<th colspan="6" >Toads and Frogs</th>
 			</tr>
 			<tr>
 				<td><img src="images/anim/frog.gif" title="Frog Demon" /></td>
@@ -691,23 +1026,22 @@
 			</tr>
 		</table>
 
-		<table style="margin-left: 80px;margin-top: 20px" summary="Animations d'animaux sauvages">
-			<tr style= "line-height: 200%;">
-				<th colspan="5" >Tigres</th>
-				<th colspan="2" >Gorilles</th>
-				<th colspan="3" >Vipères</th>
-			</tr>
+		<table style="margin-left: 80px;margin-top: 4px" summary="Animations d'animaux sauvages">
+			<tr style= "line-height: 170%;">
+				<th colspan="5" >Tigers</th>
+				<th colspan="2" >Apes</th>
+				<th colspan="3" >Vipers</th>
 			<tr>
-				<td style ="border-bottom: 0px">normal</td>
-				<td style ="border-bottom: 0px">géant</td>
-				<td style ="border-bottom: 0px">gigantesque</td>
-				<td style ="border-bottom: 0px">blanc</td>
-				<td style ="border-bottom: 0px">blanc géant</td>
-				<td style ="border-bottom: 0px">noir</td>
-				<td style ="border-bottom: 0px">brun</td>
-				<td style ="border-bottom: 0px">commune</td>
-				<td style ="border-bottom: 0px">verte</td>
-				<td style ="border-bottom: 0px">rouge</td>
+				<td style ="border-bottom: 0px">common</td>
+				<td style ="border-bottom: 0px">giant</td>
+				<td style ="border-bottom: 0px">huge</td>
+				<td style ="border-bottom: 0px">white</td>
+				<td style ="border-bottom: 0px">Giant white</td>
+				<td style ="border-bottom: 0px">black</td>
+				<td style ="border-bottom: 0px">brown</td>
+				<td style ="border-bottom: 0px">common</td>
+				<td style ="border-bottom: 0px">green</td>
+				<td style ="border-bottom: 0px">red</td>
 			</tr>
 			<tr>
 				<td style ="border-top: 0px"><img src="images/anim/tiger.gif" title="Tiger" /></td>
@@ -722,25 +1056,24 @@
 				<td style ="border-top: 0px"><img src="images/anim/snake3.gif" title="Small Snake red" /></td>
 			</tr>
 		</table><br>
+		<p style="font-size:90%;font-weight: bold;text-align: right;"><a href="#top">Back to index</a>
+		</p>
 
-		<p style="font-size: 90%; text-align: right;"><a href="#top">RETOUR À L"INDEX</a></p>
-
-		<hr><br>
-
-<!-- =========================== M i s c =========================== -->
-		<a name="misc" id="misc"></a>
-		<h2 style="border-top: dotted 2px #d0d0d0; background-color: rgba(48, 48, 48, 0.6); margin-top: 5px;"><span style="margin-left: 2%;">Divers</h2><br>
+<hr>
+		<h3>
+			<a name="misc" id="misc"></a>Miscellaneous
+		</h3>
 
 		<table style="margin-left: 80px" summary="Animations de décor">
-			<tr style= "line-height: 200%;">
-				<th colspan="6" >Animations de décor</th>
+			<tr style= "line-height: 170%;">
+				<th colspan="6" >Background Animations</th>
 			</tr>
 			<tr>
 				<td colspan="2"style ="border-bottom: 0px">Statues</td>
-				<td style ="border-bottom: 0px">Statue de feu</td>
-				<td style ="border-bottom: 0px">Cratère volcanique</td>
+				<td style ="border-bottom: 0px">Fire Statue</td>
+				<td style ="border-bottom: 0px">Volcano Crater</td>
 				<td style ="border-bottom: 0px">Evil Hut</td>
-				<td style ="border-bottom: 0px">Catapulte</td>
+				<td style ="border-bottom: 0px">Catapult</td>
 			</tr>
 			<tr>
 				<td style ="border-top: 0px; border-right-color: #5F5F5F"><img src="images/anim/trappedsoul1.gif" title="Trapped souls" /></td>
@@ -750,21 +1083,21 @@
 				<td style ="border-top: 0px"><img src="images/anim/evilhut.gif" title="Evil Hut" /></td>
 				<td style ="border-top: 0px"><img src="images/anim/catapult.gif" title="Catapult" /></td>
 			</tr>
-		</table>
+		</table><br><br>
 
-		<table style="margin-left: 80px;margin-top: 20px" summary="Animations d'effets de sorts">
-			<tr style= "line-height: 200%;">
-				<th colspan="8" >Effets de sorts</th>
+		<table style="margin-left: 80px;margin-top: 4px" summary="Animations d'effets de sorts">
+			<tr style= "line-height: 170%;">
+				<th colspan="8" >Spells Effects</th>
 			</tr>
 			<tr>
-				<td style ="border-bottom: 0px">Tentacules malveillants de Kyristan</td>
-				<td style ="border-bottom: 0px">Tentacules embrasés de Daltim</td>
-				<td style ="border-bottom: 0px">Tentacules noirs d'Evard</td>
-				<td style ="border-bottom: 0px">Cimeterre</td>
-				<td style ="border-bottom: 0px">électrique</td>
-				<td style ="border-bottom: 0px">de feu</td>
-				<td style ="border-bottom: 0px">de poison</td>
-				<td style ="border-bottom: 0px">saint</td>
+				<td style ="border-bottom: 0px">Kyristan's Malevolent Tentacles</td>
+				<td style ="border-bottom: 0px">Daltim's Fiery Tentacles</td>
+				<td style ="border-bottom: 0px">Evard's Black Tentacles</td>
+				<td style ="border-bottom: 0px">Scimitar</td>
+				<td style ="border-bottom: 0px">electrical</td>
+				<td style ="border-bottom: 0px">flame</td>
+				<td style ="border-bottom: 0px">poisoned</td>
+				<td style ="border-bottom: 0px">holy</td>
 			</tr>
 			<tr>
 				<td style ="border-top: 0px"><img src="images/anim/evard.gif" title="Evard Tentacles" /></td>
@@ -778,21 +1111,21 @@
 			</tr>
 		</table>
 
-		<table style="margin-left: 80px;margin-top: 20px" summary="Animations de constructions">
-			<tr style= "line-height: 200%;">
-				<th colspan="10" >Constructions mécaniques</th>
+		<table style="margin-left: 80px;margin-top: 4px" summary="Animations de constructions">
+			<tr style= "line-height: 170%;">
+				<th colspan="10" >Mechanical and Constructs</th>
 			</tr>
 			<tr>
 				<td style ="border-bottom: 0px">Modron</td>
 				<td style ="border-bottom: 0px">Nordom</td>
-				<td style ="border-bottom: 0px">Drone</td>
-				<td style ="border-bottom: 0px">Drone lourd</td>
-				<td style ="border-bottom: 0px">Drone lourd doré</td>
-				<td style ="border-bottom: 0px">Drone lourd vert</td>
-				<td style ="border-bottom: 0px">Drone lourd magenta</td>
-				<td style ="border-bottom: 0px">Drone lourd violet</td>
-				<td style ="border-bottom: 0px">Drone lourd rouge</td>
-				<td style ="border-bottom: 0px">Drone lourd jaune</td>
+				<td style ="border-bottom: 0px">Drone Light</td>
+				<td style ="border-bottom: 0px">Drone Heavy</td>
+				<td style ="border-bottom: 0px">Drone Heavy golden</td>
+				<td style ="border-bottom: 0px">Drone Heavy green</td>
+				<td style ="border-bottom: 0px">Drone Heavy magenta</td>
+				<td style ="border-bottom: 0px">Drone Heavy purple</td>
+				<td style ="border-bottom: 0px">Drone Heavy red</td>
+				<td style ="border-bottom: 0px">Drone Heavy yellow</td>
 			</tr>
 			<tr>
 				<td style ="border-top: 0px"><img src="images/anim/modron.gif" title="Modron" /></td>
@@ -811,14 +1144,14 @@
 		<table style="margin-left: 80px;margin-top: 4px" summary="Animations de constructions">
 			<tr>
 				<td style ="border-bottom: 0px">Blade creeper</td>
-				<td style ="border-bottom: 0px">Araignée</td>
-				<td style ="border-bottom: 0px">Araignée verte</td>
-				<td style ="border-bottom: 0px">Araignée rouge</td>
-				<td style ="border-bottom: 0px">Araignée jaune</td>
-				<td style ="border-bottom: 0px">Golem d'ambre</td>
-				<td style ="border-bottom: 0px">Golem mécanique bleu</td>
-				<td style ="border-bottom: 0px">Golem mécanique vert</td>
-				<td style ="border-bottom: 0px">Golem mécanique rouge</td>
+				<td style ="border-bottom: 0px">Mechanic Spider</td>
+				<td style ="border-bottom: 0px">Mechanic Spider green</td>
+				<td style ="border-bottom: 0px">Mechanic Spider red</td>
+				<td style ="border-bottom: 0px">Mechanic Spider yellow</td>
+				<td style ="border-bottom: 0px">Amber Golem</td>
+				<td style ="border-bottom: 0px">Golem mechanic blue</td>
+				<td style ="border-bottom: 0px">Golem mechanic green</td>
+				<td style ="border-bottom: 0px">Golem mechanic red</td>
 			</tr>
 			<tr>
 				<td style ="border-top: 0px"><img src="images/anim/bladecreeper.gif" title="Blade Creeper" /></td>
@@ -831,39 +1164,21 @@
 				<td style ="border-top: 0px"><img src="images/anim/golemmecv.gif" title="Golem mechanic green" /></td>
 				<td style ="border-top: 0px"><img src="images/anim/golemmecr.gif" title="Golem mechanic red" /></td>
 			</tr>
-		</table><br>
+		</table>
+			<p style="font-size: 95%;font-weight: bold;text-align: right;"><a href="#top">Back to index</a>
+			</p><br><br>
 
-		<p style="font-size: 95%;text-align: right;"><a href="#top">RETOUR À L"INDEX</a></p><br>
+				<td><img src="images/anim/baurier1.gif" title="Baurier brown" /></td>
+				<td><img src="images/anim/baurier2.gif" title="Baurier chestnut" /></td>
+				<td><img src="images/anim/baurier3.gif" title="Baurier white" /></td>
 
+			<address>
+				<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; New animations</span> &#8226; <a href="#top">BACK TO TOP</a>
+			</address>
+		</div>
 
-		<address>
-			<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; Nouvelles animations</span> &#8226; <a href="#top">HAUT DE PAGE</a>
-		</address>
-	  </div>
-
-<!-- ======================= V e r s i o n s ======================= -->
-	  <a name="versions" id="versions"></a>
-	  <div class="content" id="versionHistory">
-
-		<h2>
-			Historique des versions
-		</h2><br>
-
-		<p class="version">
-			Version Alpha 0.0.1 &nbsp;(date)
-		</p>
-
-		<ul style="text-align:justify;">
-			<li>Sortie initiale.</li>
-		</ul><br>
-
-
-		<address>
-			<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; Historique des versions</span> &#8226; <a href="#top">HAUT DE PAGE</a>
-		</address>
-	  </div>
-
-	 </div>
 	</div>
-  </body>
+  </div>
+</body>
 </html>
+

@@ -1,0 +1,1052 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta charset="UTF-8">
+	<style type="text/css">
+/*<![CDATA[*/
+	<!-- 
+	body {
+		margin: 0;
+		padding: 0;
+		cursor: default;
+		text-align: center;
+		color: #D1D1D1;
+		background: #000 url('images/bg_lcc2.png');
+	}
+
+/*	En-tête  */
+	#cartouche {
+		text-align: left;
+		margin: 0 auto;
+		margin-top: 20px;
+		width: 88%;
+		font-family: Verdana, Tahoma, Arial, sans-serif;
+		font-size: 12px;
+		color: #D1D1D1;
+/*		background-repeat: repeat-x;
+		background: url("images/degrade_titre.png");
+*/	}
+
+	#header {
+		text-align: center;
+*		background: #303030;
+		background-image: linear-gradient(#666666, #040404);
+		border: 1px solid #FFCC33;
+		border-top: 5px solid #FFCC33;
+		border-bottom: 5px solid #FFCC33;
+		padding: 5px 0 13px 0;
+		height: 310px;
+		border-radius: 3px 4px 3px 3px;
+		box-shadow: 8px 8px 15px black;
+	}
+/*	le décalage horizontal de l'ombre ;
+	le décalage vertical de l'ombre ;
+	l'adoucissement du dégradé ;
+	la couleur de l'ombre.	*/
+
+	#header .about {
+		margin: 7px 0 0 0;
+		padding: 0;
+/*		font-style: italic;
+		color: #555;
+*/		text-decoration: none;
+	}
+	#header .about a:link,
+	#header .about a:visited {
+	}
+	#header .about a:focus,
+	#header .about a:hover {
+		text-decoration: none;
+		color: #deded9;
+		border: 0;
+	}
+
+/*	Menu  */
+	#menu {
+		font-weight: bold;
+		margin: 0;
+		margin-top: 20px;
+		text-align: center;
+		color: #FFCC33;
+		background-repeat: repeat-x;
+		background: url("images/degrade_titre.png");
+		border-radius: 3px 4px 3px 3px;
+*		heigth: 50px;
+		line-height: 400%;
+*		vertical-align:middle;
+	}
+	#menu a:link,
+	#menu a:visited {
+	}
+	#menu a:focus,
+	#menu a:hover {
+		text-decoration: none;
+		color: #deded9;
+		border: 0;
+	}
+
+/*	Sections  */
+	#maindiv {
+		margin: 0 auto;
+		margin-top: -20px;
+		width: 100%;
+	}
+
+	#maindiv .content {
+		color: #deded9;
+		background-color: #5F5F5F;
+		padding: 0 0 25px 0;
+		margin: 50px auto;
+		border-width: 1px 1px 4px 10px;
+		border-style: solid;
+		border-color: #FFBF00;
+/*ou		border: 1px solid #FFCC33;
+		border-left: 10px solid #FFCC33;
+		border-bottom: 4px solid #FFCC33;
+*/		position: relative;
+		border-radius: 4px 4px 4px 5px;
+		box-shadow: 8px 8px 15px black;
+		display: block;
+	}
+
+	#maindiv .important {
+		font-size: 95%;
+		font-family: Verdana;
+		text-align: left;
+*		background-color: #F1F1F1;
+		border-width: 1px 4px 1px 4px;
+		border-style: solid;
+		border-color: #FFBF00;
+/*		border-top: solid 1px #FFBF00;
+		border-bottom: solid 1px #FFBF00;
+		border-left: solid 6px #FFBF00;
+		border-right: solid 6px #FFBF00;
+*/		padding: 10px;
+		margin: 10px auto;
+		width: 80%;
+		line-height: 160%;
+	}
+	#maindiv .important::before {
+		display: none;
+	}
+	#maindiv .important p {
+		width: 100%;
+		font-size: 100%;
+		text-indent: 0px;
+		margin: 5px 0 5px 0;
+		line-height: 180%;
+	}
+	#maindiv .important ol {
+		margin: -10px 0 0 20px;
+	}
+	#maindiv .important ul {
+		margin: -10px 0 0 15px;
+	}
+
+	#maindiv address {
+		font-size: 95%;
+		font-style: normal;
+		font-weight: bold;
+		text-decoration: none;
+		color: #303030;
+		background-color: #FFBF00;
+		padding: 3px 0px 0px;
+		margin: 0px;
+		width: 100%;
+		position: absolute;
+		bottom: -1px;
+		left: 0px;
+		display: block;
+		text-align: right;
+	}
+	#maindiv address a:link,
+	#maindiv address a:visited {
+		font-weight: bold;
+		text-decoration: underline;
+		background-color: transparent;
+		color: #000 !important;
+		padding-right: 5px;
+		padding-left: 6px;
+	}
+	#maindiv address a:focus,
+	#maindiv address a:hover {
+		text-decoration: none;
+		color: #000;
+	}
+
+	/*	Corps de texte  */
+	#maindiv p {
+		text-align: justify;
+		font-size: 110%;
+		font-style: normal;
+		text-decoration: none;
+		line-height: 150%;
+		padding: 0px;
+		margin: 10px auto;
+		width: 90%;
+		display: block;
+	}
+
+	#maindiv p.boxed {
+		border-style: solid;
+		border-width: 1px;
+		border-color: #FFCC33;
+		margin-top: 32px;
+		padding: 6px;
+	}
+
+	/*	Listes  */
+	#maindiv ul {
+		line-height: 170%;
+		margin-left: 4%;
+		width: 87%;
+	}
+	#maindiv ul li {
+		/*margin-right: 0px;*/
+	}
+	#maindiv ul li ul {
+		margin: 0px;
+		width: 96%;
+	}
+	#maindiv ul li ul li {
+	}
+	#maindiv ul li ul li ul {
+		margin-left: -1%;
+		width: 98%;
+	}
+	#maindiv ul li ul li ul li {
+	}
+
+/* INUTILISE = liste numérique
+	#maindiv ol {
+		margin: 0px 0 0 35px;
+		*margin-left: 70px;
+	}
+	#maindiv ol li {
+		line-height: 170%;
+	}
+*/
+
+	/*	Titre des versions  */
+	#maindiv .version {
+		display: block;
+		width: 90%;
+		background-color: transparent;
+		text-align: left;
+/*		text-indent: 30px; */
+		font-weight: bold;
+		padding-top: 3px;
+		padding-bottom: 3px;
+		border-bottom: solid 1px #FFCC33;
+		border-top: solid 1px #FFCC33;
+	}
+
+	/*	Liens internet  */
+	a:link,
+	a:visited {
+		color: #FFCC33;
+		/*font-weight: bold; */
+		text-decoration: none;
+	}
+	a:focus,
+	a:hover {
+		text-decoration: underline;
+		*color: #deded9;
+	}
+
+	h1 {
+		line-height: 170%;
+		font-size: 225%;
+		color: #FFCC33; *5F5F5F
+		padding: 5px 0 5px 0;
+		margin: 0;
+		width: 100%;
+	}
+	/*	Titres de section (160 %)  */
+	h2 {
+		line-height: 170%;
+		display: block;
+		font-family: Verdana, Trebuchet MS, Arial, serif;
+		text-align: left;
+		text-indent: 30px;
+		padding: 0px;
+		margin: 20px 0 0 0;
+		border-bottom: dotted 2px #d0d0d0;
+		background: #303030;
+		font-size: 160%;
+	}
+	h2::first-letter {
+		color: #FFCC33;
+		background-color: transparent;
+	}
+
+	/*	Titres  */
+	h3, h4, h5, h6 {
+		line-height: 170%;
+		margin: 10px auto;
+		width: 90%;
+		padding: 0;
+	}
+	h3 {
+		font-size: 140%;
+	}
+	h4 {
+		font-size: 125%;
+		/*font-style: italic;*/
+	}
+
+	h5 {
+		/*margin: 10px auto;*/
+		font-size: 110%;
+	}
+/*	h5 {
+		font-size: 100%;
+	}*/
+	h6 {
+		font-size: 125%;
+		font-style: italic;
+	}
+
+	/*	Ligne dorée  */
+	hr {
+		/*margin: 10px 10 10px 10;*/
+		margin-top: 20px;
+		margin-bottom: 20px;
+		width: 90%;
+		/*padding: 0; */
+		height: 1px;
+		border: 0;
+		color: #FFCC33;
+		background-color: #FFCC33;
+	}
+
+	/*	Image d'en-tête */
+	img.image_left {
+		float: left;
+		padding:0px 5px 0px 70px;
+		overflow: auto;
+	}
+
+
+	/*	Tableaux */
+	table {
+		/*text-align: center;*/
+		width: 90%;
+		padding: 10px;
+		border-collapse: collapse;
+		/*margin-left: 70px;*/
+		/*padding: 20px 25px;*/
+		/*position: relative;*/
+	}
+	td, th {
+		font-size: 12px;
+		text-align: center;
+		*vertical-align: baseline;
+		padding-top: 4px;
+		padding-bottom: 4px;
+*		border: 1px outset #eee;
+		border: 1px solid #aaa;
+	}
+	th {
+		background-color: #303030; *#000099;
+		*color: #fff;
+		font-weight: bold;
+*		border:none;
+	}
+*	tr {)
+
+	.leftalign, table.leftalign tr th, table.leftalign tr td (
+		text-align: left;
+	}
+
+	-->
+/*]]>*/
+
+	</style>
+
+	<title>
+		Menace sur le Royaume de Diamant Éternel - La Couronne de Cuivre
+	</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script>
+		var LANG_EN = "en";
+
+		var hintTable = [];
+		hintTable[LANG_EN] = 
+		[
+		"A dozen side quests to be played... or not...",
+		"More than a hundred maps, including new ones.",
+		"A bestiary inspired by PnP editions and proposing new creatures in BG2 universe.",
+		"Evil, Gem, Planar Dragons...",
+		"Fiends and Devils who take adwantage of the chaos wreaked in the Kingdom of Eternal Diamond to export their Blood War among human people.",
+		"A horde of vampires that would make Bodhi out to be a capricious little girl.",
+		"Undead knights whose beshavior is still so inflexible in the Hereafter.",
+		"New items.",
+		"Food ready-to-eat or needed for cooking.",
+		"An Alchimy set to create potions and miscellaneous items...",
+		];
+
+		var hintIdx = 0;
+
+		function showNextHint(lang, textId) {
+			var hints = hintTable[lang];
+			if (hints.length > 0) {
+			var elem = document.getElementById(textId);
+			if ('textContent' in elem) {
+				elem.textContent = hints[hintIdx];
+			} else {
+				elem.innerText = hints[hintIdx];
+			}
+			hintIdx = (hintIdx + 1) % hints.length;
+			}
+		}
+
+		function showHints(boxId, lang, textId) {
+			document.getElementById(boxId).style.display = "block";
+			showNextHint(lang, textId);
+		}
+
+		function showSpoiler(obj)
+		{
+		var inner = obj.parentNode.getElementsByTagName("div")[0];
+		if (inner.style.display == "none")
+		inner.style.display = "";
+		else
+		inner.style.display = "none";
+		}
+	</script>
+</head>
+
+<body onload="showHints('hintbox', 'en', 'hint')">
+  <div id="cartouche">
+	<a name="top" id="top"></a>
+	<div id="header">
+		<h1>
+			Menace sur le Royaume de Diamant Éternel (WIP)
+			<a href="menace-readme-french.html">
+				<img src="images/fr-flag-32.png" alt="version française" style="float:right;width:32px;height:16px;margin-right:20px;margin-top:15px;">
+			</a>
+		</h1>
+
+		<strong>A <a href="https://www.baldursgateworld.fr">La Couronne de Cuivre</a> mod for Baldur's Gate II: <acronym title="Throne of Bhaal">ToB</acronym>, Baldur's Gate Trilogy, <acronym title="Baldur's Gate II Enhanced Edition">BG2:EE</acronym> and <acronym title="Enhanced Edition Trilogy">EET</acronym></strong>
+
+<hr>
+		<img src="images/logo_lcc.png" title="La Couronne de Cuivre" alt="La Couronne de Cuivre" class="image_left" />
+		<br><br><br>
+		<p class="about" style="text-align: left;margin-left: 70%">
+			<strong>Author:</strong> <a href="https://www.baldursgateworld.fr/lacouronne/members/freddy_gwendo.html">Freddy_Gwendo (aka Gwendolyne)</a>
+		</p>
+		<p class="about" style="text-align: left;margin-left: 70%">
+			<strong>Version:</strong> Alpha 0.0.1
+		</p>
+		<p class="about" style="text-align: left;margin-left: 70%">
+			<strong>Languages:</strong> French, English
+		</p>
+		<p class="about" style="text-align: left;margin-left: 70%">
+			<strong>Platforms:</strong> Windows (, Mac <acronym title="Operating System 10">OS X</acronym> and Linux)
+		</p>
+		<p class="about" style="text-align: left;margin-left: 70%">
+			<a href="https://www.baldursgateworld.fr">Mod Website</a> &#8226; <a href="https://www.baldursgateworld.fr/lacouronne/menace-sur-le-royaume-de-diamant-eternel/">Mod Forum</a> &#8226; <a href="https://www.baldursgateworld.fr/lacouronne/menace-sur-le-royaume-de-diamant-eternel/">Download</a> &#8226; <a href="https://github.com/GwendolyneFreddy/Diamant-Eternel">GitHub</a>
+		</p>
+
+	</div>
+
+	<div id="menu">
+		<a href="#intro">Introduction</a> &#160;&#8226;&#160; <a href="#compat">Compatibility</a> &#160;&#8226;&#160; <a href="#installation">Installation</a> &#160;&#8226;&#160; <a href="#compon">Components</a> &#160;&#8226;&#160; <a href="#trouble">Troubleshooting</a> &#160;&#8226;&#160; <a href="#images">Screenshots</a> &#160;&#8226;&#160; <a href="#credits">Credits and Acknowledgements</a> &#160;&#8226;&#160; <a href="#versions">Version History</a>
+	</div>
+
+	<div id="maindiv">
+	<!-- ================== I n t r o d u c t i o n ================== -->
+	  <a name="intro" id="intro"></a>
+		<div class="content">
+		<h2>
+			Introduction
+		</h2><br>
+
+		<table cellpadding=0 cellspacing=0 style="margin-left: 80px">
+			<tr>
+				<td style="font-size: 90%;text-align:right;border:none"><img width=500 src="images/diamant1.jpg" title="Menace sur le Royaume de Diamant Éternel"><br>Lux et Umbra by Chaos-Draco DeviantArt &copy;2009-2018 Chaos-Draco</td>
+				<td width=20 style="border:none"></td>
+				<td style="border:none;text-align: justify;font-size: 110%;line-height: 150%;"><strong>Menace sur le royaume de Diamant Éternel</strong> is a French mod designed to provide more than a huge quest, without being a total conversion. A tiny part takes place in BG2 Shadows of Amn, but the main part is played in the Throne of Bhaal extension.<br/><br/>
+				You liked Excalibur, did not you? But have you ever wondered why every woman character is treated as a pest? Guinevere adultery, Morgane the wicked... Why do Paladin Orders recrute only men?<br/><br/>
+				And what if those tales were nothing but a fable spread by men to hide the truth?<br/><br/>
+				This mod tries to restore the truth, at least ITS TRUTH...<br/><br/>
+				The adventure takes place in a parallel dimension, both 'near' and 'far away' from Faerûn, more precisely in the Kingdom of Eternal Diamond, ruled by a dynasty of paladin kings that a renegade paladin attempts to overthrow. To carry out her betrayal, she has made a pact with rather 'special evil forces'...<br/><br/>
+				The kingdom derives its wealth from its minings and its power from the protection of the silver dragon Diamantor, worshipped by some as a demigod.</td>
+			</tr>
+		</table><br>
+
+		<p>
+			<em>Your mission, should you decide to accept it, is to save the Kingdom of Eternal Diamond.</em>
+		</p>
+		<p>
+			Well, who would've guessed? Rather unusable, isn't it? &#128541;
+		</p><br>
+		<p>
+			If you do, you will face a fearsome coalition bringing together an Order of treacherous and 'misguided' paladins, to say the least, a guild of kamikaze assassins and a company of wizard slayers (nasty business for those fond of arcanes...).
+		</p>
+		<p>
+			But not only... You will also have to face a secret cult, The Fangs of Tiamat, and their fierce and powerful minions. It is up to you to choose the way to handle those encounters: the hard way (at your own risk), or a more subtle way.
+		</p>
+		<p>
+			Indeed I strove to give you as much as possible the opportunity to play this adventure and complete its quests without having to fight. But I prefer to warn you: the creatures you will encounter are terrifically powerful. So, please, don't come later to complain and whine about the consequences if you systematically prefer to challenge them and rush straight ahead without thinking. &#128521;
+		</p>
+		<p>
+		</p><br>
+
+		<p class="boxed" style="border-style: solid; border-width: 1px; border-color: #FFCC33; width: 90%; padding: 6px;display: block;">
+			<span style="margin-left: 8px"><strong>Documentation</strong></span><br><br>
+			<span style="margin-left: 15px">&#x25BA; Two new paladin kits: the <a href="menace-kit1-readme-english.html">Diamond Knight</a> and the <a href="menace-kit2-readme-english.html">Unicorn Rider</a>.</span><br>
+			<span style="margin-left: 15px">&#x25BA; New <a href="menace-animations-readme-english.html">creature animations</a>: unicorns, horses, demons, gargoyles...</span><br>
+			<span style="margin-left: 15px">&#x25BA; New <a href="menace-spells-readme-english.html#divine">divine</a> and <a href="menace-spells-readme-english.html#arcane">arcane</a> spells.</span><br><br>
+		</p><br>
+
+
+		<p id="hintbox" class="boxed" style="display: none">
+			<span style="margin-left: 8px"><strong>What else?&#160;&#160;</strong></span><input type="submit" value="Is that all?" onclick="showNextHint('en', 'hint')" style="background:#FFBF00;margin-left: 10px"></input>
+			<br /><br><span style="margin-left: 15px">&#x25BA; 
+			<span id="hint">...</span></span><br><br>
+		</p><br><br>
+
+
+			<address>
+				<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; Introduction</span> &#8226; <a href="#top">BACK TO TOP</a>
+			</address>
+		</div>
+
+	<!-- ================= C o m p a t i b i l i t y ================= -->
+	  <a name="compat" id="compat"></a>
+		<div class="content">
+		<h2>
+			Compatibility
+		</h2><br>
+
+		<p>
+			This mod is designed to work on the following Infinity Engine games:
+		</p>
+		<ul>
+			<li>Baldur's Gate II: Enhanced Edition (BG2EE).</li>
+			<li>The original Baldur's Gate II (BG2, or just SoA) with the Throne of Bhaal (ToB) expansion. <strong>Make sure you have Throne of Bhaal patched to version 26498.</strong> Check the ReadMe files related to your patch in your game folder and the <a href="http://www.bioware.com/games/throne_bhaal/support/patches/">BioWare</a> website if necessary.</li>
+			<li>The conversion projects based on <acronym title="Throne of Bhaal">ToB</acronym>: <a href="http://www.shsforums.net/forum/261-bgt-weidu/"><strong>Baldur's Gate Trilogy (BGT)</strong></a> and <a href="https://github.com/K4thos/EET/releases"><strong>Enhanced Edition Trilogy (EET)</strong></a>.</li>
+		</ul><br>
+
+<hr>
+		<p>
+			Menace sur le Royaume de Diamant Éternel is a <acronym title="Weimer Dialogue Utility">WeiDU</acronym> mod, and therefore should be compatible with all WeiDU mods. However, I cannot test every single one. If you encounter any bugs, please report them on the forum!
+		</p>
+		<p>
+			Though I am striving to make Menace sur le Royaume de Diamant Éternel compatible with as many other mods as possible, there is always a chance that incompatibilities will arise. Below are the ones discovered thus far:
+		</p>
+		<ul>
+			<li>Kit Revisions: as this mod modifies les capacités spéciales des kits originaux du jeu, il est par conséquent incompatible avec tous les mods utilisant la définition initiale de ces capacités.
+			</li>
+			<li>
+			</li>
+		</ul><br>
+
+<hr>
+		<h3>
+			Pre-requisite
+		</h3>
+		<p>
+			Classical games players are strongly recommended to download and install the <a href="http://www.gibberlings3.net/bg2fixpack/">BG2 Fixpack</a> and <a href="http://www.shsforums.net/files/file/871-bg2tob-throne-of-bhaal-extender/"><acronym title="ToBEx">Throne of Bhaal Extender</acronym></a> before proceeding with the installation of this mod.
+		</p>
+		<p>
+			Moreover, Menace sur le Royaume de Diamant Éternel has been specifically designed to make the best use of the modding opportunities provided by the graphical mods <a href="http://www.shsforums.net/files/category/98-infinity-animations/"><acronym title="IA">Infinity Animations</acronym></a> and <a href="http://www.shsforums.net/files/category/29-1pp/"><acronym title="1pp">One Pixel Productions</acronym></a>. Installation process will be aborted if they are not detected.
+		</p><br>
+
+
+			<address>
+				<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; Compatibility</span> &#8226; <a href="#top">BACK TO TOP</a>
+			</address>
+		</div>
+
+	<!-- ================== I n s t a l l a t i o n ================== -->
+	  <a name="installation" id="installation"></a>
+		<div class="content">
+		<h2>
+			Installation
+		</h2><br>
+
+		<h3>
+			Notes
+		</h3>
+		<p style="margin-top:1%;"><em>
+			If you've previously installed the mod, remove it before extracting the new version. To do this, run <strong><span class="weidu">&nbsp;setup-diamant_eternel.exe&nbsp;</span></strong> (or .command with OS X), un-install all previously installed components and delete the <strong>diamant_eternel</strong> folder.</em>
+		</p>
+		<p><em>
+			When installing or un-installing, <strong>do not close the <acronym title="Disk Operating System">DOS</acronym> window</strong> by clicking on the <strong>X</strong> button! Instead, press the <strong>Enter</strong> key whenever instructed to do so.</em>
+		</p>
+		<p><em>
+			<strong>Disable any antivirus</strong> or other memory-resident software before installing this or any other mod. Some (particularly avast and Norton!) have a tendency to report false positives with mod activity, resulting in failed installs.</em>
+		</p><br>
+
+<hr><br>
+		<h3>
+			Enhanced Editions Note
+		</h3>
+		<p style="margin-top:1%;">
+			The Enhanced Editions are actively supported games. Please note that every patch update will wipe your current mod setup! If in the middle of a modded game you might want to delay the patch update (if possible) as even after reinstalling the mods, you might not be able to continue with your old savegames. Alternatively, copy the whole game's folder into a new one that can be modded and will stay untouched by game patches. It is important that you install the mod to the language version you are playing the game in. Otherwise, the dialogues of the mod will not show but give error messages.
+		</p><br>
+
+<hr><br>
+		<h3>
+			&#9888;&#65039; Warning: installation process
+		</h3>
+		<p style="margin-top:1%;">
+			<strong><span style="font-variant:small-caps;font-size: 12px;margin-left: 30px;">Options needed for installation are read from</span> <span style="font-size: 11px"><a href="../diamant_eternel.ini"><em>diamant_eternel.ini</em></a></span><span style="font-variant:small-caps;font-size: 12px"> file, or </span> <span style="font-size: 11px; color: #FFCC33;"><em>diamant_eternel_user.ini</em></span><span style="font-variant:small-caps;font-size: 12px"> if it exists.</span></strong>
+		</p><br>
+		<p>
+			As interrupting installation with plain text prompts allowing players to customise components to their liking, those options have been moved into <a href="diamant_eternel.ini">diamant_eternel.ini</a> file in <strong>diamant_eternel</strong> folder. This file provides a '<em>standard</em>' installation.
+		</p>
+		<p>
+			If you want to define your own customized installation, you have to edit the <strong><em>[Mod_content]</em></strong> section of <strong><span style="font-variant:small-caps;font-size: 12px;"><em>diamant_eternel.ini</em></span></strong> with Notepad or another text editor, then save this file as <strong><span style="font-variant:small-caps;font-size: 12px;"><em>diamant_eternel_user.ini</em></span></strong>.
+		</p>
+		<p>
+			Each line consists of a configuration option, then '=', then a number or an alphanumeric character string. The only thing you should edit is the number or the string.
+		</p>
+		<p>
+			The installation process will read both ini files and prioritize user's options values. If a value is not set or mismatched in diamant_eternel_user.ini, any installation failure will be prevented by reverting it back to its default value.
+		</p>
+		<p>
+			Here is a chart listing options related to the installation process (Don't change anything not listed; these are part of the testing framework.):<br>
+		</p><br>
+
+		<table style="margin-left: 80px" summary="Installation options listing">
+			<tr style= "line-height: 170%;">
+				<th>Option</th>
+				<th>Description</th>
+				<th WIDTH =60>Type</th>
+				<th>Scope values</th>
+				<th WIDTH =110>Default value</th>
+			</tr>
+			<tr>
+				<td style="padding-left:5px;padding-right:5px"><span style="color: #FFCC33">gw_unicorn_name</span></td>
+				<td style="padding-left:10px;padding-right:10px;text-align: justify">The name of your unicorn, if any.</td>
+				<td>string</td>
+				<td>a name!</td>
+				<td><strong><span style="color: #FFCC33">Silver Star</span></strong></td>
+			</tr>
+			<tr>
+				<td style="padding-left:5px;padding-right:5px"><span style="color: #FFCC33">gw_destrier_name</span></td>
+				<td style="padding-left:10px;padding-right:10px;text-align: justify">The name of your paladin steed, if any.</td>
+				<td>string</td>
+				<td>a name!</td>
+				<td><strong><span style="color: #FFCC33">Black Diamond</span></strong></td>
+			</tr>
+			<tr>
+				<td style="padding-left:5px;padding-right:5px"><span style="color: #FFCC33">gw_language_bam</span></td>
+				<td style="padding-left:10px;padding-right:10px;text-align: justify">Defines the language used to display information BAM files: Installation language (AUTO), VO (FR = French), English (US), German (DE), Italian (IT), Spanish (SP) or Russian (RU).</td>
+				<td>string</td>
+				<td>FR, US, DE, IT, RU or SP</td>
+				<td><strong><span style="color: #FFCC33">AUTO</span></strong></td>
+			</tr>
+			<tr>
+				<td style="padding-left:5px;padding-right:5px"><span style="color: #FFCC33">gw_mos_mosaic</span></td>
+				<td style="padding-left:10px;padding-right:10px;text-align: justify">TODO</td>
+				<td>integer</td>
+				<td>0 or 1</td>
+				<td><strong><span style="color: #FFCC33">1</span></strong></td>
+			</tr>
+		</table><br>
+
+<hr><br>
+		<h3>
+			Windows
+		</h3>
+		<p style="margin-top:1%;">
+			Menace sur le Royaume de Diamant Éternel for Windows is distributed as an extractable compressed archive and includes a <acronym title="Weimer Dialogue Utility">WeiDU</acronym> installer.
+		</p>
+		<p>
+			Extract the contents of the mod archive into the folder of the game you wish to modify (<em>the folder which contains the "CHITIN.KEY" file</em>), using <a href="http://www.7-zip.org/download.html">7zip</a>, <a href="http://www.rarlab.com/download.htm">WinRAR</a>, or another file compression utility that handles .zip files. On successful extraction, there should be a <strong>diamant_eternel</strong> folder and a <em><strong>setup-diamant_eternel.exe</strong></em> file in your game folder. To install, double-click <strong><span class="weidu">&nbsp;setup-diamant_eternel.exe&nbsp;</span></strong> and follow the instructions on screen.
+		</p>
+		<p>
+			You can run <strong><span class="weidu">&nbsp;setup-diamant_eternel.exe&nbsp;</span></strong> in your game folder to reinstall, un-install or otherwise change the components settings.
+		</p><br>
+
+<hr><br>
+		<h3>
+			Mac OS X
+		</h3>
+		<p style="margin-top:1%;">
+			Menace sur le Royaume de Diamant Éternel for Mac OS X is distributed as a compressed tarball and includes a <acronym title="Weimer Dialogue Utility">WeiDU</acronym> installer.
+		</p>
+		<p>
+			First, extract the files from the tarball into your game directory. On successful extraction, there should be a <strong>diamant_eternel</strong> folder, <em><strong>setup-diamant_eternel</strong></em> and <em><strong>setup-diamant_eternel.command</strong></em> files in your game folder. To install, double-click <strong><span class="weidu">&nbsp;setup-diamant_eternel.command&nbsp;</span></strong> and follow the instructions on screen.
+		</p>
+		<p>
+			You can run <strong><span class="weidu">&nbsp;setup-diamant_eternel.command&nbsp;</span></strong> in your game folder to reinstall, un-install or otherwise change the components settings.
+		</p><br>
+
+<hr><br>
+		<h3>
+			Linux
+		</h3>
+		<p style="margin-top:1%;">
+			Menace sur le Royaume de Diamant Éternel for Linux is distributed as a compressed tarball and does not include a <acronym title="Weimer Dialogue Utility">WeiDU</acronym> installer.
+		</p>
+		<p>
+			Extract the contents of the mod to the folder of the game you wish to modify.
+		</p>
+		<p>
+			Download the latest version of WeiDU for Linux from <a href="https://github.com/WeiDUorg/weidu/releases">WeiDU.org</a> and copy weidu, weinstall and tolower to <strong><span class="weidu">/usr/bin</span></strong>. Following that, open a terminal, <strong><span class="weidu">cd</span></strong> to your game installation directory, run tolower and answer 'Y' to both queries. You can avoid running the second option (linux.ini) if you've already ran it once in the same directory. To save time, the archive is already tolowered, so there's no need to run the first option (lowercasing file names) either if you've extracted only this mod since the last time you lowercased file names. If you're unsure, running tolower and choosing both options is the safe bet.
+		</p>
+		<p>
+			To install, run <strong><span class="weidu">&nbsp;weinstall setup-diamant_eternel&nbsp;</span></strong> in your game folder. Then run <strong><span class="weidu">&nbsp;wine bgmain.exe&nbsp;</span></strong> (or <strong><span class="weidu">&nbsp;wine baldur.exe&nbsp;</span></strong> for EE games) and start playing.
+		</p><br>
+
+<hr><br>
+		<h3>
+			Note for Complete Un-installation
+		</h3>
+		<p style="margin-top:1%;">
+			In addition to the methods above for removing individual components, you can completely un-install the mod using <strong><span class="weidu">&nbsp;setup-diamant_eternel --uninstall&nbsp;</span></strong> at the command line to remove all components without wading through prompts.
+		</p><br>
+
+
+			<address>
+				<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; Installation</span> &#8226; <a href="#top">BACK TO TOP</a>
+			</address>
+		</div>
+
+	<!-- =================== C o m p o n e n t s ==================== -->
+	  <a name="compon" id="compon"></a>
+		<div class="content">
+		<h2>
+			Components
+		</h2><br>
+
+		<p>
+			The installer includes the following components. The number of each is the component <em>DESIGNATED</em> number which gives it a fixed install position, lets other components and mods detect it and allows automated installers to specify component choices.
+		</p><br />
+
+		<h3>
+			100. Core Component
+		</h3>
+		<p>
+			TODO Main component Description.
+		</p><br>
+
+<hr>
+		<h3>
+			200. Optional: Food management
+		</h3>
+		<p>
+			Description du composant 2
+		</p><br>
+
+
+			<address>
+				<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; Components</span> &#8226; <a href="#top">BACK TO TOP</a>
+			</address>
+		</div>
+
+	<!-- =================== I m a g e s ==================== -->
+	  <a name="images" id="images"></a>
+		<div class="content">
+		<h2>
+			Screenshots
+		</h2><br>
+
+		<h3>
+			Food component
+		</h3>
+		<p>
+			<strong></strong>
+		</p>
+
+		<div style="margin: 10px auto;width: 80%; border-style: solid; border-width: 1px; border-color: #FFCC33; margin-top: 32px; padding: 6px; background: #303030;">
+			<div class="quotetitle">
+				You will have to gather food&#160;&#160;
+				<input value="Show" style="margin: 0px; padding: 0px; width: 50px; background:#FFBF00;"
+				onclick="if (this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display != '') { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = ''; this.innerText = ''; this.value = 'Hide'; } else { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = 'none'; this.innerText = ''; this.value = 'Show'; }" type="button" >
+			</div>
+			<div class="quotecontent">
+				<div style="display: none;">
+					<center><img src="images/food/charcfrom.png" title="charcfrom" />&#160; &#160;<img src="images/food/fruits.png" title="fruits" />&#160; &#160;<img src="images/food/legumes.png" title="légumes - vegetables" />&#160; &#160;<img src="images/food/divers.png" title="divers - miscellaneous" /></center><br><br>
+				</div>
+			</div>
+		</div> 
+
+		<div style="margin: 10px auto;width: 80%; border-style: solid; border-width: 1px; border-color: #FFCC33; margin-top: 32px; padding: 6px; background: #303030;">
+			<div class="quotetitle">
+				hunt, or fish&#160;&#160;
+				<input value="Show" style="margin: 0px; padding: 0px; width: 50px; background:#FFBF00;"
+				onclick="if (this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display != '') { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = ''; this.innerText = ''; this.value = 'Hide'; } else { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = 'none'; this.innerText = ''; this.value = 'Show'; }" type="button" >
+			</div>
+			<div class="quotecontent">
+				<div style="display: none;">
+					<center><img src="images/food/viande.png" title="viande - meat" />&#160; &#160;<img src="images/food/fishes.png" title="poissons - fishes" /></center><br><br>
+				</div>
+			</div>
+		</div> 
+
+		<div style="margin: 10px auto;width: 80%; border-style: solid; border-width: 1px; border-color: #FFCC33; margin-top: 32px; padding: 6px; background: #303030;">
+			<div class="quotetitle">
+				find spices&#160;&#160;
+				<input value="Show" style="margin: 0px; padding: 0px; width: 50px; background:#FFBF00;"
+				onclick="if (this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display != '') { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = ''; this.innerText = ''; this.value = 'Hide'; } else { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = 'none'; this.innerText = ''; this.value = 'Show'; }" type="button" >
+			</div>
+			<div class="quotecontent">
+				<div style="display: none;">
+					<center><img src="images/food/epices.png" title="épices - spices" /></center><br><br>
+				</div>
+			</div>
+		</div> 
+
+		<div style="margin: 10px auto;width: 80%; border-style: solid; border-width: 1px; border-color: #FFCC33; margin-top: 32px; padding: 6px; background: #303030;">
+			<div class="quotetitle">
+				and cook&#160;&#160;
+				<input value="Show" style="margin: 0px; padding: 0px; width: 50px; background:#FFBF00;"
+				onclick="if (this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display != '') { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = ''; this.innerText = ''; this.value = 'Hide'; } else { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = 'none'; this.innerText = ''; this.value = 'Show'; }" type="button" >
+			</div>
+			<div class="quotecontent">
+				<div style="display: none;">
+					<center><img src="images/food/crustaces.png" title="crustacés - shellfishes" />&#160; &#160;<img src="images/food/platsviande.png" title="plats de viandes - meat dishes" />&#160; &#160;<img src="images/food/platsfish.png" title="plats de poissons - fish dishes" />&#160; &#160;<img src="images/food/platsleg.png" title="vegetables dishes" />&#160; &#160;<img src="images/food/plats.png" title="plats - dishes" /></center><br><br>
+				</div>
+			</div>
+		</div> 
+
+		<div style="margin: 10px auto;width: 80%; border-style: solid; border-width: 1px; border-color: #FFCC33; margin-top: 32px; padding: 6px; background: #303030;">
+			<div class="quotetitle">
+				without forgetting the most important&#160;&#160;
+				<input value="Show" style="margin: 0px; padding: 0px; width: 50px; background:#FFBF00;"
+				onclick="if (this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display != '') { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = ''; this.innerText = ''; this.value = 'Hide'; } else { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = 'none'; this.innerText = ''; this.value = 'Show'; }" type="button" >
+			</div>
+			<div class="quotecontent">
+				<div style="display: none;">
+					<center><img src="images/food/boissons.png" title="boissons - drinks" /></center><br><br>
+				</div>
+			</div>
+		</div><br>
+
+
+			<address>
+				<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; Screenshots</span> &#8226; <a href="#top">BACK TO TOP</a>
+			</address>
+		</div>
+
+	<!-- ============== T r o u b l e s h o o t i n g =============== -->
+	  <a name="trouble" id="trouble"></a>
+		<div class="content">
+		<h2>
+			Troubleshooting and Bug Reporting
+		</h2><br>
+
+		<p>
+			If you should encounter any bugs, please report them to the authors at the <a href="https://www.baldursgateworld.fr/lacouronne/menace-sur-le-royaume-de-diamant-eternel/">Menace sur le Royaume de Diamant Éternel</a> forum. In addition, Menace sur le Royaume de Diamant Éternel is <a href="https://github.com/GwendolyneFreddy/Diamant-Eternel">available on GitHub</a>, so fixes and changes can be submitted by the community.
+		</p><br>
+
+		<p>
+			These are some general tips if you have problems getting the game working, with or without this or other mods. Many times, errors have to do with the game engine itself or the manner of installation or gameplay. The game recommends deleting all files out of the /cache, /temp and /tempsave sub-folders in your game folder to see if that resolves the problem before any further troubleshooting.
+		</p>
+
+<hr>
+		<p>
+			<strong>Symptom: Game freezes or crashes to desktop (CTDs)</strong>
+		</p>
+ 		<p>
+			Sometimes the game displays an 'assertion error' in a pop-up window when this happens, but often times it doesn't. To enable the full error message, open the file <strong>baldur.ini</strong> in your game folder with a text editor (such as Notepad). If you find you can't edit it or save changes in Windows Vista or 7, see <a href="http://forums.bioware.com/viewtopic.html?topic=662080&forum=10"> this topic</a> for assistance.
+		</p>
+ 		<p>
+			Under the [Program Options] section in the file, type <strong> Logging On=1</strong> (unless it's already there). While you're there, you may also want to make sure <strong>Debug Mode=1</strong> is there to enable the <a href="https://gibberlings3.github.io/iesdp/appendices/clua/bg2.htm">CLUA Console</a> for debugging and testing. Save the file and exit. Now go back into the game and try to reproduce the crash. Then look in your game folder again for the <strong>Baldur.err</strong> file and open it with a text editor to analyse its contents.
+		</p>
+
+<hr>
+ 		<p>
+			<strong>Symptom:</strong>
+		</p>
+		  <div class="important" style="background-color: black;color: #deded9;">
+			<p style="font-family: Courier New;font-size: 100%;">ERROR: error copying [infinityanimations/content/somefile.bam]<br />
+			ERROR: [SOMEFILE.CRE] -> [override/SOMEFILE.CRE] Patching failed (COPY)<br />
+			Stopping installation because of error.<br /></p>
+			<p>(with no other error message)<br /></p>
+		  </div>
+ 		<p>
+			Less-than-informative messages like these may indicate you're installing to a hard drive with a low data transfer rate or an antivirus program is active during installation (which can also affect data transfer). Try installing to an internal drive with antivirus protection disabled during the install. If unsure, disconnect from the Internet (either unplug your network cable or disable your wireless adaptor) and turn off <strong>all</strong> memory-resident programs during the install. To get a list of these, go to Start > Run and type <strong>msconfig</strong> where it says "Open:" then click OK. When the System Configuration Utility appears, click on the Startup tab. The only really necessary programs that need to be loaded in memory at startup are those related to your graphics chip (typically ATI or NVIDIA). Uncheck everything else, reboot and try installing the mod again. There are well-documented issues with installing mods while Avast antivirus is running, so make absolutely sure all components of Avast are completely disabled.
+		</p>
+
+<hr>
+		<p>
+			<strong>Other issues</strong>
+		</p>
+ 		<p>
+			If you have more than one large mod installed, please refer to the <a href="http://www.shsforums.net/topic/41036-faq-for-the-megamods/">Megamod FAQ</a> for more troubleshooting tips.
+		</p>
+
+<hr>
+ 		<p>
+			If none of this resolves your issue, or you have mod-specific issues, please report the problem in the mod's <a href="https://www.baldursgateworld.fr/lacouronne/menace-sur-le-royaume-de-diamant-eternel/">forum</a>. Include the contents of your <acronym title="Weimer Dialogue Utility">WeiDU</acronym>.log file in the post, or attach it if it's large.
+		</p><br>
+
+
+			<address>
+				<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; Troubleshooting</span> &#8226; <a href="#top">BACK TO TOP</a>
+			</address>
+		</div>
+
+	<!-- ======================= C r e d i t s ====================== -->
+	  <a name="credits" id="credits"></a>
+		<div class="content">
+		<h2>
+			Credits and Acknowledgements
+		</h2><br>
+
+		<h4>
+			Author: <a href="https://www.baldursgateworld.fr/lacouronne/members/freddy_gwendo.html">Freddy_Gwendo (aka Gwendolyne)</a>
+		</h4>
+
+<hr>
+		<h3>
+			Special Acknowledgements to:
+		</h3>
+
+ 		<ul>
+			<li>
+			  <a href="https://www.baldursgateworld.fr"><acronym title="Copper Coronet">La Couronne de Cuivre</acronym></a> team for hosting the mod.
+ 			</li>
+			<li>
+			  The creators of the Baldur's Gate series: <a href="http://www.bioware.com/">Bioware</a> and <a href="http://www.obsidian.net/">Black Isle Studios</a>.
+ 			</li>
+			<li>
+			  machin for permission to use blabla.
+			</li>
+			<li>
+			  Isaya for his invaluable help, his suggestions and his constant support for coding hot points.
+			</li>
+			<li>
+			  Deratiseur for kit creation.
+			</li>
+			<li>
+			  Luren for his his help and support to create graphical items. Without him, you would not be able to use a lift or fight Tarasques because they would have never seen the light of day.
+			</li>
+			<li>
+			  Cocrane for looking for graphical assets to insert in the mod, and for drawing the Dragons Pass map.
+			</li>
+			<li>
+			  xxx for English translation.
+			</li>
+			<li>
+			  Graoumf and Lulubaleyette for proofreading the French version.
+			</li>
+			<li>
+			  Thanks to artists from <a href="https://www.pinterest.fr/">Pinterest</a> for their portraits.
+ 			</li>
+			<li>
+			  Everyone else from the <a href="https://www.baldursgateworld.fr">La Couronne de Cuivre</a>, <a href="https://www.gibberlings3.net/forums/">The Gibberlings Three</a>, <a href="http://www.shsforums.net/">Spellhold Studios</a> forums, and the other Infinity Engine gaming and modding communities who offered their help and support.
+			</li>
+			<li>etc.
+ 			</li>
+		</ul><br>
+
+<hr>
+		<h3>
+			Programs/tools used in creation:
+		</h3>
+
+		<ul>
+			<li>
+			  <a href="https://github.com/WeiDUorg/weidu/releases"><acronym title="Weimer Dialogue Utility">WeiDU</acronym></a>, by Wes Weimer, the bigg and Wisp.
+			</li>
+			<li>
+			  <a href="https://github.com/Argent77/NearInfinity/releases">Near Infinity</a>, by Jon Olav Hauglid, FredSRichardson, and Argent77.
+			</li>
+			<li>
+			  <a href="https://www.gibberlings3.net/mods/tools/dltcep/"><acronym title="Dragonlance Total Conversion Editor Pro">DLTCEP</acronym></a>, by Avenger.
+			</li>
+			<li>
+			  <a href="https://gibberlings3.github.io/iesdp/"><acronym title="Infinity Engine Structures Description Project">IESDP</acronym></a>, maintained by igi and lynx.
+ 			</li>
+			<li>
+			  <a href="https://www.gibberlings3.net/mods/tools/debug/">G3 Debugging Suite</a>, by CamDawg.
+			</li>
+
+			<li>
+			  <a href="http://www.baldursgatemods.com/forums/index.php?action=downloads;sa=view;down=68">BAM Workshop</a>, by Glenn Flansburg.
+			</li>
+			<li>
+			  <a href="http://www.shsforums.net/topic/57564-bamworkshop/">BAMWorkshop 2</a>, by Andrew Bridges.
+			</li>
+			<li>
+			  <a href="http://www.shsforums.net/topic/42359-release-bam-batcher/">BAM Batcher</a>, by Miloch.
+			</li>
+			<li>
+			  <a href="https://www.adobe.com/products/photoshop.html">Adobe Photoshop</a>
+			</li>
+			<li>
+			  <a href="https://www.gimp.org/"><acronym title="GNU Image Manipulation Program">GIMP</acronym></a>, by the GIMP team.
+			</li>
+			<li>
+			  <a href="https://www.blender.org/">Blender</a>, by the Blender Foundation.
+			</li>
+
+			<li>
+			  <a href="http://notepad-plus-plus.org/">Notepad++</a>, by the Notepad++ team, Don Ho, and the spellcheck plug-in.
+ 			</li>
+			<li>
+			  <a href="http://www.shsforums.net/files/file/1048-weidu-highlighter-for-notepad/">WeiDU Notepad++ Highlighters </a>, by Argent77.
+			</li>
+			<li>
+			  <a href="https://www.bulkrenameutility.co.uk/">Bulk Rename Utility</a>, by TGRMN Software.
+			</li>
+			<li>to be completed...
+			</li>
+		</ul><br>
+
+<hr>
+		<h3>
+			Copyrights Information
+		</h3><br>
+
+		  <div class="important" style="color: #303030; background-color: #999999;">
+			<p>Menace sur le Royaume de Diamant Éternel is not developed, supported, or endorsed by BioWare&trade; or Interplay/BlackIsle, Overhaul, Beamdog or the Wizards of the Coast. It was developed by Freddy_Gwendo (aka Gwendolyne), based on material from the game Baldur's Gate II and its expansion.</p>
+			<p>Baldur's Gate II: Shadows of Amn and Baldur's Gate II: Throne of Bhaal &copy; TSR, Inc. The BioWare Infinity Engine is &copy; BioWare Corp. All other trademarks and copyrights are property of their respective owners.</p>
+<br>
+			<p>This mod was created to be freely enjoyed by all Baldur's Gate II players, and its content is free of rights. However, it should not be sold, published, compiled or redistributed in any form without the consent of the author.</p>
+<br>
+			<p>If there are any copyright issues or this statement needs revision, then please contact me and advise me what to do about it. Most notably, if you see any artwork in this mod that might conflict with Copyright rules, please let me know as soon as possible, and I will remove the conflicting content immediately.</p>
+		  </div><br>
+		<p>
+			The modding community for the Infinity Engine has been going strong for more than 10 years now, and is the culmination of thousands of unpaid modding hours by fellow fans of the game. Modders produce their best work and players get the best, well-supported mods when we all work together.
+		</p>
+		<p>
+			There are two big ways to upset this harmony. One is to claim someone else's work as your own. The second is to host and redistribute a mod without permission from the author(s).
+		</p>
+		<p>
+			Be kind to your fellow players and modders. Don't do either.
+		</p><br>
+
+
+			<address>
+				<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; Credits and Acknowledgements</span> &#8226; <a href="#top">BACK TO TOP</a>
+			</address>
+		</div>
+
+	<!-- ======================= V e r s i o n s ====================== -->
+	  <a name="versions" id="versions"></a>
+		<div class="content">
+		<h2>
+			Version History
+		</h2><br>
+
+		<p class="version">
+			Version 1.0.0 - date (format : Mois jour, année)
+		</p>
+
+		<ul>
+			<li>Initial release.</li>
+		</ul><br>
+
+
+			<address>
+				<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; Version History</span> &#8226; <a href="#top">BACK TO TOP</a>
+			</address>
+		</div>
+
+	</div>
+  </div>
+</body>
+</html>
+
