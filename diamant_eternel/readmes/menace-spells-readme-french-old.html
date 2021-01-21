@@ -2,102 +2,442 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-  <head>
+<head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="styles/style_lcc.css" type="text/css">
+	<style type="text/css">
+/*<![CDATA[*/
+	<!-- 
+	body {
+		margin: 0;
+		padding: 0;
+		cursor: default;
+		text-align: center;
+		color: #D1D1D1;
+		background: #000 url('images/bg_lcc2.png');
+	}
 
+/*	En-tête  */
+	#cartouche {
+		text-align: left;
+		margin: 0 auto;
+		margin-top: 20px;
+		width: 88%;
+		font-family: Verdana, Tahoma, Arial, sans-serif;
+		font-size: 12px;
+		color: #D1D1D1;
+/*		background-repeat: repeat-x;
+		background: url("images/degrade_titre.png");*/
+	}
+
+	#header {
+		text-align: center;
+*		background: #303030;
+		background-image: linear-gradient(#666666, #040404);
+		border: 1px solid #FFCC33;
+		border-top: 5px solid #FFCC33;
+		border-bottom: 5px solid #FFCC33;
+		padding: 5px 0 13px 0;
+		height: 310px;
+		border-radius: 3px 4px 3px 3px;
+		box-shadow: 8px 8px 15px black;
+	}
+/*	le décalage horizontal de l'ombre ;
+	le décalage vertical de l'ombre ;
+	l'adoucissement du dégradé ;
+	la couleur de l'ombre.	*/
+
+	#header .about {
+        margin: 7px 0 0 0;
+        padding: 0;
+/*		font-style: italic;
+		color: #555;
+*/		text-decoration: none;
+	}
+	#header .about a:link,
+	#header .about a:visited {
+	}
+	#header .about a:focus,
+	#header .about a:hover {
+		text-decoration: none;
+		color: #deded9;
+		border: 0;
+	}
+
+/*	Menu  */
+	#menu {
+		font-weight: bold;
+		margin: 0;
+		margin-top: 20px;
+		text-align: center;
+		color: #FFCC33;
+		background-repeat: repeat-x;
+		background: url("images/degrade_titre.png");
+		border-radius: 3px 4px 3px 3px;
+*		heigth: 50px;
+		line-height: 400%;
+*		vertical-align:middle;
+	}
+	#menu a:link,
+	#menu a:visited {
+	}
+	#menu a:focus,
+	#menu a:hover {
+		text-decoration: none;
+		color: #deded9;
+		border: 0;
+	}
+
+/*	Sections  */
+	#maindiv {
+		margin: 0 auto;
+		margin-top: -20px;
+		width: 100%;
+	}
+
+	#maindiv .content {
+		color: #deded9;
+		background-color: #5F5F5F;
+		padding: 0 0 25px 0;
+		margin: 50px auto;
+		border-width: 1px 1px 4px 10px;
+		border-style: solid;
+		border-color: #FFBF00;
+/*ou		border: 1px solid #FFCC33;
+		border-left: 10px solid #FFCC33;
+		border-bottom: 4px solid #FFCC33;
+*/		position: relative;
+		border-radius: 4px 4px 4px 5px;
+		box-shadow: 8px 8px 15px black;
+		display: block;
+	}
+
+	#maindiv .important {
+		font-size: 95%;
+		font-family: Verdana;
+		text-align: left;
+*		background-color: #F1F1F1;
+		border-width: 1px 4px 1px 4px;
+		border-style: solid;
+		border-color: #FFBF00;
+/*		border-top: solid 1px #FFBF00;
+		border-bottom: solid 1px #FFBF00;
+		border-left: solid 6px #FFBF00;
+		border-right: solid 6px #FFBF00;
+*/		padding: 10px;
+		margin: 10px auto;
+		width: 80%;
+		line-height: 160%;
+	}
+	#maindiv .important::before {
+		display: none;
+	}
+	#maindiv .important p {
+		width: 100%;
+		font-size: 100%;
+		text-indent: 0px;
+		margin: 5px 0 5px 0;
+		line-height: 180%;
+	}
+	#maindiv .important ol {
+		margin: -10px 0 0 20px;
+	}
+	#maindiv .important ul {
+		margin: -10px 0 0 15px;
+	}
+
+	#maindiv address {
+		font-size: 95%;
+		font-style: normal;
+		font-weight: bold;
+		text-decoration: none;
+		color: #303030;
+		background-color: #FFBF00;
+		padding: 3px 0px 0px;
+		margin: 0px;
+		width: 100%;
+		position: absolute;
+		bottom: -1px;
+		left: 0px;
+		display: block;
+		text-align: right;
+	}
+	#maindiv address a:link,
+	#maindiv address a:visited {
+		font-weight: bold;
+		text-decoration: underline;
+		background-color: transparent;
+		color: #000 !important;
+		padding-right: 5px;
+		padding-left: 6px;
+	}
+	#maindiv address a:focus,
+	#maindiv address a:hover {
+		text-decoration: none;
+		color: #000;
+	}
+
+	/*	Corps de texte  */
+	#maindiv p {
+		text-align: justify;
+		font-size: 110%;
+		font-style: normal;
+		text-decoration: none;
+		line-height: 150%;
+		padding: 0px;
+		margin: 10px auto;
+		width: 90%;
+		display: block;
+	}
+
+	/*	Listes  */
+	#maindiv ul {
+		line-height: 170%;
+		margin-left: 4%;
+		width: 87%;
+	}
+	#maindiv ul li {
+		/*margin-right: 0px;*/
+	}
+	#maindiv ul li ul {
+		margin: 0px;
+		width: 96%;
+	}
+	#maindiv ul li ul li {
+	}
+	#maindiv ul li ul li ul {
+		margin-left: -1%;
+		width: 98%;
+	}
+	#maindiv ul li ul li ul li {
+	}
+
+*	INUTILISE = liste numérique
+	#maindiv ol {
+		line-height: 170%;
+		margin-left: 4%;
+		width: 87%;
+	}
+	#maindiv ol li {
+		/*line-height: 170%;*/
+	}
+
+
+	/*	Titre des versions  */
+	#maindiv .version {
+		display: block;
+		width: 90%;
+		background-color: transparent;
+		text-align: left;
+/*		text-indent: 30px; */
+		font-weight: bold;
+		padding-top: 3px;
+		padding-bottom: 3px;
+		border-bottom: solid 1px #FFCC33;
+		border-top: solid 1px #FFCC33;
+	}
+
+	/*	Liens internet  */
+	a:link,
+	a:visited {
+		color: #FFCC33;
+		/*font-weight: bold; */
+		text-decoration: none;
+	}
+	a:focus,
+	a:hover {
+		text-decoration: underline;
+		*color: #deded9;
+	}
+
+	h1 {
+		line-height: 170%;
+		font-size: 225%;
+		color: #FFCC33; *5F5F5F
+		padding: 5px 0 5px 0;
+		margin: 0;
+		width: 100%;
+	}
+	/*	Titre de section (160 %)  */
+	h2 {
+		line-height: 170%;
+		display: block;
+		font-family: Verdana, Trebuchet MS, Arial, serif;
+		text-align: left;
+		text-indent: 30px;
+		padding: 0px;
+		margin: 20px 0 0 0;
+		border-bottom: dotted 2px #d0d0d0;
+		background: #303030;
+		font-size: 160%;
+	}
+	h2::first-letter {
+		color: #FFCC33;
+		background-color: transparent;
+	}
+
+	/*	Titres  */
+	h3, h4, h5, h6 {
+		line-height: 170%;
+		margin: 10px auto;
+		width: 90%;
+		padding: 0;
+	}
+	h3 {
+		font-size: 140%;
+	}
+	h4 {
+		font-size: 125%;
+		/*font-style: italic;*/
+	}
+
+	h5 {
+		/*margin: 10px auto;*/
+        font-size: 110%;
+	}
+/*	h5 {
+        font-size: 100%;
+	}*/
+	h6 {
+		font-size: 125%;
+		font-style: italic;
+	}
+
+	/*	Ligne dorée  */
+	hr {
+		/*margin: 10px 10 10px 10;*/
+		margin-top: 20px;
+		margin-bottom: 20px;
+		width: 90%;
+		/*padding: 0; */
+		height: 1px;
+		border: 0;
+		color: #FFCC33;
+		background-color: #FFCC33;
+	}
+
+	/*	Image d'en-tête */
+	img.image_left {
+		float: left;
+		padding:0px 5px 0px 70px;
+		overflow: auto;
+	}
+
+	#portrait {
+		float: left;
+		margin: 10px 10px 0px 80px;
+	}
+
+	/*	Tableaux */
+	table {
+		/*text-align: center;*/
+		width: 90%;
+		padding: 10px;
+		border-collapse: collapse;
+		/*margin-left: 70px;*/
+		/*padding: 20px 25px;*/
+		/*position: relative;*/
+	}
+	td, th {
+		font-size: 12px;
+		text-align: center;
+		*vertical-align: baseline;
+		padding-top: 4px;
+		padding-bottom: 4px;
+*		border: 1px outset #eee;
+		border: 1px solid #aaa;
+	}
+	th {
+		background-color: #303030; *#000099;
+		*color: #fff;
+		font-weight: bold;
+*		border:none;
+	}
+*	tr {)
+
+	.leftalign, table.leftalign tr th, table.leftalign tr td (
+		text-align: left;
+	}
+
+/*]]>*/
+
+	</style>
 	<title>
 		Menace sur le Royaume de Diamant Éternel - La Couronne de Cuivre
 	</title>
-
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
 
-	<link href="images/logocc.png" rel="icon" type="image/png" />
-  </head>
-
-  <body>
-
-	<script type="module">
-		var test1 = document.getElementById('versionHistory').getElementsByClassName("version")[0].innerText;
-		document.getElementById("latestVersion").innerText = document.getElementById('versionHistory').getElementsByClassName("version")[0].innerText;
-		var versionnb = test1.substring(7, test1.length);
-		document.getElementById("versionnb1").innerText = versionnb;
-	</script>
-
-	<div id="cartouche">
+<body>
+  <div id="cartouche">
 	<a name="top" id="top"></a>
-
-	  <div id="header">
-		<h1 style="text-shadow: 0.1rem 0.1rem 0.25rem black;">
+	<div id="header">
+		<h1>
 			Menace sur le Royaume de Diamant Éternel : nouveaux sorts (WIP)
 			<a href="menace-spells-readme-english.html">
 				<img src="images/uk-flag-32.png" alt="English version" style="float:right;width:32px;height:16px;margin-right:20px;margin-top:15px;">
 			</a>
 		</h1>
 
-		<strong>Un mod développé sur <a href="https://www.baldursgateworld.fr">La Couronne de Cuivre</a> pour Baldur's Gate II : <acronym title="Throne of Bhaal">ToB</acronym>, Baldur's Gate Trilogy, <acronym title="Baldur's Gate 'To Two'">Tutu</acronym>, <acronym title="Baldur's Gate Enhanced Edition">BG2:EE</acronym> et <acronym title="Enhanced Edition Trilogy">EET</acronym></strong>
+		<strong>Un mod développé sur <a href="https://www.baldursgateworld.fr">La Couronne de Cuivre</a> pour Baldur's Gate II: <acronym title="Throne of Bhaal">ToB</acronym>, Baldur's Gate Trilogy, <acronym title="Baldur's Gate 'To Two'">Tutu</acronym> et <acronym title="Baldur's Gate II Enhanced Edition">BG2:EE</acronym></strong>
 
-	<hr>
-
+<hr>
 		<img src="images/logo_lcc.png" title="La Couronne de Cuivre" alt="La Couronne de Cuivre" class="image_left" />
 		<br><br><br>
-		<p class="about" style="text-align: left; margin-left: 70%">
+		<p class="about" style="text-align: left;margin-left: 70%">
 			<strong>Auteur :</strong> <a href="https://www.baldursgateworld.fr/lacouronne/members/freddy_gwendo.html">Freddy_Gwendo (aka Gwendolyne)</a>
 		</p>
-		<p class="about" style="text-align: left; margin-left: 70%">
-			<strong>Version :</strong> <span id="latestVersion" style="display: none";></span><span id="versionnb1"></span>
+		<p class="about" style="text-align: left;margin-left: 70%">
+			<strong>Version :</strong> Alpha 0.0.1
 		</p>
-		<p class="about" style="text-align: left; margin-left: 70%">
+		<p class="about" style="text-align: left;margin-left: 70%">
 			<strong>Langues :</strong> français, anglais
 		</p>
-		<p class="about" style="text-align: left; margin-left: 70%">
+		<p class="about" style="text-align: left;margin-left: 70%">
 			<strong>Plateformes :</strong> Windows (, Mac <acronym title="Operating System 10">OS X</acronym> et Linux)
 		</p>
-
 		<p class="about" style="text-align: left;margin-left: 70%">
 			<a href="https://www.baldursgateworld.fr">Site internet du mod</a> &#8226; <a href="https://www.baldursgateworld.fr/lacouronne/menace-sur-le-royaume-de-diamant-eternel/">Forum du mod</a> &#8226; <a href="https://www.baldursgateworld.fr/lacouronne/menace-sur-le-royaume-de-diamant-eternel/">Téléchargement</a> &#8226; <a href="https://github.com/GwendolyneFreddy/Diamant-Eternel">GitHub</a>
 		</p>
 
-	  </div>
+	</div>
 
-	  <div id="menu">
+	<div id="menu">
 		<a href="#intro">Introduction</a> &#160;&#8226;&#160; <a href="#divine">Sorts divins</a> &#160;&#8226;&#160; <a href="#arcane">Sorts profanes</a> &#160;&#8226;&#160; <a href="#versions">Historique des versions</a>
-	  </div>
+	</div>
 
-	 <div id="maindiv">
-
-<!-- ================== I n t r o d u c t i o n ================== -->
+	<div id="maindiv">
+	<!-- ================== I n t r o d u c t i o n ================== -->
 	  <a name="intro" id="intro"></a>
-	  <div class="content">
+		<div class="content">
 
 		<h2>
 			Introduction
 		</h2><br>
 
-		<table cellpadding=0 cellspacing=0 style="margin-top: 1%; margin-left: 80px">
+		<table cellpadding=0 cellspacing=0 style="margin-left: 80px">
 			<tr>
 				<td style="font-size: 90%;text-align:right;border:none"><img width=500 src="images/diamant1.jpg" title="Menace sur le Royaume de Diamant Éternel"><br>Lux et Umbra by Chaos-Draco DeviantArt &copy;2009-2018 Chaos-Draco</td>
 				<td width=20 style="border:none"></td>
-				<td style="border:none;text-align: justify;font-size: 110%;line-height: 150%;">
-				<strong>Menace sur le royaume de Diamant Éternel</strong> est un mod français conçu à la frontière entre une conversion totale et une énorme quête. Une minuscule partie se situe dans BG2 Les Ombres d'Amn, mais l'essentiel se déroule dans l'extension Trône de Bhaal.<br><br>
-				L'aventure se déroule dans une dimension parallèle, à la fois « proche » et « éloignée » de Féérûne, plus précisément dans le Royaume de Diamant Éternel, un royaume dirigé par une dynastie de rois-paladins que tente de renverser une paladine renégate. Cette dernière a passé un pacte plutôt spécial avec des « forces » pour le moins particulières...<br><br>
-				Il introduit deux nouveaux profils de paladins : le <a href="menace-kit1-readme-french.html">Chevalier de Diamant</a> et la <a href="menace-kit2-readme-french.html">Chevaucheuse de Licorne</a>, qui ont été spécialement définis pour coller à l'univers du Royaume de Diamant Éternel et correspondent à sa mythologie.<br><br>
-				Par ailleurs, de nouveaux sorts seront disponibles dans le Royaume de Diamant Éternel et ne s'avéreront vraiment utiles que pendant la campagne. Ils ne permettront donc pas de rendre la partie SoA plus facile, et encore moins de "tricher" pendant la fin de ToB.<br><br></td>
+				<td style="border:none;text-align: justify;font-size: 110%;line-height: 150%;"><strong>
+				Menace sur le royaume de Diamant Éternel</strong> est un mod français conçu à la frontière entre une conversion totale et une énorme quête. Une minuscule partie se situe dans BG2 Les Ombres d'Amn, mais l'essentiel se déroule dans l'extension Trône de Bhaal.<br/><br/>
+				L'aventure se déroule dans une dimension parallèle, à la fois « proche » et « éloignée » de Féérûne, plus précisément dans le Royaume de Diamant Éternel, un royaume dirigé par une dynastie de rois-paladins que tente de renverser une paladine renégate. Cette dernière a passé un pacte plutôt spécial avec des « forces » pour le moins particulières...<br/><br/>
+				Il introduit deux nouveaux profils de paladins : le <a href="menace-kit1-readme-french.html">Chevalier de Diamant</a> et la <a href="menace-kit2-readme-french.html">Chevaucheuse de Licorne</a>, qui ont été spécialement définis pour coller à l'univers du Royaume de Diamant Éternel et correspondent à sa mythologie.<br/><br/>
+				Par ailleurs, de nouveaux sorts seront disponibles dans le Royaume de Diamant Éternel et ne s'avéreront vraiment utiles que pendant la campagne. Ils ne permettront donc pas de rendre la partie SoA plus facile, et encore moins de "tricher" pendant la fin de ToB.<br/><br/></td>
 			</tr>
-		</table><br>
+		</table><br><br>
 
 
-		<address>
-			<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; Introduction</span> &#8226; <a href="#top">HAUT DE PAGE</a>
-		</address>
-	  </div>
+			<address>
+				<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; Introduction</span> &#8226; <a href="#top">HAUT DE PAGE</a>
+			</address>
+		</div>
 
-<!-- ================= C o m p a t i b i l i t y ================= -->
-<!-- ================== I n s t a l l a t i o n ================== -->
-<!-- ================= D i v i n e   S p e l l s ================= -->
+	<!-- ================= C o m p a t i b i l i t y ================= -->
+	<!-- ================== I n s t a l l a t i o n ================== -->
+	<!-- =================== D e s c r i p t i o n ==================== -->
+	<!-- ================= D i v i n e   S p e l l s ================== -->
 	  <a name="divine" id="divine"></a>
-	  <div class="content">
-
+		<div class="content">
 		<h2>
 			Sorts divins
 		</h2><br>
@@ -106,14 +446,13 @@
 			<center><a href="#divine1">Sorts de niveau 1</a> &#160;&#8226;&#160; <a href="#divine2">Sorts de niveau 2</a> &#160;&#8226;&#160; <a href="#divine3">Sorts de niveau 3</a> &#160;&#8226;&#160; <a href="#divine4">Sorts de niveau 4</a> &#160;&#8226;&#160; <a href="#divine5">Sorts de niveau 5</a> &#160;&#8226;&#160; <a href="#divine6">Sorts de niveau 6</a> &#160;&#8226;&#160; <a href="#divine7">Sorts de niveau 7</a> &#160;&#8226;&#160; <a href="#divinequest">Sorts de quête</a></center>
 		</h4>
 
-		<hr>
-
-<!-- =================== S p e l l s   -   L1 ==================== -->
-		<a name="divine1" id="divine1"></a>
-		<h2 style="border-top: dotted 2px #d0d0d0; background-color: rgba(48, 48, 48, 0.6); margin-top: 2%;"><span class="com">N1</span>Sorts divins de niveau 1 (C = Clerc - D = Druide)</h2><br>
+<hr>
+		<h3>
+			<a name="divine1" id="divine1"></a>Sorts divins de niveau 1
+		</h3><br>
 
 		<table style="margin-left: 80px;line-height: 170%;" summary="Liste des sorts divins de niveau 1">
-			<tr style= "line-height: 300%;">
+			<tr style= "line-height: 170%;">
 				<th WIDTH=50>Icône</th>
 				<th WIDTH=40>Type</th>
 				<th>Nom</th>
@@ -140,16 +479,12 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Le prêtre transmet de l'énergie positive à une flasque d'eau (1/2 litre), la transformant en eau bénite. L'eau bénite brûle les morts-vivants et les extérieurs d'alignement mauvais comme si ces derniers recevaient de l'acide.<br>
-				Il faut lancer la flasque sur une créature corporelle afin qu'elle se brise à son contact. Elle inflige alors 2d4 points de dégâts + 1 par niveau du prêtre qui l'a créée (jusqu'à un maximum de 2d4 + 10) à un mort-vivant ou un extérieur mauvais. Les éclaboussures infligent 2 points de dégâts à toutes les créatures de ce type situées à 1,50 mètre du point d'impact. Les créatures incorporelles sont donc immunisées contre ses effets.<br><br>
-				De plus, à partir du niveau 20, le prêtre devient suffisamment puissant pour rendre ses eaux bénites particulièrement efficaces contre les morts-vivants et les extraplanaires mauvais ayant au plus un nombre de dés de vie égal à la moitié de son niveau :<br>
-					<ul style="margin-left: 1%;width: 96%;line-height: 150%">
-						<li>Niveau 20 : ceux de 10 dés de vie sont ralentis pendant 2 rounds.</li>
-						<li>Niveau 30 : ceux de 15 dés de vie au plus sont repoussés pendant un round, ralentis et incommodés pendant 2 rounds (malus de 1 aux jets d'attaque et de dégâts).</li>
-						<li>Niveau 40 : ceux de 20 dés de vie au plus sont repoussés pendant un round, ralentis et incommodés pendant 2 rounds (malus de 2 aux jets d'attaque et de dégâts).</li>
-					</ul>
-				<span class="composantes">Composante matérielle : 2,5 kg de poudre d'argent (valeur 25 po).</span></td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Le prêtre transmet de l'énergie positive à une flasque d'eau (1/2 litre), la transformant en eau bénite. L'eau bénite brûle les morts-vivants et les extérieurs d'alignement mauvais comme si ces derniers recevaient de l'acide.<br>
+				Il faut lancer la flasque sur une créature corporelle afin qu'elle se brise à son contact. Elle inflige alors 2d4 points de dégâts + 1 par niveau du prêtre qui l'a créée (jusqu'à un maximum de 2d4 + 10) à un mort-vivant ou un extérieur mauvais. Les éclaboussures infligent 2 points de dégâts à toutes les créatures de ce type situées à 1,50 mètre du point d'impact. Les créatures incorporelles sont donc immunisées contre ses effets.<br>
+				De plus, à partir du niveau 20, le prêtre devient suffisamment puissant pour rendre ses eaux bénites particulièrement efficaces contre les morts-vivants et les extraplanaires mauvais ayant au plus un nombre de dés de vie égal à la moitié de son niveau <br><br>
+				<span style="margin-left: 1%">– Niveau 20 : ceux de 10 dés de vie sont ralentis pendant 2 rounds.</span><br>
+				<span style="margin-left: 1%">– Niveau 30 : ceux de 15 dés de vie au plus sont repoussés pendant un round, ralentis et incommodés pendant 2 rounds (malus de 1 aux jets d'attaque et de dégâts).</span><br>
+				<span style="margin-left: 1%">– Niveau 40 : ceux de 20 dés de vie au plus sont repoussés pendant un round, ralentis et incommodés pendant 2 rounds (malus de 2 aux jets d'attaque et de dégâts).</span></td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwcrewab.jpg" title="gwcrewa.spl" /></td>
@@ -165,12 +500,10 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Le jeteur de sort peut créer un maximum d'un litre d'eau tous les deux niveaux. Cette eau est pure et potable, comme de l'eau de pluie. Elle apparaît dans n'importe quel récipient capable de la recevoir, ou au-dessus d'une zone trois fois plus large (ce qui permet de créer une fine pluie ou de remplir plusieurs récipients de taille moindre). L'eau pèse 1 kilo par litre.<br><br>
-				<span class="composantes">Composante matérielle : une goutte d'eau.</span></td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Le jeteur de sort peut créer un maximum d'un litre d'eau tous les deux niveaux. Cette eau est pure et potable, comme de l'eau de pluie. Elle apparaît dans n'importe quel récipient capable de la recevoir, ou au-dessus d'une zone trois fois plus large (ce qui permet de créer une fine pluie ou de remplir plusieurs récipients de taille moindre). L'eau pèse 1 kilo par litre</td>
 			</tr>
 			<tr>
-				<td><img width=28 src="klipartz.com.png" /></td>
+				<td></td>
 				<td></td>
 				<td><span style="color: #FFCC33;">Déshydratation</span></td>
 				<td></td>
@@ -183,8 +516,7 @@
 				<td></td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwdetgdb.jpg" title="gwdetgd.spl" /></td>
@@ -200,8 +532,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sort permet de découvrir l'aura de bienveillance de n'importe quelle créature. Toute créature bonne à portée du sort se met à luire d'une aura dorée pendant un bref instant.</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort permet de découvrir l'aura de bienveillance de n'importe quelle créature. Toute créature bonne à portée du sort se met à luire d'une aura dorée pendant un bref instant.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwinvmvb.jpg" title="gwinvmv.spl" /></td>
@@ -217,8 +548,7 @@
 				<td>oui</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwmanbrb.jpg" title="gwmanbr.spl" /></td>
@@ -234,8 +564,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Le prêtre insuffle du courage aux bénéficiaires du sort et élève leur moral à son plus haut niveau. Au fur et à mesure que la durée du sort s'écoule, ce moral revient à son niveau normal. S'ils sont affectés par une terreur magique, cette peur s'annule.</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Le prêtre insuffle du courage aux bénéficiaires du sort et élève leur moral à son plus haut niveau. Au fur et à mesure que la durée du sort s'écoule, ce moral revient à son niveau normal. S'ils sont affectés par une terreur magique, cette peur s'annule.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwptngdb.jpg" title="gwptngd.spl" /></td>
@@ -251,8 +580,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège crée une barrière magique autour de la cible à 30 cm de distance. La barrière se déplace avec le bénéficiaire et a deux effets majeurs : toute créature bonne ou enchantée lançant une attaque contre la cible protégée reçoit un malus de 2 à son jet d'attaque et tout jet de sauvegarde contre de telles attaques se fait avec un bonus de 2.</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort crée une barrière magique autour de la cible à 30 cm de distance. La barrière se déplace avec le bénéficiaire et a deux effets majeurs : toute créature bonne ou enchantée lançant une attaque contre la cible protégée reçoit un malus de 2 à son jet d'attaque et tout jet de sauvegarde contre de telles attaques se fait avec un bonus de 2.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwptnvob.jpg" title="gwptnvo.spl" /></td>
@@ -268,9 +596,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège fonctionne comme Protection contre le mal et protège contre les attaques des créatures volantes ayant des ailes. Une barrière magique se crée autour du bénéficiaire à 30 cm de distance. Elle se déplace avec lui et a deux effets majeurs : toute créature volante attaquant la cible protégée reçoit un malus de 2 à ses jets d'attaque et la cible bénéficie d'un bonus de 2 à ses jets de sauvegarde. De plus, les créatures convoquées qui volent au moyen de leurs ailes sont incapables de toucher le sujet.<br><br>
-				<span class="composantes">Composante matérielle : une plume ou une aile de chauve-souris.</span></td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort fonctionne comme Protection contre le mal et protège contre les attaques des créatures volantes ayant des ailes. Une barrière magique se crée autour du bénéficiaire à 30 cm de distance. Elle se déplace avec lui et a deux effets majeurs : toute créature volante attaquant la cible protégée reçoit un malus de 2 à ses jets d'attaque et la cible bénéficie d'un bonus de 2 à ses jets de sauvegarde. De plus, les créatures convoquées qui volent au moyen de leurs ailes sont incapables de toucher le sujet.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwsflsab.jpg" title="gwsflsa.spl" /></td>
@@ -286,21 +612,36 @@
 				<td>oui</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...<br>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...<br>
 				Une grêle de sable brûlant jaillit de la main tendue du druide et est projetée en arc de cercle devant lui, infligeant 1d6 points de dégâts non-létaux aux créatures situées dans l'arc de cercle de la zone d'effet. Les créatures qui ratent leur jet de sauvegarde sont également étourdies pendant 1 round. Sinon, elles ne subissent que la moitié des dégâts.</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>C</td>
+				<td><span style="color: #FFCC33;"></span></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...</td>
 			</tr>
 		</table><br>
 		<p style="font-size:90%;text-align: right;"><a href="#divine">RETOUR À LA LISTE DES SORTS DIVINS</a>
 		</p>
 
-		<hr>
-<!-- =================== S p e l l s   -   L2 ==================== -->
-		<a name="divine2" id="divine2"></a>
-		<h2 style="border-top: dotted 2px #d0d0d0; background-color: rgba(48, 48, 48, 0.6); margin-top: 2%;"><span class="com">N2</span>Sorts divins de niveau 2 (C = Clerc - D = Druide)</h2><br>
+<hr>
+		<h3>
+			<a name="divine2" id="divine2"></a>Sorts divins de niveau 2
+		</h3><br>
 
 		<table style="margin-left: 80px;line-height: 170%;" summary="Liste des sorts divins de niveau 2">
-			<tr style= "line-height: 300%;">
+			<tr>
 				<th WIDTH=50>Icône</th>
 				<th WIDTH=40>Type</th>
 				<th>Nom</th>
@@ -327,8 +668,8 @@
 				<td>oui</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...<br>
+				</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwcimsab.jpg" title="gwcimsa.spl" /></td>
@@ -344,10 +685,8 @@
 				<td>oui</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...<br>
-				Ce sortilège crée, dans la main du lanceur, un long cimeterre de 90 cm incurvé et fait de sable. Attaquer avec le cimeterre de sable inflige 1d6 points de dégâts +1 tous les 2 niveaux du lanceur de sorts (avec un maximum de 10). Comme l'arme n'est pas réellement solide, le modificateur de Force ne s'applique pas. De plus, une créature touchée par le cimeterre de sable doit réussir un jet de sauvegarde ou être déshydratée. Le lanceur peut utiliser le cimeterre de sable sans malus même s'il n'est pas formé au maniement des cimeterres.<br><br>
-				<span class="composantes">Composante matérielle : une pincée de sable, de sel et de poudre de fer.</span></td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...<br>
+				Ce sort crée, dans la main du lanceur, un long cimeterre de 90 cm incurvé et fait de sable. Attaquer avec le cimeterre de sable inflige 1d6 points de dégâts +1 tous les 2 niveaux du lanceur de sorts (avec un maximum de 10). Comme l'arme n'est pas réellement solide, le modificateur de Force ne s'applique pas. De plus, une créature touchée par le cimeterre de sable doit réussir un jet de sauvegarde ou être déshydratée. Le lanceur peut utiliser le cimeterre de sable sans malus même s'il n'est pas formé au maniement des cimeterres.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwcpssob.jpg" title="gwcpsso.spl" /></td>
@@ -363,8 +702,7 @@
 				<td>oui</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...<br>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...<br>
 				En puisant dans la puissance du soleil, le lanceur de sorts parvient à dégager des flammes depuis son corps tout entier. Celles-ci s'étendent dans toutes les directions dans un rayon de 1,50 mètre, illuminant la zone et infligeant 1d4 + 1 points de dégâts de feu (jet de sauvegarde pour les réduire de moitié) à toutes les créatures qui touchent le personnage (sans affecter ce dernier).</td>
 			</tr>
 			<tr>
@@ -381,8 +719,7 @@
 				<td>oui</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Un rayon de lumière incandescente fuse de la main tendue du prêtre et frappe à coup sûr sa cible. Une créature frappée par l'éclair subit 1d6 points de dégâts par niveau du prêtre (jusqu'à un maximum de 10d6) et est aveuglée pendant 1 round si elle rate son jet de sauvegarde contre les sorts (avec un malus de 4).<br>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Un rayon de lumière incandescente fuse de la main tendue du prêtre et frappe à coup sûr sa cible. Une créature frappée par l'éclair subit 1d6 points de dégâts par niveau du prêtre (jusqu'à un maximum de 10d6) et est aveuglée pendant 1 round si elle rate son jet de sauvegarde contre les sorts (avec un malus de 4).<br>
 				Les créatures vulnérables à la lumière du jour voient ces dégâts doubler. Les morts-vivants subissent toujours des dégâts doublés, tout comme les thallophytes, les moisissures, les vases et les limons. Les morts-vivants vulnérables à la lumière du jour (comme les vampires) subissent quant à eux des dégâts triplés.</td>
 			</tr>
 			<tr>
@@ -399,9 +736,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège améliore la vigueur d'une créature ; ce qui se concrétise par une augmentation de quatre points de sa Constitution, avec tous les bonus conséquents. Cet effet dure jusqu'à expiration ou dissipation.<br><br>
-				<span class="composantes">Composante matérielle : quelques poils d'ours ou un peu de ses déjections.</span></td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort améliore la vigueur d'une créature ; ce qui se concrétise par une augmentation de quatre points de sa Constitution, avec tous les bonus conséquents. Cet effet dure jusqu'à expiration ou dissipation.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwtaureb.jpg" title="gwtaure.spl" /></td>
@@ -417,9 +752,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège augmente de quatre points la Force d'une créature, avec les modifications induites aux jets d'attaque et de dégâts. Cet effet dure jusqu'à expiration ou dissipation.<br><br>
-				<span class="composantes">Composante matérielle : quelques poils de taureau ou un peu de ses déjections.</span></td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort augmente de quatre points la Force d'une créature, avec les modifications induites aux jets d'attaque et de dégâts. Cet effet dure jusqu'à expiration ou dissipation.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwfcechb.jpg" title="gwfcech.spl" /></td>
@@ -435,8 +768,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège confère la force tranquille d'un grand chêne au sujet qui bénéficie d'un bonus de 4 en Force, mais est victime d'un malus de 2 en Dextérité. Ces effets durent jusqu'à expiration ou dissipation.</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort confère la force tranquille d'un grand chêne au sujet qui bénéficie d'un bonus de 4 en Force, mais est victime d'un malus de 2 en Dextérité. Ces effets durent jusqu'à expiration ou dissipation.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwfdrptb.jpg" title="gwfdrpt.spl" /></td>
@@ -452,10 +784,8 @@
 				<td>oui</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...<br>
-				Le druide transforme la sueur du sujet en glace, créant ainsi des cloques de glace sous et sur la peau. Le sortilège inflige 1d6 points de dégâts de froid cumulatifs par round (1d6 au 1er round, 2d6 au 2ème round et 3d6 au 3ème round). La victime n'a droit qu'à un seul jet de sauvegarde. En cas de réussite, les dégâts sont réduits de moitié à chaque round.<br><br>
-				<span class="composantes">Focaliseur : un petit verre ou bol en terre d'une valeur minimum de 25 po et rempli de glace, de neige ou d'eau.</span></td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...<br>
+				Le druide transforme la sueur du sujet en glace, créant ainsi des cloques de glace sous et sur la peau. Le sort inflige 1d6 points de dégâts de froid cumulatifs par round (1d6 au 1er round, 2d6 au 2ème round et 3d6 au 3ème round). La victime n'a droit qu'à un seul jet de sauvegarde. En cas de réussite, les dégâts sont réduits de moitié à chaque round.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwgfelib.jpg" title="gwgfeli.spl" /></td>
@@ -471,9 +801,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège rend une créature bien plus gracieuse et agile, ce qui lui permet de mieux coordonner ses gestes. Cet avantage se traduit par un gain de quatre points de Dextérité, accompagné de toutes les modifications habituelles en termes de classe d'armure et autres utilisations du bonus de Dextérité. Cet effet dure jusqu'à expiration ou dissipation.<br><br>
-				<span class="composantes">Composante matérielle : quelques poils de chat.</span></td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort rend une créature bien plus gracieuse et agile, ce qui lui permet de mieux coordonner ses gestes. Cet avantage se traduit par un gain de quatre points de Dextérité, accompagné de toutes les modifications habituelles en termes de classe d'armure et autres utilisations du bonus de Dextérité. Cet effet dure jusqu'à expiration ou dissipation.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwhydrab.jpg" title="gwhydra.spl" /></td>
@@ -489,8 +817,7 @@
 				<td>Spécial</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège crée de l'humidité dans le corps d'une créature vivante, la réhydratant. Il soigne 2d8 points de dégâts de dessèchement +1 par niveau du jeteur de sort (jusqu'à un maximum de 2d8+10), supprime tout dégât non-létal dû à la soif et enlève tout signe et effet de l'état de déshydratation.<br>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort crée de l'humidité dans le corps d'une créature vivante, la réhydratant. Il soigne 2d8 points de dégâts de dessèchement +1 par niveau (jusqu'à un maximum de 2d8+10), supprime tout dégât non-létal dû à la soif et enlève tout signe et effet de l'état de déshydratation.<br>
 				Lancé sur une créature utilisant le Feu, il inflige des dégâts au lieu de soigner. Elle a cependant le droit à un jet de sauvegarde contre les sorts pour réduire les dégâts de moitié.<br><br>
 				<em>Note : si le composant « Gestion de la nourriture » est installé, ce sort correspond à la consommation d'eau nécessaire pendant 8 heures.</em></td>
 			</tr>
@@ -508,8 +835,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège confère le doux caractère indomptable des flots déferlant sur le rivage. Le sujet bénéficie d'un bonus de 4 en Constitution et subit un malus de 2 en Force. Ces effets durent jusqu'à expiration ou dissipation.</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort confère le doux caractère indomptable des flots déferlant sur le rivage. Le sujet bénéficie d'un bonus de 4 en Constitution et subit un malus de 2 en Force. Ces effets durent jusqu'à expiration ou dissipation.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwptnchb.jpg" title="gwptnch.spl" /></td>
@@ -525,9 +851,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège immunise son bénéficiaire contre les charmes. Il n'affecte qu'une créature et dure jusqu'à expiration (2 rounds par niveau) ou dissipation. Cependant, à partir du niveau 15, il affecte tous les alliés de la cible, dans un rayon de 9 m autour d'elle, qui bénéficient alors d'une résistance magique aux charmes égale à 20 % + 2 % par niveau du lanceur de sort (jusqu'à un maximum de 90 %), pendant un round par niveau.<br><br>
-				<span class="composantes">Composante matérielle : un fragment (cheveu ou autre) du corps d'une créature ayant une aptitude naturelle de charme ou de domination, comme le succube ou le vampire.</span></td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort immunise son bénéficiaire contre les charmes. Il n'affecte qu'une créature et dure jusqu'à expiration (2 rounds par niveau) ou dissipation. Cependant, à partir du niveau 15, il affecte tous les alliés de la cible, dans un rayon de 9 m autour d'elle, qui bénéficient alors d'une résistance magique aux charmes égale à 20 % + 2 % par niveau du lanceur de sort (jusqu'à un maximum de 90 %), pendant un round par niveau.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwptnmab.jpg" title="gwptnma.spl" /></td>
@@ -543,8 +867,7 @@
 				<td></td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwragoub.jpg" title="gwragou.spl" /></td>
@@ -560,11 +883,9 @@
 				<td>spécial</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège fait appel aux faveurs de l'esprit de Gargantua afin qu'il remplisse une marmite de son puissant ragoût curatif. Le lanceur de sorts doit tenir cette marmite durant l'incantation, sans quoi elle échoue. Le sort crée une portion tous les deux niveaux de lanceur de sorts (jusqu'à un maximum de 6). Chaque portion guérit 1d6+1 points de dégâts. Une portion qui n'est pas consommée disparaît au bout de 1 heure.<br>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort fait appel aux faveurs de l'esprit de Gargantua afin qu'il remplisse une marmite de son puissant ragoût curatif. Le lanceur de sorts doit tenir cette marmite durant l'incantation, sans quoi elle échoue. Le sort crée une portion tous les deux niveaux de lanceur de sorts (jusqu'à un maximum de 6). Chaque portion guérit 1d6+1 points de dégâts. Une portion qui n'est pas consommée disparaît au bout de 1 heure.<br>
 				Le ragoût peut également être lancé contre un adversaire. Si l'attaque est réussie, la marmite explose en formant de petites boules de feu infligeant 1d6+1 points de dégâts par portion à tous les morts-vivants situés dans un rayon de 6 mètres. Ces derniers ont droit à leur résistance à la magie et à un jet de sauvegarde pour réduire les dégâts de moitié.<br><br>
-				<em>Note : si le composant Gestion de la nourriture est installé, une portion correspond à la consommation d'eau et de nourriture nécessaire pendant 8 heures.</em><br><br>
-				<span class="composantes">Focaliseur : une marmite ciselée d'une valeur de 50 po au moins.</span></td>
+				<em>Note : si le composant Gestion de la nourriture du mod Menace sur le Royaume de Diamant Éternel est installé, une portion correspond à la consommation d'eau et de nourriture nécessaire pendant 8 heures.</em></td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwrecrob.jpg" title="gwrecro.spl" /></td>
@@ -580,15 +901,14 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège crée autour du bénéficiaire une barrière magique en forme de sphère faiblement phosphorescente qui se déplace avec lui et le rend invulnérable aux projectiles naturels comme les rochers, les munitions de catapulte ou de baliste, qui rebondissent automatiquement sur la sphère. Le bénéficiaire peut cependant effectuer des attaques à distance normales vers l'extérieur de la sphère sans l'endommager.<br>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort crée autour du bénéficiaire une barrière magique en forme de sphère faiblement phosphorescente qui se déplace avec lui et le rend invulnérable aux projectiles naturels comme les rochers, les munitions de catapulte ou de baliste, qui rebondissent automatiquement sur la sphère. Le bénéficiaire peut cependant effectuer des attaques à distance normales vers l'extérieur de la sphère sans l'endommager.<br>
 				Notez toutefois que ce sort n'apporte aucune protection contre les attaques de projectiles manufacturés (flèches, carreaux, dagues...) ou générés par des sorts.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwresedb.jpg" title="gwresed.spl" /></td>
 				<td>C-D</td>
 				<td><span style="color: #FFCC33;">Résistance aux énergies destructives</span></td>
-				<td>Abjuration</td>
+				<td>Anjuration</td>
 				<td>Protection, Élémentaire</td>
 				<td>5</td>
 				<td>Toucher</td>
@@ -598,8 +918,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège confère une protection limitée contre la forme d'énergie choisie : acide, électricité, feu, froid ou poison. Le sujet bénéficie d'une résistance de 10 % + 1 % par niveau contre le type d'énergie choisi. Ce sort ne fait qu'absorber les dégâts, qu'ils soient d'origine magique ou non,  et ne protège pas contre les effets secondaires, comme se noyer dans un bassin d'acide ou être pris dans la glace.<br>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort confère une protection limitée contre la forme d'énergie choisie : acide, électricité, feu, froid ou poison. Le sujet bénéficie d'une résistance de 10 % + 1 % par niveau contre le type d'énergie choisi. Ce sort ne fait qu'absorber les dégâts, qu'ils soient d'origine magique ou non,  et ne protège pas contre les effets secondaires, comme se noyer dans un bassin d'acide ou être pris dans la glace.<br>
 				Note : ce sort n'est pas compatible avec les autres sorts protégeant contre le même élément. Cependant, il est possible de bénéficier d'une Résistance aux énergies destructives (feu) et d'une Protection contre l'électricité, ou de quelque autre combinaison de sorts offrant une protection contre différents types d'énergie.</td>
 			</tr>
 			<tr>
@@ -616,8 +935,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...<br>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...<br>
 				Ce sort fait jaillir de petites épines et pointes magiques sur toute la surface d'une arme en bois (un bâton, un gourdin, une massue ou un nunchaku, par exemple). Pendant toute la durée du sort, l'arme inflige des dégâts à la fois contondants et perforants. Elle bénéficie d'un bonus de 1 aux jets d'attaque et ses dégâts sont majorés de 1 point par niveau du lanceur (jusqu'à un maximum de 10).<br>
 				À noter que ce sort ne fonctionne qu'avec des armes dont la surface utilisée pour porter les coups est faite de bois. Un arc, des flèches ou une masse d'armes composée de métal ne pourront donc pas être la cible de Ronces.</td>
 			</tr>
@@ -635,9 +953,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège augmente de quatre points la Sagesse d'une créature, avec tous les bonus conséquents. Cet effet dure jusqu'à expiration ou dissipation.<br><br>
-				<span class="composantes">Composante matérielle : quelques plumes de hibou ou un peu de fiente.</span></td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort augmente de quatre points la Sagesse d'une créature, avec tous les bonus conséquents. Cet effet dure jusqu'à expiration ou dissipation.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwtoilrb.jpg" title="gwtoilr.spl" /></td>
@@ -653,8 +969,8 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...<br>
+				</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwzonpub.jpg" title="gwzonpu.spl" /></td>
@@ -670,21 +986,36 @@
 				<td>spécial</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège sanctifie une zone grâce aux forces de la Nature. Toutes les créatures féeriques et plantes présentes dans cette zone reçoivent un bonus de 2 à leurs jets d'attaque, de dégâts et de sauvegarde alors que les aberrations (Aboleths, Driders, Flagelleurs, Mimiques, Ombres de roche, Otyughs, Spectateurs...) écopent d'un malus de 2. Les Zones de pureté multiples ne sont pas cumulatives.<br><br>
-				<span class="composantes">Composante matérielle : des boisseaux de feuilles de lierre et de baies doivent être éparpillés tout autour de la zone.</span></td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort sanctifie une zone grâce aux forces de la Nature. Toutes les créatures féeriques et plantes présentes dans cette zone reçoivent un bonus de 2 à leurs jets d'attaque, de dégâts et de sauvegarde alors que les aberrations (Aboleths, Driders, Flagelleurs, Mimiques, Ombres de roche, Otyughs, Spectateurs...) écopent d'un malus de 2. Les Zones de pureté multiples ne sont pas cumulatives.</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>C</td>
+				<td><span style="color: #FFCC33;"></span></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...<br>
+				</td>
 			</tr>
 		</table><br>
 		<p style="font-size:90%;text-align: right;"><a href="#divine">RETOUR À LA LISTE DES SORTS DIVINS</a>
 		</p>
 
-		<hr>
-<!-- =================== S p e l l s   -   L3 ==================== -->
-		<a name="divine3" id="divine3"></a>
-		<h2 style="border-top: dotted 2px #d0d0d0; background-color: rgba(48, 48, 48, 0.6); margin-top: 2%;"><span class="com">N3</span>Sorts divins de niveau 3 (C = Clerc - D = Druide)</h2><br>
+<hr>
+		<h3>
+			<a name="divine3" id="cleric3"></a>Sorts divins de niveau 3
+		</h3><br>
 
 		<table style="margin-left: 80px;line-height: 170%;" summary="Liste des sorts divins de niveau 3">
-			<tr style= "line-height: 300%;">
+			<tr>
 				<th WIDTH=50>Icône</th>
 				<th WIDTH=40>Type</th>
 				<th>École</th>
@@ -727,13 +1058,12 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...</br>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...<br>
 				Ce sort est similaire à Ronces mais l'arme affectée gagne un bonus d'altération de 2 pour les jets d'attaque et sa probabilité d'infliger un coup critique est doublée. De petites épines et pointes magiques jaillissent sur toute la surface d'une arme en bois (un bâton, un gourdin, une massue ou un nunchaku, par exemple). Pendant toute la durée du sort, l'arme inflige des dégâts à la fois contondants et perforants. Ses dégâts sont majorés de 1 point par niveau du lanceur (jusqu'à un maximum de 10).<br>
 				À noter que ce sort ne fonctionne qu'avec des armes dont la surface utilisée pour porter les coups est faite de bois. Un arc, des flèches ou une masse d'armes composée de métal ne pourront donc pas être la cible de Barbelures.</td>
 			</tr>
 			<tr>
-				<td><img width=28 src="klipartz.com.png" /></td>
+				<td></td>
 				<td>C</td>
 				<td><span style="color: #FFCC33;">Création de nourriture et d'eau</span></td>
 				<td></td>
@@ -746,8 +1076,7 @@
 				<td></td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwcrepib.jpg" title="gwcrepi.spl" /></td>
@@ -763,8 +1092,7 @@
 				<td>oui</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwcrvegb.jpg" title="gwcrveg.spl" /></td>
@@ -780,8 +1108,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwfavnab.jpg" title="gwfanat.spl" /></td>
@@ -797,8 +1124,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				En faisant appel au pouvoir de la Nature, le druide confère à l'animal visé un bonus de 1 à ses jets d'attaque et de dégâts par tranche de trois niveaux d'expérience, jusqu'à un maximum de 5 au niveau 17</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">En faisant appel au pouvoir de la Nature, le druide confère à l'animal visé un bonus de 1 à ses jets d'attaque et de dégâts par tranche de trois niveaux d'expérience, jusqu'à un maximum de 5 au niveau 17</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwflespb.jpg" title="gwflesp.spl" /></td>
@@ -814,13 +1140,12 @@
 				<td></td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage... GWArSpt.spl</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage... GWArSpt.spl</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwcurcsb.jpg" title="gwcurcs.spl" /></td>
 				<td>C-D</td>
-				<td><span style="color: #FFCC33;">Guérison de la cécité ou de la surdité</span></td>
+				<td><span style="color: #FFCC33;">Guérison de la cécité/de la surdité</span></td>
 				<td>Abjuration</td>
 				<td>Nécromancie, Guérison</td>
 				<td>9</td>
@@ -831,8 +1156,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Comme son nom l'indique, ce sortilège soigne la cécité ou la surdité (au choix du prêtre), que la cause du mal soit naturelle ou magique. Il ne rend pas une oreille ou un œil perdu, mais le remet en état s'il est seulement endommagé. La guérison est permanente mais n'accorde pas à son bénéficiaire une quelconque immunité magique contre de futures affections.</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Comme son nom l'indique, ce sort soigne la cécité ou la surdité (au choix du prêtre), que la cause du mal soit naturelle ou magique. Il ne rend pas une oreille ou un œil perdu, mais le remet en état s'il est seulement endommagé. La guérison est permanente mais n'accorde pas à son bénéficiaire une quelconque immunité magique contre de futures affections.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwmarveb.jpg" title="gwmarve.spl" /></td>
@@ -848,8 +1172,7 @@
 				<td>oui</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...<br>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage.<br>
 				Une fois l'incantation terminée, un grand marteau de guerre constitué d'énergie positive apparaît et s'en va frapper une cible située dans le champ de vision du prêtre. Le Marteau de vertu inflige 1d6 points de dégâts par niveau de lanceur de sorts, voire 1d8 si la cible est d'alignement mauvais. Le prêtre décide d'infliger des dégâts létaux ou non-létaux, ou de les répartir entre ces deux types. Cependant, la répartition doit être décidée avant de lancer le sort. Le Marteau est un effet de force et n'a aucune chance de rater une cible intangible. Un jet de sauvegarde contre les sorts réussi permet de réduire les dégâts de moitié.<br>
 				Sacrifice : affaiblissement temporaire de 1d3 points de Force.</td>
 			</tr>
@@ -867,8 +1190,7 @@
 				<td></td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwmurvtb.jpg" title="gwmurvt.spl" /></td>
@@ -884,8 +1206,7 @@
 				<td></td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwprierb.jpg" title="gwprier.spl" /></td>
@@ -901,8 +1222,7 @@
 				<td></td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwptndeb.jpg" title="gwptnde.spl" /></td>
@@ -918,9 +1238,8 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...<br>
-				Ce sortilège protège temporairement son bénéficiaire contre toute forme de dessiccation ou de déshydratation. Cet effet dure jusqu'à expiration ou dissipation.<br><br>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...<br>
+				Ce sort protège temporairement son bénéficiaire contre toute forme de dessiccation ou de déshydratation. Cet effet dure jusqu'à expiration ou dissipation.<br><br>
 				<em>Note : si le composant Gestion de la nourriture du mod Menace sur le Royaume de Diamant Éternel est installé, ce sort bloque la consommation d'eau nécessaire pendant sa durée.</em></td>
 			</tr>
 			<tr>
@@ -937,8 +1256,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège confère une protection limitée contre la forme d'énergie choisie : acide, électricité, feu, froid ou poison. Le sujet bénéficie d'une résistance de 30 % + 1 % par niveau contre le type d'énergie choisi. Ce sort ne fait qu'absorber les dégâts, qu'ils soient d'origine magique ou non, et ne protège pas contre les effets secondaires, comme se noyer dans un bassin d'acide ou être pris dans la glace.<br>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort confère une protection limitée contre la forme d'énergie choisie : acide, électricité, feu, froid ou poison. Le sujet bénéficie d'une résistance de 30 % + 1 % par niveau contre le type d'énergie choisi. Ce sort ne fait qu'absorber les dégâts, qu'ils soient d'origine magique ou non, et ne protège pas contre les effets secondaires, comme se noyer dans un bassin d'acide ou être pris dans la glace.<br>
 				Note : ce sort n'est pas compatible avec les autres sorts protégeant contre le même élément. Cependant, il est possible de bénéficier d'une Protection contre les énergies destructives (feu) et d'une Protection contre l'électricité, ou de quelque autre combinaison de sorts offrant une protection contre différents types d'énergie.</td>
 			</tr>
 			<tr>
@@ -955,8 +1273,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwpunatb.jpg" title="gwpunat.spl" /></td>
@@ -972,8 +1289,7 @@
 				<td>oui</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Lorsque le druide lance ce sortilège, un rayon de lumière verte jaillit de sa main tendue et saute sur tout ennemi situé à portée. Il peut générer un rayon par tranche de cinq niveaux d'expérience (deux rayons au 10ème niveau, trois au 15ème niveau, etc.) jusqu'à un maximum de quatre. Tous les rayons visent la même cible et affectent les créatures situées à 9 mètres d'elle.<br>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Lorsque le druide lance ce sort, un rayon de lumière verte jaillit de sa main tendue et saute sur tout ennemi situé à portée. Il peut générer un rayon par tranche de cinq niveaux d'expérience (deux rayons au 10ème niveau, trois au 15ème niveau, etc.) jusqu'à un maximum de quatre. Tous les rayons visent la même cible et affectent les créatures situées à 9 mètres d'elle.<br>
 				Chaque rayon inflige 1d6 points de dégâts magiques, 2d8 contre les morts-vivants et les créatures artificielles et 5d6 contre les aberrations (Aboleths, Driders, Flagelleurs, Mimiques, Ombres de roche, Otyughs, Spectateurs...).</td>
 			</tr>
 			<tr>
@@ -990,8 +1306,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège est identique à Résistance aux énergies destructives, si ce n'est qu'il affecte plusieurs créatures dans une zone correspondant à un rayon de 9 mètres, convergeant vers le point désigné par le lanceur du sort. Il leur confère une protection limitée contre une forme d'énergie : acide, électricité, feu, froid, poison. Les sujets bénéficient d'une résistance de 10 % + 1 % par niveau contre le type d'énergie choisi. Ce sort ne fait qu'absorber les dégâts, qu'ils soient d'origine magique ou non, et ne protège pas contre les effets secondaires, comme se noyer dans un bassin d'acide ou être pris dans la glace.<br>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort est identique à Résistance aux énergies destructives, si ce n'est qu'il affecte plusieurs créatures dans une zone correspondant à un rayon de 9 mètres, convergeant vers le point désigné par le prêtre. Il leur confère une protection limitée contre une forme d'énergie : acide, électricité, feu, froid, poison. Les sujets bénéficient d'une résistance de 10 % + 1 % par niveau contre le type d'énergie choisi. Ce sort ne fait qu'absorber les dégâts, qu'ils soient d'origine magique ou non, et ne protège pas contre les effets secondaires, comme se noyer dans un bassin d'acide ou être pris dans la glace.<br>
 				Note : ce sort n'est pas compatible avec les autres sorts protégeant contre le même élément. Cependant, il est possible de bénéficier d'une Résistance aux énergies destructives (feu) et d'une Protection contre l'électricité, ou de quelque autre combinaison de sorts offrant une protection contre différents types d'énergie.</td>
 			</tr>
 			<tr>
@@ -1008,8 +1323,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwtemaxb.jpg" title="gwtemax.spl" /></td>
@@ -1025,10 +1339,8 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Une pluie battante de gouttes d'acide se met à tomber dans une zone désignée par le prêtre qui reste fixe une fois créée. Elle réduit la portée sonore et la visibilité, avec pour conséquence un malus de 4 aux jets d'attaque. La pluie blesse les créatures d'alignement chaotique, leur infligeant 2d6 points de dégâts par round (les extérieurs chaotiques subissent le double de dégâts). De plus, tous les cinq rounds, un éclair d'acide frappe un extérieur chaotique dans la zone d'effet du sort, lui infligeant 5d6 points de dégâts d'acide. Une fois la durée du sort expirée, la pluie cesse.<br>
-				Ce sortilège doit être lancé à l'extérieur, sinon il reste sans effet.<br><br>
-				<span class="composantes">Composante matérielle : une flasque d'eau axiomatique.</span></td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Une pluie battante de gouttes d'acide se met à tomber dans une zone désignée par le prêtre qui reste fixe une fois créée. Elle réduit la portée sonore et la visibilité, avec pour conséquence un malus de 4 aux jets d'attaque. La pluie blesse les créatures d'alignement chaotique, leur infligeant 2d6 points de dégâts par round (les extérieurs chaotiques subissent le double de dégâts). De plus, tous les cinq rounds, un éclair d'acide frappe un extérieur chaotique dans la zone d'effet du sort, lui infligeant 5d6 points de dégâts d'acide. Une fois la durée du sort expirée, la pluie cesse.<br>
+				Ce sort doit être lancé à l'extérieur, sinon il reste sans effet.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwtemsab.jpg" title="gwtemsa.spl" /></td>
@@ -1044,10 +1356,8 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Une pluie battante et glacée se met à tomber dans une zone désignée par le prêtre qui reste fixe une fois créée. Elle réduit la portée sonore et la visibilité, avec pour conséquence un malus de 4 aux jets d'attaque. La pluie blesse les créatures d'alignement mauvais, leur infligeant 2d6 points de dégâts par round (les extérieurs mauvais subissent le double de dégâts). De plus, tous les cinq rounds, un éclair de gel frappe un extérieur mauvais dans la zone d'effet du sort, lui infligeant 5d6 points de dégâts de froid. Une fois la durée du sort expirée, la pluie cesse.<br>
-				Ce sortilège doit être lancé à l'extérieur, sinon il reste sans effet.<br><br>
-				<span class="composantes">Composante matérielle : une flasque d'eau bénite.</span></td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Une pluie battante et glacée se met à tomber dans une zone désignée par le prêtre qui reste fixe une fois créée. Elle réduit la portée sonore et la visibilité, avec pour conséquence un malus de 4 aux jets d'attaque. La pluie blesse les créatures d'alignement mauvais, leur infligeant 2d6 points de dégâts par round (les extérieurs mauvais subissent le double de dégâts). De plus, tous les cinq rounds, un éclair de gel frappe un extérieur mauvais dans la zone d'effet du sort, lui infligeant 5d6 points de dégâts de froid. Une fois la durée du sort expirée, la pluie cesse.<br>
+				Ce sort doit être lancé à l'extérieur, sinon il reste sans effet.</td>
 			</tr>
 			<tr>
 				<td></td>
@@ -1063,8 +1373,7 @@
 				<td></td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...</td>
 			</tr>
 			<tr>
 				<td></td>
@@ -1080,8 +1389,7 @@
 				<td>oui</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...</td>
 			</tr>
 			<tr>
 				<td></td>
@@ -1097,20 +1405,19 @@
 				<td>oui</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...</td>
 			</tr>
 		</table><br>
 		<p style="font-size:90%;text-align: right;"><a href="#divine">RETOUR À LA LISTE DES SORTS DIVINS</a>
 		</p>
 
-		<hr>
-<!-- =================== S p e l l s   -   L4 ==================== -->
-		<a name="divine4" id="divine4"></a>
-		<h2 style="border-top: dotted 2px #d0d0d0; background-color: rgba(48, 48, 48, 0.6); margin-top: 2%;"><span class="com">N4</span>Sorts divins de niveau 4 (C = Clerc - D = Druide)</h2><br>
+<hr>
+		<h3>
+			<a name="divine4" id="cleric4"></a>Sorts divins de niveau 4
+		</h3><br>
 
 		<table style="margin-left: 80px;line-height: 170%;" summary="Liste des sorts divins de niveau 4">
-			<tr style= "line-height: 300%;">
+			<tr>
 				<th WIDTH=50>Icône</th>
 				<th WIDTH=40>Type</th>
 				<th>Nom</th>
@@ -1137,23 +1444,20 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Le jeteur de sorts fait surgir de sa main un rayon de lumière scintillante de la forme d'un arc long composite. Étonnamment léger et facile à bander, il ne quitte pas sa main pendant toute la durée du sort et peut être utilisé sans pénalités même si le lanceur ne maîtrise pas le maniement des arcs. Frappant comme une arme magique +3, il peut tirer jusqu'à quatre flèches par round, chacune infligeant 1d8+3 points de dégâts. Ces dégâts sont doublés contre les morts-vivant qui sont particulièrement vulnérables à la lumière. Par ailleurs, les rayons de lumière émanant de l'arc aveuglent ses ennemis qui subissent une pénalité de 2 à leurs jets d'attaque.<br><br>
-				À partir du niveau 20, l'arc solaire devient un arc de destruction et peut détruire certains morts-vivants qu'il touche s'ils ratent leur jet de sauvegarde contre la mort (avec un malus progressant avec le niveau du jeteur de sort jusqu'à un maximum de -10) :<br>
-					<ul style="margin-left: 1%;width: 96%;line-height: 150%">
-						<li>Niveau 20 : Squelettes (malus de 0 jusqu'à -10 au niveau 30).</li>
-						<li>Niveau 22 : Zombis (malus de 0 jusqu'à -10 au niveau 32).</li>
-						<li>Niveau 24 : Goules (malus de 0 jusqu'à -10 au niveau 34).</li>
-						<li>Niveau 26 : Ombres (malus de 0 jusqu'à -10 au niveau 36).</li>
-						<li>Niveau 28 : Blêmes (malus de 0 jusqu'à -10 au niveau 38).</li>
-						<li>Niveau 30 : Nécrophages (malus de 0 jusqu'à -10 au niveau 40).</li>
-						<li>Niveau 32 : Combattants squelettes (malus de 0 jusqu'à -10 au niveau 42).</li>
-						<li>Niveau 34 : Momies (malus de 0 jusqu'à -10 au niveau 44).</li>
-						<li>Niveau 36 : Spectres (malus de 0 jusqu'à -10 au niveau 46).</li>
-						<li>Niveau 38 : Vampires (malus de 0 jusqu'à -10 au niveau 48).</li>
-						<li>Niveau 40 : Liches (malus de 0 jusqu'à -10 au niveau 50).</li>
-					</ul>
-				<span class="composantes">Composante matérielle : une source de lumière qui s'éteint pendant l'incantation.</span></td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Le jeteur de sorts fait surgir de sa main un rayon de lumière scintillante de la forme d'un arc long composite. Étonnamment léger et facile à bander, il ne quitte pas sa main pendant toute la durée du sort et peut être utilisé sans pénalités même si le lanceur ne maîtrise pas le maniement des arcs. Frappant comme une arme magique +3, il peut tirer jusqu'à quatre flèches par round, chacune infligeant 1d8+3 points de dégâts. Ces dégâts sont doublés contre les morts-vivant qui sont particulièrement vulnérables à la lumière. Par ailleurs, les rayons de lumière émanant de l'arc aveuglent ses ennemis qui subissent une pénalité de 2 à leurs jets d'attaque.<br>
+				À partir du niveau 20, l'arc de lumière devient un arc de destruction et peut détruire certains morts-vivants qu'il touche s'ils ratent leur jet de sauvegarde contre la mort (avec un malus progressant avec le niveau du jeteur de sort jusqu'à un maximum de -10) :<br><br>
+
+				<span style="margin-left: 1%">– Niveau 20 : Squelettes (malus de 0 jusqu'à -10 au niveau 30).</span><br>
+				<span style="margin-left: 1%">– Niveau 22 : Zombis (malus de 0 jusqu'à -10 au niveau 32).</span><br>
+				<span style="margin-left: 1%">– Niveau 24 : Goules (malus de 0 jusqu'à -10 au niveau 34).</span><br>
+				<span style="margin-left: 1%">– Niveau 26 : Ombres (malus de 0 jusqu'à -10 au niveau 36).</span><br>
+				<span style="margin-left: 1%">– Niveau 28 : Blêmes (malus de 0 jusqu'à -10 au niveau 38).</span><br>
+				<span style="margin-left: 1%">– Niveau 30 : Nécrophages (malus de 0 jusqu'à -10 au niveau 40).</span><br>
+				<span style="margin-left: 1%">– Niveau 32 : Combattants squelettes (malus de 0 jusqu'à -10 au niveau 42).</span><br>
+				<span style="margin-left: 1%">– Niveau 34 : Momies (malus de 0 jusqu'à -10 au niveau 44).</span><br>
+				<span style="margin-left: 1%">– Niveau 36 : Spectres (malus de 0 jusqu'à -10 au niveau 46).</span><br>
+				<span style="margin-left: 1%">– Niveau 38 : Vampires (malus de 0 jusqu'à -10 au niveau 48).</span><br>
+				<span style="margin-left: 1%">– Niveau 40 : Liches (malus de 0 jusqu'à -10 au niveau 50).</span></td>
 			</tr>
 			<tr>
 				<td></td>
@@ -1169,8 +1473,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...<br>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...<br>
 				Le prêtre peut changer 1d4 bouts de bois (torches, épieux, etc), plus un par niveau d'expérience, en serpents. Ceux-ci attaquent lorsque le prêtre le leur ordonne. Là taille des bouts de bois ne doit cependant pas dépasser celle d'un bâton standard. Les objets magiques, tels que bâtons ou lances de fantassin enchantés, ne sont pas affectés par ce sort. Seuls les bouts de bois se trouvant dans l'aire d'effet sont transformés.<br>
 				Le type de serpents créés est variable mais les spécimens typiques possèdent 2 dés de vie, une classe d'armure de 6 et une vitesse de déplacement de 9. Leurs attaques se font par constriction (1d4 + 1 points de dégât par round) ou par morsure (1 point + poison, s'il y a lieu). La chance qu'a un de ces serpents d'être venimeux est égale à 5 % par niveau du prêtre si celui-ci le désire. Les serpents créés par un prêtre de niveau 11 ont donc 55% de chances chacun de l'être. L'effet du sort se prolonge durant 2 rounds par niveau du prêtre.<br>
 				Le sort inverse transforme des serpents normaux en bâtons pour la même durée.</td>
@@ -1189,10 +1492,9 @@
 				<td>oui</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Lorsqu'il lance ce sort, le druide subit une transformation radicale et devient l'idéal de la beauté pour un mâle, et habituellement une nymphe pour un mâle, les représentations pouvant varier pour une femelle. Tous les humanoïdes qui le regardent doivent réussir un jet de sauvegarde contre les sorts sous peine d'être à jamais aveuglés, comme s'ils étaient victimes du sort Cécité.<br>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Lorsqu'il lance ce sort, le druide subit une transformation radicale et devient l'idéal de la beauté pour un mâle, et habituellement une nymphe pour un mâle, les représentations pouvant varier pour une femelle. Tous les humanoïdes qui le regardent doivent réussir un jet de sauvegarde contre les sorts sous peine d'être à jamais aveuglés, comme s'ils étaient victimes du sort Cécité.<br>
 				Ils effectuent ce jet de sauvegarde avec un malus variant en fonction de leur niveau : s'ils sont au moins du même niveau que le druide, ils souffrent d'un malus de 1 + 1 par tranche de dix niveaux du druide. S'ils ont 5 DV de moins que le druide, ils sont automatiquement aveuglés. Sinon, ils sont pénalisés par un malus de 4 + 1 tous les cinq niveaux du druide.<br>
-				La transformation est instantanée, mais ne dure que quelques secondes et affecte toutes les créatures situées dans un rayon de 18 mètres (à l'exception des membres du groupe).</td>
+				La transformation est instantanée mais ne dure que quelques secondes et affecte toutes les créatures situées dans un rayon de 18 mètres (à l'exception des membres du groupe).</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwbleeab.jpg" title="gwbleea.spl" /></td>
@@ -1208,8 +1510,7 @@
 				<td>oui</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...<br>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...<br>
 				Une boule d'eau est une explosion d'eau qui ressemble à une boule de feu bleutée. À l'instar de cette dernière, le druide pointe son doigt et annonce la distance et la hauteur auxquelles il souhaite que l'explosion se produise. Une bille bleue jaillit alors du bout de son doigt et, à moins qu'elle ne rencontre un obstacle physique ou solide en chemin, (auquel cas l'explosion se produit plus tôt que prévu), fuse jusqu'à destination. En explosant, la boule d'eau inflige 1d6 points de dégâts par niveau du druide (jusqu'à un maximum de 10d6). Les créatures qui ratent leur jet de sauvegarde subissent la totalité des dégâts. Celles qui le réussissent parviennent à bondir à l'écart, à se jeter à terre ou à rouler sur le côté, et n'encaissent que la moitié des dégâts.</td>
 			</tr>
 			<tr>
@@ -1226,8 +1527,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwcergdb.jpg" title="gwcergd.spl" /></td>
@@ -1243,8 +1543,7 @@
 				<td></td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwcolacb.jpg" title="gwcolac.spl" /></td>
@@ -1260,8 +1559,7 @@
 				<td>oui</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwcoqplb.jpg" title="gwcoqpl.spl" /></td>
@@ -1277,10 +1575,8 @@
 				<td>oui</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...<br>
-				Ce sortilège crée autour du druide une barrière magique invisible et mobile qui se déplace avec lui et empêche la pénétration des créatures, matières vivantes ou projectiles végétaux. Ainsi le druide (et toute créature se trouvant au sein de la coquille) est-il protégé des attaques portées par des plantes ou des créatures végétales telles que tertres errants ou sylvaniens, champignons, limons, mousses et autres. L'effet se prolonge durant un tour par niveau d'expérience du druide ou jusqu'à dissipation.<br><br>
-				<span class="composantes">Focaliseur : de la cendre de restes brûlés d'une forme dangereuse de limon ou de mousse.</span></td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...<br>
+				Ce sort crée autour du druide une barrière magique invisible et mobile qui se déplace avec lui et empêche la pénétration des créatures, matières vivantes ou projectiles végétaux. Ainsi le druide (et toute créature se trouvant au sein de la coquille) est-il protégé des attaques portées par des plantes ou des créatures végétales telles que tertres errants ou sylvaniens, champignons, limons, mousses et autres. L'effet se prolonge durant un tour par niveau d'expérience du druide ou jusqu'à dissipation.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwcxnatb.jpg" title="gwcxnat.spl" /></td>
@@ -1296,9 +1592,8 @@
 				<td>oui</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...<br>
-				Le druide fait appel à la puissance de la Nature pour frapper ses adversaires. Ce sortilège inflige des dégâts à certains types de créatures dans la zone d'effet. Contrairement aux aberrations, morts-vivants et autres corruptions de la Nature, les créatures appartenant à l'ordre naturel ne sont pas affectées, comme les animaux, les créatures artificielles, les élémentaires, les Extérieurs dotés d'un sous-type élémentaire (Air, Terre, Feu ou Eau), les fées, les plantes, les vases, les vermines et les objets inanimés.<br>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...<br>
+				Le druide fait appel à la puissance de la Nature pour frapper ses adversaires. Le sort inflige des dégâts à certains types de créatures dans la zone d'effet. Contrairement aux aberrations, morts-vivants et autres corruptions de la Nature, les créatures appartenant à l'ordre naturel ne sont pas affectées, comme les animaux, les créatures artificielles, les élémentaires, les Extérieurs dotés d'un sous-type élémentaire (Air, Terre, Feu ou Eau), les fées, les plantes, les vases, les vermines et les objets inanimés.<br>
 				Les aberrations subissent 1d6 points de dégâts par niveau du druide (maximum 10d6) et sont hébétées pendant 1 round. Un jet de sauvegarde contre les sorts réussi réduit les dégâts de moitié et annule l'hébétement.
 				Les créatures d'autres types (créatures magiques, dragons, géants, humanoïdes, humanoïdes monstrueux et Extérieurs n'ayant pas de sous-type élémentaire) subissent 1d8 points de dégâts tous les 2 niveaux du druide (maximum 5d8). Un jet de sauvegarde contre les sorts réussi réduit les dégâts de moitié.</td>
 			</tr>
@@ -1316,8 +1611,7 @@
 				<td></td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwenchsb.jpg" title="gwenchs.spl" /></td>
@@ -1333,9 +1627,7 @@
 				<td>oui</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège ressemble à Enchevêtrement, si ce n'est qu'il n'affecte que les créatures ennemies. Le jeteur de sorts provoque l'emprisonnement des créatures situées dans la zone d'effet par les plantes qui s'y trouvent. Les bonnes et mauvaises herbes, les buissons, ainsi que les arbres, s'enroulent, s'entortillent et s'entrelacent autour d'elles, les retenant solidement pendant la durée du sort. Une fois par round, toute créature visée peut effectuer un jet de sauvegarde contre les sorts avec un malus de 4 pour pour échapper à l'enchevêtrement. Celles qui le réussissent échappent partiellement à l'enchevêtrement en se déplaçant à la moitié de leur vitesse normale. Une créature victime d'un enchevêtrement peut continuer d'attaquer, mais à la moitié de son rythme habituel et avec une pénalité de 2 à sa classe d'armure.<br><br>
-				<span class="composantes">Focaliseur : symbole sacré.</span></td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort ressemble à Enchevêtrement, si ce n'est qu'il n'affecte que les créatures ennemies. La Chevaucheuse provoque l'emprisonnement des créatures situées dans la zone d'effet par les plantes qui s'y trouvent. Les bonnes et mauvaises herbes, les buissons, ainsi que les arbres, s'enroulent, s'entortillent et s'entrelacent autour d'elles, les retenant solidement pendant la durée du sort. Une fois par round, toute créature visée peut effectuer un jet de sauvegarde contre les sorts avec un malus de 4 pour pour échapper à l'enchevêtrement. Celles qui le réussissent échappent partiellement à l'enchevêtrement en se déplaçant à la moitié de leur vitesse normale. Une créature victime d'un enchevêtrement peut continuer d'attaquer, mais à la moitié de son rythme habituel et avec une pénalité de 2 à sa classe d'armure.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwequnab.jpg" title="gwequna.spl" /></td>
@@ -1351,8 +1643,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Le druide prête des points de caractéristique à un allié : il subit un malus de 4 dans la caractéristique de son choix et la cible bénéficie d'un bonus équivalent à la même caractéristique. Il est impossible de jeter ce sort une seconde fois dans l'heure qui suit.</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Le druide prête des points de caractéristique à un allié : il subit un malus de 4 dans la caractéristique de son choix et la cible bénéficie d'un bonus équivalent à la même caractéristique. Il est impossible de jeter ce sort une seconde fois dans l'heure qui suit.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwetarvb.jpg" title="gwetarv.spl" /></td>
@@ -1368,8 +1659,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège fait apparaître dans l'inventaire du jeteur de sort une minuscule étoile scintillante par tranche de deux niveaux (jusqu'à un maximum de 10). Ces étoiles tournent autour de sa tête à la façon de pierres ioniques. Pendant la durée du sort, il peut en lancer jusqu'à cinq par round en direction d'une cible située à portée. Le prêtre doit effectuer un jet normal pour toucher. Les étoiles sont considérées comme des missiles, avec un bonus de 5 aux jets d'attaque et sans malus pour incompétence avec les armes. Relevant d'un effet de force magique, elles ignorent l'intangibilité et peuvent frapper n'importe quelle créature, même celles qui ne sont vulnérables qu'aux armes magiques.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort fait apparaître dans l'inventaire du jeteur de sort une minuscule étoile scintillante par tranche de deux niveaux (jusqu'à un maximum de 10). Ces étoiles tournent autour de sa tête à la façon de pierres ioniques. Pendant la durée du sort, il peut en lancer jusqu'à cinq par round en direction d'une cible située à portée. Le prêtre doit effectuer un jet normal pour toucher. Les étoiles sont considérées comme des missiles, avec un bonus de 5 aux jets d'attaque et sans malus pour incompétence avec les armes. Relevant d'un effet de force magique, elles ignorent l'intangibilité et peuvent frapper n'importe quelle créature, même celles qui ne sont vulnérables qu'aux armes magiques.<br>
 				Lorsqu'elles atteignent leur cible, elles explosent à l'impact en une boule de lumière de 6 m de diamètre qui inflige 1d8 points de dégâts à tous les ennemis situés dans la zone d'effet, + 1 par tranche de deux niveaux du jeteur de sort (jusqu'à un maximum de 10). Les cibles mauvaises subissent des dégâts doublés, ainsi que les morts-vivants (triples s'ils sont mauvais).<br>
 				Il est possible de donner ces étoiles à tout personnage non mauvais qui pourra les utiliser pendant la durée du sort. Après quoi, elles disparaissent.</td>
 			</tr>
@@ -1387,11 +1677,9 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège est similaire au sortilège Marteau spirituel. Le prêtre sollicite sa divinité pour générer dans sa main un champ de force de la forme d'un fléau qu'il peut utiliser pendant toute la durée du sort sans pénalités, même s'il ne maîtrise pas ce type d'arme. Ce fléau frappe comme une arme magique, avec un bonus aux jets d'attaque et de dégâts de 1 par tranche de 10 niveaux d'expérience du prêtre. Il inflige les mêmes dégâts qu'un fléau normal (1d6+1, plus le bonus magique).<br>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort est similaire au sortilège Marteau spirituel. Le prêtre sollicite sa divinité pour générer dans sa main un champ de force de la forme d'un fléau qu'il peut utiliser pendant toute la durée du sort sans pénalités, même s'il ne maîtrise pas ce type d'arme. Ce fléau frappe comme une arme magique, avec un bonus aux jets d'attaque et de dégâts de 1 par tranche de 10 niveaux d'expérience du prêtre. Il inflige les mêmes dégâts qu'un fléau normal (1d6+1, plus le bonus magique).<br>
 				Aux niveaux 10, 20, 30 et 40, le fléau obtient une tête supplémentaire infligeant chacune 1d6+1 points de dégâts supplémentaires.</td>
 			</tr>
-			<tr>
 				<td><img src="images/icons/gwfltvgb.jpg" title="gwfltvg.spl" /></td>
 				<td>D ou C-D</td>
 				<td><span style="color: #FFCC33;">Flétrissure végétale</span></td>
@@ -1405,8 +1693,7 @@
 				<td>oui</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwhopasb.jpg" title="gwhopas.spl" /></td>
@@ -1422,10 +1709,8 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège ouvre un petit portail planaire menant à un demi-plan de guérison qui permet de régénérer au rythme de un point de vie par round. Ses caractéristiques (y compris le temps, la gravité et la magie) sont identiques à celles du plan Matériel. La seule façon d'entrer ou de sortir du demi-plan consiste à passer par l'entrée créée par le lanceur. Seuls les individus décrits ou nommés par celui-ci lors de l'incantation peuvent y pénétrer. Le portail n'existe que tant que le demi-plan lui-même existe. Quand le lanceur quitte le demi-plan, le portail se referme et disparaît. Quiconque se trouve encore dans le demi-plan de guérison au même moment réapparaît dans le plan Matériel, à l'endroit où se trouvait l'entrée.<br>
-				Une créature dans le demi-plan astral est invisible, intangible et capable de se déplacer dans toutes les directions. Elle voit et entend tout ce qui se passe dans le plan Matériel (à 18 mètres à la ronde seulement), mais tout lui apparaît gris et dénué de substance. Les créatures matérielles sont incapables de l'attaquer physiquement et magiquement.<br><br>
-				<span class="composantes">Composante matérielle : une pierre précieuse parfaite valant au moins 250 po.</span></td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort ouvre un petit portail planaire menant à un demi-plan de guérison qui permet de régénérer au rythme de un point de vie par round. Ses caractéristiques (y compris le temps, la gravité et la magie) sont identiques à celles du plan Matériel. La seule façon d'entrer ou de sortir du demi-plan consiste à passer par l'entrée créée par le lanceur. Seuls les individus décrits ou nommés par celui-ci lors de l'incantation peuvent y pénétrer. Le portail n'existe que tant que le demi-plan lui-même existe. Quand le lanceur quitte le demi-plan, le portail se referme et disparaît. Quiconque se trouve encore dans le demi-plan de guérison au même moment réapparaît dans le plan Matériel, à l'endroit où se trouvait l'entrée.<br>
+				Une créature dans le demi-plan astral est invisible, intangible et capable de se déplacer dans toutes les directions. Elle voit et entend tout ce qui se passe dans le plan Matériel (à 18 mètres à la ronde seulement), mais tout lui apparaît gris et dénué de substance. Les créatures matérielles sont incapables de l'attaquer physiquement et magiquement.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwjuscxb.jpg" title="gwjuscx.spl" /></td>
@@ -1457,8 +1742,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Le prêtre irradie une partie de son aura personnelle et insuffle du courage à ses alliés dans un rayon de 9 mètres. Il élève leur moral à son plus haut niveau et les immunise à la terreur. Au fur et à mesure que la durée du sort s'écoule, ce moral revient à son niveau normal. Si les bénéficiaires du sort sont affectés par une terreur magique, cette peur s'annule. Par ailleurs, ils sont galvanisés et reçoivent un bonus de 2 à leurs jets d'attaque.</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Le prêtre irradie une partie de son aura personnelle et insuffle du courage à ses alliés dans un rayon de 9 mètres. Il élève leur moral à son plus haut niveau et les immunise à la terreur. Au fur et à mesure que la durée du sort s'écoule, ce moral revient à son niveau normal. Si les bénéficiaires du sort sont affectés par une terreur magique, cette peur s'annule. Par ailleurs, ils sont galvanisés et reçoivent un bonus de 2 à leurs jets d'attaque.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwmarchb.jpg" title="gwmarch.spl" /></td>
@@ -1474,9 +1758,8 @@
 				<td>oui</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...<br>
-				Ce sortilège génère une énergie chaotique qui frappe les adversaires du prêtre. L'attaque prend la forme d'une explosion multicolore ricochant en tous sens. Seules les créatures loyales ou neutres sont affectées. Le sort inflige 1d8 points de dégâts tous les deux niveaux du prêtre (jusqu'à un maximum de 5d8) aux créatures loyales (ou 1d6 points de dégâts par niveau du prêtre, pour un maximum de 10d6, aux Extérieurs loyaux) et les ralentit pendant 1d6 rounds. Un jet de sauvegarde réussi réduit les dégâts de moitié et annule l'effet secondaire.<br>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...<br>
+				Ce sort génère une énergie chaotique qui frappe les adversaires du prêtre. L'attaque prend la forme d'une explosion multicolore ricochant en tous sens. Seules les créatures loyales ou neutres sont affectées. Le sort inflige 1d8 points de dégâts tous les deux niveaux du prêtre (jusqu'à un maximum de 5d8) aux créatures loyales (ou 1d6 points de dégâts par niveau du prêtre, pour un maximum de 10d6, aux Extérieurs loyaux) et les ralentit pendant 1d6 rounds. Un jet de sauvegarde réussi réduit les dégâts de moitié et annule l'effet secondaire.<br>
 				Les créatures neutres ne subissent que des demi-dégâts et ne risquent pas d'être ralenties. Si elles réussissent leur jet de sauvegarde, elles ne subissent qu'un quart des dégâts.</td>
 			</tr>
 			<tr>
@@ -1493,8 +1776,7 @@
 				<td></td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwpcactb.jpg" title="gwpcact.spl" /></td>
@@ -1510,13 +1792,12 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Lorsqu'un druide jette ce sort sur une créature, la peau de cette dernière acquiert la résistance et les épines d'un cactus. Sa classe d'armure gagne un bonus de 3, + 1 par tranche de cinq niveaux du niveau 10 jusqu'au niveau 30. De plus, des épines poussent sur le corps du bénéficiaire, ainsi que sur son armure et ses vêtements : toute créature le frappant subit 1d6 points de dégâts perforants.<br>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Lorsqu'un druide jette ce sort sur une créature, la peau de cette dernière acquiert la résistance et les épines d'un cactus. Sa classe d'armure gagne un bonus de 3, + 1 par tranche de cinq niveaux du niveau 10 jusqu'au niveau 30. De plus, des épines poussent sur le corps du bénéficiaire, ainsi que sur son armure et ses vêtements : toute créature le frappant subit 1d6 points de dégâts perforants.<br>
 				Enfin, le bénéficiaire est protégé contre la déshydratation et obtient un bonus de 1 à ses jets de sauvegarde contre toutes les formes d'attaque, à l'exception de la magie.<br><br>
-				<em>Note : si le composant Gestion de la nourriture est installé, ce sort bloque la consommation d'eau nécessaire pendant sa durée. Cependant, à la fin du sort, la variable est rétablie à son niveau initial, avec tous ses malus induits éventuels.</em><br><br>
-				<span class="composantes">Composante matérielle : une épine de cactus.</span></td>
+
+				<em>Note : si le composant Gestion de la nourriture du mod Menace sur le Royaume de Diamant Éternel est installé, ce sort bloque la consommation d'eau nécessaire pendant sa durée. Cependant, à la fin du sort, la variable est rétablie à son niveau initial, avec tous ses malus induits éventuels.</em></td>
 			</tr>
-			<tr>
+			</tr>
 				<td><img src="images/icons/gwpieacb.jpg" title="gwpieac.spl" /></td>
 				<td>D</td>
 				<td><span style="color: #FFCC33;">Pierres acérées</span></td>
@@ -1530,8 +1811,7 @@
 				<td></td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwptnlyb.jpg" title="gwptnly.spl" /></td>
@@ -1547,9 +1827,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège fonctionne comme Protection contre le Mal, rayon de 3 m, et protège son bénéficiaire contre les lycanthropes. De plus, tous ses alliés situés dans un rayon de 3 m autour de lui sont également affectés par une barrière magique qui se déplace avec eux : tous les lycanthropes reçoivent un malus de 2 à leurs jets d'attaque et tous les jets de sauvegarde contre de telles attaques se font avec un bonus de 2. Ces effets durent jusqu'à expiration ou dissipation.<br><br>
-				<span class="composantes">Composante matérielle : une petite dague en argent.</span></td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort fonctionne comme Protection contre le Mal, rayon de 3 m, et protège son bénéficiaire contre les lycanthropes. De plus, tous ses alliés situés dans un rayon de 3 m autour de lui sont également affectés par une barrière magique qui se déplace avec eux : tous les lycanthropes reçoivent un malus de 2 à leurs jets d'attaque et tous les jets de sauvegarde contre de telles attaques se font avec un bonus de 2. Ces effets durent jusqu'à expiration ou dissipation.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwptnmvb.jpg" title="gwptnmv.spl" /></td>
@@ -1565,8 +1843,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège fonctionne comme Protection contre le Mal, rayon de 3 m, et protège son bénéficiaire contre les morts-vivants. De plus, tous ses alliés situés dans un rayon de 3 m autour de lui sont également affectés par une barrière magique qui se déplace avec eux : tous les morts-vivants reçoivent un malus de 2 à leurs jets d'attaque et tous les jets de sauvegarde contre de telles attaques se font avec un bonus de 2. Ces effets durent jusqu'à expiration ou dissipation.</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort fonctionne comme Protection contre le Mal, rayon de 3 m, et protège son bénéficiaire contre les morts-vivants. De plus, tous ses alliés situés dans un rayon de 3 m autour de lui sont également affectés par une barrière magique qui se déplace avec eux : tous les morts-vivants reçoivent un malus de 2 à leurs jets d'attaque et tous les jets de sauvegarde contre de telles attaques se font avec un bonus de 2. Ces effets durent jusqu'à expiration ou dissipation.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwrecitb.jpg" title="gwrecit.spl" /></td>
@@ -1582,8 +1859,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwrenvob.jpg" title="gwrenvo.spl" /></td>
@@ -1599,10 +1875,8 @@
 				<td>oui</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...<br>
-				Ce sortilège force la créature extraplanaire prise pour cible à retourner dans son plan d'origine. Si elle rate son jet de sauvegarde contre les sorts, elle disparaît aussitôt mais elle a 20 % de chances de se retrouver dans un plan autre que le sien. Si la créature a plus de dés de vie que le niveau du lanceur de sort, son jet de sauvegarde s'effectue avec un bonus égal à ce différentiel. Dans le cas contraire, elle est pénalisée d'un malus égal à ce même différentiel.<br><br>
-				<span class="composantes">Composante matérielle : un objet quelconque que la créature sujette au sort trouve repoussant.</span></td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...<br>
+				Ce sort force la créature extraplanaire prise pour cible à retourner dans son plan d'origine. Si elle rate son jet de sauvegarde contre les sorts, elle disparaît aussitôt mais elle a 20 % de chances de se retrouver dans un plan autre que le sien. Si la créature a plus de dés de vie que le niveau du lanceur de sort, son jet de sauvegarde s'effectue avec un bonus égal à ce différentiel. Dans le cas contraire, elle est pénalisée d'un malus égal à ce même différentiel.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwrepinb.jpg" title="gwrepin.spl" /></td>
@@ -1618,13 +1892,11 @@
 				<td>oui</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...<br>
-				Ce sortilège génère une barrière invisible qui repousse la vermine. Tout insecte normal ne peut s'approcher à moins de 3 m du lanceur de sort. Les insectes géants dont le nombre de dés de vie est inférieur au tiers du niveau du lanceur de sort sont également repoussés (soit 2 dés de vie pour un prêtre de niveau 7 à 9, 3 dés de vie pour un prêtre de niveau 10 à 12, etc). Au-delà, ils ont droit à un jet de sauvegarde contre les sorts pour surmonter l'effet du sort. Même en cas de succès, le seul fait de traverser la barrière du répulsif leur inflige 1d6 points de dégâts. La douleur qu'ils ressentent en s'approchant de la zone est bien souvent suffisante pour faire rebrousser chemin aux moins agressifs.<br>
-				Il est à noter que ce sort n'a aucun effet sur les arachnides, les mille-pattes et créatures similaires - il n'affecte que les véritables insectes.<br><br>
-				<span class="composantes">Composante matérielle : plusieurs fleurs de souci broyées, ou un poireau entier écrasé, ou plusieurs feuilles d'ortie écrasées, ou un peu de résine provenant d'un camphrier.</span></td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...<br>
+				Ce sort génère une barrière invisible qui repousse la vermine. Tout insecte normal ne peut s'approcher à moins de 3 m du lanceur de sort. Les insectes géants dont le nombre de dés de vie est inférieur au tiers du niveau du lanceur de sort sont également repoussés (soit 2 dés de vie pour un prêtre de niveau 7 à 9, 3 dés de vie pour un prêtre de niveau 10 à 12, etc). Au-delà, ils ont droit à un jet de sauvegarde contre les sorts pour surmonter l'effet du sort. Même en cas de succès, le seul fait de traverser la barrière du répulsif leur inflige 1d6 points de dégâts. La douleur qu'ils ressentent en s'approchant de la zone est bien souvent suffisante pour faire rebrousser chemin aux moins agressifs.<br>
+				Il est à noter que ce sort n'a aucun effet sur les arachnides, les mille-pattes et créatures similaires - il n'affecte que les véritables insectes</td>
 			</tr>
-			<tr>
+			</tr>
 				<td><img src="images/icons/gwrustb.jpg" title="gwrust.spl" /></td>
 				<td>D</td>
 				<td><span style="color: #FFCC33;">Rouille</span></td>
@@ -1638,8 +1910,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwsflomb.jpg" title="gwsflom.spl" /></td>
@@ -1655,13 +1926,12 @@
 				<td>oui</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...<br>
-				Ce sortilège est particulièrement efficace contre les créatures originaires du plan de l'Ombre et contre celles usant de sorts ou de pouvoirs magiques relevant du registre de l'ombre. Il illumine vivement la zone d'effet et la débarrasse de tout portail séparant le plan de l'Ombre des autres plans et empêche qu'on y accède par le biais de sorts relevant du registre de l'ombre.<br>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...<br>
+				Ce sort est particulièrement efficace contre les créatures originaires du plan de l'Ombre et contre celles usant de sorts ou de pouvoirs magiques relevant du registre de l'ombre. Il illumine vivement la zone d'effet et la débarrasse de tout portail séparant le plan de l'Ombre des autres plans et empêche qu'on y accède par le biais de sorts relevant du registre de l'ombre.<br>
 				Les autochtones du plan de l'Ombre pris dans le Souffle d'ombre doivent réussir un jet de sauvegarde sous peine d'être étourdis pendant 3d6 rounds. Les morts-vivants et autres créatures vulnérables à la lumière qui hantent ces lieux doivent effectuer un second jet de sauvegarde. En cas d'échec, ils subissent 2d10 points de dégâts supplémentaires. Les créatures manquant l'un de ces deux jets de sauvegarde ne peuvent utiliser de sort ou de pouvoir surnaturel visant à ouvrir un portail menant au plan de l'Ombre pendant 3d6 rounds.<br>
 				Le Souffle d'ombre ferme tous les portails et autres ouvertures menant au plan de l'Ombre. Les créatures situées de l'autre côté d'un portail ne sont pas affectées par le Souffle d'ombre.</td>
 			</tr>
-			<tr>
+			</tr>
 				<td><img src="images/icons/gwstalab.jpg" title="gwstala.spl" /></td>
 				<td>D</td>
 				<td><span style="color: #FFCC33;">Stalagmite soudaine</span></td>
@@ -1675,10 +1945,9 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...</td>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...</td>
 			</tr>
-			<tr>
+			</tr>
 				<td><img src="images/icons/gwtemngb.jpg" title="gwtemng.spl" /></td>
 				<td>D</td>
 				<td><span style="color: #FFCC33;">Tempête de neige</span></td>
@@ -1691,8 +1960,8 @@
 				<td></td>
 				<td></td>
 			</tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...</td>
+			<tr>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwtenchb.jpg" title="gwtench.spl" /></td>
@@ -1708,11 +1977,25 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				<img width=28 src="clipart3520123.png" /> en cours de définition et de codage...<br>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...<br>
 				Le jeteur de sort permet à tous ses alliés situés dans un rayon de 6 mètres autour de lui de survivre sans eau ni nourriture en leur conférant une réserve interne d'eau et de nourriture suffisante pour toute la durée du sort ou jusqu'à dissipation. Cependant, il ne les protège pas de la déshydratation magique ou de tout effet magique basé sur la faim ou la soif.<br>
-				Note : si le composant Gestion de la nourriture est installé, ce sort correspond à la consommation d'eau et de nourriture nécessaire pendant sa durée.<br><br>
-				<span class="composantes">Composante matérielle : une poignée de poils de chameau.</span></td>
+				Note : si le composant Gestion de la nourriture du mod Menace sur le Royaume de Diamant Éternel est installé, ce sort correspond à la consommation d'eau et de nourriture nécessaire pendant sa durée.</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>C-D</td>
+				<td><span style="color: #FFCC33;"></span></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td colspan="11" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">en cours de définition et de codage...</td>
 			</tr>
 		</table><br>
 		<p style="font-size:90%;text-align: right;"><a href="#divine">RETOUR À LA LISTE DES SORTS DIVINS</a>
@@ -4228,35 +4511,163 @@
 		</p>
 
 
-		<address>
-			<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; Sorts profanes</span> &#8226; <a href="#top">HAUT DE PAGE</a>
-		</address>
-	  </div>
+			<address>
+				<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; Sorts profanes</span> &#8226; <a href="#top">HAUT DE PAGE</a>
+			</address>
+		</div>
 
-<!-- ======================= C r e d i t s ====================== -->
-<!-- ======================= V e r s i o n s ====================== -->
+	<!-- ======================= C r e d i t s ====================== -->
+	  <a name="credits" id="credits"></a>
+		<div class="content">
+		<h2>
+			Crédits et remerciements
+		</h2><br>
+
+		<h4>
+			  Auteur : <a href="https://www.baldursgateworld.fr/lacouronne/members/freddy_gwendo.html">Freddy_Gwendo (aka Gwendolyne)</a>
+		</h4>
+
+<hr>
+		<h3>
+			Remerciements particuliers à :
+		</h3>
+
+  		<ul>
+			<li>
+			  L'équipe de <a href="https://www.baldursgateworld.fr">La Couronne de Cuivre</a> pour l'hébergement de ce mod.
+ 			</li>
+			<li>
+ 			  Les créateurs de la série Baldur's Gate : <a href="http://www.bioware.com/">Bioware</a> et <a href="http://www.obsidian.net/">Black Isle Studios</a>.
+			</li>
+			<li>
+			  Isaya pour son aide précieuse, ses suggestions et son soutien constant dans le codage des points critiques.
+			</li>
+			<li>
+			  deratiseur pour ses conseil dans la création des kits.
+			</li>
+			<li>
+			  Luren pour son aide sans failles dans la réalisation d'éléments graphiques. Sans lui, vous ne pourriez pas emprunter d'ascenseur, ni combattre de tarasques, car elles n'auraient jamais vu le jour.
+			</li>
+			<li>
+			  Cocrane pour sa recherche d'éléments graphiques à intégrer dans le mod, ainsi que la conception de la carte du Col du Dragon.
+			</li>
+			<li>
+			  Graoumf et Lulubaleyette pour la relecture.
+			</li>
+			<li>
+			  Merci aux artistes de portraits du site <a href="https://www.pinterest.fr/">Pinterest</a>.
+ 			</li>
+			<li>
+			  Merci à toutes les personnes des forums de <a href="https://www.baldursgateworld.fr">La Couronne de Cuivre</a>, <a href="http://gibberlings3.net/forums/">The Gibberlings Three</a>, <a href="http://www.shsforums.net/">Spellhold Studios</a>, et des autres communautés de joueurs et de moddeurs IE qui m'ont offert leur aide.
+			</li>
+			<li>etc.
+			</li>
+		</ul><br>
+
+<hr>
+		<h3>
+			Logiciels et outils utilisés pour la réalisation de ce mod :
+		</h3>
+
+		<ul>
+			<li>
+			  <a href="http://www.weidu.org/%7Ethebigg/"><acronym title="Weimer Dialogue Utility">WeiDU</acronym></a> de Wes Weimer, the bigg et Wisp.
+			</li>
+			<li>
+			  <a href="http://forums.pocketplane.net/index.php/topic,25153.msg314249.html#msg314249">Near Infinity</a> de Jon Olav Hauglid, FredSRichardson et Argent77.
+			</li>
+			<li>
+			  <a href="http://www.gibberlings3.net/tools/dltcep.php"><acronym title="Dragonlance Total Conversion Editor Pro">DLTCEP</acronym></a> de Avenger.
+			</li>
+			<li>
+			  <a href="https://gibberlings3.github.io/iesdp/"><acronym title="Infinity Engine Structures Description Project">IESDP</acronym></a> maintenu par igi et lynx.
+			</li>
+			<li>
+			  <a href="http://www.gibberlings3.net/debug/">G3 Debugging Suite</a> de CamDawg.
+			</li>
+
+			<li>
+			  <a href="http://www.teambg.eu/?page=tools&amp;cat=32">BAM Workshop</a> de Glenn Flansburg.
+			</li>
+			<li>
+			  <a href="http://www.shsforums.net/topic/57564-bamworkshop/">BAMWorkshop 2</a> de Andrew Bridges.
+			</li>
+			<li>
+			  <a href="http://www.shsforums.net/index.php?showtopic=42359">BAM Batcher</a> de Miloch.
+			</li>
+			<li>
+			  <a href="https://www.adobe.com/products/photoshop.html">Adobe Photoshop</a>
+			</li>
+			<li>
+			  <a href="http://www.gimp.org/"><acronym title="GNU Image Manipulation Program">GIMP</acronym></a> par l'équipe de the GIMP.
+ 			</li>
+			<li>
+			  <a href="https://www.blender.org/">Blender</a> par la Fondation Blender.
+			</li>
+
+			<li>
+			  <a href="http://notepad-plus-plus.org/">Notepad++</a> par l'équipe de Notepad++, Don Ho; et le plug-in de correction orthographique.
+ 			</li>
+			<li>
+			  <a href="http://www.shsforums.net/files/file/1048-weidu-highlighter-for-notepad/">WeiDU Notepad++ Highlighters </a> de Argent77.
+			</li>
+			<li>
+			  <a href="http://www.bulkrenameutility.co.uk/">Bulk Rename Utility</a> de TGRMN Software.
+			</li>
+		</ul><br>
+
+<hr>
+		<h3>
+			Informations sur les droits d'auteur
+		</h3>
+
+		  <div class="important" style="color: #303030; background-color: #999999;">
+			<p>Menace sur le Royaume de Diamant Éternel n'est pas développé, supporté ni approuvé par BioWare&trade; ou Interplay/Black Isle, Overhaul, Beamdog ou Wizards of the Coast. Il a été développé par Freddy_Gwendo (aka Gwendolyne), et est basé sur le jeu Baldur's Gate II et son extension.</p>
+			<p>Baldur's Gate II : Les Ombres d'Amn et Baldur's Gate II : Trône de Bhaal appartiennent à &copy; TSR, Inc. Le moteur Infinity Engine appartient à &copy; BioWare Corp. Toutes les autres marques et droits d'auteur appartiennent à leurs propriétaires respectifs.</p>
+<br>
+			<p>Ce mod a été créé pour être librement apprécié par tous les joueurs de Baldur's Gate II. Cependant, il ne doit pas être vendu, publié, compilé ou redistribué sous une forme quelconque sans le consentement de son auteur.</p>
+<br>
+			<p>S'il existe des problèmes de droits d'auteur ou si cette déclaration nécessite une révision, veuillez me contacter et conseillez-moi sur ce qu'il faut faire à ce sujet. Plus particulièrement, si vous trouvez dans ce mod des illustrations susceptibles d'être en conflit avec les règles de droit d'auteur, merci de bien vouloir me le faire savoir dès que possible et je supprimerai immédiatement le contenu en conflit.</p>
+		  </div><br>
+		<p>
+			La communauté de modding sur le moteur Infinity Engine a été très active depuis plus de quinze ans maintenant, et a produit des milliers d'heures de travail non rémunérées effectuées par des fans du jeu. Les moddeurs s'efforcent de publier le meilleur de leur travail, et les joueurs bénéficient des mods les plus performants et les mieux maintenus, à condition que nous travaillions tous dans le même sens.
+		</p>
+		<p>
+			Mais cette harmonie peut malheureusement être perturbée, principalement par deux comportements. Le premier, c'est de revendiquer le travail de quelqu'un d'autre. Le second consiste à héberger et à redistribuer un mod sans la permission de son(es) auteur(s).
+		</p>
+		<p>
+			Soyez assez sympa avec vos collègues joueurs et moddeurs. Ne le faites pas.
+		</p><br>
+
+
+			<address>
+				<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; Crédits et remerciements</span> &#8226; <a href="#top">HAUT DE PAGE</a>
+			</address>
+		</div>
+
+	<!-- ======================= V e r s i o n s ====================== -->
 	  <a name="versions" id="versions"></a>
-	  <div class="content" id="versionHistory">
-
+		<div class="content">
 		<h2>
 			Historique des versions
 		</h2><br>
 
 		<p class="version">
-			Version Alpha 0.0.1 &nbsp;(date)
+			Version 1.0.0 - date (format : jour mois année)
 		</p>
 
-		<ul style="text-align:justify;">
-			<li>Sortie initiale.</li>
-		</ul><br>
+		<ul>
+			<li>Sortie initiale</li>
+		</ul>
 
 
-		<address>
-			<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; Historique des versions</span> &#8226; <a href="#top">HAUT DE PAGE</a>
-		</address>
-	  </div>
+			<address>
+				<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; Historique des versions</span> &#8226; <a href="#top">HAUT DE PAGE</a>
+			</address>
+		</div>
 
-	 </div>
 	</div>
-  </body>
+  </div>
+</body>
 </html>
+

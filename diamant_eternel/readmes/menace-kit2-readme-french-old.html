@@ -2,50 +2,387 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-  <head>
+<head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="styles/style_lcc.css" type="text/css">
+	<style type="text/css">
+/*<![CDATA[*/
+	<!-- 
+	body {
+		margin: 0;
+		padding: 0;
+		cursor: default;
+		text-align: center;
+		color: #D1D1D1;
+		background: #000 url('images/bg_lcc2.png');
+	}
 
+/*	En-tête  */
+	#cartouche {
+		text-align: left;
+		margin: 0 auto;
+		margin-top: 20px;
+		width: 88%;
+		font-family: Verdana, Tahoma, Arial, sans-serif;
+		font-size: 12px;
+		color: #D1D1D1;
+/*		background-repeat: repeat-x;
+		background: url("images/degrade_titre.png");*/
+	}
+
+	#header {
+		text-align: center;
+*		background: #303030;
+		background-image: linear-gradient(#666666, #040404);
+		border: 1px solid #FFCC33;
+		border-top: 5px solid #FFCC33;
+		border-bottom: 5px solid #FFCC33;
+		padding: 5px 0 13px 0;
+		height: 310px;
+		border-radius: 3px 4px 3px 3px;
+		box-shadow: 8px 8px 15px black;
+	}
+/*	le décalage horizontal de l'ombre ;
+	le décalage vertical de l'ombre ;
+	l'adoucissement du dégradé ;
+	la couleur de l'ombre.	*/
+
+	#header .about {
+        margin: 7px 0 0 0;
+        padding: 0;
+/*		font-style: italic;
+		color: #555;
+*/		text-decoration: none;
+	}
+	#header .about a:link,
+	#header .about a:visited {
+	}
+	#header .about a:focus,
+	#header .about a:hover {
+		text-decoration: none;
+		color: #deded9;
+		border: 0;
+	}
+
+/*	Menu  */
+	#menu {
+		font-weight: bold;
+		margin: 0;
+		margin-top: 20px;
+		text-align: center;
+		color: #FFCC33;
+		background-repeat: repeat-x;
+		background: url("images/degrade_titre.png");
+		border-radius: 3px 4px 3px 3px;
+*		heigth: 50px;
+		line-height: 400%;
+*		vertical-align:middle;
+	}
+	#menu a:link,
+	#menu a:visited {
+	}
+	#menu a:focus,
+	#menu a:hover {
+		text-decoration: none;
+		color: #deded9;
+		border: 0;
+	}
+
+/*	Sections  */
+	#maindiv {
+		margin: 0 auto;
+		margin-top: -20px;
+		width: 100%;
+	}
+
+	#maindiv .content {
+		color: #deded9;
+		background-color: #5F5F5F;
+		padding: 0 0 25px 0;
+		margin: 50px auto;
+		border-width: 1px 1px 4px 10px;
+		border-style: solid;
+		border-color: #FFBF00;
+/*ou		border: 1px solid #FFCC33;
+		border-left: 10px solid #FFCC33;
+		border-bottom: 4px solid #FFCC33;
+*/		position: relative;
+		border-radius: 4px 4px 4px 5px;
+		box-shadow: 8px 8px 15px black;
+		display: block;
+	}
+
+	#maindiv .important {
+		font-size: 95%;
+		font-family: Verdana;
+		text-align: left;
+*		background-color: #F1F1F1;
+		border-width: 1px 4px 1px 4px;
+		border-style: solid;
+		border-color: #FFBF00;
+/*		border-top: solid 1px #FFBF00;
+		border-bottom: solid 1px #FFBF00;
+		border-left: solid 6px #FFBF00;
+		border-right: solid 6px #FFBF00;
+*/		padding: 10px;
+		margin: 10px auto;
+		width: 80%;
+		line-height: 160%;
+	}
+	#maindiv .important::before {
+		display: none;
+	}
+	#maindiv .important p {
+		width: 100%;
+		font-size: 100%;
+		text-indent: 0px;
+		margin: 5px 0 5px 0;
+		line-height: 180%;
+	}
+	#maindiv .important ol {
+		margin: -10px 0 0 20px;
+	}
+	#maindiv .important ul {
+		margin: -10px 0 0 15px;
+	}
+
+	#maindiv address {
+		font-size: 95%;
+		font-style: normal;
+		font-weight: bold;
+		text-decoration: none;
+		color: #303030;
+		background-color: #FFBF00;
+		padding: 3px 0px 0px;
+		margin: 0px;
+		width: 100%;
+		position: absolute;
+		bottom: -1px;
+		left: 0px;
+		display: block;
+		text-align: right;
+	}
+	#maindiv address a:link,
+	#maindiv address a:visited {
+		font-weight: bold;
+		text-decoration: underline;
+		background-color: transparent;
+		color: #000 !important;
+		padding-right: 5px;
+		padding-left: 6px;
+	}
+	#maindiv address a:focus,
+	#maindiv address a:hover {
+		text-decoration: none;
+		color: #000;
+	}
+
+	/*	Corps de texte  */
+	#maindiv p {
+		text-align: justify;
+		font-size: 110%;
+		font-style: normal;
+		text-decoration: none;
+		line-height: 150%;
+		padding: 0px;
+		margin: 10px auto;
+		width: 90%;
+		display: block;
+	}
+
+	/*	Listes  */
+	#maindiv ul {
+		line-height: 170%;
+		margin-left: 4%;
+		width: 87%;
+	}
+	#maindiv ul li {
+		/*margin-right: 0px;*/
+	}
+	#maindiv ul li ul {
+		margin: 0px;
+		width: 96%;
+	}
+	#maindiv ul li ul li {
+	}
+	#maindiv ul li ul li ul {
+		margin-left: -1%;
+		width: 98%;
+	}
+	#maindiv ul li ul li ul li {
+	}
+
+/* INUTILISE = liste numérique
+	#maindiv ol {
+		margin: 0px 0 0 35px;
+		*margin-left: 70px;
+	}
+	#maindiv ol li {
+		line-height: 170%;
+	}
+*/
+
+	/*	Titre des versions  */
+	#maindiv .version {
+		display: block;
+		width: 90%;
+		background-color: transparent;
+		text-align: left;
+/*		text-indent: 30px; */
+		font-weight: bold;
+		padding-top: 3px;
+		padding-bottom: 3px;
+		border-bottom: solid 1px #FFCC33;
+		border-top: solid 1px #FFCC33;
+	}
+
+	/*	Liens internet  */
+	a:link,
+	a:visited {
+		color: #FFCC33;
+		/*font-weight: bold; */
+		text-decoration: none;
+	}
+	a:focus,
+	a:hover {
+		text-decoration: underline;
+		*color: #deded9;
+	}
+
+	h1 {
+		line-height: 170%;
+		font-size: 225%;
+		color: #FFCC33; *5F5F5F
+		padding: 5px 0 5px 0;
+		margin: 0;
+		width: 100%;
+	}
+	/*	Titre de section (160 %)  */
+	h2 {
+		line-height: 170%;
+		display: block;
+		font-family: Verdana, Trebuchet MS, Arial, serif;
+		text-align: left;
+		text-indent: 30px;
+		padding: 0px;
+		margin: 20px 0 0 0;
+		border-bottom: dotted 2px #d0d0d0;
+		background: #303030;
+		font-size: 160%;
+	}
+	h2::first-letter {
+		color: #FFCC33;
+		background-color: transparent;
+	}
+
+	/*	Titres  */
+	h3, h4, h5, h6 {
+		line-height: 170%;
+		margin: 10px auto;
+		width: 90%;
+		padding: 0;
+	}
+	h3 {
+		font-size: 140%;
+	}
+	h4 {
+		font-size: 125%;
+		/*font-style: italic;*/
+	}
+
+	h5 {
+		/*margin: 10px auto;*/
+        font-size: 110%;
+	}
+/*	h5 {
+        font-size: 100%;
+	}*/
+	h6 {
+		font-size: 125%;
+		font-style: italic;
+	}
+
+	/*	Ligne dorée  */
+	hr {
+		/*margin: 10px 10 10px 10;*/
+		margin-top: 20px;
+		margin-bottom: 20px;
+		width: 90%;
+		/*padding: 0; */
+		height: 1px;
+		border: 0;
+		color: #FFCC33;
+		background-color: #FFCC33;
+	}
+
+	/*	Image d'en-tête */
+	img.image_left {
+		float: left;
+		padding:0px 5px 0px 70px;
+		overflow: auto;
+	}
+
+
+	/*	Tableaux */
+	table {
+		/*text-align: center;*/
+		width: 90%;
+		padding: 10px;
+		border-collapse: collapse;
+		/*margin-left: 70px;*/
+		/*padding: 20px 25px;*/
+		/*position: relative;*/
+	}
+	td, th {
+		font-size: 12px;
+		text-align: center;
+		*vertical-align: baseline;
+		padding-top: 4px;
+		padding-bottom: 4px;
+*		border: 1px outset #eee;
+		border: 1px solid #aaa;
+	}
+	th {
+		background-color: #303030; *#000099;
+		*color: #fff;
+		font-weight: bold;
+*		border:none;
+	}
+*	tr {)
+
+	.leftalign, table.leftalign tr th, table.leftalign tr td (
+		text-align: left;
+	}
+
+/*]]>*/
+
+	</style>
 	<title>
 		Menace sur le Royaume de Diamant Éternel - La Couronne de Cuivre
 	</title>
-
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
 
-	<link href="images/logocc.png" rel="icon" type="image/png" />
-  </head>
-
-  <body>
-
-	<script type="module">
-		var test1 = document.getElementById('versionHistory').getElementsByClassName("version")[0].innerText;
-		document.getElementById("latestVersion").innerText = document.getElementById('versionHistory').getElementsByClassName("version")[0].innerText;
-		var versionnb = test1.substring(7, test1.length);
-		document.getElementById("versionnb1").innerText = versionnb;
-	</script>
-
-	<div id="cartouche">
+<body>
+  <div id="cartouche">
 	<a name="top" id="top"></a>
-
-	  <div id="header">
-		<h1 style="text-shadow: 0.1rem 0.1rem 0.25rem black;">
+	<div id="header">
+		<h1>
 			Menace sur le Royaume de Diamant Éternel : Chevaucheuse de licorne (WIP)
 			<a href="menace-kit2-readme-english.html">
 				<img src="images/uk-flag-32.png" alt="English version" style="float:right;width:32px;height:16px;margin-right:20px;margin-top:15px;">
 			</a>
 		</h1>
 
-		<strong>Un mod développé sur <a href="https://www.baldursgateworld.fr">La Couronne de Cuivre</a> pour Baldur's Gate II : <acronym title="Throne of Bhaal">ToB</acronym>, Baldur's Gate Trilogy, <acronym title="Baldur's Gate 'To Two'">Tutu</acronym>, <acronym title="Baldur's Gate Enhanced Edition">BG2:EE</acronym> et <acronym title="Enhanced Edition Trilogy">EET</acronym></strong>
+		<strong>Un mod développé sur <a href="https://www.baldursgateworld.fr">La Couronne de Cuivre</a> pour Baldur's Gate II: <acronym title="Throne of Bhaal">ToB</acronym>, Baldur's Gate Trilogy, <acronym title="Baldur's Gate 'To Two'">Tutu</acronym> et <acronym title="Baldur's Gate II Enhanced Edition">BG2:EE</acronym></strong>
 
-		<hr>
-
+<hr>
 		<img src="images/logo_lcc.png" title="La Couronne de Cuivre" alt="La Couronne de Cuivre" class="image_left" />
 		<br><br><br>
 		<p class="about" style="text-align: left;margin-left: 70%">
 			<strong>Auteur :</strong> <a href="https://www.baldursgateworld.fr/lacouronne/members/freddy_gwendo.html">Freddy_Gwendo (aka Gwendolyne)</a>
 		</p>
 		<p class="about" style="text-align: left;margin-left: 70%">
-			<strong>Version :</strong> <span id="latestVersion" style="display: none";></span><span id="versionnb1"></span>
+			<strong>Version :</strong> Alpha 0.0.1
 		</p>
 		<p class="about" style="text-align: left;margin-left: 70%">
 			<strong>Langues :</strong> français, anglais
@@ -57,103 +394,96 @@
 			<a href="https://www.baldursgateworld.fr">Site internet du mod</a> &#8226; <a href="https://www.baldursgateworld.fr/lacouronne/menace-sur-le-royaume-de-diamant-eternel/">Forum du mod</a> &#8226; <a href="https://www.baldursgateworld.fr/lacouronne/menace-sur-le-royaume-de-diamant-eternel/">Téléchargement</a> &#8226; <a href="https://github.com/GwendolyneFreddy/Diamant-Eternel">GitHub</a>
 		</p>
 
-	  </div>
+	</div>
 
-	  <div id="menu">
+	<div id="menu">
 		<a href="#intro">Introduction</a> &#160;&#8226;&#160; <a href="#description">Description</a> &#160;&#8226;&#160; <a href="#hla">Capacités de haut niveau (HLA)</a> &#160;&#8226;&#160; <a href="#spells">Sorts</a> &#160;&#8226;&#160; <a href="#versions">Historique des versions</a>
-	  </div>
+	</div>
 
 	<div id="maindiv">
-
-<!-- ================== I n t r o d u c t i o n ================== -->
+	<!-- ================== I n t r o d u c t i o n ================== -->
 	  <a name="intro" id="intro"></a>
-	  <div class="content">
-
+		<div class="content">
 		<h2>
 			Introduction
 		</h2><br>
 
-		<table cellpadding=0 cellspacing=0 style="margin-top: 1%; margin-left: 80px">
+		<table cellpadding=0 cellspacing=0 style="margin-left: 80px">
 			<tr>
 				<td style="font-size: 90%;text-align:right;border:none"><img width=500 src="images/diamant1.jpg" title="Menace sur le Royaume de Diamant Éternel"><br>Lux et Umbra by Chaos-Draco DeviantArt &copy;2009-2018 Chaos-Draco</td>
 				<td width=20 style="border:none"></td>
 				<td style="border:none;text-align: justify;font-size: 110%;line-height: 150%;"><strong>
-				Menace sur le royaume de Diamant Éternel</strong> introduit deux nouveaux profils de paladins : le <a href="menace-kit1-readme-french.html">Chevalier de Diamant</a> et la Chevaucheuse de Licorne.<br><br>
-				Il est vivement conseillé de ne pas les sélectionner lors de la création de votre personnage afin de bénéficier de tous les éléments du scénario : CHARNAME aura la possibilité de choisir l'une de ces spécialisations au cours de l'aventure. De plus, ils ont été spécialement définis pour coller à l'univers du Royaume de Diamant Éternel et correspondent à sa mythologie. Par ailleurs, n'oubliez pas que leurs capacités ne s'avéreront vraiment utiles que pendant la campagne et pourront constituer un handicap pendant l'essentiel de la partie SoA.<br><br>
-				Cependant, si vous tenez absolument à les jouer dès le début de votre partie, chacun d'eux bénéficie d'une quête particulière dans SoA qui sera intégrée à terme dans la campagne finale.<br><br>
-				Enfin, ce module offre la possibilité à chacun de ces profils de gagner une monture (un destrier pour le Chevalier et une licorne pour la Chevaucheuse). C'est la raison pour laquelle il vous sera demandé de choisir son nom lors de <a href="menace-readme-french.html#installation">la procédure d'installation</a>.<br>
+				Menace sur le royaume de Diamant Éternel</strong> introduit deux nouveaux profils de paladins : le <a href="menace-kit1-readme-french.html">Chevalier de Diamant</a> et la Chevaucheuse de Licorne.<br/><br/>
+				Il est vivement conseillé de ne pas les sélectionner lors de la création de votre personnage afin de bénéficier de tous les éléments du scénario : CHARNAME aura la possibilité de choisir l'une de ces spécialisations au cours de l'aventure. De plus, ils ont été spécialement définis pour coller à l'univers du Royaume de Diamant Éternel et correspondent à sa mythologie. Par ailleurs, n'oubliez pas que leurs capacités ne s'avéreront vraiment utiles que pendant la campagne et pourront constituer un handicap pendant l'essentiel de la partie SoA.<br/><br/>
+				Cependant, si vous tenez absolument à les jouer dès le début de votre partie, chacun d'eux bénéficie d'une quête particulière dans SoA qui sera intégrée à terme dans la campagne finale.<br/><br/>
+				Enfin, ce module offre la possibilité à chacun de ces profils de gagner une monture (un destrier pour le Chevalier et une licorne pour la Chevaucheuse). C'est la raison pour laquelle il vous sera demandé de choisir son nom lors de <a href="menace-readme-french.html#installation">la procédure d'installation</a>.<br/>
 				<center><img src="images/anim/destrier1.gif" title="Paladin Mount" /> <img src="images/anim/unicorn.gif" title="Unicorn" /></center></td>
 			</tr>
 		</table><br><br>
 
 
-		<address>
-			<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; Introduction</span> &#8226; <a href="#top">HAUT DE PAGE</a>
-		</address>
-	  </div>
+			<address>
+				<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; Introduction</span> &#8226; <a href="#top">HAUT DE PAGE</a>
+			</address>
+		</div>
 
-<!-- ================= C o m p a t i b i l i t y ================= -->
-<!-- ================== I n s t a l l a t i o n ================== -->
-<!-- =================== D e s c r i p t i o n ==================== -->
+	<!-- ================= C o m p a t i b i l i t y ================= -->
+	<!-- ================== I n s t a l l a t i o n ================== -->
+	<!-- =================== D e s c r i p t i o n ==================== -->
 	  <a name="description" id="description"></a>
-	  <div class="content">
-
+		<div class="content">
 		<h2>
 			Description
 		</h2><br>
 
-		<table cellpadding=0 cellspacing=0 style="margin-top: 1%; margin-left: 80px">
+		<table cellpadding=0 cellspacing=0 style="margin-left: 80px">
 			<tr>
-				<td style="font-size: 90%; text-align:right; border:none"><img width=500 src="images/diamant3.jpg" title="Chevaucheuse de licorne"><br>Ted Welch DeviantArt &copy;2015-2018 St0rMiee.</td>
+				<td style="font-size: 90%;text-align:right;border:none"><img width=500 src="images/diamant3.jpg" title="Chevaucheuse de licorne"><br>Ted Welch DeviantArt &copy;2015-2018 St0rMiee.</td>
 				<td width=15 style="border:none"></td>
-				<td style="border:none;text-align: justify; font-size: 110%; line-height: 150%">
-					Les Chevaucheuses de Licorne sont des femmes qui ont renoncé à l'amour des mortels pour se consacrer pleinement à la déesse Lurue, développant ainsi un lien étroit avec les licornes. Elles sont habituellement issues des rangs des rôdeuses et des druidesses, mais certaines sont avant tout des paladines et des guerrières. La plupart sont humaines, elfes ou demi-elfes, mais halfelines, gnomes et naines ne sont pas exclues.<br><br>
-					Il existe deux moyens pour une paladine de devenir une Chevaucheuse. Le premier se produit très rarement : ayant remarqué sa bravoure, sa droiture et son comportement, Lurue vient hanter les rêves de l'heureuse élue qui, à son réveil, découvre un médaillon protecteur posé sur son cœur. Ce dernier lui permet d'invoquer une licorne qui lui servira de destrier et la suivra au combat aussi longtemps qu'elle servira les justes causes.<br><br>
-					Mais il arrive aussi qu'au cours de ses aventures, la paladine aide une licorne, voire la sauve. Il se peut alors que la cavalière et la licorne décident d'unir leur destin. Le rituel prend environ une semaine, pendant laquelle elles apprennent à se connaître dans une forêt choisie par les anciennes.<br><br>
+				<td style="border:none;text-align: justify;font-size: 110%;line-height: 150%">
+					Les Chevaucheuses de Licorne sont des femmes qui ont renoncé à l'amour des mortels pour se consacrer pleinement à la déesse Lurue, développant ainsi un lien étroit avec les licornes. Elles sont habituellement issues des rangs des rôdeuses et des druidesses, mais certaines sont avant tout des paladines et des guerrières. La plupart sont humaines, elfes ou demi-elfes, mais halfelines, gnomes et naines ne sont pas exclues.<br/><br/>
+					Il existe deux moyens pour une paladine de devenir une Chevaucheuse. Le premier se produit très rarement : ayant remarqué sa bravoure, sa droiture et son comportement, Lurue vient hanter les rêves de l'heureuse élue qui, à son réveil, découvre un médaillon protecteur posé sur son cœur. Ce dernier lui permet d'invoquer une licorne qui lui servira de destrier et la suivra au combat aussi longtemps qu'elle servira les justes causes.<br/><br/>
+					Mais il arrive aussi qu'au cours de ses aventures, la paladine aide une licorne, voire la sauve. Il se peut alors que la cavalière et la licorne décident d'unir leur destin. Le rituel prend environ une semaine, pendant laquelle elles apprennent à se connaître dans une forêt choisie par les anciennes.<br/><br/>
 					Dans tous les cas, la relation entre la chevaucheuse et la licorne ne peut se créer si une autre relation forte lie déjà l'une d'entre elles. La chevaucheuse ne doit pas avoir de familier ou de destrier de paladin, et si elle en a déjà eu, elle doit s'en être séparée depuis au moins une saison (trois mois). De même, une licorne ne doit pas déjà être accordée avec une autre chevaucheuse, et si elle l'a déjà été, leur séparation doit dater d'au moins une saison. Ce lien émotionnel qui lie la cavalière à sa monture est plus étroit encore que celui qu'elle nourrit à l'égard de sa propre famille. Elle peut compter sur sa licorne et vice versa.</td>
 			</tr>
 		</table><br>
 
 		<p>
-			Comme les licornes ne vivent que pour protéger les forêts et leurs créatures intelligentes, la chevaucheuse vit la plupart du temps dans les bois et n'entretient que de rares contacts avec le monde extérieur. En raison de cette existence solitaire, elle se joint rarement à un groupe d'aventuriers, mais s'il lui faut combattre le mal, elle n'hésite pas à quitter son sanctuaire. Dans ce cas, elle préfère la compagnie des paladins, mais peut s'associer à tout personnage bon en cas de nécessité. Quelles que soient les circonstances, elle ne collabore jamais avec des êtres maléfiques et tolère à peine les personnages neutres, sauf s'ils sont druides.<br><br>
+			Comme les licornes ne vivent que pour protéger les forêts et leurs créatures intelligentes, la chevaucheuse vit la plupart du temps dans les bois et n'entretient que de rares contacts avec le monde extérieur. En raison de cette existence solitaire, elle se joint rarement à un groupe d'aventuriers, mais s'il lui faut combattre le mal, elle n'hésite pas à quitter son sanctuaire. Dans ce cas, elle préfère la compagnie des paladins, mais peut s'associer à tout personnage bon en cas de nécessité. Quelles que soient les circonstances, elle ne collabore jamais avec des êtres maléfiques et tolère à peine les personnages neutres, sauf s'ils sont druides.<br/><br/>
 			Toutes les chevaucheuses se doivent de rester chastes, se consacrant pleinement au bien et à leur licorne. Si l'une d'elles a des relations sexuelles avec un mortel, sa licorne la quitte sans le moindre regret. Enfin, on reconnaît aisément une chevaucheuse à ses tenues blanches immaculées et à ses longs cheveux qui prennent rapidement une teinte blanche, voire argentée.
 		</p><br>
 
 		<p>
 			PRÉ-REQUIS :
 		</p>
-			<ul style="margin-left: 6%">
+			<ul>
 				<li>Seule une femme peut devenir Chevaucheuse de Licorne.</li>
 				<li>Caractéristiques minimales : Dextérité 16, Sagesse 15, Charisme 17.</li>
-			</ul><br>
-
-		<p>
+			</ul>
+		<p><br>
 			AVANTAGES :
 		</p>
-			<ul style="margin-left: 6%">
+			<ul>
 				<li>Elle peut se spécialiser dans les épées longues et l'arc court, et atteindre la grande maîtrise avec sa lance.</li>
-				<li>Comme tous les paladins, elle est immunisée aux maladies, elle peut guérir par imposition des mains une fois par jour, détecter le mal et protéger contre le mal une fois par niveau.</li>
+				<li>Comme tous les paladins, elle est immunisée aux maladies, elle guérir par imposition des mains une fois par jour, détecter le mal et protéger contre le mal une fois par niveau.</li>
 				<li>Pour l'assister dans ses missions, elle dispose de sorts destinés à protéger la forêt contre les forces maléfiques. Ces sorts remplacent la plupart des sorts divins habituels des paladins.</li>
 			</ul><br>
-
 		<p>
 			INCONVÉNIENTS :
 		</p>
-			<ul style="margin-left: 6%">
+			<ul style="line-height: 150%">
 				<li>Elle ne peut pas repousser les morts-vivants.</li>
-				<li>Elle ne peut pas utiliser d'armes de mêlée à deux mains afin de ne pas blesser la licorne avec laquelle elle est liée.</li>
+				<li>Elle ne peut pas utiliser d'armes à deux mains afin de ne pas blesser la licorne avec laquelle elle est liée.</li>
 				<li>Elle ne peut pas combattre dans le style de combat à deux armes.</li>
 				<li>Elle ne peut porter que des armures légères et des cottes de mailles elfiques, et au mieux des écus.</li>
 				<li>Consacrant une partie de son temps à l'approfondissement de ses liens avec sa licorne, elle gagne 15&#160;% d'expérience en moins.</li>
 			</ul><br>
 
-		<hr>
-
+<hr>
 		<h3>
 			Capacités spéciales
 		</h3>
-
-		<p style="margin-top:2%;">
+		<p>
 			Liste des capacités spéciales obtenues à chaque niveau par la Chevaucheuse de Licorne.
 		</p><br>
 
@@ -165,7 +495,7 @@
 				<th>Description</th>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">1</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">1</span><strong></td>
 				<td></td>
 				<td></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Elle parle couramment le sylvanien.</td>
@@ -214,50 +544,49 @@
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Ne pouvant repousser les morts-vivants, elle peut augmenter une fois par jour l'intensité de son aura lumineuse pour les terrasser (1d4 points de dégâts, +1 tous les deux niveaux, par round d'exposition).</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">3</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">3</span><strong></td>
 				<td><img src="images/icons/gwcurcsb.jpg" title="gwcurcs.spl" /></td>
 				<td><span style="color: #FFCC33;">Guérison de la cécité/surdité</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Elle peut guérir la cécité ou la surdité une fois par jour.</td>
-			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">5</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">5</span><strong></td>
 				<td><img src="images/icons/gwpagumb.jpg" title="gwpagum.spl" /></td>
 				<td><span style="color: #FFCC33;">Guérison des maladies</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Elle peut guérir les maladies une fois par jour.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">7</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">7</span><strong></td>
 				<td><img src="images/icons/gwpa413b.jpg" title="gwpa413.spl" /></td>
 				<td><span style="color: #FFCC33;">Protection contre le Plan Négatif</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Elle peut lancer cette capacité une fois par jour.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">10</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">10</span><strong></td>
 				<td><img src="images/icons/gwpa404b.jpg" title="gwpa404.spl" /></td>
 				<td><span style="color: #FFCC33;">Neutralisation du poison</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Elle peut neutraliser le poison une fois par jour.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">11</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">11</span><strong></td>
 				<td><img src="images/icons/gwlicpeb.jpg" title="gwlicpe.spl" /></td>
 				<td><span style="color: #FFCC33;">Agilité du Pégase</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Une fois par jour, elle peut doubler la vitesse de déplacement de sa licorne. Les temps d'incantation et les sorts ne sont pas affectés. Contrairement au sort Hâte, la licorne ne bénéficie pas de bonus d'initiative et de combat. De plus, elle semble se déplacer à une dizaine de centimètres du sol, pouvant ainsi traverser des surfaces trop instables pour supporter son poids et celui de sa cavalière. Elle ne laisse donc pas de traces, ne risque pas de déclencher les pièges à pression, ni d'être affectée par tout ce qui pourrait réduire sa mobilité, comme les toiles d'araignée, les sorts de glisse et d'enchevêtrement.<br>
 				Cette capacité annule les effets d'un sort de Lenteur et ne peut se cumuler avec elle-même ou avec d'autres effets magiques similaires. L'effet dure jusqu'à expiration (3 rounds + 1 par niveau) ou dissipation.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">12</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">12</span><strong></td>
 				<td><img src="images/icons/gwlicaib.jpg" /></td>
 				<td><span style="color: #FFCC33;">Grands pas</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Sa vitesse de déplacement augmente de 1.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">20</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">20</span><strong></td>
 				<td><img src="images/icons/gwpuicab.jpg" title="gwpuica.spl" /></td>
 				<td><span style="color: #FFCC33;">Puissance cavalière</span></td>
-				<td style="padding-left:10px;padding-right:10px;text-align: justify">Une fois par jour, elle peut solliciter sa divinité afin qu'elle lui accorde une partie de son pouvoir pendant une courte durée. Soutenue par Lurue qui tient à protéger la licorne qui l'accompagne, la Chevaucheuse obtient un bonus de 5 à sa Force, sa Constitution, sa Dextérité et son Charisme, et de 4 à sa classe d'armure. Par ailleurs, elle gagne 1 point de vie temporaire supplémentaire par niveau. Enfin, elle est immunisée contre le sommeil magique et la paralysie. Ces effets se prolongent pendant toute la durée du sort (1 round par niveau) ou jusqu'à ce qu'il soit dissipé magiquement</td>
+				<td style="padding-left:10px;padding-right:10px;text-align: justify">Une fois par jour, elle peut solliciter sa divinité afin qu'elle lui accorde une partie de son pouvoir pendant une courte durée. Soutenue par Lurue qui tient à protéger la licorne ui l'accompagne, la Chevaucheuse obtient un bonus de 5 à sa Force, sa Constitution, sa Dextérité et son Charisme, et de 4 à sa classe d'armure. Par ailleurs, elle gagne 1 point de vie temporaire supplémentaire par niveau. Enfin, elle est immunisée contre le sommeil magique et la paralysie. Ces effets se prolongent pendant toute la durée du sort (1 round par niveau) ou jusqu'à ce qu'il soit dissipé magiquement</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">21</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">21</span><strong></td>
 				<td><img src="images/icons/gwcd233b.jpg" title="gwcd233.spl" /></td>
 				<td><span style="color: #FFCC33;">Protection contre le mal</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Sa capacité innée de Protection contre le mal s'étend sur 3 m.</td>
@@ -269,62 +598,60 @@
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Obtient une utilisation quotidienne supplémentaire de ce pouvoir.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">27</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">27</span><strong></td>
 				<td><img src="images/icons/gwlicaib.jpg" /></td>
 				<td><span style="color: #FFCC33;">Grands pas</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Sa vitesse de déplacement augmente de 1.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">28</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">28</span><strong></td>
 				<td><img src="images/icons/gwchatlb.jpg" title="gwchatl.spl" /></td>
 				<td><span style="color: #FFCC33;">Châtiment sacré de Lurue</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Une fois par jour, elle peut fait appel à la puissance de Lurue pour ouvrir un canal entre le Plan de la Lumière et ses ennemis afin de les châtier. Toutes les créatures maléfiques situées dans la zone d'effet subissent des dégâts divers, en fonction de leur nature, et ont droit à un jet de sauvegarde contre les sorts à -2 pour n'en subir que la moitié. Si elles le ratent, elles seront de plus aveuglées pendant 1 à 4 rounds. Les autres ne risquent rien.<br>
 				Elle peut choisir d'infliger des dégâts non-létaux plutôt que des dégâts létaux.<br><br>
-				<span style="margin-left: 1%">- Humanoïdes et monstres : 1d6 points de dégâts par niveau, +1 par niveau, jusqu'à un maximum de 10d6+10.</span><br>
-				<span style="margin-left: 1%">- Morts-vivants : 1d6 points de dégâts par niveau, +1 par niveau, jusqu'à un maximum de 20d6+20. Les jets de sauvegarde s'effectuent avec un malus de 4.</span><br>
-				<span style="margin-left: 1%">- Extraplanaires : 1d8 points de dégâts par niveau, jusqu'à un maximum de 15d8.</span><br>
-				<span style="margin-left: 1%">- Démons : 1d6 points de dégâts par niveau, jusqu'à un maximum de 20d6.</span><br>
-				<span style="margin-left: 1%">- Dragons : 1d8 points de dégâts par niveau, jusqu'à un maximum de 20d8.</span></td>
-				<td><span style="color: #FFCC33;">Châtiment sacré de Lurue</span></td>
+				<span style="margin-left: 1%">– Humanoïdes et monstres : 1d6 points de dégâts par niveau, +1 par niveau, jusqu'à un maximum de 10d6+10.</span><br>
+				<span style="margin-left: 1%">– Morts-vivants : 1d6 points de dégâts par niveau, +1 par niveau, jusqu'à un maximum de 20d6+20. Le jet de sauvegarde contre la cécité s'effectue avec un malus de 4.</span><br>
+				<span style="margin-left: 1%">– Extraplanaires : 1d8 points de dégâts par niveau, jusqu'à un maximum de 15d8.</span><br>
+				<span style="margin-left: 1%">– Démons : 1d6 points de dégâts par niveau, jusqu'à un maximum de 20d6.</span><br>
+				<span style="margin-left: 1%">– Dragons : 1d8 points de dégâts par niveau, jusqu'à un maximum de 20d8.</span></td>
+			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">30</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">30</span><strong></td>
 				<td><img src="images/icons/gwceregb.jpg" title="gwcereg.spl" /></td>
 				<td><span style="color: #FFCC33;">Cercle de régénération</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Une fois par jour, elle peut invoquer un Cercle de régénération qui accorde à ses alliés la capacité de régénérer au rythme de 3 points de vie par round.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">31</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">31</span><strong></td>
 				<td><img src="images/icons/gwlicpeb.jpg" title="gwlicpe.spl" /></td>
 				<td><span style="color: #FFCC33;">Agilité du Pégase</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Obtient une utilisation quotidienne supplémentaire de ce pouvoir.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">35</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">35</span><strong></td>
 				<td></td>
 				<td><span style="color: #FFCC33;">Cadeau de Lurue</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Elle choisit un sort de groupe qu'elle pourra utiliser une fois par jour parmi Endurance de l'ours, Force de taureau ou Grâce féline. Cependant, elle n'en bénéficie pas : seuls les membres de son groupe sont affectés.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">41</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">41</span><strong></td>
 				<td><img src="images/icons/gwlicpeb.jpg" title="gwlicpe.spl" /></td>
 				<td><span style="color: #FFCC33;">Agilité du Pégase</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Obtient une utilisation quotidienne supplémentaire de ce pouvoir.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">42</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">42</span><strong></td>
 				<td><img src="images/icons/gwlicaib.jpg" /></td>
 				<td><span style="color: #FFCC33;">Grands pas</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Sa vitesse de déplacement augmente de 1.</td>
 			</tr>
 		</table><br><br>
 
-		<hr>
-
+<hr>
 		<h3>
 			« <em>Deux font une</em> »
 		</h3>
-
-		<p style="margin-top:2%;">
+		<p>
 			En devenant une « <em>Sœur de Lurue</em> », la Chevaucheuse partage un lien télépathique fort avec sa licorne tant que celle-ci se trouve dans un rayon d'un kilomètre. Ce lien s'exprime de différentes manières, notamment au cours d'une bataille où elles ne font plus qu'une :
 		</p><br>
 
@@ -336,55 +663,55 @@
 				<th>Description</th>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">11</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">11</span><strong></td>
 				<td></td>
 				<td><span style="color: #FFCC33;">Vigilance</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">La Chevaucheuse et sa licorne bénéficient d'un bonus de 1 à leur classe d'armure.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">13</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">13</span><strong></td>
 				<td></td>
 				<td><span style="color: #FFCC33;">Immunité au poison</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">La Chevaucheuse est immunisée au poison si elle est liée à une licorne.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">14</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">14</span><strong></td>
 				<td></td>
 				<td><span style="color: #FFCC33;">Science de l'initiative</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">La Chevaucheuse et sa licorne bénéficient d'un bonus de 1 à leur facteur de vitesse.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">15</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">15</span><strong></td>
 				<td><img src="images/icons/gwpist1b.jpg" title="gwpist1.spl" /></td>
 				<td><span style="color: #FFCC33;">Pistage</span></td>
-				<td style="padding-left:10px;padding-right:10px;text-align: justify">À force de côtoyer une licorne, la Chevaucheuse a acquis la capacité de pistage des rôdeurs. Cependant, sa connaissance des milieux naturels et de leurs faunes étant bien moins développée que celles des rôdeurs, elle n'a que 2 % de chances par niveau de déterminer le type de créatures présentes dans une zone donnée.</td>
+				<td style="padding-left:10px;padding-right:10px;text-align: justify">À force de côtoyer une licorne, la Chevaucheuse la capacité de pistage des rôdeurs. Cependant, sa connaissance des milieux naturels et de leurs faunes étant bien moins développée que celles des rôdeurs, elle n'a que 2 % de chances par niveau de déterminer le type de créatures présentes dans une zone donnée.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">16</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">16</span><strong></td>
 				<td></td>
 				<td><span style="color: #FFCC33;"></span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">La Chevaucheuse et sa licorne gagnent un bonus de 2 aux dégâts qu'elles infligent au corps à corps.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">17</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">17</span><strong></td>
 				<td><img src="images/icons/gwpa404b.jpg" title="gwpa404.spl" /></td>
 				<td><span style="color: #FFCC33;">Neutralisation du poison</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">La Chevaucheuse peut neutraliser le poison une fois supplémentaire par jour si elle se lie à une licorne.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">18</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">18</span><strong></td>
 				<td></td>
 				<td><span style="color: #FFCC33;">Vigilance améliorée</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">La Chevaucheuse et sa licorne bénéficient d'un bonus additionnel de 1 à leur classe d'armure.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">24</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">24</span><strong></td>
 				<td><img src="images/icons/gwpa404b.jpg" title="gwpa404.spl" /></td>
 				<td><span style="color: #FFCC33;">Neutralisation du poison</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">La Chevaucheuse peut neutraliser le poison une fois supplémentaire par jour si elle se lie à une licorne.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">25</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">25</span><strong></td>
 				<td><img src="images/icons/gwbtesub.jpg" title="gwpbtesu.spl" /></td>
 				<td><span style="color: #FFCC33;">Beauté surnaturelle</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Croiser la route d'une paladine chevauchant une licorne n'est pas chose banale et constitue un spectacle inoubliable, et pas seulement pour ses admirateurs... La Chevaucheuse peut utiliser une fois par jour cette variante de la Beauté de la Nature des druides.<br>
@@ -393,13 +720,13 @@
 				Certains prétendent que la Chevaucheuse doit s'être privée de toute relation sexuelle depuis un mois pour pouvoir lancer ce sort, mais personne ne s'est jamais risqué à le vérifier...</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">30</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">30</span><strong></td>
 				<td></td>
 				<td><span style="color: #FFCC33;">Vigilance accrue</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">La Chevaucheuse et sa licorne bénéficient d'un bonus additionnel de 2 à leur classe d'armure.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;"></span></strong></td>
+				<td><strong><span style="color: #FFCC33;"></span><strong></td>
 				<td><img src="images/icons/gwpist2b.jpg" title="gwpist2.spl" /></td>
 				<td><span style="color: #FFCC33;">Empreintes fraîches</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Sa capacité de Pistage évolue et elle parvient à distinguer sans pénalité les traces des créatures présentes comme si elles étaient encore fraîches.</td>
@@ -407,20 +734,19 @@
 		</table><br><br>
 
 
-		<address>
-			<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; Description</span> &#8226; <a href="#top">HAUT DE PAGE</a>
-		</address>
-	  </div>
+			<address>
+				<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; Description</span> &#8226; <a href="#top">HAUT DE PAGE</a>
+			</address>
+		</div>
 
-<!-- =================== H L A ==================== -->
+	<!-- =================== H L A ==================== -->
 	  <a name="hla" id="hla"></a>
-	  <div class="content">
-
+		<div class="content">
 		<h2>
 			Capacités de haut niveau (HLA)
 		</h2><br>
 
-		<p style="margin-top:1%;">
+		<p>
 			Liste des capacités spéciales de haut niveau que la Chevaucheuse de licorne peut apprendre.
 		</p><br>
 
@@ -435,7 +761,7 @@
 			<tr>
 				<td><img src="images/icons/gwcl900b.jpg" title="gwcl900.spl" /></td>
 				<td><span style="color: #FFCC33;">Tempête de fer</span></td>
-				<td style="padding-left:10px;padding-right:10px;text-align: justify">Cette faculté permet à la Chevaucheuse de licorne d'infliger une avalanche de coups rapides sur son adversaire. Le nombre d'attaques pendant le round que dure l'effet passe à 10, mais les jets de toucher et de dégâts subissent une pénalité de 4.</td>
+				<td style="padding-left:10px;padding-right:10px;text-align: justify">Cette faculté permet à la Chevaucheuse de licorne d'infliger une avalanche de coups rapides sur son adversaire. Le nombre d'attaques pendant le round que dure l'effet passe à 10 mais les jets de toucher et de dégâts subissent une pénalité de 4.</td>
 				<td>14</td>
 				<td></td>
 			</tr>
@@ -470,7 +796,7 @@
 				Pendant cinq rounds, cette capacité exacerbe ses capacités de survie au combat en lui octroyant un bonus de 2 à sa classe d'armure générale (+1 tous les dix niveaux jusqu'à un maximum de 6) et de 4 contre les projectiles. De plus, elle lui permet d'augmenter sa vitesse de déplacement de 2 et d'éviter tous les types de missiles non magiques. En revanche, il lui est impossible de parer les projectiles massifs, comme un rocher lancé par un géant ou un tir de catapulte, ainsi que les attaques à distance générées par des sorts, comme une Flèche acide de Melf.</td>
 				<td>14</td>
 				<td>2</td>
-			</tr>
+			<tr>
 			<tr>
 				<td><img src="images/icons/gwtirprb.jpg" title="gwtirpr.spl" /></td>
 				<td><span style="color: #FFCC33;">Tir de précision</span></td>
@@ -511,7 +837,7 @@
 			<tr>
 				<td><img src="images/icons/gwflegsb.jpg" title="gwflegs.spl" /></td>
 				<td><span style="color: #FFCC33;">Flèche glace-sang</span></td>
-				<td style="padding-left:10px;padding-right:10px;text-align: justify">Cette faculté permet à la Chevaucheuse de transformer la tête d'une flèche en glace magique bleutée. Outre ses dégâts normaux, la flèche frappe comme une arme +3, inflige 2d6 points de dégâts de froid et génère une vague de gel qui paralyse sa cible pendant 4 rounds si cette dernière rate son jet de sauvegarde contre les sorts (à -4).<br>
+				<td style="padding-left:10px;padding-right:10px;text-align: justify">Cette faculté permet à la Chevaucheuse de transformer la tête d'une flèche en glace magique bleutée. Outre ses dégâts normaux, la flèche frappe comme une arme +3, inflige 2d6 points de dégâts de froid et génère une vague de gel qui paralyse sa cible si cette dernière rate son jet de sauvegarde contre les sorts (à -4).<br>
 				La flèche (ou les flèches) doit être tirée pendant les cinq rounds qui suivent l'incantation, sinon elle est perdue.</td>
 				<td>14</td>
 				<td>2</td>
@@ -556,11 +882,11 @@
 				<td><span style="color: #FFCC33;">Châtiment sacré de Lurue</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">La Chevaucheuse de Licorne fait appel à la puissance de Lurue pour ouvrir un canal entre le Plan de la Lumière et ses ennemis afin de les châtier. Toutes les créatures maléfiques situées dans la zone d'effet subissent des dégâts divers, en fonction de leur nature, et ont droit à un jet de sauvegarde contre les sorts à -2 pour n'en subir que la moitié. Si elles le ratent, elles seront de plus aveuglées pendant 1 à 4 rounds. Les autres ne risquent rien.<br>
 				Elle peut choisir d'infliger des dégâts non-létaux plutôt que des dégâts létaux.<br><br>
-				<span style="margin-left: 2%">- Humanoïdes et monstres : 1d6 points de dégâts par niveau, +1 par niveau, jusqu'à un maximum de 10d6+10.</span><br>
-				<span style="margin-left: 2%">- Morts-vivants : 1d6 points de dégâts par niveau, +1 par niveau, jusqu'à un maximum de 20d6+20. Les jets de sauvegarde s'effectuent avec un malus de 4.</span><br>
-				<span style="margin-left: 2%">- Extraplanaires : 1d8 points de dégâts par niveau, jusqu'à un maximum de 15d8.</span><br>
-				<span style="margin-left: 2%">- Démons : 1d6 points de dégâts par niveau, jusqu'à un maximum de 20d6.</span><br>
-				<span style="margin-left: 2%">- Dragons : 1d8 points de dégâts par niveau, jusqu'à un maximum de 20d8.</span></td>
+				<span style="margin-left: 1%">- Humanoïdes et monstres : 1d6 points de dégâts par niveau, +1 par niveau, jusqu'à un maximum de 10d6+10.</span><br>
+				<span style="margin-left: 1%">- Morts-vivants : 1d6 points de dégâts par niveau, +1 par niveau, jusqu'à un maximum de 20d6+20. Les jets de sauvegarde s'effectuent avec un malus de 4.</span><br>
+				<span style="margin-left: 1%">- Extraplanaires : 1d8 points de dégâts par niveau, jusqu'à un maximum de 15d8.</span><br>
+				<span style="margin-left: 1%">- Démons : 1d6 points de dégâts par niveau, jusqu'à un maximum de 20d6.</span><br>
+				<span style="margin-left: 1%">- Dragons : 1d8 points de dégâts par niveau, jusqu'à un maximum de 20d8.</span></td>
 				<td>28</td>
 				<td>1</td>
 			</tr>
@@ -572,7 +898,6 @@
 				<td>17</td>
 				<td>5</td>
 			</tr>
-			<tr>
 				<td><img src="images/icons/gwcurmmb.jpg" title="gwcurmm.spl" /></td>
 				<td><span style="color: #FFCC33;">Soins modérés de masse</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Pré-requis : la Chevaucheuse doit connaître la faculté Soins légers de masse.<br><br>
@@ -594,7 +919,7 @@
 				<td><img src="images/icons/gwfesheb.jpg" title="gwfeshe.spl" /></td>
 				<td><span style="color: #FFCC33;">Festin des héros</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">La Chevaucheuse crée un grand festin, avec table, chaises, vaisselle et de quoi boire et manger pour tous les convives. Le repas dure une heure entière et ses effets bénéfiques ne se font sentir qu'une fois qu'il est terminé. Tous ceux qui prennent part au banquet en tirent les avantages suivants : toutes leurs maladies, écœurements et nausées disparaissent ; ils sont immunisés contre le poison pendant 12 heures ; et ils gagnent 1d8 points de vie temporaires +1 tous les deux niveaux de la paladine (+10 maximum) s'ils boivent le nectar accompagnant le repas. La nourriture ingérée confère également un bonus de 1 aux jets d'attaque et de sauvegarde pendant 12 heures. Durant le même laps de temps, les convives sont immunisés contre la terreur. Si le festin est interrompu pour une raison quelconque, le sort est gâché et tous ses effets sont perdus.<br>
-				Note : si le composant « Gestion de la nourriture » est installé, ce sort correspond à la consommation d'eau et de nourriture nécessaire pendant 8 heures.</td>
+				Note : si le composant « Gestion de la nourriture » du mod Menace sur le Royaume de Diamant Éternel est installé, ce sort correspond à la consommation d'eau et de nourriture nécessaire pendant 8 heures.</td>
 				<td>19</td>
 				<td>1</td>
 			</tr>
@@ -602,7 +927,7 @@
 				<td><img src="images/icons/gwfeschb.jpg" title="gwfesch.spl" /></td>
 				<td><span style="color: #FFCC33;">Festin des champions</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Pré-requis : la Chevaucheuse doit connaître la faculté Festin des héros.<br><br>
-				La Chevaucheuse crée un festin impressionnant comprenant une grande table, des chaises, un service, de la nourriture et à boire. Il faut une heure pour consommer ces mets. Les effets ne sont opérationnels que si les convives passent l'heure entière à se restaurer. Ils sont alors tous soignés de leurs maladies, fièvres, nausée, fatigue et épuisement. Les poisons les affectant sont neutralisés et ils sont immunisés contre le poison pour les 12 heures suivantes. Le nectar servi en boisson durant le festin soigne 2d8 points de dégâts +1 point par niveau de la paladine (maximum +20) et confère 1d8 points de vie temporaires + 1 par tranche de 2 niveaux de la paladine (maximum +10). La nourriture du festin donne à toute créature qui la partage un bonus de 1 aux jets d'attaque et de sauvegarde ; et immunise contre les effets de terreur pour les 12 heures suivantes. Si le festin est interrompu pour une raison quelconque, le sort est gâché et tous ses effets sont perdus.<br>
+				La Chevaucheuse crée un festin impressionnant comprenant une grande table, des chaises, un service, de la nourriture et à boire. Il faut une heure pour consommer ces mets. Les effets ne sont opérationnels que si les convives passent l'heure entière à se restaurer. Ils sont alors tous soignés de leurs maladies, fièvres, nausée, fatigue et épuisement. Les poisons les affectant sont neutralisés et ils sont immunisés contre le poison pour les 12 heures suivantes. Le nectar servi en boisson durant le festin soigne 2d8 points de dégâts +1 point par niveau de la paladine (maximum +20) et confère 1d8 points de vie temporaires + 1 par tranche de 2 niveaux du paladin (maximum +10). La nourriture du festin donne à toute créature qui la partage un bonus de 1 aux jets d'attaque et de sauvegarde ; et immunise contre les effets de terreur pour les 12 heures suivantes. Si le festin est interrompu pour une raison quelconque, le sort est gâché et tous ses effets sont perdus.<br>
 				Note : si le composant « Gestion de la nourriture » est installé, ce sort correspond à la consommation d'eau et de nourriture nécessaire pendant 8 heures.</td>
 				<td>22</td>
 				<td>1</td>
@@ -610,15 +935,14 @@
 		</table><br><br>
 
 
-		<address>
-			<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; Capacités de haut niveau (HLA)</span> &#8226; <a href="#top">HAUT DE PAGE</a>
-		</address>
-	  </div>
+			<address>
+				<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; Capacités de haut niveau (HLA)</span> &#8226; <a href="#top">HAUT DE PAGE</a>
+			</address>
+		</div>
 
-<!-- =================== S p e l l s ==================== -->
+	<!-- =================== S p e l l s ==================== -->
 	  <a name="spells" id="spells"></a>
-	  <div class="content">
-
+		<div class="content">
 		<h2>
 			Sorts
 		</h2><br>
@@ -626,19 +950,23 @@
 		<h4>
 			<center><a href="#level1">Sorts de niveau 1</a> &#160;&#8226;&#160; <a href="#level2">Sorts de niveau 2</a> &#160;&#8226;&#160; <a href="#level3">Sorts de niveau 3</a> &#160;&#8226;&#160; <a href="#level4">Sorts de niveau 4</a></center>
 		</h4>
+<!-- 		<p>
+			<span style="margin-left: 50px;"><a href="#level1"></a></span></br>
+			<span style="margin-left: 50px;"><a href="#level2">Sorts de niveau 2</a></span></br>
+			<span style="margin-left: 50px;"><a href="#level3">Sorts de niveau 3</a></span></br>
+			<span style="margin-left: 50px;"><a href="#level4">Sorts de niveau 4</a></span></br>
+		</p> -->
 
-		<hr>
-
-<!-- ============== S p e l l s   -   L1 ================ -->
-		<a name="level1" id="level1"></a>
-		<h2 style="border-top: dotted 2px #d0d0d0; background-color: rgba(48, 48, 48, 0.6); margin-top: 2%;"><span class="com">N1</span>Sorts de niveau 1</h2><br>
-
+<hr>
+		<h3>
+			<a name="level1" id="level1"></a>Sorts de niveau 1
+		</h3>
 		<p>
-			À partir du niveau 9, la Chevaucheuse de licorne a accès aux sorts divins de niveau 1 suivants.
+			 À partir du niveau 9, la Chevaucheuse de licorne a accès aux sorts divins de niveau 1 suivants.
 		</p><br>
 
 		<table style="margin-left: 80px;line-height: 170%;" summary="Liste des sorts de niveau 1">
-			<tr style= "line-height: 300%;">
+			<tr style= "line-height: 170%;">
 				<th WIDTH=50>Icône</th>
 				<th>Nom</th>
 				<th>École</th>
@@ -663,8 +991,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				La Chevaucheuse insuffle du courage au bénéficiaire du sort et élève son moral à son plus haut niveau. Au fur et à mesure que la durée du sort s'écoule, le moral de la cible revient à son niveau normal. Si la cible est affectée par une terreur magique, cette peur s'annule.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">La Chevaucheuse insuffle du courage au bénéficiaire du sort et élève son moral à son plus haut niveau. Au fur et à mesure que la durée du sort s'écoule, le moral de la cible revient à son niveau normal. Si la cible est affectée par une terreur magique, cette peur s'annule.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwlicfob.jpg" title="gwlicfo.spl" /></td>
@@ -679,8 +1006,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				La Chevaucheuse crée un champ de force magique qui protège sa licorne comme si elle portait une barde en cotte de mailles (CA 4). Pouvant être cumulée avec la Dextérité de l'animal, elle ne pèse rien, ne l'empêche pas de bouger et ne l'encombre pas. Elle n'empêche pas non plus la licorne de lancer des sorts. Elle dure jusqu'à ce que quelqu'un la dissipe ou jusqu'à expiration de sa durée normale.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">La Chevaucheuse crée un champ de force magique qui protège sa licorne comme si elle portait une barde en cotte de mailles (CA 4). Pouvant être cumulée avec la Dextérité de l'animal, elle ne pèse rien, ne l'empêche pas de bouger et ne l'encombre pas. Elle n'empêche pas non plus la licorne de lancer des sorts. Elle dure jusqu'à ce que quelqu'un la dissipe ou jusqu'à expiration de sa durée normale.<br>
 				À plus haut niveau, la Chevaucheuse peut créer une barde feuilletée (CA 3) au niveau 15, une barde de plates (CA 2) au niveau 20, une plate de bataille (CA 1) au niveau 25 et une plate complète (CA 0) au niveau 30.<br>
 				Par ailleurs, si sa monture dispose déjà d'une barde, elle peut décider d'utiliser une variante de ce sort qui lui confère des bonus à la classe d'armure : 3 pour une cotte de mailles, 4 pour une feuilletée et 5 pour une plate.</td>
 			</tr>
@@ -697,16 +1023,12 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				La Chevaucheuse transmet de l'énergie positive à une flasque d'eau (1/2 litre), la transformant en eau bénite. L'eau bénite brûle les morts-vivants et les Extérieurs d'alignement mauvais comme si ces derniers recevaient de l'acide.<br>
-				Il faut lancer la flasque sur une créature corporelle afin qu'elle se brise à son contact. Elle lui inflige alors 2d4 points de dégâts + 2 par niveau de prêtre de la Chevaucheuse (jusqu'à un maximum de 2d4 + 20). Les éclaboussures infligent 2 points de dégâts à toutes les créatures de ce type situées à 1,50 mètre du point d'impact. Les créatures incorporelles sont donc immunisées contre ses effets.<br><br>
-				De plus, à partir du niveau 20, la Chevaucheuse devient suffisamment puissante pour rendre ses potions particulièrement efficaces contre les morts-vivants et les extraplanaires mauvais ayant au plus un nombre de dés de vie égal à la moitié de son niveau :<br>
-					<ul style="margin-left: 1%;width: 96%;line-height: 150%">
-						<li>Niveau 20 : ceux de 10 dés de vie sont ralentis pendant 2 rounds.</li>
-						<li>Niveau 30 : ceux de 15 dés de vie au plus sont repoussés pendant un round, ralentis et incommodés pendant 2 rounds (malus de 1 aux jets d'attaque et de dégâts).</li>
-						<li>Niveau 40 : ceux de 20 dés de vie au plus sont repoussés pendant un round, ralentis et incommodés pendant 2 rounds (malus de 2 aux jets d'attaque et de dégâts).</li>
-					</ul>
-				<span class="composantes">Composante matérielle : 2,5 kg de poudre d'argent (valeur 25 po).</span></td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">La Chevaucheuse transmet de l'énergie positive à une flasque d'eau (1/2 litre), la transformant en eau bénite. L'eau bénite brûle les morts-vivants et les Extérieurs d'alignement mauvais comme si ces derniers recevaient de l'acide.<br>
+				Il faut lancer la flasque sur une créature corporelle afin qu'elle se brise à son contact. Elle lui inflige alors 2d4 points de dégâts + 2 par niveau de prêtre de la Chevaucheuse (jusqu'à un maximum de 2d4 + 20). Les éclaboussures infligent 2 points de dégâts à toutes les créatures de ce type situées à 1,50 mètre du point d'impact. Les créatures incorporelles sont donc immunisées contre ses effets.<br>
+				De plus, à partir du niveau 20, la Chevaucheuse devient suffisamment puissante pour rendre ses potions particulièrement efficaces contre les morts-vivants et les extraplanaires mauvais ayant au plus un nombre de dés de vie égal à la moitié de son niveau :<br><br>
+				<span style="margin-left: 1%">– Niveau 20 : ceux de 10 dés de vie sont ralentis pendant 2 rounds.</span><br>
+				<span style="margin-left: 1%">– Niveau 30 : ceux de 15 dés de vie au plus sont repoussés pendant un round, ralentis et incommodés pendant 2 rounds (malus de 1 aux jets d'attaque et de dégâts).</span><br>
+				<span style="margin-left: 1%">– Niveau 40 : ceux de 20 dés de vie au plus sont repoussés pendant un round, ralentis et incommodés pendant 2 rounds (malus de 2 aux jets d'attaque et de dégâts).</span></td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwbenlab.jpg" title="gwbenla.spl" /></td>
@@ -721,8 +1043,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège rend l'épée touchée particulièrement puissante contre les créatures maléfiques qu'elle frappe comme si elle bénéficiait d'un bonus au toucher et aux dégâts de 1 par tranche de 10 niveaux du paladin, jusqu'à un maximum de 5. Cependant, ce bonus n'affecte pas le niveau d'enchantement de la lame.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort rend l'épée touchée particulièrement puissante contre les créatures maléfiques qu'elle frappe comme si elle bénéficiait d'un bonus au toucher et aux dégâts de 1 par tranche de 10 niveaux du paladin, jusqu'à un maximum de 5. Cependant, ce bonus n'affecte pas le niveau d'enchantement de la lame.<br>
 				Par ailleurs, elle permet de porter plus facilement des coups critiques, à raison de 5 % de chances supplémentaires par niveau du bonus de toucher.</td>
 			</tr>
 			<tr>
@@ -738,9 +1059,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège fait apparaître autour du bénéficiaire une aura scintillante qui repousse les attaques. Le Bouclier de la foi confère un bonus de 2 à la classe d'armure, +1 supplémentaire tous les cinq niveaux de la Chevaucheuse (jusqu'à un bonus maximum de 5 au niveau 25).<br><br>
-				<span class="composantes">Composante matérielle : un petit parchemin sur lequel a été rédigé un bout de texte sacré.</span></td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort fait apparaître autour du bénéficiaire une aura scintillante qui repousse les attaques. Le Bouclier de la foi confère un bonus de 2 à la classe d'armure, +1 supplémentaire tous les cinq niveaux de la Chevaucheuse (jusqu'à un bonus maximum de 5 au niveau 25).</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwcrewab.jpg" title="gwcrewa.spl" /></td>
@@ -755,9 +1074,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				La Chevaucheuse peut créer un maximum d'un litre d'eau tous les deux niveaux. Cette eau est pure et potable, comme de l'eau de pluie. Elle apparaît dans n'importe quel récipient capable de la recevoir, ou au-dessus d'une zone trois fois plus large (ce qui permet de créer une fine pluie ou de remplir plusieurs récipients de taille moindre). L'eau pèse 1 kilo par litre.<br><br>
-				<span class="composantes">Composante matérielle : une goutte d'eau.</span></td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">La a Chevaucheuse peut créer un maximum d'un litre d'eau tous les deux niveaux. Cette eau est pure et potable, comme de l'eau de pluie. Elle apparaît dans n'importe quel récipient capable de la recevoir, ou au-dessus d'une zone trois fois plus large (ce qui permet de créer une fine pluie ou de remplir plusieurs récipients de taille moindre). L'eau pèse 1 kilo par litre.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwcd212b.jpg" title="gwcd212.spl" /></td>
@@ -772,8 +1089,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sort permet de découvrir l'aura maléfique de n'importe quelle créature. Toute créature mauvaise à portée du sort se met à rougeoyer pendant un bref instant.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort permet de découvrir l'aura maléfique de n'importe quelle créature. Toute créature mauvaise à portée du sort se met à rougeoyer pendant un bref instant.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwfavdib.jpg" title="gwfavdi.spl" /></td>
@@ -788,8 +1104,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				La Chevaucheuse fait appel à la force et à la sagesse de Lurue pour élever le moral des créatures amicales qui l'entourent, leur conférant ainsi un bonus de 1 à leurs jets d'attaque et de sauvegarde par tranche de cinq niveaux de la paladine (jusqu'à un maximum de 6).<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">La Chevaucheuse fait appel à la force et à la sagesse de Lurue pour élever le moral des créatures amicales qui l'entourent, leur conférant ainsi un bonus de 1 à leurs jets d'attaque et de sauvegarde par tranche de cinq niveaux de la paladine (jusqu'à un maximum de 6).<br>
 				La Chevaucheuse détermine la portée du sort. Lorsque l'incantation se termine, le sort affecte toutes les créatures dans une zone correspondant à un rayon de 9 mètres, convergeant vers le point qu'elle a désigné. Les créatures affectées qui quittent la zone restent sous l'effet du sort et celles qui y pénètrent après l'incantation échappent à son effet. Ses effets durent 6 rounds.</td>
 			</tr>
 			<tr>
@@ -805,12 +1120,11 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège permet de voir parfaitement bien de très loin. Par ailleurs, pendant un round, la Chevaucheuse de licorne peut user d'une vision lointaine pour scruter une zone inexplorée de la carte. De plus, elle bénéficie d'un bonus de 3 à ses jets d'attaque à distance. Ces effets durent jusqu'à expiration ou dissipation.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort permet de voir parfaitement bien de très loin. Par ailleurs, pendant un round, la Chevaucheuse de licorne peut user d'une vision lointaine pour scruter une zone inexplorée de la carte. De plus, elle bénéficie d'un bonus de 3 à ses jets d'attaque à distance. Ces effets durent jusqu'à expiration ou dissipation.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwptnvob.jpg" title="gwptnvo.spl" /></td>
-				<td><span style="color: #FFCC33;">Protection contre les volants ailés</span></td>
+				<td><span style="color: #FFCC33;">Protection contre les volants ailés</td>
 				<td>Abjuration</td>
 				<td>Protection</td>
 				<td>1</td>
@@ -821,12 +1135,11 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège fonctionne comme Protection contre le mal et protège contre les attaques des créatures volantes ayant des ailes. Une barrière magique se crée autour du bénéficiaire à 30 cm de distance. Elle se déplace avec lui et a deux effets majeurs : toute créature volante attaquant la cible protégée reçoit un malus de 2 à ses jets d'attaque et la cible bénéficie d'un bonus de 2 à ses jets de sauvegarde. De plus, les créatures convoquées qui volent au moyen de leurs ailes sont incapables de toucher le sujet.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort fonctionne comme Protection contre le mal et protège contre les attaques des créatures volantes ayant des ailes. Une barrière magique se crée autour du bénéficiaire à 30 cm de distance. Elle se déplace avec lui et a deux effets majeurs : toute créature volante attaquant la cible protégée reçoit un malus de 2 à ses jets d'attaque et la cible bénéficie d'un bonus de 2 à ses jets de sauvegarde. De plus, les créatures convoquées qui volent au moyen de leurs ailes sont incapables de toucher le sujet.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwraystb.jpg" title="gwrayst.spl" /></td>
-				<td><span style="color: #FFCC33;">Rayonnement saint</span></td>
+				<td><span style="color: #FFCC33;">Rayonnement saint</td>
 				<td>Évocation, Altération</td>
 				<td>Garde, Soleil</td>
 				<td>1</td>
@@ -837,8 +1150,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				La Chevaucheuse augmente l'intensité de son aura lumineuse pour terrasser les morts-vivants. Celle-ci éclaire vivement dans un rayon de 3 mètres (et faiblement sur 6 mètres). Tous les morts-vivants situés à 3 mètres ou moins subissent 1d4 points de dégâts, +1 tous les deux niveaux, par round d'exposition.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">La Chevaucheuse augmente l'intensité de son aura lumineuse pour terrasser les morts-vivants. Celle-ci éclaire vivement dans un rayon de 3 mètres (et faiblement sur 6 mètres). Tous les morts-vivants situés à 3 mètres ou moins subissent 1d4 points de dégâts, +1 tous les deux niveaux, par round d'exposition.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwcurelb.jpg" title="gwcurel.spl" /></td>
@@ -853,8 +1165,7 @@
 				<td>spécial</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				En posant ses mains sur une créature vivante, la Chevaucheuse lui transmet de l'énergie positive qui lui permet de récupérer 1d8 points de vie, +1 par niveau d'expérience (jusqu'à un maximum de +5). La guérison n'est définitive que dans la mesure où la créature ne subit pas d'autres dégâts ; les blessures provoquées se cicatriseront (ou peuvent être soignées) comme n'importe quelle blessure normale.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">En posant ses mains sur une créature vivante, la a Chevaucheuse lui transmet de l'énergie positive qui lui permet de récupérer 1d8 points de vie, +1 par niveau d'expérience (jusqu'à un maximum de +5). La guérison n'est définitive que dans la mesure où la créature ne subit pas d'autres dégâts ; les blessures provoquées se cicatriseront (ou peuvent être soignées) comme n'importe quelle blessure normale.<br>
 				Cette guérison ne concerne pas les créatures dépourvues d'enveloppe corporelle ou d'origine extraplanaire. Les morts-vivants étant animés d'énergie négative, ce sort leur inflige des dégâts plutôt qu'il ne les soigne. Un jet de sauvegarde contre les sorts réussi leur permet toutefois de ne subir que des dégâts réduits de moitié.</td>
 			</tr>
 			<tr>
@@ -870,24 +1181,22 @@
 				<td>spécial</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				La Chevaucheuse attire une faveur spéciale de Lurue pour sanctifier une zone grâce aux forces de la Nature. Toutes les créatures féeriques et les plantes présentes dans cette zone reçoivent un bonus de 1 à leurs jets d'attaque, de dégâts et de sauvegarde alors que les aberrations (Aboleths, Driders, Flagelleurs, Mimiques, Ombres de roche, Otyughs, Spectateurs...) écopent d'un malus de 1. Ce bonus augmente de 1 point par tranche de dix niveaux, avec un maximum de +5. Les Zones de pureté multiples ne sont pas cumulatives.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">La Chevaucheuse attire une faveur spéciale de Lurue pour sanctifier une zone grâce aux forces de la Nature. Toutes les créatures féeriques et plantes présentes dans cette zone reçoivent un bonus de 1 à leurs jets d'attaque, de dégâts et de sauvegarde alors que les aberrations (Aboleths, Driders, Flagelleurs, Mimiques, Ombres de roche, Otyughs, Spectateurs...) écopent d'un malus de 1. Ce bonus augmente de 1 point par tranche de dix niveaux, avec un maximum de +5. Les Zones de pureté multiples ne sont pas cumulatives.</td>
 			</tr>
 		</table><br>
 		<p style="font-size:90%;text-align: right;"><a href="#spells">RETOUR À LA LISTE DES SORTS</a>
 		</p>
 
-		<hr>
-<!-- ============== S p e l l s   -   L2 ================ -->
-		<a name="level2" id="level2"></a>
-		<h2 style="border-top: dotted 2px #d0d0d0; background-color: rgba(48, 48, 48, 0.6); margin-top: 2%;"><span class="com">N2</span>Sorts de niveau 2</h2><br>
-
+<hr>
+		<h3>
+			<a name="level2" id="level2"></a>Sorts de niveau 2
+		</h3>
 		<p>
 			À partir du niveau 11, la Chevaucheuse de licorne a accès aux sorts divins de niveau 2 suivants.
 		</p><br>
 
 		<table style="margin-left: 80px;line-height: 170%;" summary="Liste des sorts de niveau 2">
-			<tr style= "line-height: 300%;">
+			<tr>
 				<th>Icône</th>
 				<th>Nom</th>
 				<th>École</th>
@@ -912,8 +1221,7 @@
 				<td>spécial</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce n'est pas tous les jours que l'on combat aux côtés d'une licorne ! La Chevaucheuse profite de ce moment d'exaltation pour attirer une faveur spéciale de son dieu sur elle-même et sur son groupe, et handicape ses ennemis. Lorsque l'incantation est achevée, tous les jets d'attaque et de dégâts, ainsi que les jets de sauvegarde effectués par ses alliés situés dans la zone d'effet, reçoivent un bonus de 1 alors que ses ennemis maléfiques écopent d'un malus de 1. Ce bonus augmente de 1 point par tranche de dix niveaux. Les cantiques multiples ne sont pas cumulatifs.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce n'est pas tous les jours que l'on combat aux côtés d'une licorne ! La Chevaucheuse profite de ce moment d'exaltation pour attirer une faveur spéciale de son dieu sur elle-même et sur son groupe, et handicape ses ennemis. Lorsque l'incantation est achevée, tous les jets d'attaque et de dégâts, ainsi que les jets de sauvegarde effectués par ses alliés situés dans la zone d'effet, reçoivent un bonus de 1 alors que ses ennemis maléfiques écopent d'un malus de 1. Ce bonus augmente de 1 point par tranche de dix niveaux. Les cantiques multiples ne sont pas cumulatifs.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwpa209b.jpg" title="gwpa209.spl" /></td>
@@ -928,9 +1236,8 @@
 				<td>oui</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège permet à la Chevaucheuse de lire avec précision l'aura d'une créature. Elle doit rester immobile et se concentrer sur le sujet pendant un round entier. Si la créature réussit un jet de sauvegarde contre les sorts, elle ne pourra rien apprendre sur elle. Sinon, elle émet pendant un bref instant une aura rouge si elle est mauvaise, dorée si elle est bonne et bleue si elle est neutre.<br>
-				Contrairement aux prêtres, la paladine a développé avec l'expérience une espèce de « sixième sens » qui lui permet de mieux déterminer l'aura des créatures qu'elle rencontre. C'est pourquoi le jet de sauvegarde de ces dernières pour contrer le sort subit un malus de 2 plus 1 par tranche de dix niveaux de la paladine.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort permet à la Chevaucheuse de lire avec précision l'aura d'une créature. Elle doit rester immobile et se concentrer sur le sujet pendant un round entier. Si la créature réussit un jet de sauvegarde contre les sorts, elle ne pourra rien apprendre sur elle. Sinon, elle émet pendant un bref instant une aura rouge si elle est mauvaise, dorée si elle est bonne et bleue si elle est neutre.<br>
+				Contrairement aux prêtres, le paladin a développé avec l'expérience une espèce de « sixième sens » qui lui permet de mieux déterminer l'aura des créatures qu'elle rencontre. C'est pourquoi le jet de sauvegarde de ces dernières pour contrer le sort subit un malus de 2 plus 1 par tranche de dix niveaux de la paladine.<br>
 				Cependant, certains dispositifs magiques annulent le pouvoir du sort de connaissance des alignements.</td>
 			</tr>
 			<tr>
@@ -946,8 +1253,7 @@
 				<td>oui</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Un rayon de lumière incandescente fuse de la main tendue de la Chevaucheuse et frappe à coup sûr sa cible. Une créature frappée par l'éclair subit 1d6 points de dégâts par niveau de la paladine (jusqu'à un maximum de 10d6) et est aveuglée pendant 1 round si elle rate son jet de sauvegarde contre les sorts (avec un malus de 4).<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Un rayon de lumière incandescente fuse de la main tendue de la Chevaucheuse et frappe à coup sûr sa cible. Une créature frappée par l'éclair subit 1d6 points de dégâts par niveau de la paladine (jusqu'à un maximum de 10d6) et est aveuglée pendant 1 round si elle rate son jet de sauvegarde contre les sorts (avec un malus de 4).<br>
 				Les créatures vulnérables à la lumière du jour voient ces dégâts doubler. Les morts-vivants subissent toujours des dégâts doublés, tout comme les thallophytes, les moisissures, les vases et les limons. Les morts-vivants vulnérables à la lumière du jour (comme les vampires) subissent quant à eux des dégâts triplés.</td>
 			</tr>
 			<tr>
@@ -963,8 +1269,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège améliore la vigueur d'une créature ; ce qui se concrétise par une augmentation de quatre points de sa Constitution, avec tous les bonus conséquents. Cet effet dure jusqu'à expiration ou dissipation.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort améliore la vigueur d'une créature ; ce qui se concrétise par une augmentation de quatre points de sa Constitution, avec tous les bonus conséquents. Cet effet dure jusqu'à expiration ou dissipation.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwexaltb.jpg" title="gwexalt.spl" /></td>
@@ -979,8 +1284,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce n'est pas tous les jours que l'on combat aux côtés d'une licorne ! Ce sortilège exalte et emplit de joie et d'énergie les alliés de la Chevaucheuse. Ils bénéficient d'un bonus de 2 en Force et en Dextérité, et leur vitesse de déplacement augmente de 1,50 mètre.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce n'est pas tous les jours que l'on combat aux côtés d'une licorne ! Ce sort exalte et emplit de joie et d'énergie les alliés de la Chevaucheuse. Ils bénéficient d'un bonus de 2 en Force et en Dextérité, et leur vitesse de déplacement augmente de 1,50 mètre.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwtaureb.jpg" title="gwtaure.spl" /></td>
@@ -995,8 +1299,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège augmente de quatre points la Force d'une créature, avec les modifications induites aux jets d'attaque et de dégâts. Cet effet dure jusqu'à expiration ou dissipation.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort augmente de quatre points la Force d'une créature, avec les modifications induites aux jets d'attaque et de dégâts. Cet effet dure jusqu'à expiration ou dissipation.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwgfelib.jpg" title="gwgfeli.spl" /></td>
@@ -1011,8 +1314,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège rend une créature bien plus gracieuse et agile, ce qui lui permet de mieux coordonner ses gestes. Cet avantage se traduit par un gain de quatre points de Dextérité, accompagné de toutes les modifications habituelles en termes de classe d'armure et autres utilisations du bonus de Dextérité. Cet effet dure jusqu'à expiration ou dissipation.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort rend une créature bien plus gracieuse et agile, ce qui lui permet de mieux coordonner ses gestes. Cet avantage se traduit par un gain de quatre points de Dextérité, accompagné de toutes les modifications habituelles en termes de classe d'armure et autres utilisations du bonus de Dextérité. Cet effet dure jusqu'à expiration ou dissipation.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwhydrab.jpg" title="gwhydra.spl" /></td>
@@ -1027,8 +1329,7 @@
 				<td>Spécial</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège crée de l'humidité dans le corps d'une créature vivante, la réhydratant. Il soigne 2d8 points de dégâts de dessèchement +1 par niveau du jeteur de sort (jusqu'à un maximum de 2d8+10), supprime tout dégât non-létal dû à la soif et enlève tout signe et effet de l'état de déshydratation.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort crée de l'humidité dans le corps d'une créature vivante, la réhydratant. Il soigne 2d8 points de dégâts de dessèchement +1 par niveau (jusqu'à un maximum de 2d8+10), supprime tout dégât non-létal dû à la soif et enlève tout signe et effet de l'état de déshydratation.<br>
 				Lancé sur une créature utilisant le Feu, il inflige des dégâts au lieu de soigner. Elle a cependant le droit à un jet de sauvegarde contre les sorts pour réduire les dégâts de moitié.<br><br>
 				<em>Note : si le composant « Gestion de la nourriture » est installé, ce sort correspond à la consommation d'eau nécessaire pendant 8 heures.</em></td>
 			</tr>
@@ -1045,8 +1346,7 @@
 				<td>oui</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sort est semblable à Immobilisation des personnes, si ce n'est qu'il permet de figer les animaux sur place. Il affecte uniquement les animaux de taille normale et les animaux géants. Les monstres tels que les wivernes, les ankhegs et les vers charognards ne font pas partie des animaux. La puissance du lien télépathique unissant la Chevaucheuse et sa licorne rend ce sort bien plus puissant que celui des druides puisqu'il s'effectue avec un malus au jet de sauvegarde égal à 4 + 1 par tranche de 10 niveaux de la paladine.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort est semblable à Immobilisation des personnes, si ce n'est qu'il permet de figer les animaux sur place. Il affecte uniquement les animaux de taille normale et les animaux géants. Les monstres tels que les wivernes, les ankhegs et les vers charognards ne font pas partie des animaux. La puissance du lien télépathique unissant la Chevaucheuse et sa licorne rend ce sort bien plus puissant que celui des druides puisqu'il s'effectue avec un malus au jet de sauvegarde égal à 4 + 1 par tranche de 10 niveaux de la paladine.<br>
 				L'effet est centré sur la victime choisie par la Chevaucheuse. Tous les ennemis situés à moins de 1,5 mètre de la cible sont également affectés. Ceux qui réussissent leur jet de sauvegarde sont totalement immunisés contre le sort. Les créatures immobilisées ne peuvent ni se déplacer ni parler, mais elles restent conscientes des événements se produisant autour d'elles et peuvent utiliser des capacités ne requérant aucun mouvement ou parole. Le fait d'être immobilisé n'empêche pas l'état du sujet d'empirer sous l'effet des blessures, de la maladie ou du poison.</td>
 			</tr>
 			<tr>
@@ -1062,8 +1362,7 @@
 				<td>oui</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sort fige sur place une seule créature humaine, demi-humaine ou humanoïde pendant 1 tour. Le sort d'immobilisation des personnes affecte tout humain bipède, demi-homme ou humanoïde de taille humaine ou inférieure (lutin, dryade, nain, elfe, gnoll, gnome, gobelin, demi-elfe, petite-personne, demi-orque, hobgobelin, humain, kobold, homme-lézard, nixe, orque, pixie, esprit-follet, troglodyte, etc.) Ainsi, un guerrier du 10e niveau pourra être immobilisé, mais pas un ogre.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort fige sur place une seule créature humaine, demi-humaine ou humanoïde pendant 1 tour. Le sort d'immobilisation des personnes affecte tout humain bipède, demi-homme ou humanoïde de taille humaine ou inférieure (lutin, dryade, nain, elfe, gnoll, gnome, gobelin, demi-elfe, petite-personne, demi-orque, hobgobelin, humain, kobold, homme-lézard, nixe, orque, pixie, esprit-follet, troglodyte, etc.) Ainsi, un guerrier du 10e niveau pourra être immobilisé, mais pas un ogre.<br>
 				L'effet est centré sur la victime choisie par le jeteur de sorts. Tout ennemi situé à moins de 1,5 mètre de la cible est également affecté. Les créatures qui réussissent leur jet de sauvegarde sont totalement immunisées contre le sort. Les morts-vivants ne peuvent pas être immobilisés.<br>
 				Les créatures immobilisées ne peuvent ni se déplacer ni parler, mais elles restent conscientes des événements se produisant autour d'elles et peuvent utiliser des capacités ne requérant aucun mouvement ou parole. Le fait d'être immobilisé n'empêche pas que l'état du sujet empire sous l'effet des blessures, de la maladie ou du poison.</td>
 			</tr>
@@ -1080,9 +1379,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège permet à la Chevaucheuse de rendre la lame de n'importe quelle arme tranchante particulièrement meurtrière pour certaines créatures maléfiques, dont elle choisit la race quand elle lance le sort. Son arme acquiert alors un bonus supplémentaire de 2 à ses jets d'attaque contre ces créatures et leur inflige 2d6 points de dégâts supplémentaires. Le type de créature concernée dépend du niveau de la paladine.<br><br>
-				<span class="composantes">Composante matérielle : une goutte de sang et 500 po de poussière de rubis.</span></td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort permet à la Chevaucheuse de rendre la lame de n'importe quelle arme tranchante particulièrement meurtrière pour certaines créatures maléfiques, dont elle choisit la race quand elle lance le sort. Son arme acquiert alors un bonus supplémentaire de 2 à ses jets d'attaque contre ces créatures et leur inflige 2d6 points de dégâts supplémentaires. Le type de créature concernée dépend du niveau de la paladine.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwlcealb.jpg" title="gwlceal.spl" /></td>
@@ -1097,10 +1394,8 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Don de la déesse Lurue, Reine des licornes, ce sortilège fait apparaître une lance argentée et partiellement éthérée en forme d'alicorne (le nom exact d'une corne de licorne) en suspension au-dessus de la Chevaucheuse. À tout moment avant expiration du sort (un round par niveau), la Chevaucheuse peut désigner une cible à la lance qui va aussitôt la transpercer, lui infligeant 3d6 points de dégâts perforants. La lance alicorne ne rate jamais sa cible, qui peut toutefois éviter une partie de ses effets (la moitié de ses dégâts) en réussissant un jet de sauvegarde contre les sorts avec un malus de 1 par niveau d'enchantement de la lance. Considérée comme une arme +1, la lance gagne un niveau d'enchantement aux niveaux 15, 19, 23 et 27.<br>
-				Dès qu'elle frappe, la lance alicorne se désintègre en imprégnant sa cible d'une aura de lueur féerique. Celle-ci entoure sa cible pendant 1 à 4 rounds, la rendant visible et plus facile à toucher. Elle ne peut plus devenir invisible et subit un malus de 2 à sa classe d'armure.<br><br>
-				<span class="composantes">Composante matérielle : le symbole sacré de la Chevaucheuse et la mèche d'une crinière de licorne.</span></td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Don de la déesse Lurue, Reine des licornes, ce sort fait apparaître une lance argentée et partiellement éthérée en forme d'alicorne (le nom exact d'une corne de licorne) en suspension au-dessus de la Chevaucheuse. À tout moment avant expiration du sort (un round par niveau), la Chevaucheuse peut désigner une cible à la lance qui va aussitôt la transpercer, lui infligeant 3d6 points de dégâts perforants. La lance alicorne ne rate jamais sa cible, qui peut toutefois éviter une partie de ses effets (la moitié de ses dégâts) en réussissant un jet de sauvegarde contre les sorts avec un malus de 1 par niveau d'enchantement de la lance. Considérée comme une arme +1, la lance gagne un niveau d'enchantement aux niveaux 15, 19, 23 et 27.<br>
+				Dès qu'elle frappe, la lance alicorne se désintègre en imprégnant sa cible d'une aura de lueur féerique. Celle-ci entoure sa cible pendant 1 à 4 rounds, la rendant visible et plus facile à toucher. Elle ne peut plus devenir invisible et subit un malus de 2 à sa classe d'armure.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwptnchb.jpg" title="gwptnch.spl" /></td>
@@ -1115,9 +1410,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège immunise son bénéficiaire contre les charmes. Il n'affecte qu'une créature et dure jusqu'à expiration (2 rounds par niveau) ou dissipation. Cependant, à partir du niveau 15, il affecte tous les alliés de la cible, dans un rayon de 9 m autour d'elle, qui bénéficient alors d'une résistance magique aux charmes égale à 20 % + 2 % par niveau du lanceur de sort (jusqu'à un maximum de 90 %), pendant un round par niveau.<br><br>
-				<span class="composantes">Composante matérielle : un fragment (cheveu ou autre) du corps d'une créature ayant une aptitude naturelle de charme ou de domination, comme le succube ou le vampire.</span></td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort immunise son bénéficiaire contre les charmes. Il n'affecte qu'une créature et dure jusqu'à expiration (2 rounds par niveau) ou dissipation. Cependant, à partir du niveau 15, il affecte tous les alliés de la cible, dans un rayon de 9 m autour d'elle, qui bénéficient alors d'une résistance magique aux charmes égale à 20 % + 2 % par niveau du lanceur de sort (jusqu'à un maximum de 90 %), pendant un round par niveau.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwragoub.jpg" title="gwragou.spl" /></td>
@@ -1132,11 +1425,9 @@
 				<td>spécial</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège fait appel aux faveurs de l'esprit de Gargantua afin qu'il remplisse une marmite de son puissant ragoût curatif. Le lanceur de sorts doit tenir cette marmite durant l'incantation, sans quoi elle échoue. Le sort crée une portion tous les deux niveaux de lanceur de sorts (jusqu'à un maximum de 6). Chaque portion guérit 1d6+1 points de dégâts. Une portion qui n'est pas consommée disparaît au bout de 1 heure.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort fait appel aux faveurs de l'esprit de Gargantua afin qu'il remplisse une marmite de son puissant ragoût curatif. Le lanceur de sorts doit tenir cette marmite durant l'incantation, sans quoi elle échoue. Le sort crée une portion tous les deux niveaux de lanceur de sorts (jusqu'à un maximum de 6). Chaque portion guérit 1d6+1 points de dégâts. Une portion qui n'est pas consommée disparaît au bout de 1 heure.<br>
 				Le ragoût peut également être lancé contre un adversaire. Si l'attaque est réussie, la marmite explose en formant de petites boules de feu infligeant 1d6+1 points de dégâts par portion à tous les morts-vivants situés dans un rayon de 6 mètres. Ces derniers ont droit à leur résistance à la magie et à un jet de sauvegarde pour réduire les dégâts de moitié.<br><br>
-				<em>Note : si le composant Gestion de la nourriture est installé, une portion correspond à la consommation d'eau et de nourriture nécessaire pendant 8 heures.</em><br><br>
-				<span class="composantes">Focaliseur : une marmite ciselée d'une valeur de 50 po au moins.</span></td>
+				<em>Note : si le composant Gestion de la nourriture du mod Menace sur le Royaume de Diamant Éternel est installé, une portion correspond à la consommation d'eau et de nourriture nécessaire pendant 8 heures.</em></td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwrecrob.jpg" title="gwrecro.spl" /></td>
@@ -1151,14 +1442,13 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège crée autour du bénéficiaire une barrière magique en forme de sphère faiblement phosphorescente qui se déplace avec lui et le rend invulnérable aux projectiles naturels comme les rochers, les munitions de catapulte ou de baliste, qui rebondissent automatiquement sur la sphère. Le bénéficiaire peut cependant effectuer des attaques à distance normales vers l'extérieur de la sphère sans l'endommager.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort crée autour du bénéficiaire une barrière magique en forme de sphère faiblement phosphorescente qui se déplace avec lui et le rend invulnérable aux projectiles naturels comme les rochers, les munitions de catapulte ou de baliste, qui rebondissent automatiquement sur la sphère. Le bénéficiaire peut cependant effectuer des attaques à distance normales vers l'extérieur de la sphère sans l'endommager.<br>
 				Notez toutefois que ce sort n'apporte aucune protection contre les attaques de projectiles manufacturés (flèches, carreaux, dagues...) ou générés par des sorts.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwresedb.jpg" title="gwresed.spl" /></td>
 				<td><span style="color: #FFCC33;">Résistance aux énergies destructives</span></td>
-				<td>Abjuration</td>
+				<td>Anjuration</td>
 				<td>Protection, Élémentaire</td>
 				<td>5</td>
 				<td>Toucher</td>
@@ -1168,13 +1458,12 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège confère une protection limitée contre la forme d'énergie choisie : acide, électricité, feu, froid ou poison. Le sujet bénéficie d'une résistance de 10 % + 1 % par niveau contre le type d'énergie choisi. Ce sort ne fait qu'absorber les dégâts, qu'ils soient d'origine magique ou non,  et ne protège pas contre les effets secondaires, comme se noyer dans un bassin d'acide ou être pris dans la glace.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort confère une protection limitée contre la forme d'énergie choisie : acide, électricité, feu, froid ou poison. Le sujet bénéficie d'une résistance de 10 % + 1 % par niveau contre le type d'énergie choisi. Ce sort ne fait qu'absorber les dégâts, qu'ils soient d'origine magique ou non,  et ne protège pas contre les effets secondaires, comme se noyer dans un bassin d'acide ou être pris dans la glace.<br>
 				Note : ce sort n'est pas compatible avec les autres sorts protégeant contre le même élément. Cependant, il est possible de bénéficier d'une Résistance aux énergies destructives (feu) et d'une Protection contre l'électricité, ou de quelque autre combinaison de sorts offrant une protection contre différents types d'énergie.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwpa211b.jpg" title="gwpa211.spl" /></td>
-				<td><span style="color: #FFCC33;">Silence sur 5 mètres</span></td>
+				<td><span style="color: #FFCC33;">Silence sur 5 mètres
 				<td>Altération</td>
 				<td>Garde</td>
 				<td>5</td>
@@ -1185,25 +1474,22 @@
 				<td>oui</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Lorsque ce sort est jeté, un silence complet s'abat sur la zone concernée. Tous les sons s'évanouissent : il est impossible de parler ou de jeter un sort. Chaque créature située dans la zone doit effectuer un jet de sauvegarde à -5 ; si sa sauvegarde échoue, elle restera silencieuse pendant toute la durée du sort. Notez qu'une fois lancé, ce sort ne continue pas d'affecter la zone ; seuls ceux dans la zone au moment de l'incantation sont frappés de mutisme.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Lorsque ce sort est jeté, un silence complet s'abat sur la zone concernée. Tous les sons s'évanouissent : il est impossible de parler ou de jeter un sort. Chaque créature située dans la zone doit effectuer un jet de sauvegarde à -5 ; si sa sauvegarde échoue, elle restera silencieuse pendant toute la durée du sort. Notez qu'une fois lancé, ce sort ne continue pas d'affecter la zone ; seuls ceux dans la zone au moment de l'incantation sont frappés de mutisme.</td>
 			</tr>
 		</table><br>
 		<p style="font-size:90%;text-align: right;"><a href="#spells">RETOUR À LA LISTE DES SORTS</a>
 		</p>
 
-		<hr>
-<!-- ============== S p e l l s   -   L3 ================ -->
-		<a name="level3" id="level3"></a>
-		<h2 style="border-top: dotted 2px #d0d0d0; background-color: rgba(48, 48, 48, 0.6); margin-top: 2%;"><span class="com">N3</span>Sorts de niveau 3</h2><br>
-
-
+<hr>
+		<h3>
+			<a name="level3" id="level3"></a>Sorts de niveau 3
+		</h3>
 		<p>
 			À partir du niveau 13, la Chevaucheuse de licorne a accès aux sorts divins de niveau 3 suivants.
 		</p><br>
 
 		<table style="margin-left: 80px;line-height: 170%;" summary="Liste des sorts de niveau 2">
-			<tr style= "line-height: 300%;">
+			<tr>
 				<th>Icône</th>
 				<th>Nom</th>
 				<th>École</th>
@@ -1228,8 +1514,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				La Chevaucheuse s'entoure d'un banc de brume tourbillonnante et purifiante de 1,50 mètre de rayon par niveau, qui dépose un voile d'humidité sur tout ce qui se trouve à l'intérieur. Il débarrasse l'air de la fumée et de la poussière, repousse automatiquement tous les éléments nocifs des vapeurs empoisonnées et guérit les effets des poisons inhalés au sein de la brume. Ce sort dissipera donc tout nuage magique dans la zone occupée par le lanceur du sort, comme Brume acide, Brume mortelle... En revanche, il n'offre aucune protection contre les vapeurs empoisonnées créées par un souffle de dragon (comme les gaz chlorés d'un dragon vert).<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">La Chevaucheuse s'entoure d'un banc de brume tourbillonnante et purifiante de 1,50 mètre de rayon par niveau, qui dépose un voile d'humidité sur tout ce qui se trouve à l'intérieur. Il débarrasse l'air de la fumée et de la poussière, repousse automatiquement tous les éléments nocifs des vapeurs empoisonnées et guérit les effets des poisons inhalés au sein de la brume. Ce sort dissipera donc tout nuage magique dans la zone occupée par le lanceur du sort, comme Brume acide, Brume mortelle... En revanche, il n'offre aucune protection contre les vapeurs empoisonnées créées par un souffle de dragon (comme les gaz chlorés d'un dragon vert).<br>
 				Cependant, la Brume de pureté confère tout de même à tous ceux qui s'y trouvent un bonus de 4 au jet de sauvegarde contre les poisons.</td>
 			</tr>
 			<tr>
@@ -1245,8 +1530,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				La Chevaucheuse rend un endroit sûr, à l'abri du danger. Ce sortilège fonctionne comme Sanctuaire, si ce n'est qu'il affecte plusieurs alliés de la Chevaucheuse, aucun ne devant se trouver à plus de 9 m des autres. Les bénéficiaires disparaissent aux yeux de leurs opposants. C'est comme s'ils devenaient invisibles. Tant qu'ils sont protégés par ce sort, ils ne peuvent pas entreprendre une action offensive directe sans rompre le sort ; en revanche, ils peuvent librement lancer des sorts autres que les sorts d'attaque ou entreprendre une action quelconque, dans la mesure où ils ne violent pas l'interdiction des actions offensives. Ainsi, un prêtre protégé par une barrière magique peut par exemple guérir des blessures ou prononcer une bénédiction. Il ne peut pas lancer un sort à une autre créature sans mettre un terme à ce sort.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">La Chevaucheuse rend un endroit sûr, à l'abri du danger. Ce sort fonctionne comme Sanctuaire, si ce n'est qu'il affecte plusieurs alliés de la Chevaucheuse, aucun ne devant se trouver à plus de 9 m des autres. Les bénéficiaires disparaissent aux yeux de leurs opposants. C'est comme s'ils devenaient invisibles. Tant qu'ils sont protégés par ce sort, ils ne peuvent pas entreprendre une action offensive directe sans rompre le sort ; en revanche, ils peuvent librement lancer des sorts autres que les sorts d'attaque ou entreprendre une action quelconque, dans la mesure où ils ne violent pas l'interdiction des actions offensives. Ainsi, un prêtre protégé par une barrière magique peut par exemple guérir des blessures ou prononcer une bénédiction. Il ne peut pas lancer un sort à une autre créature sans mettre un terme à ce sort.<br>
 				Il ne fonctionne qu'à l'extérieur.</td>
 			</tr>
 			<tr>
@@ -1262,8 +1546,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sort permet généralement d'annuler une malédiction ordinaire pesant sur un objet ou une personne, ou une malédiction ayant la forme d'un envoi indésirable ou d'une présence maléfique. Il faut savoir que le sort de Délivrance de la malédiction ne fait pas disparaître une malédiction lancée, par exemple, sur un bouclier, une arme ou une armure, bien qu'il permette normalement à la personne frappée d'une telle malédiction de s'en débarrasser. Certaines malédictions spéciales peuvent ne pas être levées par ce sort ou alors peuvent être écartées seulement par un jeteur de sorts disposant du niveau minimum nécessaire.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort permet généralement d'annuler une malédiction ordinaire pesant sur un objet ou une personne, ou une malédiction ayant la forme d'un envoi indésirable ou d'une présence maléfique. Il faut savoir que le sort de Délivrance de la malédiction ne fait pas disparaître une malédiction lancée, par exemple, sur un bouclier, une arme ou une armure, bien qu'il permette normalement à la personne frappée d'une telle malédiction de s'en débarrasser. Certaines malédictions spéciales peuvent ne pas être levées par ce sort ou alors peuvent être écartées seulement par un jeteur de sorts disposant du niveau minimum nécessaire.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwpa308b.jpg" title="gwpa308.spl" /></td>
@@ -1278,8 +1561,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sort permet de libérer toutes les créatures situées dans sa zone d'action des effets de la paralysie ou d'une magie apparentée (Toucher de la goule ou sort d'immobilisation).</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort permet de libérer toutes les créatures situées dans sa zone d'action des effets de la paralysie ou d'une magie apparentée (Toucher de la goule ou sort d'immobilisation).</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwpa303b.jpg" title="gwpa303.spl" /></td>
@@ -1294,8 +1576,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sort annule les effets magiques affectant toute créature dans la zone d'effet, qu'il s'agisse des effets des sorts, des potions ou de certains objets magiques (tels que les baguettes). Notez que certains sorts (Renvoi de sorts, Déviation de sorts, etc.) ou certains objets spécialement enchantés ne sont pas affectés par ce sort. Les chances de réussir une dissipation sont déterminées par le niveau du jeteur de sorts et celui de la magie à dissiper. Elles sont au départ de 11 ou plus sur 1d20. Si le jeteur de sorts possède un niveau supérieur à celui du créateur de l'effet à dissiper, la différence entre leur niveau respectif vient se soustraire à ce chiffre de base requis. S'il est d'un niveau inférieur, la différence vient s'ajouter à la valeur de base. Un résultat de 20 au lancer de dé est un gage de réussite, tandis qu'un résultat de 1 est un gage d'échec. Par conséquent, si un jeteur de sorts possède supérieur de 10 à la magie qu'il essaie de dissiper, seul 1 au lancer de dé peut empêcher la dissipation de l'effet. Dans la pratique, il est quasiment inutile d'incanter ce sort si c'est pour dissiper une magie qui est supérieure de plus de 5 niveaux.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort annule les effets magiques affectant toute créature dans la zone d'effet, qu'il s'agisse des effets des sorts, des potions ou de certains objets magiques (tels que les baguettes). Notez que certains sorts (Renvoi de sorts, Déviation de sorts, etc.) ou certains objets spécialement enchantés ne sont pas affectés par ce sort. Les chances de réussir une dissipation sont déterminées par le niveau du jeteur de sorts et celui de la magie à dissiper. Elles sont au départ de 11 ou plus sur 1d20. Si le jeteur de sorts possède un niveau supérieur à celui du créateur de l'effet à dissiper, la différence entre leur niveau respectif vient se soustraire à ce chiffre de base requis. S'il est d'un niveau inférieur, la différence vient s'ajouter à la valeur de base. Un résultat de 20 au lancer de dé est un gage de réussite, tandis qu'un résultat de 1 est un gage d'échec. Par conséquent, si un jeteur de sorts possède supérieur de 10 à la magie qu'il essaie de dissiper, seul 1 au lancer de dé peut empêcher la dissipation de l'effet. Dans la pratique, il est quasiment inutile d'incanter ce sort si c'est pour dissiper une magie qui est supérieure de plus de 5 niveaux.<br>
 				Notez que même si ce sort dissipe les effets de Glisse, de Toile d'araignée et de Nuage puant, il ne dissipe pas la zone d'effet de ces sorts.</td>
 			</tr>
 			<tr>
@@ -1306,13 +1587,12 @@
 				<td>3</td>
 				<td>0</td>
 				<td>rayon de 36 mètres</td>
-				<td>5 Rounds</td>
+				<td>Instantanée</td>
 				<td>aucun</td>
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Toutes les créatures invisibles situées dans la zone d'effet perdent leur invisibilité. Cela concerne les créatures se trouvant sous les effets d'un sort de Sanctuaire, d'Invisibilité majeure, de l'invisibilité de la Porte d'ombre, de Double illusoire, etc. La résistance magique des cibles affectées est ignorée.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Toutes les créatures invisibles situées dans la zone d'effet perdent leur invisibilité. Cela concerne les créatures se trouvant sous les effets d'un sort de Sanctuaire, d'Invisibilité majeure, de l'invisibilité de la Porte d'ombre, de Double illusoire, etc. La résistance magique des cibles affectées est ignorée.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwfavnab.jpg" title="gwfavna.spl" /></td>
@@ -1327,8 +1607,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				En exploitant la force du lien télépathique qui la lie à sa licorne, la Chevaucheuse fait appel au pouvoir de la Nature pour conférer à l'animal visé un bonus de 1 à ses jets d'attaque et de dégâts par tranche de cinq niveaux de la paladine, jusqu'à un maximum de 5 au niveau 25.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">En exploitant la force du lien télépathique qui la lie à sa licorne, la Chevaucheuse fait appel au pouvoir de la Nature pour conférer à l'animal visé un bonus de 1 à ses jets d'attaque et de dégâts par tranche de cinq niveaux de la paladine, jusqu'à un maximum de 5 au niveau 25.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwpa310b.jpg" title="gwpa310.spl" /></td>
@@ -1343,8 +1622,7 @@
 				<td>oui</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Toute créature ayant le don de jeter des sorts affectée par ce sort voit son pouvoir d'incantation sérieusement diminué. Lorsqu'elle essaie de jeter un sort, ce dernier a alors 80 % de chances d'échouer. Les créatures peuvent effectuer des jets de sauvegarde contre les sorts pour se prémunir contre cet effet, mais elles le font avec une pénalité de 2.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Toute créature ayant le don de jeter des sorts affectée par ce sort voit son pouvoir d'incantation sérieusement diminué. Lorsqu'elle essaie de jeter un sort, ce dernier a alors 80 % de chances d'échouer. Les créatures peuvent effectuer des jets de sauvegarde contre les sorts pour se prémunir contre cet effet, mais elles le font avec une pénalité de 2.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwcureub.jpg" title="gwcureu.spl" /></td>
@@ -1359,8 +1637,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce puissant sortilège de guérison permet à la Chevaucheuse de canaliser suffisamment d'énergie positive dans le corps d'une licorne pour la soigner de toutes les blessures, afflictions et maladies l'affectant. Il annule les effets du sort Débilité mentale ainsi que toutes les formes de folies causées par des sorts ou des blessures au cerveau comme la terreur, la confusion ou la furie. Il guérit également les maladies, la nausée, l'empoisonnement, la fatigue, la cécité et la surdité.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce puissant sort de guérison permet à la Chevaucheuse de canaliser suffisamment d'énergie positive dans le corps d'une licorne pour la soigner de toutes les blessures, afflictions et maladies l'affectant. Il annule les effets du sort Débilité mentale ainsi que toutes les formes de folies causées par des sorts ou des blessures au cerveau comme la terreur, la confusion ou la furie. Il guérit également les maladies, la nausée, l'empoisonnement, la fatigue, la cécité et la surdité.<br>
 				Par ailleurs, le lien particulier unissant la Chevaucheuse et les licornes amplifie la qualité des soins : non seulement l'intégralité des points de vie perdus à la suite de blessures est récupérée, mais ce sort restaure totalement toutes les absorptions d'énergie et tous les affaiblissements temporaires de caractéristiques précédemment effectués par une force quelconque ou un monstre.<br>
 				Ce sort est inopérant sur toute autre créature qu'une licorne.</td>
 			</tr>
@@ -1377,8 +1654,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				En imposant les mains sur une personne souffrante, la Chevaucheuse peut guérir presque toutes les maladies connues. La guérison est permanente mais n'accorde pas à son bénéficiaire une quelconque immunité magique contre de futures affections. Certaines maladies magiques ne sont pas sujettes à ce sort.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">En imposant les mains sur une personne souffrante, la Chevaucheuse peut guérir presque toutes les maladies connues. La guérison est permanente mais n'accorde pas à son bénéficiaire une quelconque immunité magique contre de futures affections. Certaines maladies magiques ne sont pas sujettes à ce sort.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwlamsob.jpg" title="gwlamso.spl" /></td>
@@ -1393,23 +1669,20 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				La Chevaucheuse fait surgir de sa main un rayon de lumière brûlante de la forme d'une épée longue. Elle ne quitte pas sa main pendant toute la durée du sort et frappe comme une arme magique +3 et inflige 1d8+3 points de dégâts tranchants, plus 1d6 points de dégâts de feu. Ces dégâts sont doublés contre les morts-vivants qui sont particulièrement vulnérables à la lumière. Par ailleurs, les rayons de lumière émanant de la lame aveuglent les ennemis de la paladine qui subissent une pénalité de 2 à leurs jets d'attaque.<br><br>
-				À partir du niveau 20, la lame solaire devient une épée de destruction et peut détruire certains morts-vivants qu'elle frappe s'ils ratent leur jet de sauvegarde contre la mort (avec un malus progressant avec le niveau de la paladine jusqu'à un maximum de -10) :<br>
-					<ul style="margin-left: 1%;width: 96%;line-height: 150%">
-						<li>Niveau 20 : Squelettes (malus de 0 jusqu'à -10 au niveau 30).</li>
-						<li>Niveau 22 : Zombis (malus de 0 jusqu'à -10 au niveau 32).</li>
-						<li>Niveau 24 : Goules (malus de 0 jusqu'à -10 au niveau 34).</li>
-						<li>Niveau 26 : Ombres (malus de 0 jusqu'à -10 au niveau 36).</li>
-						<li>Niveau 28 : Blêmes (malus de 0 jusqu'à -10 au niveau 38).</li>
-						<li>Niveau 30 : Nécrophages (malus de 0 jusqu'à -10 au niveau 40).</li>
-						<li>Niveau 32 : Combattants squelettes (malus de 0 jusqu'à -10 au niveau 42).</li>
-						<li>Niveau 34 : Momies (malus de 0 jusqu'à -10 au niveau 44).</li>
-						<li>Niveau 36 : Spectres (malus de 0 jusqu'à -10 au niveau 46).</li>
-						<li>Niveau 38 : Vampires (malus de 0 jusqu'à -10 au niveau 48).</li>
-						<li>Niveau 40 : Liches (malus de 0 jusqu'à -10 au niveau 50).</li>
-					</ul>
-				<span class="composantes">Composante matérielle : une source de lumière qui s'éteint pendant l'incantation.</span></td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">La Chevaucheuse fait surgir de sa main un rayon de lumière brûlante de la forme d'une épée longue. Elle ne quitte pas sa main pendant toute la durée du sort et frappe comme une arme magique +3 et inflige 1d8+3 points de dégâts tranchants, plus 1d6 points de dégâts de feu. Ces dégâts sont doublés contre les morts-vivants qui sont particulièrement vulnérables à la lumière. Par ailleurs, les rayons de lumière émanant de la lame aveuglent les ennemis de la paladine qui subissent une pénalité de 2 à leurs jets d'attaque.<br>
+				À partir du niveau 20, la lame de lumière devient une épée de destruction et peut détruire certains morts-vivants qu'elle frappe s'ils ratent leur jet de sauvegarde contre la mort (avec un malus progressant avec le niveau de la paladine jusqu'à un maximum de -10) :<br><br>
+
+				<span style="margin-left: 1%">– Niveau 20 : Squelettes (malus de 0 jusqu'à -10 au niveau 30).</span><br>
+				<span style="margin-left: 1%">– Niveau 22 : Zombis (malus de 0 jusqu'à -10 au niveau 32).</span><br>
+				<span style="margin-left: 1%">– Niveau 24 : Goules (malus de 0 jusqu'à -10 au niveau 34).</span><br>
+				<span style="margin-left: 1%">– Niveau 26 : Ombres (malus de 0 jusqu'à -10 au niveau 36).</span><br>
+				<span style="margin-left: 1%">– Niveau 28 : Blêmes (malus de 0 jusqu'à -10 au niveau 38).</span><br>
+				<span style="margin-left: 1%">– Niveau 30 : Nécrophages (malus de 0 jusqu'à -10 au niveau 40).</span><br>
+				<span style="margin-left: 1%">– Niveau 32 : Combattants squelettes (malus de 0 jusqu'à -10 au niveau 42).</span><br>
+				<span style="margin-left: 1%">– Niveau 34 : Momies (malus de 0 jusqu'à -10 au niveau 44).</span><br>
+				<span style="margin-left: 1%">– Niveau 36 : Spectres (malus de 0 jusqu'à -10 au niveau 46).</span><br>
+				<span style="margin-left: 1%">– Niveau 38 : Vampires (malus de 0 jusqu'à -10 au niveau 48).</span><br>
+				<span style="margin-left: 1%">– Niveau 40 : Liches (malus de 0 jusqu'à -10 au niveau 50).</span></td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwpurnab.jpg" title="gwpurna.spl" /></td>
@@ -1424,8 +1697,7 @@
 				<td>oui</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Lorsque la Chevaucheuse lance ce sortilège, un rayon de lumière verte jaillit de sa main tendue et saute sur tout ennemi situé à portée. Elle peut générer un rayon par tranche de cinq niveaux d'expérience (deux rayons au 10ème niveau, trois au 15ème niveau, etc.) jusqu'à un maximum de cinq. Tous les rayons visent la même cible et affectent les créatures situées à 9 mètres d'elle.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Lorsque la Chevaucheuse lance ce sort, un rayon de lumière verte jaillit de sa main tendue et saute sur tout ennemi situé à portée. Elle peut générer un rayon par tranche de cinq niveaux d'expérience (deux rayons au 10ème niveau, trois au 15ème niveau, etc.) jusqu'à un maximum de cinq. Tous les rayons visent la même cible et affectent les créatures situées à 9 mètres d'elle.<br>
 				Chaque rayon inflige 1d8 points de dégâts magiques, 4d8 contre les morts-vivants, 2d8 contre les créatures artificielles et 5d8 contre les aberrations (Aboleths, Driders, Flagelleurs, Mimiques, Ombres de roche, Otyughs, Spectateurs...).</td>
 			</tr>
 			<tr>
@@ -1441,8 +1713,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège est identique à Résistance aux énergies destructives, si ce n'est qu'il affecte plusieurs créatures dans une zone correspondant à un rayon de 9 mètres, convergeant vers le point désigné par la Chevaucheuse. Il leur confère une protection limitée contre une forme d'énergie : acide, électricité, feu, froid, poison. Les sujets bénéficient d'une résistance de 10 % + 1 % par niveau contre le type d'énergie choisi. Ce sort ne fait qu'absorber les dégâts, qu'ils soient d'origine magique ou non, et ne protège pas contre les effets secondaires, comme se noyer dans un bassin d'acide ou être pris dans la glace.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort est identique à Résistance aux énergies destructives, si ce n'est qu'il affecte plusieurs créatures dans une zone correspondant à un rayon de 9 mètres, convergeant vers le point désigné par la Chevaucheuse. Il leur confère une protection limitée contre une forme d'énergie : acide, électricité, feu, froid, poison. Les sujets bénéficient d'une résistance de 10 % + 1 % par niveau contre le type d'énergie choisi. Ce sort ne fait qu'absorber les dégâts, qu'ils soient d'origine magique ou non, et ne protège pas contre les effets secondaires, comme se noyer dans un bassin d'acide ou être pris dans la glace.<br>
 				Note : ce sort n'est pas compatible avec les autres sorts protégeant contre le même élément. Cependant, il est possible de bénéficier d'une Résistance aux énergies destructives (feu) et d'une Protection contre l'électricité, ou de quelque autre combinaison de sorts offrant une protection contre différents types d'énergie.</td>
 			</tr>
 			<tr>
@@ -1458,8 +1729,7 @@
 				<td>spécial</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				En posant les mains sur une créature vivante, la Chevaucheuse lui transmet de l'énergie positive qui lui permet de récupérer 2d8 points de vie, +1 par niveau d'expérience (jusqu'à un maximum de +10). La guérison n'est définitive que dans la mesure où la créature ne subit pas d'autres dégâts ; les blessures provoquées se cicatriseront (ou peuvent être soignées) comme n'importe quelle blessure normale.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">En posant les mains sur une créature vivante, la Chevaucheuse lui transmet de l'énergie positive qui lui permet de récupérer 2d8 points de vie, +1 par niveau d'expérience (jusqu'à un maximum de +10). La guérison n'est définitive que dans la mesure où la créature ne subit pas d'autres dégâts ; les blessures provoquées se cicatriseront (ou peuvent être soignées) comme n'importe quelle blessure normale.<br>
 				Cette guérison ne concerne pas les créatures dépourvues d'enveloppe corporelle ou d'origine extraplanaire. Les morts-vivants étant animés d'énergie négative, ce sort leur inflige des dégâts plutôt qu'il ne les soigne. Un jet de sauvegarde contre les sorts réussi leur permet toutefois de ne subir que des dégâts réduits de moitié..</td>
 			</tr>
 			<tr>
@@ -1475,25 +1745,23 @@
 				<td>oui</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Lorsque ce sortilège est lancé, l'humidité présente dans l'air scintille, se concentre et se solidifie avant d'être projetée par les doigts de la paladine sous la forme d'un jet à haute pression en forme de cône mesurant 1,5 m de long et 30 cm de diamètre par niveau du jeteur de sorts. L'extrême concentration de la paladine lui permet de ne cibler que ses ennemis.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Lorsque ce sort est lancé, l'humidité présente dans l'air scintille, se concentre et se solidifie avant d'être projetée par les doigts de la paladine sous la forme d'un jet à haute pression en forme de cône mesurant 1,5 m de long et 30 cm de diamètre par niveau du jeteur de sorts. L'extrême concentration de la paladine lui permet de ne cibler que ses ennemis.<br>
 				Chaque victime présente dans la zone d'effet encaisse 1d8 points de dégâts, +1 point par niveau. Un jet de sauvegarde contre les sorts réussi lui permet de n'en subir que la moitié.</td>
 			</tr>
 		</table><br>
 		<p style="font-size:90%;text-align: right;"><a href="#spells">RETOUR À LA LISTE DES SORTS</a>
 		</p>
 
-		<hr>
-<!-- ============== S p e l l s   -   L4 ================ -->
-		<a name="level4" id="level4"></a>
-		<h2 style="border-top: dotted 2px #d0d0d0; background-color: rgba(48, 48, 48, 0.6); margin-top: 2%;"><span class="com">N4</span>Sorts de niveau 4</h2><br>
-
+<hr>
+		<h3>
+			<a name="level4" id="level4"></a>Sorts de niveau 4
+		</h3>
 		<p>
 			À partir du niveau 15, la Chevaucheuse de licorne a accès aux sorts divins de niveau 4 suivants.
 		</p><br>
 
 		<table style="margin-left: 80px;line-height: 170%;" summary="Liste des sorts de niveau 4">
-			<tr style="line-height: 300%;">
+			<tr>
 				<th>Icône</th>
 				<th>Nom</th>
 				<th>École</th>
@@ -1518,23 +1786,20 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				La Chevaucheuse fait surgir de sa main un rayon de lumière scintillante de la forme d'un arc long composite. Étonnamment léger et facile à bander, il ne quitte pas sa main pendant toute la durée du sort et peut être utilisé sans pénalités même si elle ne maîtrise pas le maniement des arcs. Frappant comme une arme magique +3, il peut tirer jusqu'à quatre flèches par round, chacune infligeant 1d8+3 points de dégâts. Ces dégâts sont doublés contre les morts-vivant qui sont particulièrement vulnérables à la lumière. Par ailleurs, les rayons de lumière émanant de l'arc aveuglent ses ennemis qui subissent une pénalité de 2 à leurs jets d'attaque.<br><br>
-				À partir du niveau 20, l'arc solaire devient un arc de destruction et peut détruire certains morts-vivants qu'il touche s'ils ratent leur jet de sauvegarde contre la mort (avec un malus progressant avec le niveau de la paladine jusqu'à un maximum de -10) :<br>
-					<ul style="margin-left: 1%;width: 96%;line-height: 150%">
-						<li>Niveau 20 : Squelettes (malus de 0 jusqu'à -10 au niveau 30).</li>
-						<li>Niveau 22 : Zombis (malus de 0 jusqu'à -10 au niveau 32).</li>
-						<li>Niveau 24 : Goules (malus de 0 jusqu'à -10 au niveau 34).</li>
-						<li>Niveau 26 : Ombres (malus de 0 jusqu'à -10 au niveau 36).</li>
-						<li>Niveau 28 : Blêmes (malus de 0 jusqu'à -10 au niveau 38).</li>
-						<li>Niveau 30 : Nécrophages (malus de 0 jusqu'à -10 au niveau 40).</li>
-						<li>Niveau 32 : Combattants squelettes (malus de 0 jusqu'à -10 au niveau 42).</li>
-						<li>Niveau 34 : Momies (malus de 0 jusqu'à -10 au niveau 44).</li>
-						<li>Niveau 36 : Spectres (malus de 0 jusqu'à -10 au niveau 46).</li>
-						<li>Niveau 38 : Vampires (malus de 0 jusqu'à -10 au niveau 48).</li>
-						<li>Niveau 40 : Liches (malus de 0 jusqu'à -10 au niveau 50).</li>
-					</ul>
-				<span class="composantes">Composante matérielle : une source de lumière qui s'éteint pendant l'incantation.</span></td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">La Chevaucheuse fait surgir de sa main un rayon de lumière scintillante de la forme d'un arc long composite. Étonnamment léger et facile à bander, il ne quitte pas sa main pendant toute la durée du sort et peut être utilisé sans pénalités même si elle ne maîtrise pas le maniement des arcs. Frappant comme une arme magique +3, il peut tirer jusqu'à quatre flèches par round, chacune infligeant 1d8+3 points de dégâts. Ces dégâts sont doublés contre les morts-vivant qui sont particulièrement vulnérables à la lumière. Par ailleurs, les rayons de lumière émanant de l'arc aveuglent ses ennemis qui subissent une pénalité de 2 à leurs jets d'attaque.<br>
+				À partir du niveau 20, l'arc de lumière devient un arc de destruction et peut détruire certains morts-vivants qu'il touche s'ils ratent leur jet de sauvegarde contre la mort (avec un malus progressant avec le niveau de la paladine jusqu'à un maximum de -10) :<br><br>
+
+				<span style="margin-left: 1%">– Niveau 20 : Squelettes (malus de 0 jusqu'à -10 au niveau 30).</span><br>
+				<span style="margin-left: 1%">– Niveau 22 : Zombis (malus de 0 jusqu'à -10 au niveau 32).</span><br>
+				<span style="margin-left: 1%">– Niveau 24 : Goules (malus de 0 jusqu'à -10 au niveau 34).</span><br>
+				<span style="margin-left: 1%">– Niveau 26 : Ombres (malus de 0 jusqu'à -10 au niveau 36).</span><br>
+				<span style="margin-left: 1%">– Niveau 28 : Blêmes (malus de 0 jusqu'à -10 au niveau 38).</span><br>
+				<span style="margin-left: 1%">– Niveau 30 : Nécrophages (malus de 0 jusqu'à -10 au niveau 40).</span><br>
+				<span style="margin-left: 1%">– Niveau 32 : Combattants squelettes (malus de 0 jusqu'à -10 au niveau 42).</span><br>
+				<span style="margin-left: 1%">– Niveau 34 : Momies (malus de 0 jusqu'à -10 au niveau 44).</span><br>
+				<span style="margin-left: 1%">– Niveau 36 : Spectres (malus de 0 jusqu'à -10 au niveau 46).</span><br>
+				<span style="margin-left: 1%">– Niveau 38 : Vampires (malus de 0 jusqu'à -10 au niveau 48).</span><br>
+				<span style="margin-left: 1%">– Niveau 40 : Liches (malus de 0 jusqu'à -10 au niveau 50).</span></td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwarctub.jpg" title="gwarctu.spl" /></td>
@@ -1549,8 +1814,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				La Chevaucheuse canalise l'énergie divine vers un arc de son choix et le rend particulièrement meurtrier pour certaines créatures maléfiques, dont elle choisit la race lors de l'incantation. L'arc acquiert alors un bonus de 5 à ses jets d'attaque et de dégâts, plus un bonus supplémentaire de 2 à ses jets d'attaque contre ces créatures, à qui il inflige 2d6 points de dégâts supplémentaires. Le type de créature concerné dépend du niveau de la paladine.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">La Chevaucheuse canalise l'énergie divine vers un arc de son choix et le rend particulièrement meurtrier pour certaines créatures maléfiques, dont elle choisit la race lors de l'incantation. L'arc acquiert alors un bonus de 5 à ses jets d'attaque et de dégâts, plus un bonus supplémentaire de 2 à ses jets d'attaque contre ces créatures, à qui il inflige 2d6 points de dégâts supplémentaires. Le type de créature concerné dépend du niveau de la paladine.<br>
 				Enfin, celle-ci ne saurait jouir de plus d'un Arc tueur à la fois.</td>
 			</tr>
 			<tr>
@@ -1566,10 +1830,9 @@
 				<td>oui</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Lorsqu'elle lance ce sortilège, la Chevaucheuse subit une transformation radicale et devient l'idéal de la beauté : habituellement une nymphe pour un mâle, les représentations pouvant varier pour une femelle. Tous les humanoïdes qui la regardent doivent réussir un jet de sauvegarde contre les sorts sous peine d'être à jamais aveuglés, comme s'ils étaient victimes du sort Cécité.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Lorsqu'elle lance ce sort, la Chevaucheuse subit une transformation radicale et devient l'idéal de la beauté : habituellement une nymphe pour un mâle, les représentations pouvant varier pour une femelle. Tous les humanoïdes qui la regardent doivent réussir un jet de sauvegarde contre les sorts sous peine d'être à jamais aveuglés, comme s'ils étaient victimes du sort Cécité.<br>
 				Ils effectuent ce jet de sauvegarde avec un malus variant en fonction de leur niveau : s'ils sont au moins du même niveau que la Chevaucheuse, ils souffrent d'un malus de 1 + 1 par tranche de dix niveaux de la Chevaucheuse. S'ils ont 5 DV de moins qu'elle, ils sont automatiquement aveuglés. Sinon, ils sont pénalisés par un malus de 4 + 1 tous les cinq niveaux de la Chevaucheuse.<br>
-				La transformation est instantanée, mais ne dure que quelques secondes et affecte toutes les créatures situées dans un rayon de 18 mètres (à l'exception des membres du groupe).<br>
+				La transformation est instantanée mais ne dure que quelques secondes et affecte toutes les créatures situées dans un rayon de 18 mètres (à l'exception des membres du groupe).<br>
 				Certains prétendent que la Chevaucheuse doit s'être privée de toute relation sexuelle depuis une semaine pour pouvoir lancer ce sort, mais personne ne s'est jamais risqué à le vérifier...</td>
 			</tr>
 			<tr>
@@ -1585,9 +1848,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège fonctionne comme Bouclier de la foi, si ce n'est qu'il affecte plusieurs alliés à distance. Il leur confère un bonus défensif par une extrême coordination de leurs mouvements et attaques. Cela permet à un groupe d'agir comme une seule entité pendant une bataille. L'effet est toujours centré sur la Chevaucheuse, mais affecte tous ceux présents dans un rayon de 6 m. Un individu affecté par le sort peut ensuite sortir de la zone en conservant le bonus. Toute créature affectée reçoit un bonus de 2 à sa classe d'armure, +1 supplémentaire tous les cinq niveaux de la paladine (jusqu'à un bonus maximum de 5 au niveau 30), pendant un tour ou jusqu'à dissipation.<br><br>
-				<span class="composantes">Composante matérielle : un petit parchemin sur lequel a été rédigé un bout de texte sacré.</span></td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort fonctionne comme Bouclier de la foi, si ce n'est qu'il affecte plusieurs alliés à distance. Il leur confère un bonus défensif par une extrême coordination de leurs mouvements et attaques. Cela permet à un groupe d'agir comme une seule entité pendant une bataille. L'effet est toujours centré sur la Chevaucheuse mais affecte tous ceux présents dans un rayon de 6 m. Un individu affecté par le sort peut ensuite sortir de la zone en conservant le bonus. Toute créature affectée reçoit un bonus de 2 à sa classe d'armure, +1 supplémentaire tous les cinq niveaux de la paladine (jusqu'à un bonus maximum de 5 au niveau 30), pendant un tour ou jusqu'à dissipation.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwcoupfb.jpg" title="gwcoupf.spl" /></td>
@@ -1602,10 +1863,8 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Se fier à la frêle apparence dégagée par une cavalière et sa licorne serait une erreur fatale. Grâce à ce sortilège, la paladine peut s'attirer une fois par jour une faveur spéciale de sa divinité pour l'aider à combattre. Pendant toute la durée du sort, elle inflige davantage de dégâts aux créatures de grande taille : +1d6 contre les créatures de grande taille, +2d6 contre les créatures de très grande taille, +3d6 contre les créatures de taille gigantesque et +4d6 contre les créatures de taille colossale.<br>
-				La première attaque après le déclenchement de cette faculté est automatiquement un coup critique.<br><br>
-				<span class="composantes">Composante matérielle : une griffe de dragon ou un ongle de géant.</span></td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Se fier à la frêle apparence dégagée par une cavalière et sa licorne serait une erreur fatale. Grâce à ce sort, la paladine peut s'attirer une fois par jour une faveur spéciale de sa divinité pour l'aider à combattre. Pendant toute la durée du sort, elle inflige davantage de dégâts aux créatures de grande taille : +1d6 contre les créatures de grande taille, +2d6 contre les créatures de très grande taille, +3d6 contre les créatures de taille gigantesque et +4d6 contre les créatures de taille colossale.<br>
+				La première attaque après le déclenchement de cette faculté est automatiquement un coup critique.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwenchsb.jpg" title="gwenchs.spl" /></td>
@@ -1620,8 +1879,7 @@
 				<td>oui</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège ressemble à Enchevêtrement, si ce n'est qu'il n'affecte que les créatures ennemies. La Chevaucheuse provoque l'emprisonnement des créatures situées dans la zone d'effet par les plantes qui s'y trouvent. Les bonnes et mauvaises herbes, les buissons, ainsi que les arbres, s'enroulent, s'entortillent et s'entrelacent autour d'elles, les retenant solidement pendant la durée du sort. Une fois par round, toute créature visée peut effectuer un jet de sauvegarde contre les sorts avec un malus de 4 pour pour échapper à l'enchevêtrement. Celles qui le réussissent échappent partiellement à l'enchevêtrement en se déplaçant à la moitié de leur vitesse normale. Une créature victime d'un enchevêtrement peut continuer d'attaquer, mais à la moitié de son rythme habituel et avec une pénalité de 2 à sa classe d'armure.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort ressemble à Enchevêtrement, si ce n'est qu'il n'affecte que les créatures ennemies. La Chevaucheuse provoque l'emprisonnement des créatures situées dans la zone d'effet par les plantes qui s'y trouvent. Les bonnes et mauvaises herbes, les buissons, ainsi que les arbres, s'enroulent, s'entortillent et s'entrelacent autour d'elles, les retenant solidement pendant la durée du sort. Une fois par round, toute créature visée peut effectuer un jet de sauvegarde contre les sorts avec un malus de 4 pour pour échapper à l'enchevêtrement. Celles qui le réussissent échappent partiellement à l'enchevêtrement en se déplaçant à la moitié de leur vitesse normale. Une créature victime d'un enchevêtrement peut continuer d'attaquer, mais à la moitié de son rythme habituel et avec une pénalité de 2 à sa classe d'armure.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwetarvb.jpg" title="gwetarv.spl" /></td>
@@ -1636,8 +1894,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège fait apparaître dans l'inventaire de la Chevaucheuse une minuscule étoile scintillante par tranche de deux niveaux (jusqu'à un maximum de 10). Ces étoiles tournent autour de sa tête à la façon de pierres ioniques. Pendant la durée du sort, elle peut en lancer jusqu'à cinq par round en direction d'une cible située à portée. Elle doit effectuer un jet normal pour toucher. Les étoiles sont considérées comme des missiles, avec un bonus de 5 aux jets d'attaque et sans malus pour incompétence avec les armes. Relevant d'un effet de force magique, elles ignorent l'intangibilité et peuvent frapper n'importe quelle créature, même celles qui ne sont vulnérables qu'aux armes magiques.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort fait apparaître dans l'inventaire de la Chevaucheuse une minuscule étoile scintillante par tranche de deux niveaux (jusqu'à un maximum de 10). Ces étoiles tournent autour de sa tête à la façon de pierres ioniques. Pendant la durée du sort, elle peut en lancer jusqu'à cinq par round en direction d'une cible située à portée. Elle doit effectuer un jet normal pour toucher. Les étoiles sont considérées comme des missiles, avec un bonus de 5 aux jets d'attaque et sans malus pour incompétence avec les armes. Relevant d'un effet de force magique, elles ignorent l'intangibilité et peuvent frapper n'importe quelle créature, même celles qui ne sont vulnérables qu'aux armes magiques.<br>
 				Lorsqu'elles atteignent leur cible, elles explosent à l'impact en une boule de lumière de 6 m de diamètre qui inflige 1d8 points de dégâts à tous les ennemis situés dans la zone d'effet, + 1 par tranche de deux niveaux de la paladine (jusqu'à un maximum de 10). Les cibles mauvaises subissent des dégâts doublés, ainsi que les morts-vivants (triples s'ils sont mauvais).<br>
 				Il est possible de donner ces étoiles à tout personnage non mauvais qui pourra les utiliser pendant la durée du sort. Après quoi, elles disparaissent.</td>
 			</tr>
@@ -1654,10 +1911,8 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sortilège ouvre un petit portail planaire menant à un demi-plan de guérison qui permet de régénérer au rythme de un point de vie par round. Ses caractéristiques (y compris le temps, la gravité et la magie) sont identiques à celles du plan Matériel. La seule façon d'entrer ou de sortir du demi-plan consiste à passer par l'entrée créée par le lanceur. Seuls les individus décrits ou nommés par celui-ci lors de l'incantation peuvent y pénétrer. Le portail n'existe que tant que le demi-plan lui-même existe. Quand le lanceur quitte le demi-plan, le portail se referme et disparaît. Quiconque se trouve encore dans le demi-plan de guérison au même moment réapparaît dans le plan Matériel, à l'endroit où se trouvait l'entrée.<br>
-				Une créature dans le demi-plan astral est invisible, intangible et capable de se déplacer dans toutes les directions. Elle voit et entend tout ce qui se passe dans le plan Matériel (à 18 mètres à la ronde seulement), mais tout lui apparaît gris et dénué de substance. Les créatures matérielles sont incapables de l'attaquer physiquement et magiquement.<br><br>
-				<span class="composantes">Composante matérielle : une pierre précieuse parfaite valant au moins 250 po.</span></td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort ouvre un petit portail planaire menant à un demi-plan de guérison qui permet de régénérer au rythme de un point de vie par round. Ses caractéristiques (y compris le temps, la gravité et la magie) sont identiques à celles du plan Matériel. La seule façon d'entrer ou de sortir du demi-plan consiste à passer par l'entrée créée par le lanceur. Seuls les individus décrits ou nommés par celui-ci lors de l'incantation peuvent y pénétrer. Le portail n'existe que tant que le demi-plan lui-même existe. Quand le lanceur quitte le demi-plan, le portail se referme et disparaît. Quiconque se trouve encore dans le demi-plan de guérison au même moment réapparaît dans le plan Matériel, à l'endroit où se trouvait l'entrée.<br>
+				Une créature dans le demi-plan astral est invisible, intangible et capable de se déplacer dans toutes les directions. Elle voit et entend tout ce qui se passe dans le plan Matériel (à 18 mètres à la ronde seulement), mais tout lui apparaît gris et dénué de substance. Les créatures matérielles sont incapables de l'attaquer physiquement et magiquement.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwlcespb.jpg" title="gwlcesp.spl" /></td>
@@ -1672,8 +1927,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Combattre aux côtés d'une licorne, et le plus souvent en la chevauchant, oblige la Chevaucheuse à prendre des précautions pour ne pas blesser sa compagne. Ce sortilège fait partie de l'arsenal dont elle dispose à cet effet. Similaire au sortilège Marteau spirituel, il lui permet de solliciter sa divinité pour générer dans sa main un champ de force de la forme d'une lance de cavalerie étincelante et argentée qu'elle peut utiliser pendant toute la durée du sort sans pénalités, même si elle ne maîtrise pas ce type d'arme. Cette dernière frappe comme une arme magique, avec un bonus aux jets d'attaque et de dégâts de 1 par tranche de 10 niveaux d'expérience de la paladine. Elle inflige des dégâts équivalents à ceux d'une lance de cavalerie utilisée en chargeant (2d6, plus le bonus magique), même si la paladine ne chevauche pas sa licorne.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Combattre aux côtés d'une licorne, et le plus souvent en la chevauchant, oblige la Chevaucheuse à prendre des précautions pour ne pas blesser sa compagne. Ce sort fait partie de l'arsenal dont elle dispose à cet effet. Similaire au sortilège Marteau spirituel, il lui permet de solliciter sa divinité pour générer dans sa main un champ de force de la forme d'une lance de cavalerie étincelante et argentée qu'elle peut utiliser pendant toute la durée du sort sans pénalités, même si elle ne maîtrise pas ce type d'arme. Cette dernière frappe comme une arme magique, avec un bonus aux jets d'attaque et de dégâts de 1 par tranche de 10 niveaux d'expérience de la paladine. Elle inflige des dégâts équivalents à ceux d'une lance de cavalerie utilisée en chargeant (2d6, plus le bonus magique), même si la paladine ne chevauche pas sa licorne.<br>
 				Par ailleurs, cette arme possède les mêmes propriétés qu'une arme en argent ou en acier froid et inflige des dégâts doublés aux morts-vivants et aux lycanthropes.</td>
 			</tr>
 			<tr>
@@ -1689,8 +1943,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				La Chevaucheuse irradie une partie de son aura personnelle et insuffle du courage à ses alliés dans un rayon de 9 mètres. Il élève leur moral à son plus haut niveau et les immunise à la terreur. Au fur et à mesure que la durée du sort s'écoule, ce moral revient à son niveau normal. Si les bénéficiaires du sort sont affectés par une terreur magique, cette peur s'annule. Par ailleurs, ils sont galvanisés et reçoivent un bonus de 2 à leurs jets d'attaque.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">La Chevaucheuse irradie une partie de son aura personnelle et insuffle du courage à ses alliés dans un rayon de 9 mètres. Il élève leur moral à son plus haut niveau et les immunise à la terreur. Au fur et à mesure que la durée du sort s'écoule, ce moral revient à son niveau normal. Si les bénéficiaires du sort sont affectés par une terreur magique, cette peur s'annule. Par ailleurs, ils sont galvanisés et reçoivent un bonus de 2 à leurs jets d'attaque.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwmotenb.jpg" title="gwmoten.spl" /></td>
@@ -1705,8 +1958,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Parfois, un paladin préfère capturer un ennemi plutôt que le tuer pour le faire juger ou l'interroger. Lorsqu'il lance ce sortilège, il fait apparaître une paire de menottes brillantes en or devant les poignets et les chevilles de la cible. Cette dernière doit réussir un jet de sauvegarde contre les sorts pour éviter que ces menottes ne lui emprisonnent les mains et les pieds. Le jet de sauvegarde est aggravé par un malus de 1 point par tranche de 10 niveaux du paladin.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Parfois, un paladin préfère capturer un ennemi plutôt que le tuer pour le faire juger ou l'interroger. Lorsqu'il lance ce sort, il fait apparaître une paire de menottes brillantes en or devant les poignets et les chevilles de la cible. Cette dernière doit réussir un jet de sauvegarde contre les sorts pour éviter que ces menottes ne lui emprisonnent les mains et les pieds. Le jet de sauvegarde est aggravé par un malus de 1 point par tranche de 10 niveaux du paladin.<br>
 				Les menottes s'adaptent automatiquement aux poignets et aux chevilles des humanoïdes de taille moyenne ou petite. Tant qu'elle est entravée, la cible ne peut entreprendre aucune action avec ses mains (attaquer et lancer des sorts) et ne se déplace plus qu'au rythme de 1,5 m par round.</td>
 			</tr>
 			<tr>
@@ -1722,8 +1974,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sort protège sa cible de toutes les formes de magie mortelle pendant la durée du sort. Cela inclut entre autre : Désintégration, Mot de pouvoir Mortel, Sort de mort, Doigt de mort, etc.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort protège sa cible de toutes les formes de magie mortelle pendant la durée du sort. Cela inclut entre autre : Désintégration, Mot de pouvoir Mortel, Sort de mort, Doigt de mort, etc.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwpa413b.jpg" title="gwpa413.spl" /></td>
@@ -1738,13 +1989,12 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sort procure à la Chevaucheuse ou à la créature qu'elle touche une protection partielle contre les morts-vivants ayant des rapports avec le plan Matériel Négatif (comme les vampires). Il ouvre un canal vers le plan Matériel Positif qui peut contrebalancer les effets de l'attaque par l'énergie négative. Toute créature attaquée de cette façon est protégée contre toute absorption d'énergie ou de niveaux pour la durée du sort. Seuls les points de dégâts normaux sont subis et aucune expérience n'est perdue. Lancé par un paladin, ce sort bénéficie de l'aura de protection de ce dernier et dure plus longtemps que s'il l'était par un prêtre, soit cinq rounds plus un tour par tranche de dix niveaux.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort procure à la Chevaucheuse ou à la créature qu'elle touche une protection partielle contre les morts-vivants ayant des rapports avec le plan Matériel Négatif (comme les vampires). Il ouvre un canal vers le plan Matériel Positif qui peut contrebalancer les effets de l'attaque par l'énergie négative. Toute créature attaquée de cette façon est protégée contre toute absorption d'énergie ou de niveaux pour la durée du sort. Seuls les points de dégâts normaux sont subis et aucune expérience n'est perdue. Lancé par un paladin, ce sort bénéficie de l'aura de protection de ce dernier et dure plus longtemps que s'il l'était par un prêtre, soit cinq rounds plus un tour par tranche de dix niveaux.<br>
 				Ce sort ne peut pas être lancé sur le plan Matériel Négatif.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwrejevb.jpg" title="gwrejev.spl" /></td>
-				<td><span style="color: #FFCC33;">Rejet du mal</span></td>
+				<td><span style="color: #FFCC33;">Rejet du mal
 				<td>Invocation</td>
 				<td>Combat, Bien, Protection</td>
 				<td>5</td>
@@ -1755,9 +2005,9 @@
 				<td>spécial</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				La Chevaucheuse fait appel à son dieu pour servir de lien entre elle et le Plan Primaire Matériel, ce qui produit une onde de choc libérant une magie à la puissance destructrice sur un rayon de 12 m centré autour de la paladine. Elle n'affecte que les créatures mauvaises ou d'alignement mauvais situées dans la zone d'effet, en fonction de leur niveau :
-					<ul style="margin-left: 1%;width: 96%;line-height: 150%">
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">La Chevaucheuse fait appel à son dieu pour servir de lien entre lui et le Plan Primaire Matériel, ce qui produit une onde de choc libérant une magie à la puissance destructrice sur un rayon de 12 m centré autour de la paladine. Elle n'affecte que les créatures mauvaises ou d'alignement mauvais situées dans la zone d'effet, en fonction de leur niveau :
+
+					<ul style="margin-left: -1%;width: 96%;line-height: 150%">
 						<li>Égal au niveau de la paladine : Assourdissement (surdité pendant 5 rounds, avec 50 % de chances d'échec d'incantation).</li>
 						<li>Jusqu'au niveau de la paladine –1 : Lenteur et assourdissement pendant 5 rounds, avec 75 % de chances d'échec d'incantation.</li>
 						<li>Jusqu'au niveau de la paladine –5 : Étourdissement, lenteur et assourdissement pendant 5 rounds.</li>
@@ -1765,12 +2015,11 @@
 					</ul>
 				Tous ces effets sont cumulatifs et durent jusqu'à expiration ou dissipation. Aucun jet de sauvegarde n'est autorisé pour les éviter, excepté contre la mort (avec un malus de 1, +1 point par tranche de 10 niveaux de la paladine). Les créatures possédant plus de dés de vie que la paladine ne sont pas affectées.<br><br>
 				Par ailleurs, une aura dorée et scintillante entoure la paladine pendant un tour, lui conférant les avantages suivants :<br>
-					<ul style="margin-left: 1%;width: 96%;line-height: 150%">
+					<ul style="margin-left: -1%;width: 96%;line-height: 150%">
 						<li>Un bonus de 2 à la classe d'armure contre les attaques des créatures extraplanaires.</li>
 						<li>La possibilité de chasser une créature d'alignement mauvais originaire d'un autre plan et dont le nombre de dés de vie ne dépasse pas le niveau de la paladine. Si elle rate un jet de sauvegarde contre les sorts (avec un malus de 4, +1 point par tranche de 10 niveaux de la paladine), elle est automatiquement renvoyée dans son plan d'origine. Une fois bannie, elle ne peut pas revenir avant une journée.</li>
 					</ul>
-				Ce sortilège étant incroyablement puissant, il n'est pas possible de le lancer deux fois dans la même journée.<br><br>
-				<span class="composantes">Focaliseur : un minuscule reliquaire contenant une relique sacrée, d'une valeur d'au moins 500 po.</span></td>
+				Ce sort étant incroyablement puissant, il n'est pas possible de le lancer deux fois dans la même journée.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwpa417b.jpg" title="gwpa417.spl" /></td>
@@ -1785,8 +2034,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Ce sort augmente l'énergie vitale de la cible. Il annule toute absorption subie à la suite d'une attaque par un monstre, par exemple. Son lancement est très fatigant pour la paladine, qui doit se reposer immédiatement après.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Ce sort augmente l'énergie vitale de la cible. Il annule toute absorption subie à la suite d'une attaque par un monstre, par exemple. Son lancement est très fatigant pour la paladine, qui doit se reposer immédiatement après.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwepsteb.jpg" title="gwepste.spl" /></td>
@@ -1802,17 +2050,17 @@
 			</tr>
 			<tr>
 				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">La Chevaucheuse canalise la puissance de son dieu dans son épée. Celle-ci disparaît alors momentanément pour être remplacée par une arme sainte +5 (bonus de 5 aux jets d'attaque et de dégâts, 2d6 points de dégâts supplémentaires contre les adversaires d'alignement mauvais) qui ne quitte pas sa main pendant toute la durée du sort. De plus, elle émet un cercle magique contre le mal de 3 m de diamètre centré sur la main de la paladine, qui se déplace avec elle et dure tant qu'elle tient l'épée. Dans cette zone, le cercle de pouvoir confère à la Chevaucheuse une résistance à la magie de 50 % et empêche ses adversaires maléfiques de lancer des sorts. Ces derniers n'ont pas droit à un jet de sauvegarde pour résister aux effets du cercle et doivent s'en éloigner pour retrouver l'usage normal de leurs sorts. Enfin, l'épée sainte dissipe la magie chaque fois qu'elle touche un adversaire, le pourcentage de réussite dépendant du niveau de la paladine.<br>
-				Ce sortilège n'est pas cumulatif avec Bénédiction de lame ou tout autre sort pouvant modifier une arme de quelque façon que ce soit.<br>
+				Ce sort n'est pas cumulatif avec Bénédiction de lame ou tout autre sort pouvant modifier une arme de quelque façon que ce soit.<br>
 				À partir du niveau 25, la Chevaucheuse invoque une épée sainte spécifique disposant de capacités spéciales :<br>
-					<ul style="margin-left: 1%;width: 96%;line-height: 150%">
+
+					<ul style="margin-left: -1%;width: 96%;line-height: 150%">
 						<li>Sainte lame protectrice (niveau 25) : L'épée détecte le mal dans un rayon de 18 m autour de la paladine et l'alerte en produisant un léger bourdonnement. Toutes les créatures maléfiques à moins de 18 m entendent un son de sirène, audible par eux seuls. Toute créature affectée qui rate un jet de sauvegarde contre la paralysie continuera à entendre cette sirène pendant 1d4+1 rounds, avec des effets similaires à un sort de surdité.</li>
 						<li>Sainte lame revivifiante (niveau 30) : L'épée insuffle une partie de son énergie à la paladine en lui permettant de régénérer 1 PV par round tant qu'il la tient en main.</li>
 						<li>Sainte lame de repentir (niveau 35) : Le cercle de protection contre le mal émis par l'épée terrorise les créatures maléfiques si elles ratent leur jet de sauvegarde contre les sorts (à -4).</li>
-						<li>Sainte lame purificatrice (niveau 40) : L'épée bénéficie d'un bonus de 3 aux jets d'attaque et de dégâts contre les morts-vivants et repousse tous ceux qui ont un niveau inférieur ou égal à celui de la paladine.</li>
+						<li>Sainte lame purificatrice (niveau 40) : L'épée bénéficie d'un bonus de 3 aux jets d'attaque et de dégâts contre les morts-vivants et repousse tous ceux qui ont un niveau inférieur ou égal à celui du paladin.</li>
 					</ul>
-				Note : certaines paladins spécialisés dans le maniement des haches peuvent invoquer une hache de bataille à la place d'une épée</td>
+				Note : certains paladins spécialisés dans le maniement des haches peuvent invoquer une hache de bataille à la place d'une épée</td>
 			</tr>
-			<tr>
 				<td><img src="images/icons/gwcurecb.jpg" title="gwcurec.spl" /></td>
 				<td><span style="color: #FFCC33;">Soins du chevalier</span></td>
 				<td>Nécromancie</td>
@@ -1825,14 +2073,13 @@
 				<td>spécial</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				À ce niveau de maîtrise, la Chevaucheuse n'a pas besoin de poser ses mains sur une créature. Il lui suffit de se concentrer un bref instant sur elle pour lui transmettre de l'énergie positive qui lui permet de récupérer 3d8 points de vie, +1 par niveau d'expérience (jusqu'à un maximum de +15). La guérison n'est définitive que dans la mesure où la créature ne subit pas d'autres dégâts ; les blessures provoquées se cicatriseront (ou peuvent être soignées) comme n'importe quelle blessure normale.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">À ce niveau de maîtrise, la Chevaucheuse n'a pas besoin de poser ses mains sur une créature. Il lui suffit de se concentrer un bref instant sur elle pour lui transmettre de l'énergie positive qui lui permet de récupérer 3d8 points de vie, +1 par niveau d'expérience (jusqu'à un maximum de +15). La guérison n'est définitive que dans la mesure où la créature ne subit pas d'autres dégâts ; les blessures provoquées se cicatriseront (ou peuvent être soignées) comme n'importe quelle blessure normale.<br>
 				Cette guérison ne concerne pas les créatures dépourvues d'enveloppe corporelle ou d'origine extraplanaire. Les morts-vivants étant animés d'énergie négative, ce sort leur inflige des dégâts plutôt qu'il ne les soigne. Un jet de sauvegarde réussi leur permet toutefois de ne subir que des dégâts réduits de moitié.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwsoucab.jpg" title="gwsouca.spl" /></td>
-				<td><span style="color: #FFCC33;">Soutien de la Chevaucheuse</span></td>
-				<td>Altération</td>
+				<td><span style="color: #FFCC33;">Soutien de la Chevaucheuse
+				<td>Altération, Nécromancie</td>
 				<td>Combat, Nécromancie</td>
 				<td>6</td>
 				<td>champ de vision</td>
@@ -1842,8 +2089,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				La Chevaucheuse prête des points de caractéristique à un allié. Elle subit alors un malus de 1d4 points à une caractéristique de son choix et la cible bénéficie d'un bonus de 1d4 à la même caractéristique. La Chevaucheuse n'étant pas aussi proche de l'équilibre que les druides, il n'est pas rare que le montant de la caractéristique momentanément perdu soit différent de celui reçu...<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">La Chevaucheuse prête des points de caractéristique à un allié. Elle subit alors un malus de 1d4 points à une caractéristique de son choix et la cible bénéficie d'un bonus de 1d4 à la même caractéristique. N'étant pas aussi proche de l'équilibre que les druides, il n'est pas rare que le montant de la caractéristique momentanément perdu soit différent de celui reçu...<br>
 				Il est impossible de lancer ce sort une seconde fois dans l'heure qui suit.</td>
 			</tr>
 			<tr>
@@ -1859,8 +2105,7 @@
 				<td>non</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Lorsque ce sort est lancé, la Chevaucheuse est capable de voir une zone inexplorée de la carte. Après avoir lancé le sort, cliquez sur la zone de la carte que vous désirez voir. Pendant la durée du sort, la paladine peut surveiller cette zone et noter les créatures et fortifications qui s'y trouvent.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Lorsque ce sort est lancé, la Chevaucheuse est capable de voir une zone inexplorée de la carte. Après avoir lancé le sort, cliquez sur la zone de la carte que vous désirez voir. Pendant la durée du sort, la paladine peut surveiller cette zone et noter les créatures et fortifications qui s'y trouvent.</td>
 			</tr>
 		</table><br>
 		<p style="font-size:90%;text-align: right;"><a href="#spells">RETOUR À LA LISTE DES SORTS</a>
@@ -1872,30 +2117,157 @@
 			</address>
 		</div>
 
-<!-- ======================= C r e d i t s ====================== -->
-<!-- ======================= V e r s i o n s ====================== -->
-	  <a name="versions" id="versions"></a>
-	  <div class="content" id="versionHistory">
+	<!-- ======================= C r e d i t s ====================== -->
+	  <a name="credits" id="credits"></a>
+		<div class="content">
+		<h2>
+			Crédits et remerciements
+		</h2><br>
 
+		<h4>
+			  Auteur : <a href="https://www.baldursgateworld.fr/lacouronne/members/freddy_gwendo.html">Freddy_Gwendo (aka Gwendolyne)</a>
+		</h4>
+
+<hr>
+		<h3>
+			Remerciements particuliers à :
+		</h3>
+
+ 		<ul>
+			<li>
+			  L'équipe de <a href="https://www.baldursgateworld.fr">La Couronne de Cuivre</a> pour l'hébergement de ce mod.
+ 			</li>
+			<li>
+ 			  Les créateurs de la série Baldur's Gate : <a href="http://www.bioware.com/">Bioware</a> et <a href="http://www.obsidian.net/">Black Isle Studios</a>.
+			</li>
+			<li>
+			  Isaya pour son aide précieuse, ses suggestions et son soutien constant dans le codage des points critiques.
+			</li>
+			<li>
+			  Luren pour son aide sans failles dans la réalisation d'éléments graphiques. Sans lui, vous ne pourriez pas emprunter d'ascenseur, ni combattre de tarasques, car elles n'auraient jamais vu le jour.
+			</li>
+			<li>
+			  Cocrane pour sa recherche d'éléments graphiques à intégrer dans le mod, ainsi que la conception de la carte du Col du Dragon.
+			</li>
+			<li>
+			  Graoumf et Lulubaleyette pour la relecture.
+			</li>
+			<li>
+			  Merci aux artistes de portraits du site <a href="https://www.pinterest.fr/">Pinterest</a>.
+ 			</li>
+			<li>
+			  Merci à toutes les personnes des forums de <a href="https://www.baldursgateworld.fr">La Couronne de Cuivre</a>, <a href="https://www.gibberlings3.net/forums/">The Gibberlings Three</a>, <a href="http://www.shsforums.net/">Spellhold Studios</a>, et des autres communautés de joueurs et de moddeurs IE qui m'ont offert leur aide.
+			</li>
+			<li>etc.
+			</li>
+		</ul><br>
+
+<hr>
+		<h3>
+			Logiciels et outils utilisés pour la réalisation de ce mod :
+		</h3>
+
+		<ul>
+			<li>
+			  <a href="http://www.weidu.org/%7Ethebigg/"><acronym title="Weimer Dialogue Utility">WeiDU</acronym></a> de Wes Weimer, the bigg et Wisp.
+			</li>
+			<li>
+			  <a href="http://forums.pocketplane.net/index.php/topic,25153.msg314249.html#msg314249">Near Infinity</a> de Jon Olav Hauglid, FredSRichardson et Argent77.
+			</li>
+			<li>
+			  <a href="https://www.gibberlings3.net/mods/tools/dltcep/"><acronym title="Dragonlance Total Conversion Editor Pro">DLTCEP</acronym></a> de Avenger.
+			</li>
+			<li>
+			  <a href="https://gibberlings3.github.io/iesdp/"><acronym title="Infinity Engine Structures Description Project">IESDP</acronym></a> maintenu par igi et lynx.
+			</li>
+			<li>
+			  <a href="https://www.gibberlings3.net/mods/tools/debug/">G3 Debugging Suite</a> de CamDawg.
+			</li>
+
+			<li>
+			  <a href="http://www.teambg.eu/?page=tools&amp;cat=32">BAM Workshop</a> de Glenn Flansburg.
+			</li>
+			<li>
+			  <a href="http://www.shsforums.net/topic/57564-bamworkshop/">BAMWorkshop 2</a> de Andrew Bridges.
+			</li>
+			<li>
+			  <a href="http://www.shsforums.net/index.php?showtopic=42359">BAM Batcher</a> de Miloch.
+			</li>
+			<li>
+			  <a href="https://www.adobe.com/products/photoshop.html">Adobe Photoshop</a>
+			</li>
+			<li>
+			  <a href="http://www.gimp.org/"><acronym title="GNU Image Manipulation Program">GIMP</acronym></a> par l'équipe de the GIMP.
+ 			</li>
+			<li>
+			  <a href="https://www.blender.org/">Blender</a> par la Fondation Blender.
+			</li>
+
+			<li>
+			  <a href="http://notepad-plus-plus.org/">Notepad++</a> par l'équipe de Notepad++, Don Ho ; et le plug-in de correction orthographique.
+ 			</li>
+			<li>
+			  <a href="http://www.shsforums.net/files/file/1048-weidu-highlighter-for-notepad/">WeiDU Notepad++ Highlighters </a> de Argent77.
+			</li>
+			<li>
+			  <a href="http://www.bulkrenameutility.co.uk/">Bulk Rename Utility</a> de TGRMN Software.
+			</li>
+			<li>à compléter...
+			</li>
+		</ul><br>
+
+<hr>
+		<h3>
+			Informations sur les droits d'auteur
+		</h3>
+
+		  <div class="important" style="color: #303030; background-color: #999999;">
+			<p>Menace sur le Royaume de Diamant Éternel n'est pas développé, supporté ni approuvé par BioWare&trade; ou Interplay/Black Isle, Overhaul, Beamdog ou Wizards of the Coast. Il a été développé par Freddy_Gwendo (aka Gwendolyne), et est basé sur le jeu Baldur's Gate II et son extension.</p>
+			<p>Baldur's Gate II : Les Ombres d'Amn et Baldur's Gate II : Trône de Bhaal appartiennent à &copy; TSR, Inc. Le moteur Infinity Engine appartient à &copy; BioWare Corp. Toutes les autres marques et droits d'auteur appartiennent à leurs propriétaires respectifs.</p>
+<br>
+			<p>Ce mod a été créé pour être librement apprécié par tous les joueurs de Baldur's Gate II. Cependant, il ne doit pas être vendu, publié, compilé ou redistribué sous une forme quelconque sans le consentement de son auteur.</p>
+<br>
+			<p>S'il existe des problèmes de droits d'auteur ou si cette déclaration nécessite une révision, veuillez me contacter et conseillez-moi sur ce qu'il faut faire à ce sujet. Plus particulièrement, si vous trouvez dans ce mod des illustrations susceptibles d'être en conflit avec les règles de droit d'auteur, merci de bien vouloir me le faire savoir dès que possible et je supprimerai immédiatement le contenu en conflit.</p>
+		  </div><br>
+		<p>
+			La communauté de modding sur le moteur Infinity Engine a été très active depuis plus de quinze ans maintenant, et a produit des milliers d'heures de travail non rémunérées effectuées par des fans du jeu. Les moddeurs s'efforcent de publier le meilleur de leur travail, et les joueurs bénéficient des mods les plus performants et les mieux maintenus, à condition que nous travaillions tous dans le même sens.
+		</p>
+		<p>
+			Mais cette harmonie peut malheureusement être perturbée, principalement par deux comportements. Le premier, c'est de revendiquer le travail de quelqu'un d'autre. Le second consiste à héberger et à redistribuer un mod sans la permission de son(es) auteur(s).
+		</p>
+		<p>
+			Soyez assez sympa avec vos collègues joueurs et moddeurs. Ne le faites pas.
+		</p><br>
+
+
+			<address>
+				<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; Crédits et remerciements</span> &#8226; <a href="#top">HAUT DE PAGE</a>
+			</address>
+		</div>
+
+	<!-- ======================= V e r s i o n s ====================== -->
+	  <a name="versions" id="versions"></a>
+		<div class="content">
 		<h2>
 			Historique des versions
 		</h2><br>
 
 		<p class="version">
-			Version Alpha 0.0.1 &nbsp;(date)
+			Version 1.0.0 - date (format : jour mois année)
 		</p>
 
-		<ul style="text-align:justify;">
-			<li>Sortie initiale.</li>
-		</ul><br>
+		<ul>
+			<li>Sortie initiale</li>
+		</ul>
 
 
-		<address>
-			<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; Historique des versions</span> &#8226; <a href="#top">HAUT DE PAGE</a>
-		</address>
-	  </div>
+			<address>
+				<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; Historique des versions</span> &#8226; <a href="#top">HAUT DE PAGE</a>
+			</address>
+		</div>
 
-	 </div>
 	</div>
-  </body>
+  </div>
+</body>
 </html>
+

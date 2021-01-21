@@ -2,50 +2,388 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-  <head>
+<head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="styles/style_lcc.css" type="text/css">
+	<style type="text/css">
+/*<![CDATA[*/
+	<!-- 
+	body {
+		margin: 0;
+		padding: 0;
+		cursor: default;
+		text-align: center;
+		color: #D1D1D1;
+		background: #000 url('images/bg_lcc2.png');
+	}
 
+/*	En-tête  */
+	#cartouche {
+		text-align: left;
+		margin: 0 auto;
+		margin-top: 20px;
+		width: 88%;
+		font-family: Verdana, Tahoma, Arial, sans-serif;
+		font-size: 12px;
+		color: #D1D1D1;
+/*		background-repeat: repeat-x;
+		background: url("images/degrade_titre.png");
+*/	}
+
+	#header {
+		text-align: center;
+*		background: #303030;
+		background-image: linear-gradient(#666666, #040404);
+		border: 1px solid #FFCC33;
+		border-top: 5px solid #FFCC33;
+		border-bottom: 5px solid #FFCC33;
+		padding: 5px 0 13px 0;
+		height: 310px;
+		border-radius: 3px 4px 3px 3px;
+		box-shadow: 8px 8px 15px black;
+	}
+/*	le décalage horizontal de l'ombre ;
+	le décalage vertical de l'ombre ;
+	l'adoucissement du dégradé ;
+	la couleur de l'ombre.	*/
+
+	#header .about {
+        margin: 7px 0 0 0;
+        padding: 0;
+/*		font-style: italic;
+		color: #555;
+*/		text-decoration: none;
+	}
+	#header .about a:link,
+	#header .about a:visited {
+	}
+	#header .about a:focus,
+	#header .about a:hover {
+		text-decoration: none;
+		color: #deded9;
+		border: 0;
+	}
+
+/*	Menu  */
+	#menu {
+		font-weight: bold;
+		margin: 0;
+		margin-top: 20px;
+		text-align: center;
+		color: #FFCC33;
+		background-repeat: repeat-x;
+		background: url("images/degrade_titre.png");
+		border-radius: 3px 4px 3px 3px;
+*		heigth: 50px;
+		line-height: 400%;
+*		vertical-align:middle;
+	}
+	#menu a:link,
+	#menu a:visited {
+	}
+	#menu a:focus,
+	#menu a:hover {
+		text-decoration: none;
+		color: #deded9;
+		border: 0;
+	}
+
+/*	Sections  */
+	#maindiv {
+		margin: 0 auto;
+		margin-top: -20px;
+		width: 100%;
+	}
+
+	#maindiv .content {
+		color: #deded9;
+		background-color: #5F5F5F;
+		padding: 0 0 25px 0;
+		margin: 50px auto;
+		border-width: 1px 1px 4px 10px;
+		border-style: solid;
+		border-color: #FFBF00;
+/*ou		border: 1px solid #FFCC33;
+		border-left: 10px solid #FFCC33;
+		border-bottom: 4px solid #FFCC33;
+*/		position: relative;
+		border-radius: 4px 4px 4px 5px;
+		box-shadow: 8px 8px 15px black;
+		display: block;
+	}
+
+	#maindiv .important {
+		font-size: 95%;
+		font-family: Verdana;
+		text-align: left;
+*		background-color: #F1F1F1;
+		border-width: 1px 4px 1px 4px;
+		border-style: solid;
+		border-color: #FFBF00;
+/*		border-top: solid 1px #FFBF00;
+		border-bottom: solid 1px #FFBF00;
+		border-left: solid 6px #FFBF00;
+		border-right: solid 6px #FFBF00;
+*/		padding: 10px;
+		margin: 10px auto;
+		width: 80%;
+		line-height: 160%;
+	}
+	#maindiv .important::before {
+		display: none;
+	}
+	#maindiv .important p {
+		width: 100%;
+		font-size: 100%;
+		text-indent: 0px;
+		margin: 5px 0 5px 0;
+		line-height: 180%;
+	}
+	#maindiv .important ol {
+		margin: -10px 0 0 20px;
+	}
+	#maindiv .important ul {
+		margin: -10px 0 0 15px;
+	}
+
+	#maindiv address {
+		font-size: 95%;
+		font-style: normal;
+		font-weight: bold;
+		text-decoration: none;
+		color: #303030;
+		background-color: #FFBF00;
+		padding: 3px 0px 0px;
+		margin: 0px;
+		width: 100%;
+		position: absolute;
+		bottom: -1px;
+		left: 0px;
+		display: block;
+		text-align: right;
+	}
+	#maindiv address a:link,
+	#maindiv address a:visited {
+		font-weight: bold;
+		text-decoration: underline;
+		background-color: transparent;
+		color: #000 !important;
+		padding-right: 5px;
+		padding-left: 6px;
+	}
+	#maindiv address a:focus,
+	#maindiv address a:hover {
+		text-decoration: none;
+		color: #000;
+	}
+
+	/*	Corps de texte  */
+	#maindiv p {
+		text-align: justify;
+		font-size: 110%;
+		font-style: normal;
+		text-decoration: none;
+		line-height: 150%;
+		padding: 0px;
+		margin: 10px auto;
+		width: 90%;
+		display: block;
+	}
+
+	/*	Listes  */
+	#maindiv ul {
+		line-height: 170%;
+		margin-left: 4%;
+		width: 87%;
+	}
+	#maindiv ul li {
+		/*margin-right: 0px;*/
+	}
+	#maindiv ul li ul {
+		margin: 0px;
+		width: 96%;
+	}
+	#maindiv ul li ul li {
+	}
+	#maindiv ul li ul li ul {
+		margin-left: -1%;
+		width: 98%;
+	}
+	#maindiv ul li ul li ul li {
+	}
+
+/* INUTILISE = liste numérique
+	#maindiv ol {
+		margin: 0px 0 0 35px;
+		*margin-left: 70px;
+	}
+	#maindiv ol li {
+		line-height: 170%;
+	}
+*/
+
+	/*	Titre des versions  */
+	#maindiv .version {
+		display: block;
+		width: 90%;
+		background-color: transparent;
+		text-align: left;
+/*		text-indent: 30px; */
+		font-weight: bold;
+		padding-top: 3px;
+		padding-bottom: 3px;
+		border-bottom: solid 1px #FFCC33;
+		border-top: solid 1px #FFCC33;
+	}
+
+	/*	Liens internet  */
+	a:link,
+	a:visited {
+		color: #FFCC33;
+		/*font-weight: bold; */
+		text-decoration: none;
+	}
+	a:focus,
+	a:hover {
+		text-decoration: underline;
+		*color: #deded9;
+	}
+
+	h1 {
+		line-height: 170%;
+		font-size: 225%;
+		color: #FFCC33; *5F5F5F
+		padding: 5px 0 5px 0;
+		margin: 0;
+		width: 100%;
+	}
+	/*	Titre de section (160 %)  */
+	h2 {
+		line-height: 170%;
+		display: block;
+		font-family: Verdana, Trebuchet MS, Arial, serif;
+		text-align: left;
+		text-indent: 30px;
+		padding: 0px;
+		margin: 20px 0 0 0;
+		border-bottom: dotted 2px #d0d0d0;
+		background: #303030;
+		font-size: 160%;
+	}
+	h2::first-letter {
+		color: #FFCC33;
+		background-color: transparent;
+	}
+
+	/*	Titres  */
+	h3, h4, h5, h6 {
+		line-height: 170%;
+		margin: 10px auto;
+		width: 90%;
+		padding: 0;
+	}
+	h3 {
+		font-size: 140%;
+	}
+	h4 {
+		font-size: 125%;
+		/*font-style: italic;*/
+	}
+
+	h5 {
+		/*margin: 10px auto;*/
+        font-size: 110%;
+	}
+/*	h5 {
+        font-size: 100%;
+	}*/
+	h6 {
+		font-size: 125%;
+		font-style: italic;
+	}
+
+	/*	Ligne dorée  */
+	hr {
+		/*margin: 10px 10 10px 10;*/
+		margin-top: 20px;
+		margin-bottom: 20px;
+		width: 90%;
+		/*padding: 0; */
+		height: 1px;
+		border: 0;
+		color: #FFCC33;
+		background-color: #FFCC33;
+	}
+
+	/*	Image d'en-tête */
+	img.image_left {
+		float: left;
+		padding:0px 5px 0px 70px;
+		overflow: auto;
+	}
+
+
+	/*	Tableaux */
+	table {
+		/*text-align: center;*/
+		width: 90%;
+		padding: 10px;
+		border-collapse: collapse;
+		/*margin-left: 70px;*/
+		/*padding: 20px 25px;*/
+		/*position: relative;*/
+	}
+	td, th {
+		font-size: 12px;
+		text-align: center;
+		*vertical-align: baseline;
+		padding-top: 4px;
+		padding-bottom: 4px;
+*		border: 1px outset #eee;
+		border: 1px solid #aaa;
+	}
+	th {
+		background-color: #303030; *#000099;
+		*color: #fff;
+		font-weight: bold;
+*		border:none;
+	}
+*	tr {)
+
+	.leftalign, table.leftalign tr th, table.leftalign tr td (
+		text-align: left;
+	}
+
+	-->
+/*]]>*/
+
+	</style>
 	<title>
 		Menace sur le Royaume de Diamant Éternel - La Couronne de Cuivre
 	</title>
-
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
 
-	<link href="images/logocc.png" rel="icon" type="image/png" />
-  </head>
-
-  <body>
-
-	<script type="module">
-		var test1 = document.getElementById('versionHistory').getElementsByClassName("version")[0].innerText;
-		document.getElementById("latestVersion").innerText = document.getElementById('versionHistory').getElementsByClassName("version")[0].innerText;
-		var versionnb = test1.substring(7, test1.length);
-		document.getElementById("versionnb1").innerText = versionnb;
-	</script>
-
-	<div id="cartouche">
+<body>
+  <div id="cartouche">
 	<a name="top" id="top"></a>
-
-	  <div id="header">
-		<h1 style="text-shadow: 0.1rem 0.1rem 0.25rem black;">
+	<div id="header">
+		<h1>
 			Menace sur le Royaume de Diamant Éternel : Diamond Knight (WIP)
 			<a href="menace-kit1-readme-french.html">
 				<img src="images/fr-flag-32.png" alt="version française" style="float:right;width:32px;height:16px;margin-right:20px;margin-top:15px;">
 			</a>
 		</h1>
 
-		<strong>A <a href="https://www.baldursgateworld.fr">La Couronne de Cuivre</a> mod for Baldur's Gate II:<acronym title="Throne of Bhaal">ToB</acronym>, Baldur's Gate Trilogy, <acronym title="Baldur's Gate 'To Two'">Tutu</acronym>, <acronym title="Baldur's Gate II Enhanced Edition">BG2:EE</acronym> and <acronym title="Enhanced Edition Trilogy">EET</acronym></strong>
+		<strong>A <a href="https://www.baldursgateworld.fr">La Couronne de Cuivre</a> mod for Baldur's Gate II: <acronym title="Throne of Bhaal">ToB</acronym>, Baldur's Gate Trilogy, <acronym title="Baldur's Gate 'To Two'">Tutu</acronym> and <acronym title="Baldur's Gate II Enhanced Edition">BG2:EE</acronym></strong>
 
-		<hr>
-
+<hr>
 		<img src="images/logo_lcc.png" title="La Couronne de Cuivre" alt="La Couronne de Cuivre" class="image_left" />
 		<br><br><br>
 		<p class="about" style="text-align: left;margin-left: 70%">
 			<strong>Author:</strong> <a href="https://www.baldursgateworld.fr/lacouronne/members/freddy_gwendo.html">Freddy_Gwendo (aka Gwendolyne)</a>
 		</p>
 		<p class="about" style="text-align: left;margin-left: 70%">
-			<strong>Version:</strong> <span id="latestVersion" style="display: none";></span><span id="versionnb1"></span>
+			<strong>Version:</strong> Alpha 0.0.1
 		</p>
 		<p class="about" style="text-align: left;margin-left: 70%">
 			<strong>Languages:</strong> French, English
@@ -57,72 +395,69 @@
 			<a href="https://www.baldursgateworld.fr">Mod Website</a> &#8226; <a href="https://www.baldursgateworld.fr/lacouronne/menace-sur-le-royaume-de-diamant-eternel/">Mod Forum</a> &#8226; <a href="https://www.baldursgateworld.fr/lacouronne/menace-sur-le-royaume-de-diamant-eternel/">Download</a> &#8226; <a href="https://github.com/GwendolyneFreddy/Diamant-Eternel">GitHub</a>
 		</p>
 
-	  </div>
+	</div>
 
-	  <div id="menu">
+	<div id="menu">
 		<a href="#intro">Introduction</a> &#160;&#8226;&#160; <a href="#description">Description</a> &#160;&#8226;&#160; <a href="#hla">High Level Abilities (HLA)</a> &#160;&#8226;&#160; <a href="#spells">Spells</a> &#160;&#8226;&#160; <a href="#versions">Version History</a>
-	  </div>
+	</div>
 
-	 <div id="maindiv">
-
-<!-- ================== I n t r o d u c t i o n ================== -->
+	<div id="maindiv">
+	<!-- ================== I n t r o d u c t i o n ================== -->
 	  <a name="intro" id="intro"></a>
-	  <div class="content">
-
+		<div class="content">
 		<h2>
 			Introduction
 		</h2><br>
 
-		<table cellpadding=0 cellspacing=0 style="margin-top: 1%; margin-left: 80px">
+		<table cellpadding=0 cellspacing=0 style="margin-left: 80px">
 			<tr>
 				<td style="font-size: 90%;text-align:right;border:none"><img width=500 src="images/diamant1.jpg" title="Menace sur le Royaume de Diamant Éternel"><br>Lux et Umbra by Chaos-Draco DeviantArt &copy;2009-2018 Chaos-Draco</td>
 				<td width=20 style="border:none"></td>
-				<td style="border:none;text-align: justify;font-size: 110%;line-height: 150%;">
-				<strong>Menace sur le royaume de Diamant Éternel</strong> adds two new paladin kits: the Diamond Knight and the <a href="menace-kit2-readme-english.html">Unicorn Rider</a>.<br><br>
-				I strongly recommend that you DO NOT select them when you generate your character in order to benefit from all the elements of the scenario: CHARNAME will be able to choose one of these specializations in the course of the adventure. Moreover, they have been specially designed to fit the universe of the Eternal Diamond Kingdom and match its mythology. Also, remember that their abilities will only be really useful during the campaign and may be a handicap during most of the SoA game.<br><br>
-				However, if you absolutely want to play them from the beginning of your game, both provide a special quest in SoA that will be integrated in the final campaign.<br><br>
-				At last, those kits may benefit from a special mount (a steed for the Knight and a unicorn for the Rider), whose name you will be able to define in <a href="menace-readme-english.html#installation">installation process</a>.<br>
+				<td style="border:none;text-align: justify;font-size: 110%;line-height: 150%;"><strong>
+				Menace sur le royaume de Diamant Éternel</strong> adds two new paladin kits: the Diamond Knight and the <a href="menace-kit2-readme-english.html">Unicorn Rider</a>.<br/><br/>
+				I strongly recommend that you DO NOT select them when you generate your character in order to benefit from all the elements of the scenario: CHARNAME will be able to choose one of these specializations in the course of the adventure. Moreover, they have been specially designed to fit the universe of the Eternal Diamond Kingdom and match its mythology. Also, remember that their abilities will only be really useful during the campaign and may be a handicap during most of the SoA game.<br/><br/>
+				However, if you absolutely want to play them from the beginning of your game, both provide a special quest in SoA that will be integrated in the final campaign.<br/><br/>
+				At last, those kits may benefit from a special mount (a steed for the Knight and a unicorn for the Rider), whose name you will be able to define in <a href="menace-readme-english.html#installation">installation process</a>.<br/>
 				<center><img src="images/anim/destrier1.gif" title="Paladin Mount" /> <img src="images/anim/unicorn.gif" title="Unicorn" /></center></td>
 			</tr>
 		</table><br><br>
 
 
-		<address>
-			<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; Introduction</span> &#8226; <a href="#top">BACK TO TOP</a>
-		</address>
-	  </div>
+			<address>
+				<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; Introduction</span> &#8226; <a href="#top">BACK TO TOP</a>
+			</address>
+		</div>
 
-<!-- ================= C o m p a t i b i l i t y ================= -->
-<!-- ================== I n s t a l l a t i o n ================== -->
-<!-- =================== D e s c r i p t i o n ==================== -->
+	<!-- ================= C o m p a t i b i l i t y ================= -->
+	<!-- ================== I n s t a l l a t i o n ================== -->
+	<!-- =================== D e s c r i p t i o n ==================== -->
 	  <a name="description" id="description"></a>
-	  <div class="content">
-
+		<div class="content">
 		<h2>
 			Description
 		</h2><br>
 
-		<table cellpadding=0 cellspacing=0 style="margin-top: 1%; margin-left: 80px">
+		<table cellpadding=0 cellspacing=0 style="margin-left: 80px">
 			<tr>
-				<td style="font-size: 90%; text-align:right; border:none"><img width=500 src="images/diamant2.jpg" title="Diamond Knight"><br>Noble Dragon by Ironshod &copy; Unknown.</td>
+				<td style="font-size: 90%;text-align:right;border:none"><img width=500 src="images/diamant2.jpg" title="Diamond Knight"><br>Noble Dragon by Ironshod &copy; Unknown.</td>
 				<td width=15 style="border:none"></td>
-				<td style="border:none; text-align: justify; font-size: 110%; line-height: 150%">
-					Diamond Knights belong to the elite paladins. Detected as soon as they are knighted, their martial and moral qualities are tested throughout the course of their career. This is why only a few confirmed paladins, usually cavaliers, are considered worthy of being offered the opportunity to join the Order. If they accept, they loose all their previous characteristics and abilities and receive new ones more suitable for use in battling dragons.<br><br>
-					According to legend, this Order of paladins, sometimes erroneously called '<em>Draconic paladins</em>', would have been created by Diamantor, a silver dragon and Sacred Warder of Bahamut. Diamond Knights are in charge of protecting good-aligned dragon-kind from their natural enemies, the chromatic dragons, at the risk of their own lives, as well as from any others who would prey upon these noble creatures, most notably the minions of Tiamat. They have devoted their lives to those who cannot hope to protect themselves from the awesome power of Tiamat's brood, and they spend most of their time roaming the world in search of their sworn enemies and can be found anywhere evil dragons threaten other creatures.<br><br>
-					They have made a special study of dragons and know how to defend against their attacks and how to take advantage of their weak spots to fight them. Bahamut, Lord of the Good Dragons, is their patron, but they are not obliged to worship him and may retain their old allegiance.<br><br>
+				<td style="border:none;text-align: justify;font-size: 110%;line-height: 150%">
+					Diamond Knights belong to the elite paladins. Detected as soon as they are knighted, their martial and moral qualities are tested throughout the course of their career. This is why only a few confirmed paladins, usually cavaliers, are considered worthy of being offered the opportunity to join the Order. If they accept, they loose all their previous characteristics and abilities and receive new ones more suitable for use in battling dragons.<br/><br/>
+					According to legend, this Order of paladins, sometimes erroneously called 'Draconic paladins', would have been created by Diamantor, a silver dragon and Sacred Warder of Bahamut. Diamond Knights are in charge of protecting good-aligned dragon-kind from their natural enemies, the chromatic dragons, at the risk of their own lives, as well as from any others who would prey upon these noble creatures, most notably the minions of Tiamat. They have devoted their lives to those who cannot hope to protect themselves from the awesome power of Tiamat's brood, and they spend most of their time roaming the world in search of their sworn enemies and can be found anywhere evil dragons threaten other creatures.<br/><br/>
+					They have made a special study of dragons and know how to defend against their attacks and how to take advantage of their weak spots to fight them. Bahamut, Lord of the Good Dragons, is their patron, but they are not obliged to worship him and may retain their old allegiance.<br/><br/>
 					PRE-REQUISITES:
-					<ul style="margin-left: -1%; width: 96%; line-height: 150%">
+					<ul style="margin-left: -1%;width: 96%;line-height: 150%">
 						<li>Must have reached 10 levels of experience.</li>
 						<li>Requires at least 15 Strength, 12 Dexterity, 12 Constitution, 15 Wisdom and 17 Charisma.</li>
 					</ul>
 					ADVANTAGES:
-					<ul style="margin-left: -1%; width: 96%; line-height: 150%">
+					<ul style="margin-left: -1%;width: 96%;line-height: 150%">
 						<li>May achieve Grand Mastery (5 slots) in long and bastard swords.</li>
 						<li>Like all paladins, he/she is immune to diseases, may heal with Lay On Hands once per day, cast Detect Evil and Protection From Evil once per day per level.</li>
 						<li>Gains spells to strengthen his allies' protections and strike force against dragons, which replace most of the usual paladins divine spells.</li>
 					</ul>
 					DISADVANTAGES:
-					<ul style="margin-left: -1%; width: 96%; line-height: 150%">
+					<ul style="margin-left: -1%;width: 96%;line-height: 150%">
 						<li>May not turn undead, unless he/she has selected a dragon species as principal foe.</li>
 						<li>May only use slashing weapons and spears.</li>
 						<li>May only wear plate armors and medium shields.</li>
@@ -133,13 +468,11 @@
 			</tr>	
 		</table><br><br>
 
-		<hr>
-
+<hr>
 		<h3>
 			Special abilities
 		</h3>
-
-		<p style="margin-top:2%;">
+		<p>
 			List of special abilities gained by a Diamond Knight when leveling up.
 		</p><br>
 
@@ -151,7 +484,7 @@
 				<th>Description</th>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">1</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">1</span><strong></td>
 				<td><img src="images/icons/gwcd211b.jpg" title="gwcd211.spl" /></td>
 				<td><span style="color: #FFCC33;">Lay on Hands</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">May use this ability once per day to heal a target for 2 Hit Points per level.</td>
@@ -187,7 +520,7 @@
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">May cure disease once per day.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">10</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">10</span><strong></td>
 				<td></td>
 				<td></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Can speak and understand Draconic language.</td>
@@ -211,44 +544,44 @@
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Gains a +4 bonus to hit and damage rolls against draconic creatures.</td>
 			</tr>
 			<tr>
-				<td></td>
+			<td></td>
 				<td><img src="images/icons/gwchatdb.jpg" title="gwchatd.spl" /></td>
 				<td><span style="color: #FFCC33;">Smite Evil Dragon</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Once per day, a Diamond Knight may attempt to smite an evil dragon with one normal melee attack. This attack receives a to hit bonus roll equal to one tenth of his/her level and deals 1 extra point of damage per level. If the Diamond Knight accidentally smites a dragon that is not evil, or a creature that is not a dragon, the smite has no effect but it is still used up. This ability lasts for one round.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">11</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">11</span><strong></td>
 				<td><img src="images/icons/gwresdmb.jpg" /></td>
 				<td><span style="color: #FFCC33;">Draconic Resistance</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Gains 5% innate resistance to fire and acid.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">12</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">12</span><strong></td>
 				<td></td>
 				<td></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">The Dragon Knight's insight into the tactics and abilities of dragons grants him/her awareness of how best to avoid their magical attacks: Gains +1 bonus to Saving Throw vs. Breath.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">13</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">13</span><strong></td>
 				<td><img src="images/icons/gwresdmb.jpg" /></td>
 				<td><span style="color: #FFCC33;">Draconic Resistance</span></td>
 				<td style="padding-left:10px;text-align: justify">Gains 5% innate resistance to cold and electricity.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">14</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">14</span><strong></td>
 				<td><img src="images/icons/gwvisdrb.jpg" title="gwvisdr.spl" /></td>
 				<td><span style="color: #FFCC33;">Draconic Sight</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">This ability allows the Diamond Knight to see all things as they actually are. It is the equivalent of the True Seeing spell and lasts 1 round per level. The Diamond Knight's eyes glow with white light and allows him/her to see all invisible, hidden or mislead creatures, and to dispel all hostile Illusion/Phantasm spells in the area of effect which is roughly a 120-ft. radius around him/her. Draconic Sight bypass the target's Magic Resistance, if any, and only affects enemies; thus, it is unable to dispel the invisibility from a party member.<br>
 				Moreover, Draconic Sight allows also to detect evil auras from any creature. Any evil creature within the range of the spell will glow red briefly.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">15</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">15</span><strong></td>
 				<td><img src="images/icons/gwtudgnb.jpg" /></td>
 				<td><span style="color: #FFCC33;">Principal Foe</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">May select a dragon species as his/her principal foe and gains a +3 bonus to hit rolls against it.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">16</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">16</span><strong></td>
 				<td><img src="images/icons/gwchatvb.jpg" title="gwchatv.spl" /></td>
 				<td><span style="color: #FFCC33;">Righteous Smite</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Once per day, the Diamond Knight may channel a bolt of divine energy. Any evil creatures that are caught in the area of effect suffer damage depending on their nature, and are blinded for 2 rounds. Victims are allowed a Saving Throw vs. Spell for half damage and to avoid being blinded.<br><br>
@@ -259,7 +592,7 @@
 				<span style="margin-left: 1%">– Dragons: 1d8 point of damage per level, up to a maximum of 20d8.</span></td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">20</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">20</span><strong></td>
 				<td><img src="images/icons/gwresdmb.jpg" /></td>
 				<td><span style="color: #FFCC33;">Platinum Skin</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">The Diamond Knight's skin takes on a slightly metallic sheen and he/she gains an additional +1 bonus to Armor Class.</td>
@@ -277,31 +610,31 @@
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Gains an additional use of this ability which duration increases by 1 round.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">21</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">21</span><strong></td>
 				<td><img src="images/icons/gwresdmb.jpg" /></td>
 				<td><span style="color: #FFCC33;">Draconic Resistance</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Gains an additional 5% innate resistance to fire and acid.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">22</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">22</span><strong></td>
 				<td></td>
 				<td></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">The Dragon Knight's insight into the tactics and abilities of dragons grants him/her awareness of how best to avoid their magical attacks: Gains an additional +1 bonus to Saving Throw vs. Breath.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">23</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">23</span><strong></td>
 				<td><img src="images/icons/gwresdmb.jpg" /></td>
 				<td><span style="color: #FFCC33;">Draconic Resistance</span></td>
 				<td style="padding-left:10px;text-align: justify">Gains an additional 5% innate resistance to cold and electricity.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">25</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">25</span><strong></td>
 				<td></td>
 				<td><span style="color: #FFCC33;">Bahamut's Grace</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Charisma increases by 2 points.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">30</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">30</span><strong></td>
 				<td></td>
 				<td><span style="color: #FFCC33;">Platinum Skin</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">The Diamond Knight's skin takes an even more metallic sheen and he/she gains an additional +1 bonus to Armor Class.</td>
@@ -319,37 +652,36 @@
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Gains an additional use of this ability which duration increases by 1 round.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">31</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">31</span><strong></td>
 				<td><img src="images/icons/gwresdmb.jpg" /></td>
 				<td><span style="color: #FFCC33;">Draconic Resistance</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Gains an additional 5% innate resistance to fire and acid.</td>
 			</tr>
-			<tr>
 				<td></td>
 				<td><img src="images/icons/gwchatvb.jpg" title="gwchatv.spl" /></td>
 				<td><span style="color: #FFCC33;">Righteous Smite</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Gains an additional use of this ability.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">32</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">32</span><strong></td>
 				<td></td>
 				<td></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">The Dragon Knight's insight into the tactics and abilities of dragons grants him/her awareness of how best to avoid their magical attacks: Gains an additional  +1 bonus to Saving Throw vs. Breath.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">33</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">33</span><strong></td>
 				<td><img src="images/icons/gwresdmb.jpg" /></td>
 				<td><span style="color: #FFCC33;">Draconic Resistance</span></td>
 				<td style="padding-left:10px;text-align: justify">Gains an additional 5% innate resistance to cold and electricity.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">35</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">35</span><strong></td>
 				<td><img src="images/icons/gwresdmb.jpg" /></td>
 				<td><span style="color: #FFCC33;">Draconic Resistance</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Gains an additional 5% innate résistance to the elemental energy used by his/her principal foe.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">40</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">40</span><strong></td>
 				<td><img src="images/icons/gwchatdb.jpg" title="gwchatd.spl" /></td>
 				<td><span style="color: #FFCC33;">Smite Evil Dragon</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Gains an additional use of this ability which duration increases by 1 round.</td>
@@ -361,37 +693,37 @@
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Gains an additional 5% innate résistance to the elemental energy used by his/her principal foe.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">41</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">41</span><strong></td>
 				<td><img src="images/icons/gwresdmb.jpg" /></td>
 				<td><span style="color: #FFCC33;">Draconic Resistance</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Gains an additional 5% innate resistance to fire and acid.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">42</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">42</span><strong></td>
 				<td></td>
 				<td></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">The Dragon Knight's insight into the tactics and abilities of dragons grants him/her awareness of how best to avoid their magical attacks: Gains an additional  +1 bonus to Saving Throw vs. Breath.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">43</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">43</span><strong></td>
 				<td><img src="images/icons/gwresdmb.jpg" /></td>
 				<td><span style="color: #FFCC33;">Draconic Resistance</span></td>
 				<td style="padding-left:10px;text-align: justify">Gains an additional 5% innate resistance to cold and electricity.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">45</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">45</span><strong></td>
 				<td><img src="images/icons/gwresdmb.jpg" /></td>
 				<td><span style="color: #FFCC33;">Draconic Resistance</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Gains an additional 5% innate résistance to the elemental energy used by his/her principal foe.</td>
 			</tr>
-			<tr>
-				<td><strong><span style="color: #FFCC33;">46</span></strong></td>
+			</tr>
+				<td><strong><span style="color: #FFCC33;">46</span><strong></td>
 				<td><img src="images/icons/gwchatvb.jpg" title="gwchatv.spl" /></td>
 				<td><span style="color: #FFCC33;">Righteous Smite</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Gains an additional use of this ability.</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">50</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">50</span><strong></td>
 				<td><img src="images/icons/gwresdmb.jpg" /></td>
 				<td><span style="color: #FFCC33;">Draconic Resistance</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Gains an additional 5% innate résistance to the elemental energy used by his/her principal foe.</td>
@@ -404,20 +736,18 @@
 			</tr>
 		</table><br><br>
 
-		<hr>
-
+<hr>
 		<h3>
 			Dragon Bane
 		</h3>
-
-		<p style="margin-top:2%;">
+		<p>
 			At 15th level, a Diamond Knight may select a dragon species as his/her principal foe and gains a +3 bonus to hit roll against it, as well as specific protections.
 		</p><br>
 
 		<table style="margin-left: 80px" summary="Table des fléaux des dragons">
-			<tr style= "line-height: 300%;">
-				<th colspan="2" style="font-size: 125%;">Dragon</th>
-				<th colspan="6" style="font-size: 125%;">Knight's Level</th>
+			<tr style= "line-height: 170%;">
+				<th colspan="2" >Dragon</th>
+				<th colspan="6" >Knight's Level</th>
 			</tr>
 			<tr style= "line-height: 170%;">
 				<th>Species</th>
@@ -430,7 +760,7 @@
 				<th>50</th>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">White Dragon</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">White Dragon</span><strong></td>
 				<td><span style="color: #FFCC33;"><em>Cold</em></span></td>
 				<td>20 %</td>
 				<td>25 %</td>
@@ -440,7 +770,7 @@
 				<td>45 %</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">Blue Dragon</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">Blue Dragon</span><strong></td>
 				<td><span style="color: #FFCC33;"><em>Electricity</em></span></td>
 				<td>20 %</td>
 				<td>25 %</td>
@@ -450,7 +780,7 @@
 				<td>45 %</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">Black Dragon</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">Black Dragon</span><strong></td>
 				<td><span style="color: #FFCC33;"><em>Acid</em></span></td>
 				<td>20 %</td>
 				<td>25 %</td>
@@ -460,7 +790,7 @@
 				<td>45 %</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">Red Dragon</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">Red Dragon</span><strong></td>
 				<td><span style="color: #FFCC33;"><em>Fire</em></span></td>
 				<td>20 %</td>
 				<td>25 %</td>
@@ -470,7 +800,7 @@
 				<td>45 %</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">Green Dragon</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">Green Dragon</span><strong></td>
 				<td><span style="color: #FFCC33;"><em>Poison</em></span></td>
 				<td>20 %</td>
 				<td>25 %</td>
@@ -480,7 +810,7 @@
 				<td>45 %</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">Brown Dragon</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">Brown Dragon</span><strong></td>
 				<td><span style="color: #FFCC33;"><em>Acid</em></span></td>
 				<td>20 %</td>
 				<td>25 %</td>
@@ -490,7 +820,7 @@
 				<td>45 %</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">Yellow Dragon</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">Yellow Dragon</span><strong></td>
 				<td><span style="color: #FFCC33;"><em>Piercing</em></span></td>
 				<td>20 %</td>
 				<td>25 %</td>
@@ -499,8 +829,7 @@
 				<td>40 %</td>
 				<td>45 %</td>
 			</tr>
-			<tr>
-				<td><strong><span style="color: #FFCC33;">Shadow Dragon</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">Shadow Dragon</span><strong></td>
 				<td><span style="color: #FFCC33;"><em></em></span></td>
 				<td><span style="color: #FFCC33;"><em>Blindness&nbsp;<sup>1</sup></em></span></td>
 				<td><span style="color: #FFCC33;"><em>Energy Drain&nbsp;<sup>2</sup></em></span></td>
@@ -510,7 +839,7 @@
 				<td></td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">Purple Dragon</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">Purple Dragon</span><strong></td>
 				<td><span style="color: #FFCC33;"><em>Electricity</em></span></td>
 				<td>20 %</td>
 				<td>25 %</td>
@@ -520,7 +849,7 @@
 				<td>45 %</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">Deep Dragon</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">Deep Dragon</span><strong></td>
 				<td><span style="color: #FFCC33;"><em>Acid</em></span></td>
 				<td>20 %</td>
 				<td>25 %</td>
@@ -530,7 +859,7 @@
 				<td>45 %</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">Rattelyr Dragon</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">Rattelyr Dragon</span><strong></td>
 				<td><span style="color: #FFCC33;"><em>Fire</em></span></td>
 				<td>20 %</td>
 				<td>25 %</td>
@@ -540,7 +869,7 @@
 				<td>45 %</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">Pyroclastic Dragon</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">Pyroclastic Dragon</span><strong></td>
 				<td><span style="color: #FFCC33;"><em>Fire</em></span></td>
 				<td>30 %</td>
 				<td>35 %</td>
@@ -550,7 +879,7 @@
 				<td>55 %</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">Hex Dragon</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">Hex Dragon</span><strong></td>
 				<td><span style="color: #FFCC33;"><em>Poison<br>Magic</em></span></td>
 				<td valign="top">20 %</td>
 				<td valign="bottom">20 %</td>
@@ -560,7 +889,7 @@
 				<td valign="bottom">30 %</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">Rust Dragon</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">Rust Dragon</span><strong></td>
 				<td valign="top"><span style="color: #FFCC33;"><em>Acid</em></span></td>
 				<td valign="top">30 %</td>
 				<td>35 %<br><span style="color: #FFCC33;"><em>Rusting effects</em></span></td>
@@ -570,7 +899,7 @@
 				<td valign="top">55 %</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">Brainstealer Dragon</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">Brainstealer Dragon</span><strong></td>
 				<td ></td>
 				<td><span style="color: #FFCC33;"><em>Mind Blast</em></span></td>
 				<td><span style="color: #FFCC33;"><em>Brain Extraction</em></span></td>
@@ -580,7 +909,7 @@
 				<td></td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">Chaos Dragon</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">Chaos Dragon</span><strong></td>
 				<td valign="top"><span style="color: #FFCC33;border-bottom:none;"><em>Acid<br>Electricity<br>Cold<br>Fire</em></span></td>
 				<td valign="top">5 %<br>5 %<br>5 %<br>5 %</td>
 				<td valign="top">10 %<br><br>10 %<br><br><span style="color: #FFCC33;"><em>Chaos Breath</em></span></td>
@@ -590,7 +919,7 @@
 				<td valign="top">20 %<br>20 %<br>20 %<br>20 %</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">Howling Dragon</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">Howling Dragon</span><strong></td>
 				<td ></td>
 				<td><span style="color: #FFCC33;"><em>Cone of howling sound</em></span></td>
 				<td><span style="color: #FFCC33;"><em>Cone of maddening wails</em></span></td>
@@ -600,7 +929,7 @@
 				<td></td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">Vampiric Dragon</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">Vampiric Dragon</span><strong></td>
 				<td ></td>
 				<td><span style="color: #FFCC33;"><em>Charm&nbsp;<sup>3</sup></em></span></td>
 				<td><span style="color: #FFCC33;"><em>Energy Drain&nbsp;<sup>2</sup></em></span></td>
@@ -610,7 +939,7 @@
 				<td></td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">Zombie Dragon</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">Zombie Dragon</span><strong></td>
 				<td valign="top"><span style="color: #FFCC33;border-bottom:none;"><em>Acid<br>Electricity<br>Cold<br>Fire<br>Poison</em></span></td>
 				<td valign="top">5 %<br>5 %<br>5 %<br>5 %<br>5 %</td>
 				<td valign="top">10 %<br>10 %<br>10 %<br>10 %<br>10 %</td>
@@ -620,7 +949,7 @@
 				<td valign="top"><br>20 %<br>20 %<br><br>20 %</td>
 			</tr>
 			<tr>
-				<td><strong><span style="color: #FFCC33;">Dracolich</span></strong></td>
+				<td><strong><span style="color: #FFCC33;">Dracolich</span><strong></td>
 				<td><span style="color: #FFCC33;"><em>Cold</em></span></td>
 				<td>50 %</td>
 				<td><span style="color: #FFCC33;"><em>Paralyzing Gaze</em></span></td>
@@ -637,30 +966,29 @@
 		<ul style="list-style-type:none">
 			<li>
 				<sup>1</sup>&nbsp;ToB: At 15th level, a Shadow Dragon Bane is immune to Blindness effects.<br>
-				&nbsp;&nbsp;&nbsp;EE: A Shadow Dragon Bane gets a 50% chance to be immune to Blindness effects, 60% at 30th level, then an extra 10% chance for every five levels thereafter.</li>
+				&nbsp;&nbsp;&nbsp;EE: A Shadow Dragon Bane gets a 50% chance to be immune to Blindness effects, 60% at 30th level, then an extra 10% chance for every five levels.</li>
 			<li>
 				<sup>2</sup>&nbsp;ToB: At 30th level, Vampiric Dragon and Shadow Dragon Banes are immune to Energy Drain effects.<br>
-				&nbsp;&nbsp;&nbsp;EE: Vampiric Dragon and Shadow Dragon Banes get a 50% chance to be immune to Energy Drain effects at 30th level, then 75% au niveau at 35th level and 100% at 40th level.</li>
+				&nbsp;&nbsp;&nbsp;EE: Vampiric Dragon and Shadow Dragon Banes get a 50% chance to be immune to Energy Drain effects at 30th level, then 75% au niveau at 35th level and 100% at 40th level.
 			<li>
 				<sup>3</sup>&nbsp;ToB: At 15th level, a Vampiric Dragon Bane is immune to Charm effects.<br>
-				&nbsp;&nbsp;&nbsp;EE: A Vampiric Dragon Bane gets a 50% chance immune to Charm effects, 60% at 30th level, then an extra 10% chance for every five levels thereafter.</li>
+				&nbsp;&nbsp;&nbsp;EE: A Vampiric Dragon Bane gets a 50% chance immune to Charm effects, 60% at 30th level, then an extra 10% chance for every five levels.</li>
 		</ul><br>
 
 
-		<address>
-			<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; Description</span> &#8226; <a href="#top">BACK TO TOP</a>
-		</address>
-	  </div>
+			<address>
+				<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; Description</span> &#8226; <a href="#top">BACK TO TOP</a>
+			</address>
+		</div>
 
-<!-- =================== H L A ==================== -->
+	<!-- =================== H L A ==================== -->
 	  <a name="hla" id="hla"></a>
-	  <div class="content">
-
+		<div class="content">
 		<h2>
 			High Level Abilities (HLA)
 		</h2><br>
 
-		<p style="margin-top:1%;">
+		<p>
 			List of High Level Abilities a Diamond Knight may gain.
 		</p><br>
 
@@ -705,14 +1033,14 @@
 			<tr>
 				<td><img src="images/icons/gwcd904b.jpg" title="gwcd904.spl" /></td>
 				<td><span style="color: #FFCC33;">Draconic Resistance</span></td>
-				<td style="padding-left:10px;padding-right:10px;text-align: justify">This ability allows the Diamond Knight to temporarily tap a great inner strength and fight off the effects of malevolent magic, once per day. For 4 rounds, his/her Magic Resistance is set to 2% per level up to 25th level, then increases by 1% per level. This is not cumulative with other forms of Magic Resistance, so if he/she already benefits from this amount of Magic Resistance (or greater), the ability is useless.</td>
+				<td style="padding-left:10px;padding-right:10px;text-align: justify">This ability allows the Diamond Knight to temporarily tap a great inner strength and fight off the effects of malevolent magic, once per day. For 4 rounds, hos/her Magic Resistance is set to 2% per level up to 25th level, then increases by 1% per level. This is not cumulative with other forms of Magic Resistance, so if he/she already benefits from this amount of Magic Resistance (or greater), the ability is useless.</td>
 				<td>14</td>
 				<td></td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwcd907b.jpg" title="gwcd907.spl" /></td>
 				<td><span style="color: #FFCC33;">Draconic Hide</span></td>
-				<td style="padding-left:10px;padding-right:10px;text-align: justify">This ability allows the Diamond Knight to call upon hidden reserves of strength during times of danger to gain 40% resistance to all forms of physical damage. The ability lasts for 1 round for every 2 levels of the paladin. This bonus increases by 2% every two levels after 30th level.</td>
+				<td style="padding-left:10px;padding-right:10px;text-align: justify">This ability allows the Diamond Knight call upon hidden reserves of strength during times of danger to gain 40% resistance to all forms of physical damage. The ability lasts for 1 round for every 2 levels of the paladin. This bonus increases by 2% every two levels after 30th level.</td>
 				<td>14</td>
 				<td></td>
 			</tr>
@@ -743,17 +1071,15 @@
 				<td><img src="images/icons/gwtudgnb.jpg" title="gwtudgn.spl" /></td>
 				<td><span style="color: #FFCC33;">Dragon Slayer</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Requires: Dragon Bane<br><br>
-				A high-level Diamond Knight's intimate knowledge of vital spots on dragons allows him/her to strike blows against a dragon that deal tremendous damage. With this ability, every melee attack roll against evil dragons made in the next 2 rounds may strike a vital area and deal extra damage:<br>
-					<ul style="margin-left: 1%;width: 96%;line-height: 150%">
-						<li>15th level: 10% chance to score critical hits and deals 1d8 extra damage.</li>
-						<li>20th level: 15% chance to score critical hits and deals 1d8 extra damage.</li>
-						<li>25th level: 20% chance to score critical hits and deals 2d8 extra damage.</li>
-						<li>30th level: 25% chance to score critical hits and deals 2d8 extra damage.</li>
-						<li>35th level: 30% chance to score critical hits and deals 3d8 extra damage.</li>
-						<li>40th level: 35% chance to score critical hits and deals 3d8 extra damage.</li>
-						<li>45th level: 40% chance to score critical hits and deals 4d8 extra damage.</li>
-						<li>50th level: 45% chance to score critical hits and deals 4d8 extra damage.</li>
-					</ul>
+				A high-level Diamond Knight's intimate knowledge of vital spots on dragons allows him/her to strike blows against a dragon that deal tremendous damage. With this ability, every melee attack roll against evil dragons made in the next 2 rounds may strike a vital area and deal extra damage:<br><br>
+				<span style="margin-left: 1%">- 15th level: 10% chance to score critical hits and deals 1d8 extra damage.</span><br>
+				<span style="margin-left: 1%">- 20th level: 15% chance to score critical hits and deals 1d8 extra damage.</span><br>
+				<span style="margin-left: 1%">- 25th level: 20% chance to score critical hits and deals 2d8 extra damage.</span><br>
+				<span style="margin-left: 1%">- 30th level: 25% chance to score critical hits and deals 2d8 extra damage.</span><br>
+				<span style="margin-left: 1%">- 35th level: 30% chance to score critical hits and deals 3d8 extra damage.</span><br>
+				<span style="margin-left: 1%">- 40th level: 35% chance to score critical hits and deals 3d8 extra damage.</span><br>
+				<span style="margin-left: 1%">- 45th level: 40% chance to score critical hits and deals 4d8 extra damage.</span><br>
+				<span style="margin-left: 1%">- 50th level: 45% chance to score critical hits and deals 4d8 extra damage.</span><br><br>
 				The benefit of this ability does not stack with any other ability or effect that alters a weapon's effects.</td>
 				<td>18</td>
 				<td>2</td>
@@ -761,14 +1087,14 @@
 			<tr>
 				<td><img src="images/icons/gwvuldrb.jpg" title="gwvuldr.spl" /></td>
 				<td><span style="color: #FFCC33;">Draconic Vulnerability</span></td>
-				<td style="padding-left:10px;padding-right:10px;text-align: justify">This ability lowers a dragon's Magic Resistance by 5% +1% per level of the paladin and bypass the target's Magic Resistance, if any. Unlike the 5th-level wizard spell Lower Resistance, it affects only dragons and allows a Saving Throw vs. Spell (with a -1 penalty for every 5 levels of the paladin). A successful save halves the Magic Resistance reduction (2,5% + 0,5% per level of the paladin). This effect is not cumulative when cast upon the same creature and will last until its duration expires (1 round per level) because it and cannot be dispelled.</td>
+				<td style="padding-left:10px;padding-right:10px;text-align: justify">This ability lowers a dragon's Magic Resistance by 5% +1% per level of the paladin and bypass the target's Magic Resistance, if any. Unlike the 5th-level wizard spell Lower Resistance, it affects only dragons and allows a Saving Throw vs. Spell (with a -1 penalty for every 5 levels of the paladin). A successful save halves the Magic Resistance reduction (2,5% + 2,5% for every 5 levels of the paladin). This effect is not cumulative when cast upon the same creature and will last until its duration expires (1 round per level) because it and cannot be dispelled.</td>
 				<td>17</td>
 				<td></td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwpjcdib.jpg" title="gwpjcdi.spl" /></td>
 				<td><span style="color: #FFCC33;">Diamond Spray</span></td>
-				<td style="padding-left:10px;padding-right:10px;text-align: justify">A blast of diamond-like shards springs from the Diamond Knight's hand and extends outward in a horizontal glittering arc of about 120 degrees in front of him/her. The cone dazzles evil creatures in the area for 2d6 rounds. It also deals 1d6 points of damage per caster level (up to a maximum of 10d6). The damage affects only evil creatures. A successful Saving Throw vs. Spell (with a -4 penalty) reduces the damage by half but does not negate the dazzling effect.<br>
+				<td style="padding-left:10px;padding-right:10px;text-align: justify">A blast of diamond-like shards springs from the Diamond Knight's hand and extends outward in a horizontal glittering arc of about 120 degrees in front of him/her. The cone dazzles evil creatures in the area for 2d6 rounds. It also deals 1d6 points of damage per caster level (up to a maximum of 10d6). The damage affects only evil creatures. A successful Saving Throw vs. Spell reduces the damage by half but does not negate the dazzling effect.<br>
 				Casting this ability requires to sacrifice diamond dust worth at least 100 gp.</td>
 				<td>15</td>
 				<td></td>
@@ -870,7 +1196,7 @@
 				<td><img src="images/icons/gwfesheb.jpg" title="gwfeshe.spl" /></td>
 				<td><span style="color: #FFCC33;">Heroes' Feast</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">The paladin brings forth a great feast, including table, chairs, service, and all the necessary food and drink. The feast takes 1 hour to consume, and the beneficial effects do not set in until this hour is over. Those partaking of the feast are cured of all diseases, sickness, and nausea; are immune to poison for 12 hours; and gains 1d8 temporary hit points +1 point per two caster levels (up to a maximum of 1d8 +10) after imbibing the nectar-like beverage that is part of the feast. In addition, the ambrosial food that is consumed grants them a +1 bonus on attack and saves rolls for 12 hours. During this period, they are also immune to fear. If the feast is interrupted for any reason, the spell is ruined and all its effects are negated.<br>
-				Note: if the Food Management component is installed, these effects match a 8 hours water and food consumption.</td>
+				Note: if the Food Management component of the mod Menace sur le Royaume de Diamant Éternel is installed, these effects match a 8 hours water and food consumption.</td>
 				<td>19</td>
 				<td>1</td>
 			</tr>
@@ -879,22 +1205,21 @@
 				<td><span style="color: #FFCC33;">Feast of Champions</span></td>
 				<td style="padding-left:10px;padding-right:10px;text-align: justify">Requires: Heroes' Feast<br><br>
 				The paladin brings forth a magnificent feast, including a grand table, chairs, service, and food and drink. The feast takes 1 hour to consume, and the beneficial effects do not set in until this hour is over. Those partaking of the feast are cured of all diseases, sickness, nausea, fatigue, and exhaustion. Any poison affecting them is neutralized, and they become immune to poison for 12 hours. The nectar-like beverage that is part of the feast cures 2d8 points of damage + 1 point per caster level (up to a maximum of 2d8 +20) and grants 1d8 temporary hit points + 1 point per two caster levels (up to a maximum of 1d8 +10). In addition, the ambrosial food of the feast grants them a +1 bonus on attack and save rolls, and immunity to fear effects for 12 hours. If the feast is interrupted for any reason, the spell is ruined and all its effects are negated<br>
-				Note: if the Food Management component is installed, these effects match a 8 hours water and food consumption.</td>
+				Note: if the Food Management component of the mod Menace sur le Royaume de Diamant Éternel is installed, these effects match a 8 hours water and food consumption.</td>
 				<td>22</td>
 				<td>1</td>
 			</tr>
 		</table><br><br>
 
 
-		<address>
-			<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; High Level Abilities (HLA)</span> &#8226; <a href="#top">BACK TO TOP</a>
-		</address>
-	  </div>
+			<address>
+				<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; High Level Abilities (HLA)</span> &#8226; <a href="#top">BACK TO TOP</a>
+			</address>
+		</div>
 
-<!-- =================== S p e l l s ==================== -->
+	<!-- =================== S p e l l s ==================== -->
 	  <a name="spells" id="spells"></a>
-	  <div class="content">
-
+		<div class="content">
 		<h2>
 			Spells
 		</h2><br>
@@ -903,18 +1228,16 @@
 			<center><a href="#level1">1st Level</a> &#160;&#8226;&#160; <a href="#level2">2nd Level</a> &#160;&#8226;&#160; <a href="#level3">3rd Level</a> &#160;&#8226;&#160; <a href="#level4">4th Level</a></center>
 		</h4>
 
-		<hr>
-
-<!-- ============== S p e l l s   -   L1 ================ -->
-		<a name="level1" id="level1"></a>
-		<h2 style="border-top: dotted 2px #d0d0d0; background-color: rgba(48, 48, 48, 0.6); margin-top: 2%;"><span class="com">L1</span>1st Level spells</h2><br>
-
+<hr>
+		<h3>
+			<a name="level1" id="level1"></a>1st Level
+		</h3>
 		<p>
 			Starting at 10th level, a Diamond Knight may cast the following 1st level divine spells.
 		</p><br>
 
 		<table style="margin-left: 80px;line-height: 170%;" summary="Liste des sorts de niveau 1">
-			<tr style= "line-height: 300%;">
+			<tr style= "line-height: 170%;">
 				<th WIDTH=50>Icon</th>
 				<th>Spell</th>
 				<th>School</th>
@@ -930,7 +1253,7 @@
 				<td><img src="images/icons/gwagipeb.jpg" title="gwagipe.spl" /></td>
 				<td><span style="color: #FFCC33;">Agility of a Pegasus</span></td>
 				<td>Alteration</td>
-				<td>Charm, Elemental (Air)</td>
+				<td>Elemental (Air), Charm</td>
 				<td>2</td>
 				<td>Visual range of the caster</td>
 				<td>Paladin mount (a horse)</td>
@@ -939,8 +1262,7 @@
 				<td>none</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				The paladin doubles his/her mount's normal movement rate. If any, spellcasting and spell effects are not affected. Unlike the Haste spell, the creature does not gain initiative, to hit and damage rolls bonuses. In addition, the steed seems to move floating 4 inches above the ground. This means it can cross or stand above non-solid or unstable surfaces that would not support its weight. Thus it leaves no tracks (neither footprints nor scent) on any sort of ground, may not set off pressure traps, is immune to anything that might affect its movement, such as spider webs, Grease and Entangle spells.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">The paladin doubles his/her mount's normal movement rate. If any, spellcasting and spell effects are not affected. Unlike the Haste spell, the creature does not gain initiative, to hit and damage rolls bonuses. In addition, the steed seems to move floating 4 inches above the ground. This means it can cross or stand above non-solid or unstable surfaces that would not support its weight. Thus it leaves no tracks (neither footprints nor scent) on any sort of ground, may not set off pressure traps, is immune to anything that might affect its movement, such as spider webs, Grease and Entangle spells.<br>
 				This spell also negates the effects of a Slow spell and is not cumulative with itself or with other similar magic. The effects last for their duration (3 rounds + 1 per level) or until dispelled.</td>
 			</tr>
 			<tr>
@@ -956,8 +1278,7 @@
 				<td>none</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				The paladin conjures forth a magical field of force that protects his/her mount as if it were wearing a Chain mail barding (AC 4). It is weightless, cumulative with Dexterity bonuses to Armor Class, adds no encumbrance, and does not hinder movement. Nor does it prevent exceptional mounts from spellcasting. It lasts until successfully dispelled or until the duration expires.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">The paladin conjures forth a magical field of force that protects his/her mount as if it were wearing a Chain mail barding (AC 4). It is weightless, cumulative with Dexterity bonuses to Armor Class, adds no encumbrance, and does not hinder movement. Nor does it prevent exceptional mounts from spellcasting. It lasts until successfully dispelled or until the duration expires.<br>
 				The exact nature of the barding depends on the paladin level: a Splint mail barding (AC 3) at 15th level, a Plate barding (AC 2) at 20th level, a Field plate (AC 1) at 25th level and a Full plate barding (AC 0) at 30th level.<br>
 				In addition, if his/her mount already equips a barding, the paladin may use a variant of this spell that grants his/her mount a bonus to Armor Class: +3 for a Chain mail, +4 for a Splint mail and +5 for a Plate mail.</td>
 			</tr>
@@ -974,8 +1295,7 @@
 				<td>none</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				This spell makes a sword particularly powerful against evil opponents which are strike as if the blade had a bonus to hit and damage rolls equal to +1 every 10 levels of the paladin, up to a maximum of +5. Note that this bonus does not apply to its actual enchantment.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">This spell makes a sword particularly powerful against evil opponents which are strike as if the blade had a bonus to hit and damage rolls equal to +1 every 10 levels of the paladin, up to a maximum of +5. Note that this bonus does not apply to its actual enchantment.<br>
 				In addition, the blade may strike more critical hit rolls, at the rate of an additional 5% chance for every hit roll bonus.</td>
 			</tr>
 			<tr>
@@ -991,16 +1311,12 @@
 				<td>None</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				The paladin imbues a flask (1 pint) of water with positive energy, turning it into holy water. Holy water damages undead creatures and evil outsiders almost as if it were acid.<br>
-				The flask breaks if thrown against the body of a corporeal creature. A direct hit by a flask of holy water deals 2d4 points of damage + 2 points per level of the paladin who created it (up to a maximum of 2d4 + 20) to an undead creature or an evil outsider. Each such creature within 5 feet of the point where the flask hits takes 2 points of damage from the splash. Thus incorporeal creatures are immune to these effets.<br><br>
-				Unlike priests and with the benevolence of his/her patron Bahamut, Lord of the Good Dragons, the Diamond Knight may choose to create a special type of holy water, starting at level 20:<br>
-					<ul style="margin-left: 1%;width: 96%;line-height: 150%">
-						<li>20th level: holy water blessed by Bahamut, renowned for being specially made to combat Vampires, against which it deals double damage.</li>
-						<li>30th level: holy water blessed by Bahamut, renowned for being specially made to combat Liches, against which it deals double damage.</li>
-						<li>40th level: holy water blessed by Bahamut, renowned for being specially made to combat undead and outsider Dragons, against which it deals double damage.</li>
-					</ul>
-				<span class="composantes">Material Component: 5 pounds of powdered silver (worth 25 gp).</span></td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">The paladin imbues a flask (1 pint) of water with positive energy, turning it into holy water. Holy water damages undead creatures and evil outsiders almost as if it were acid.<br>
+				The flask breaks if thrown against the body of a corporeal creature. A direct hit by a flask of holy water deals 2d4 points of damage + 2 points per level of the paladin who created it (up to a maximum of 2d4 + 20) to an undead creature or an evil outsider. Each such creature within 5 feet of the point where the flask hits takes 2 points of damage from the splash. Thus incorporeal creatures are immune to these effets.<br>
+				Unlike priests and with the benevolence of his/her patron Bahamut, Lord of the Good Dragons, the Diamond Knight may choose to create a special type of holy water, starting at level 20 :<br><br>
+				<span style="margin-left: 1%">– 20th level: holy water blessed by Bahamut, renowned for being specially made to combat Vampires, against which it deals double damage.</span><br>
+				<span style="margin-left: 1%">– 30th level: holy water blessed by Bahamut, renowned for being specially made to combat Liches, against which it deals double damage.</span><br>
+				<span style="margin-left: 1%">– 40th level: holy water blessed by Bahamut, renowned for being specially made to combat undead and outsider Dragons, against which it deals double damage.</span></td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwcrewab.jpg" title="gwcrewa.spl" /></td>
@@ -1015,9 +1331,7 @@
 				<td>None</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				The paladin may generate up to one liter of water for every two experience level. The water is wholesome and drinkable, just like clean rain water. Water can be created in an area as small as will actually contain the liquid, or in an area three times as large—possibly creating a downpour or filling many small receptacles). Water weighs about 2 pounds per liter.<br><br>
-				<span class="composantes">Material Component: a drop of water.</span></td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">The paladin may generate up to one liter of water for every two experience level. The water is wholesome and drinkable, just like clean rain water. Water can be created in an area as small as will actually contain the liquid, or in an area three times as large—possibly creating a downpour or filling many small receptacles). Water weighs about 2 pounds per liter.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwcd212b.jpg" title="gwcd212.spl" /></td>
@@ -1032,8 +1346,7 @@
 				<td>None</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				This spell discovers emanations of evil from any creature. Any evil creature within the range of the spell will glow red briefly.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">This spell discovers emanations of evil from any creature. Any evil creature within the range of the spell will glow red briefly.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwfavaqb.jpg" title="gwfavaq.spl" /></td>
@@ -1048,8 +1361,7 @@
 				<td>None</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				The Diamond Knight calls upon the strength and wisdom of Bahamut to raise the morale of friendly creatures, granting them a +1 bonus to hit and saving throw rolls for every 5 levels of the caster (up to a maximum of 5).<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">The Diamond Knight calls upon the strength and wisdom of Bahamut to raise the morale of friendly creatures, granting them a +1 bonus to hit and saving throw rolls for every 5 levels of the caster (up to a maximum of 5).<br>
 				The knight determines at what range the spell will be cast. At the instant the spell is completed, it affects all creatures in a 15-ft. radius centered on the point selected by the paladin (thus, affected creatures leaving the area are still subject to the spell's effects; those entering the area after the casting is completed are not). The spell lasts for 6 rounds.</td>
 			</tr>
 			<tr>
@@ -1065,8 +1377,7 @@
 				<td>Special</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				When laying his/her hand upon a living creature, the paladin channels positive energy that cures 1d8 Hit Points +1 per caster level (up to a maximum of +5). Curing is permanent only insofar as the creature does not sustain further damage; caused wounds will heal - or can be cured - just as any normal injury.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">When laying his/her hand upon a living creature, the paladin channels positive energy that cures 1d8 Hit Points +1 per caster level (up to a maximum of +5). Curing is permanent only insofar as the creature does not sustain further damage; caused wounds will heal—or can be cured—just as any normal injury.<br>
 				The spell does not affect creatures without corporeal bodies or of extraplanar origin. Since undead are powered by negative energy, this spell deals damage to them rather than curing them. An affected undead creature may apply magic resistance, and roll a successful Saving Throw vs. Spell to halve damage.</td>
 			</tr>
 			<tr>
@@ -1082,10 +1393,8 @@
 				<td>none</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				The paladin brings a special favor from Bahamut upon a companion before going into battle. It grants the recipient a temporarily resistance to elemental and magical attacks. A thin film of platinum covers the recipient's skin and absorbs part of damage. Starting with 10% at first level, the Magic Resistance and resistance from elements increases by 1% per level, up to a maximum of 25%.<br>
-				However, nothing being cost-free with dragons, even with the most benevolent, this protection comes along with a rather substantial financial sacrifice.<br>
-				<span class="composantes">Material Component: gemstones worthy 100 gp per protection level.</span></td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">The paladin brings a special favor from Bahamut upon a companion before going into battle. It grants the recipient a temporarily resistance to elemental and magical attacks. A thin film of platinum covers the recipient's skin and absorbs part of damage. Starting with 10% at first level, the Magic Resistance and resistance from elements increases by 1% per level, up to a maximum of 25%.<br>
+				However, nothing being cost-free with dragons, even with the most benevolent, this protection comes along with a rather substantial financial sacrifice.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwbclplb.jpg" title="gwbclpl.spl" /></td>
@@ -1100,12 +1409,11 @@
 				<td>none</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">This spell creates a shimmering, magical field around the touched creature that averts attacks. Platinum Shield grants the recipient a +2 bonus to Armor Class, with an additional +1 bonus every 5 levels of the paladin (up to a maximum of 5 at 25th level).<br>
-				<span class="composantes">Material Component: A small parchment with a bit of holy text written upon it.</span></td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">This spell creates a shimmering, magical field around the touched creature that averts attacks. Platinum Shield grants the recipient a +2 bonus to Armor Class, with an additional +1 bonus every 5 levels of the paladin (up to a maximum of 5 at 25th level).</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwptnvob.jpg" title="gwptnvo.spl" /></td>
-				<td><span style="color: #FFCC33;">Protection from Winged Flyers</span></td>
+				<td><span style="color: #FFCC33;">Protection from Winged Flyers</td>
 				<td>Abjuration</td>
 				<td>Protection</td>
 				<td>1</td>
@@ -1116,23 +1424,21 @@
 				<td>None</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				This spell is similar to the Protection from Evil spell, except that the bonuses apply to attacks from creatures that have wings and fly. It creates a magical barrier around the recipient at a distance of one foot. The barrier moves with the recipient and has two major effects: First, all attacks made by creatures that fly with wings against the protected creature receive a penalty of -2 to each attack roll et la cible bénéficie d'un bonus de 2 à ses jets de sauvegarde. In addition, summoned creatures that fly with wings cannot touch the subject.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">This spell is similar to the Protection from Evil spell, except that the bonuses apply to attacks from creatures that have wings and fly. It creates a magical barrier around the recipient at a distance of one foot. The barrier moves with the recipient and has two major effects: First, all attacks made by creatures that fly with wings against the protected creature receive a penalty of -2 to each attack roll et la cible bénéficie d'un bonus de 2 à ses jets de sauvegarde. In addition, summoned creatures that fly with wings cannot touch the subject.</td>
 			</tr>
 		</table><br>
 		<p style="font-size:90%;text-align: right;"><a href="#spells">BACK TO SPELLS LIST</a>
 
-		<hr>
-<!-- ============== S p e l l s   -   L2 ================ -->
-		<a name="leve2" id="level2"></a>
-		<h2 style="border-top: dotted 2px #d0d0d0; background-color: rgba(48, 48, 48, 0.6); margin-top: 2%;"><span class="com">L2</span>2nd Level spells</h2><br>
-
+<hr>
+		<h3>
+			<a name="level2" id="level2"></a>2nd Level
+		</h3>
 		<p>
 			Starting at 11th level, a Diamond Knight may cast the following 2nd level divine spells.
 		</p><br>
 
 		<table style="margin-left: 80px;line-height: 170%;" summary="Liste des sorts de niveau 2">
-			<tr style= "line-height: 300%;">
+			<tr style= "line-height: 170%;">
 				<th WIDTH=50>Icon</th>
 				<th>Spell</th>
 				<th>School</th>
@@ -1157,8 +1463,7 @@
 				<td>None</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				The Diamond Knight shares part of his/her protective aura of divine energy with a party member who receives a bonus to all saving throws. The bonus varies according to the recipient's alignment : +3 for lawful good characters, +2 for good characters, and +1 for neutral characters. If cast on an ally that does not meet these criteria, the spell has no effect.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">The Diamond Knight shares part of his/her protective aura of divine energy with a party member who receives a bonus to all saving throws. The bonus varies according to the recipient's alignment : +3 for lawful good characters, +2 for good characters, and +1 for neutral characters. If cast on an ally that does not meet these criteria, the spell has no effect.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwprebeb.jpg" title="gwprebe.spl" /></td>
@@ -1173,8 +1478,7 @@
 				<td>None</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Although he/she cannot use any ranged weapons, the Diamond Knight is fully aware that not all his/her companions have a gift for melee combat. This spell grants his/her allies within the area of effect a +2 bonus on all ranged to hit rolls. The effect lasts for the duration or until dispelled.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Although he/she cannot use any ranged weapons, the Diamond Knight is fully aware that not all his/her companions have a gift for melee combat. This spell grants his/her allies within the area of effect a +2 bonus on all ranged to hit rolls. The effect lasts for the duration or until dispelled.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwdetpgb.jpg" title="gwdetpg.spl" /></td>
@@ -1183,19 +1487,18 @@
 				<td>Divination</td>
 				<td>5</td>
 				<td>0</td>
-				<td>40-ft. radius</td>
+				<td>rayon de 12 mètres</td>
 				<td>5 turns</td>
 				<td>none</td>
 				<td>none</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				By dint of chasing dragons, the Diamond Knight has sharpened his/her senses to detect traps that plague their lairs. When he/she casts this spell, all traps—concealed normally or magically—of magical or mechanical nature become apparent to him/her. A trap is any device or magical ward that meets three criteria: it can inflict a sudden or unexpected result; the spellcaster would view the result as undesirable or harmful; and the creator specifically intended the harmful or undesirable result as such. Thus traps include glyphs and similar spells or devices.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">À force de traquer les dragons, le Chevalier de Diamant a affiné ses sens pour détecter les pièges qui infestent les antres de ces derniers. Lorsqu'il jette ce sort, tous les pièges de nature magique ou mécanique deviennent visibles à ses yeux. On désigne par piège tout dispositif ou défense magique répondant à trois critères : il doit provoquer un résultat soudain ou inattendu ; le jeteur de sorts perçoit ce résultat comme indésirable ou nuisible ; le créateur a eu l'intention délibérée d'obtenir ce résultat nuisible ou indésirable. Les pièges incluent donc les glyphes et les sorts ou dispositifs similaires.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwlamelb.jpg" title="gwlamel.spl" /></td>
 				<td><span style="color: #FFCC33;">Elementary Blade</span></td>
-				<td>Enchantment</td>
+				<td>Enchantment/Charm</td>
 				<td>Combat, Elemental</td>
 				<td>4</td>
 				<td>0</td>
@@ -1220,11 +1523,9 @@
 				<td>Special</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				The caster calls upon Gargantua spirit to fill a specially crafted stew-pot with his potent healing stew. The caster must be hold the pot in hand when Gargantua's Stew is cast; otherwise, the spell fails and is wasted. The spell creates one serving every two caster levels (up to a maximum of 6). A single serving heals 1d6+1 points of damage. Any portion of the stew that is not consumed disappears after 1 hour.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">The caster calls upon Gargantua spirit to fill a specially crafted stew-pot with his potent healing stew. The caster must be hold the pot in hand when Gargantua's Stew is cast; otherwise, the spell fails and is wasted. The spell creates one serving every two caster levels (up to a maximum of 6). A single serving heals 1d6+1 points of damage. Any portion of the stew that is not consumed disappears after 1 hour.<br>
 				The stew can also be thrown to a single undead creature within 10 feet. If the caster makes a successful range attack, the stew-pot bursts into small fire balls, dealing 1d6+1 points of fire damage per every serving to all undead within a 20-ft. radius, unless they make a Saving Throw vs. Spell for half damage. Note that the damage do not bypass the targets' Magic Resistance, if any.<br><br>
-				<em>Note: if the Food Management component of the mod Menace sur le Royaume de Diamant Éternel is installed, eating a serving matches a 8 hours water and food consumption.</em><br><br>
-				<span class="composantes">Focus: An engraved stew-pot worth at least 50 gp.</span></td>
+				<em>Note: if the Food Management component of the mod Menace sur le Royaume de Diamant Éternel is installed, eating a serving matches a 8 hours water and food consumption.</em></td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwpa208b.jpg" title="gwpa208.spl" /></td>
@@ -1239,8 +1540,7 @@
 				<td>oui</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				This spell holds one or more humans, demihumans, or humanoid creatures rigidly immobile and in place for one turn. This includes: brownies, dryads, dwarves, elves, gnolls, gnomes, goblins, half-elves, halflings, half-orcs, hobgoblins, humans, kobolds, lizard men, nixies, orcs, pixies, sprites, troglodytes, and others. Thus, a 10th-level Fighter could be held, while an ogre could not. The effect is centered on the victim selected by the caster. Every enemy within 4 ft. of the target is also affected. Those who succeed on their Saving Throws are totally unaffected by the spell. Undead creatures cannot be held.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">(This spell holds one or more humans, demihumans, or humanoid creatures rigidly immobile and in place for one turn. This includes: brownies, dryads, dwarves, elves, gnolls, gnomes, goblins, half-elves, halflings, half-orcs, hobgoblins, humans, kobolds, lizard men, nixies, orcs, pixies, sprites, troglodytes, and others. Thus, a 10th-level Fighter could be held, while an ogre could not. The effect is centered on the victim selected by the caster. Every enemy within 4 ft. of the target is also affected. Those who succeed on their Saving Throws are totally unaffected by the spell. Undead creatures cannot be held.<br>
 				Held creatures cannot move or speak, but they remain aware of events around them even though they are helpless to change them. Time passes at a normal rate for the targets and hence being held does not stop any worsening of their condition due to wounds, disease, or poison.</td>
 			</tr>
 			<tr>
@@ -1256,15 +1556,14 @@
 				<td>Special</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				This spell creates moisture within the body of a living creature, healing damage from dehydration. Hydrate heals 2d8 points +1 point per caster level (up to a maximum of 2d8+10) of dessication damage, removes all nonlethal damage from dehydration, and clears up any lingering effects of the dehydrated condition.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">This spell creates moisture within the body of a living creature, healing damage from dehydration. Hydrate heals 2d8 points +1 point per caster level (up to a maximum of 2d8+10) of dessication damage, removes all nonlethal damage from dehydration, and clears up any lingering effects of the dehydrated condition.<br>
 				When cast upon a creature of the fire subtype, it deals damage instead of healing. Such a creature can roll a Saving Throw vs. Spell to halve damage.<br><br>
 				<em>Note: if the Food Management component of the mod Menace sur le Royaume de Diamant Éternel is installed, these effects match a 8 hours water consumption.</em></td>
-			</tr>
+			<tr>
 			<tr>
 				<td><img src="images/icons/gwcanchb.jpg" title="gwcanch.spl" /></td>
 				<td><span style="color: #FFCC33;">Knight Chant</span></td>
-				<td>Conjuration/Summoning</td>
+				<td>Conjuration</td>
 				<td>Combat</td>
 				<td>9</td>
 				<td>0</td>
@@ -1274,8 +1573,7 @@
 				<td>special</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				The Diamond Knight brings a special favor from Bahamut upon him/herself and his/her party and causes harm to his/her enemies. When the Chant spell is completed, all the paladin's allies within the area of effect gain a +1 bonus to attack rolls, minimum damage/healing rolls, and Saving Throws. The paladin's evil enemies suffer the opposite effects. This bonus increases by 1 point for every 10 levels of the Knight. Multiple chants are not cumulative.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">The Diamond Knight brings a special favor from Bahamut upon him/herself and his/her party and causes harm to his/her enemies. When the Chant spell is completed, all the paladin's allies within the area of effect gain a +1 bonus to attack rolls, minimum damage/healing rolls, and Saving Throws. The paladin's enemies suffer the opposite effects. This bonus increases by 1 point for every 10 levels of the Knight. Multiple chants are not cumulative.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwmarimb.jpg" title="gwmarim.spl" /></td>
@@ -1290,12 +1588,11 @@
 				<td>None</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				The Diamond Knight brings into existence a magical hammer, which he/she can use for the duration of the spell without penalties, even if he/she is not proficient with it. It strikes as a magical weapon with a bonus of +1 for every 10 experience levels of the caster. The base damage inflicted when it scores a hit is exactly the same as a normal war hammer (1d4+1 vs. opponents of man-size or smaller and 1d4 upon larger opponents, plus the magical bonus). In addition, this hammer is particularly well-balanced and increases the chance to score a critical hit by 5% for every bonus granted to the hammer.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">The Diamond Knight brings into existence a magical hammer, which he/she can use for the duration of the spell without penalties, even if he/she is not proficient with it. It strikes as a magical weapon with a bonus of +1 for every 10 experience levels of the caster. The base damage inflicted when it scores a hit is exactly the same as a normal war hammer (1d4+1 vs. opponents of man-size or smaller and 1d4 upon larger opponents, plus the magical bonus). In addition, this hammer is particularly well-balanced and increases the chance to score a critical hit by 5% for every bonus granted to the hammer.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwsouchb.jpg" title="gwsouch.spl" /></td>
-				<td><span style="color: #FFCC33;">Knight's Support</span></td>
+				<td><span style="color: #FFCC33;">Knight's Support
 				<td>Necromancy, Conjuration</td>
 				<td>Combat, Necromantic</td>
 				<td>5</td>
@@ -1306,8 +1603,7 @@
 				<td>None</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				The Diamond Knight shares part of his/her weapon proficiencies with an ally by drawing on his/her own abilities scores. The recipient gains a +2 bonus to hit, damage and Saving Throws rolls, and a special bonus of 2d8 additional Hit Points for the duration of the spell. Attack and damage bonus bonuses are double against dragons. This spell enables the recipient to actually have more Hit Points than his/her current maximum. The bonus Hit Points are lost first when the recipient takes damage and may not be regained by curative magic. In return, the Knight loses 1d8 Hit Points and suffers a -1 penalty to hit, damage and Saving Throws rolls for the duration of the spell.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">The Diamond Knight shares part of his/her weapon proficiencies with an ally by drawing on his/her own abilities scores. The recipient gains a +2 bonus to hit, damage and Saving Throws rolls, and a special bonus of 2d8 additional Hit Points for the duration of the spell. Attack and damage bonus bonuses are double against dragons. This spell enables the recipient to actually have more Hit Points than his/her current maximum. The bonus Hit Points are lost first when the recipient takes damage and may not be regained by curative magic. In return, the Knight loses 1d8 Hit Points and suffers a -1 penalty to hit, damage and Saving Throws rolls for the duration of the spell.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwpa209b.jpg" title="gwpa209.spl" /></td>
@@ -1322,8 +1618,7 @@
 				<td>oui</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				This spell enables the paladin to exactly read the aura of a creature. The caster must remain stationary and concentrate on the subject for a full round. If the creature rolls a successful Saving Throw vs. Spell, the paladin learns nothing about that particular creature from the casting. When a character is hit by this spell, it will glow red if evil, gold if good, and blue if neutral.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">This spell enables the paladin to exactly read the aura of a creature. The caster must remain stationary and concentrate on the subject for a full round. If the creature rolls a successful Saving Throw vs. Spell, the paladin learns nothing about that particular creature from the casting. When a character is hit by this spell, it will glow red if evil, gold if good, and blue if neutral.<br>
 				Unlike priests, with leveling up, the paladin has developed a kind of sixth sense that allows him/her to better read the aura of creatures who suffer a -2 penalty to their Saving Throw with an additional penalty of -1 for every ten levels of the paladin.<br>
 				However, certain magical devices negate the power of the Know Alignment spell.</td>
 			</tr>
@@ -1340,8 +1635,7 @@
 				<td>special</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				The Diamond Knight grants an ally a limited protection from certain energies he/she selects. The recipient's body is toughened to withstand those energies: The spell absorbs either 50% of all damage dealt by fire and poison, or 33% of all damage dealt by acide, electricity and cold. This spell absorbs only damage, whether magical or non magical, and does not protect from unfortunate side effects, such as drowning in acid (since drowning damage comes from lack of oxygen) or becoming encased in ice.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">The Diamond Knight grants an ally a limited protection from certain energies he/she selects. The recipient's body is toughened to withstand those energies: The spell absorbs either 50% of all damage dealt by fire and poison, or 33% of all damage dealt by acide, electricity and cold. This spell absorbs only damage, whether magical or non magical, and does not protect from unfortunate side effects, such as drowning in acid (since drowning damage comes from lack of oxygen) or becoming encased in ice.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwptnchb.jpg" title="gwptnch.spl" /></td>
@@ -1356,13 +1650,11 @@
 				<td>None</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				This spell renders a single creature immune to charms and lasts or the duration (2 rounds per level) or until dispelled. However, starting at 15th level, il affects all allies within a 30-th. radius around the target, who gain 20% magic resistance + 2% per level of the caster (up to a maximum of 90 %) to charm effects for one round per caster level.<br><br>
-				<span class="composantes">Material Component: A piece or hair or other part from the body of a creature with an innate charm or dominate person ability, such as a succubus or vampire.</span></td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">This spell renders a single creature immune to charms and lasts or the duration (2 rounds per level) or until dispelled. However, starting at 15th level, il affects all allies within a 30-th. radius around the target, who gain 20% magic resistance + 2% per level of the caster (up to a maximum of 90 %) to charm effects for one round per caster level.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwpa211b.jpg" title="gwpa211.spl" /></td>
-				<td><span style="color: #FFCC33;">Silence, 15' Radius</span></td>
+				<td><span style="color: #FFCC33;">Silence, 15' Radius
 				<td>Alteration</td>
 				<td>Guardian</td>
 				<td>5</td>
@@ -1373,8 +1665,7 @@
 				<td>Yes</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Upon casting this spell, complete silence prevails in the affected area. All sound is stopped: Conversation is impossible and spells cannot be cast. Each creature in the area must make a Saving Throw vs. Spell with a -5 penalty; if the save is failed then they are silenced for the duration of the spell. Note that this spell does not continue to affect the area after being cast; only those in the area at the time of the casting are affected by the silence.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Upon casting this spell, complete silence prevails in the affected area. All sound is stopped: Conversation is impossible and spells cannot be cast. Each creature in the area must make a Saving Throw vs. Spell with a -5 penalty; if the save is failed then they are silenced for the duration of the spell. Note that this spell does not continue to affect the area after being cast; only those in the area at the time of the casting are affected by the silence.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwlamtub.jpg" title="gwlamtu.spl" /></td>
@@ -1389,9 +1680,7 @@
 				<td>none</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				This spell allows the paladin to make a single bladed weapon (any slashing weapon) deadly to a particular evil foe, whose race he/she chooses when he/she casts the spell. The blade gains a +2 bonus to hit and deals extra 2d6 points of damage against those créatures. The type of foes vary depending on the paladin level.<br><br>
-				<span class="composantes">Material Component: une goutte de sang et 500 po de poussière de rubis.</span></td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">This spell allows the paladin to make a single bladed weapon (any slashing weapon) deadly to a particular evil foe, whose race he/she chooses when he/she casts the spell. The blade gains a +2 bonus to hit and deals extra 2d6 points of damage against those créatures. The type of foes vary depending on the paladin level.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwpa212b.jpg" title="gwpa212.spl" /></td>
@@ -1406,23 +1695,21 @@
 				<td>None</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				When this spell is placed upon a poisoned individual, it greatly slows the effects of venom, actually neutralizing all but the most deadly poisons.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">When this spell is placed upon a poisoned individual, it greatly slows the effects of venom, actually neutralizing all but the most deadly poisons.</td>
 			</tr>
 		</table><br>
 		<p style="font-size:90%;text-align: right;"><a href="#spells">BACK TO SPELLS LIST</a>
 
-		<hr>
-<!-- ============== S p e l l s   -   L3 ================ -->
-		<a name="leve3" id="level3"></a>
-		<h2 style="border-top: dotted 2px #d0d0d0; background-color: rgba(48, 48, 48, 0.6); margin-top: 2%;"><span class="com">L3</span>3rd Level spells</h2><br>
-
+<hr>
+		<h3>
+			<a name="level3" id="level3"></a>3rd Level
+		</h3>
 		<p>
 			Starting at 13th level, a Diamond Knight may cast the following 3rd level divine spells.
 		</p><br>
 
 		<table style="margin-left: 80px;line-height: 170%;" summary="Liste des sorts de niveau 3">
-			<tr style= "line-height: 300%;">
+			<tr style= "line-height: 170%;">
 				<th WIDTH=50>Icon</th>
 				<th>Spell</th>
 				<th>School</th>
@@ -1433,6 +1720,21 @@
 				<th>Duration</th>
 				<th>TS</th>
 				<th>MR</th>
+			</tr>
+			<tr>
+				<td><img src="images/icons/gwarmprb.jpg" title="gwarmpr.spl" /></td>
+				<td><span style="color: #FFCC33;">Arme de prédilection enchantée</span></td>
+				<td>Invocation</td>
+				<td>Combat</td>
+				<td>6</td>
+				<td>0</td>
+				<td>Special</td>
+				<td>1 turn/10 levels</td>
+				<td>None</td>
+				<td>None</td>
+			</tr>
+			<tr>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">By calling upon Bahamut, the Diamond Knight brings into existence a magical weapon which he/she can use as a normal weapon for the duration of the spell. As he/she can't use range weapons, after the spell is cast, he/she must choose a melee weapons among those he/she is proficient with: longsword, bastard sword, two-handed sword, scimitar, katana, axe, war hammer or spear. The favorite weapon acts as a magical weapon with a bonus of +1 for every 10 levels in terms of to hit and damage rolls bonuses as well as the type of creatures it can hit. The base damage inflicted when it scores a hit is exactly the same as a normal weapon of the same type. This weapon can only be used by the Diamond Knight and remains in his/her hand for the duration of the spell or until dispelled.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwvisbeb.jpg" title="gwvisbe.spl" /></td>
@@ -1447,13 +1749,12 @@
 				<td>special</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				The Diamond Knight can see all things as they actually are. This spell makes his/her eyes glow with white light and allows him/her to see within a 120-ft. radius around him/her all evil auras from any creature that will glow red briefly. This effect is similar to a Detect Evil spell, but does not require concentration and discerns aura location and strength more quickly.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">The Diamond Knight can see all things as they actually are. This spell makes his/her eyes glow with white light and allows him/her to see within a 120-ft. radius around him/her all evil auras from any creature that will glow red briefly. This effect is similar to a Detect Evil spell, but does not require concentration and discerns aura location and strength more quickly.<br>
 				In addition, all invisible creature within the area of effect have their invisibility dispelled. This includes creatures under the effects of Sanctuary, Improved Invisibility, Shadow Door, Invisibility, Mislead, and so on.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwcurcsb.jpg" title="gwcurcs.spl" /></td>
-				<td><span style="color: #FFCC33;">Cure Blindness or Deafness</span></td>
+				<td><span style="color: #FFCC33;">Cure Blindness/Deafness</span></td>
 				<td>Abjuration</td>
 				<td>Necromantic, Healing</td>
 				<td>9</td>
@@ -1464,8 +1765,7 @@
 				<td>None</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				This spells cures blindness or deafness (the caster's choice), whether the effect is normal or magical in nature. The spell does not restore ears or eyes that have been lost, but it repairs them if they are damaged. The cure is permanent, but does not grant the recipient of the spell immunity from further afflictions.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">This spells cures blindness or deafness (the caster's choice), whether the effect is normal or magical in nature. The spell does not restore ears or eyes that have been lost, but it repairs them if they are damaged. The cure is permanent, but does not grant the recipient of the spell immunity from further afflictions.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwpagumb.jpg" title="gwpagum.spl" /></td>
@@ -1480,8 +1780,7 @@
 				<td>None</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				By laying his/her hands upon a sickly person, the caster can cure almost any disease with this spell. The cure is permanent, but does not grant the recipient of the spell immunity from further afflictions. Blindness, deafness, and feeblemind are also cured with this spell. Some magically created diseases may not be curable by this spell.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">By laying his/her hands upon a sickly person, the caster can cure almost any disease with this spell. The cure is permanent, but does not grant the recipient of the spell immunity from further afflictions. Blindness, deafness, and feeblemind are also cured with this spell. Some magically created diseases may not be curable by this spell.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwpa303b.jpg" title="gwpa303.spl" /></td>
@@ -1496,8 +1795,7 @@
 				<td>None</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				This spell removes magical effects upon anyone within the area. This includes effects given from spells, potions and certain magical items such as wands. It does not, however, affect enchanted magical items or spell protections such as Spell Turning and Spell Deflection. The chance of the dispel succeeding is determined by the level of the caster and the level of the magic being dispelled. The base chance of successfully dispelling is 50%. For every level that the caster of the Dispel Magic is above the original caster, his/her chance of success increases by 5%. For every level that the caster of Dispel Magic is below the original caster, his/her chance of success decreases by 10%. However, despite the difference in levels, there is always at least a 5% chance of success or failure. Thus, if a caster is 10 levels higher than the magic he/she is trying to dispel, there is only a 5% chance of failure. Similarly if the caster is 4 levels lower than the magic he/she is trying to dispel, there is only a 10% chance of success. Intuitively, this spell is almost useless if the target is 5 or more levels higher than the caster.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">This spell removes magical effects upon anyone within the area. This includes effects given from spells, potions and certain magical items such as wands. It does not, however, affect enchanted magical items or spell protections such as Spell Turning and Spell Deflection. The chance of the dispel succeeding is determined by the level of the caster and the level of the magic being dispelled. The base chance of successfully dispelling is 50%. For every level that the caster of the Dispel Magic is above the original caster, his/her chance of success increases by 5%. For every level that the caster of Dispel Magic is below the original caster, his/her chance of success decreases by 10%. However, despite the difference in levels, there is always at least a 5% chance of success or failure. Thus, if a caster is 10 levels higher than the magic he/she is trying to dispel, there is only a 5% chance of failure. Similarly if the caster is 4 levels lower than the magic he/she is trying to dispel, there is only a 10% chance of success. Intuitively, this spell is almost useless if the target is 5 or more levels higher than the caster.<br>
 				Note: While this spell dispels the individual effects of Grease, Web, Stinking Cloud, and other such spells, it does not dispel the area of effect.</td>
 			</tr>
 			<tr>
@@ -1513,25 +1811,7 @@
 				<td>None</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				The Diamond Knight bestows the soul of a great ancient dragon slayer paladin hero on the creature touched, increasing the recipient's skill in battle for a short time. The recipient gains a bonus to Constitution and Strength scores, as well as to hit and damage rolls, equal to +1 for every 10 levels of the paladin. Attack and damage bonuses are double against dragons. No creature can can be affected more than one Draconic Spirit spell simultaneously.</td>
-			</tr>
-			<tr>
-				<td><img src="images/icons/gwarmprb.jpg" title="gwarmpr.spl" /></td>
-				<td><span style="color: #FFCC33;">Enchanted Favored Weapon</span></td>
-				<td>Invocation</td>
-				<td>Combat</td>
-				<td>6</td>
-				<td>0</td>
-				<td>Special</td>
-				<td>1 turn/10 levels</td>
-				<td>None</td>
-				<td>None</td>
-			</tr>
-			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				By calling upon Bahamut, the Diamond Knight brings into existence a magical weapon which he/she can use as a normal weapon for the duration of the spell. As he/she can't use range weapons, after the spell is cast, he/she must choose a melee weapons among those he/she is proficient with: longsword, bastard sword, two-handed sword, scimitar, katana, axe or spear. The favorite weapon acts as a magical weapon with a bonus of +1 for every 10 levels in terms of to hit and damage rolls bonuses as well as the type of creatures it can hit. The base damage inflicted when it scores a hit is exactly the same as a normal weapon of the same type. This weapon can only be used by the Diamond Knight and remains in his/her hand for the duration of the spell or until dispelled.<br><br>
-				<span class="composantes">Arcane Material Component: Powdered lime and carbon.</span></td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">The Diamond Knight bestows the soul of a great ancient dragon slayer paladin hero on the creature touched, increasing the recipient's skill in battle for a short time. The recipient gains a bonus to Constitution and Strength scores, as well as to hit and damage rolls, equal to +1 for every 10 levels of the paladin. Attack and damage bonuses are double against dragons. No creature can can be affected more than one Draconic Spirit spell simultaneously.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwcuredb.jpg" title="gwcured.spl" /></td>
@@ -1546,8 +1826,7 @@
 				<td>None</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				This very potent healing spell enables the paladin to channel positive energy into the body of his/her mount to wipe away injuries, afflictions and disease. It dispels a Feeblemind spell and cures those mental disorders caused by spells or injury to the brain such as fear, confusion or berserk. It also immediately neutralizes any poison and cure any diseases that the target might be suffering from, as well as fatigue, nausea, blindness and deafness.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">This very potent healing spell enables the paladin to channel positive energy into the body of his/her mount to wipe away injuries, afflictions and disease. It dispels a Feeblemind spell and cures those mental disorders caused by spells or injury to the brain such as fear, confusion or berserk. It also immediately neutralizes any poison and cure any diseases that the target might be suffering from, as well as fatigue, nausea, blindness and deafness.<br>
 				In addition, the peculiar bond shared by the paladin and his/her horse magnifies the quality of healing: this spell not only heals all points of damage suffered due to wounds or injury, but it also restores life energy levels or ability score points permanently drained by a force or monster.<br>
 				This spell can not affect any creature other than the paladin's special mount (typically a warhorse).</td>
 			</tr>
@@ -1564,8 +1843,7 @@
 				<td>special</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				When laying his/her hand upon a living creature, the paladin channels positive energy that cures 2d8 Hit Points +1 per caster level (up to a maximum of +10). Curing is permanent only insofar as the creature does not sustain further damage; caused wounds will heal—or can be cured—just as any normal injury.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">When laying his/her hand upon a living creature, the paladin channels positive energy that cures 2d8 Hit Points +1 per caster level (up to a maximum of +10). Curing is permanent only insofar as the creature does not sustain further damage; caused wounds will heal—or can be cured—just as any normal injury.<br>
 				The spell does not affect creatures without corporeal bodies or of extraplanar origin. Since undead are powered by negative energy, this spell deals damage to them rather than curing them. An affected undead creature may apply magic resistance, and roll a successful Saving Throw vs. Spell to halve damage.</td>
 			</tr>
 			<tr>
@@ -1581,8 +1859,7 @@
 				<td>None</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				This spell is similar to Lesser Draconic Resistance, except that it affects multiple allies in a 15-ft. radius centered on the point selected by the Diamond Knight. It confers a limited protection from damage of whichever one of five energy types the paladin selects: acid, cold, electricity, fire or poison. The recipients gain 10% resistance against the energy type chosen, increased by 1% per paladin level. This spell absorbs only damage, whether magical or non magical, and does not protect from unfortunate side effects, such as drowning in acid (since drowning damage comes from lack of oxygen) or becoming encased in ice.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">This spell is similar to Lesser Draconic Resistance, except that it affects multiple allies in a 15-ft. radius centered on the point selected by the Diamond Knight. It confers a limited protection from damage of whichever one of five energy types the paladin selects: acid, cold, electricity, fire or poison. The recipients gain 10% resistance against the energy type chosen, increased by 1% per level. This spell absorbs only damage, whether magical or non magical, and does not protect from unfortunate side effects, such as drowning in acid (since drowning damage comes from lack of oxygen) or becoming encased in ice.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwpa310b.jpg" title="gwpa310.spl" /></td>
@@ -1597,8 +1874,7 @@
 				<td>Yes</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Any spellcasting creature that is affected by this spell has its casting ability severely disabled. When the creature attempts to cast a spell, it suffers an 80% chance of failure. Creatures can save vs. Spell to avoid the effect, but do so with a -2 penalty.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Any spellcasting creature that is affected by this spell has its casting ability severely disabled. When the creature attempts to cast a spell, it suffers an 80% chance of failure. Creatures can save vs. Spell to avoid the effect, but do so with a -2 penalty.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwpa307b.jpg" title="gwpa307.spl" /></td>
@@ -1643,23 +1919,20 @@
 				<td>None</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				The paladin causes a brilliant and blazing ray of fiery sunlight to spring forth from his/her hand. This longsword-shaped ray remains in his/her hand for the duration of the spell or until dispelled. It strikes as a +3 magical sword and deals 1d8+3 points of slashing damage, plus an additional 1d6 points points of fire damage. Creatures vulnerable to sunlight, like undead, take double damage. In addition, sunlight rays that emanate from the blade blind the paladin's opponents who suffer a -2 penalty to hit rolls, as long as they stay in melee.<br><br>
-				Starting at 20th level, the paladin creates a Sunblade of Disruption that may utterly destroy the following undead creatures if they fail their Saving Throw vs. Death (with a penalty increased according to the paladin level, up to a -10 penalty):<br>
-					<ul style="margin-left: 1%;width: 96%;line-height: 150%">
-						<li>20th level: Skeletons (with a penalty from 0 to -10 at 30th level).</li>
-						<li>22th level: Zombies (with a penalty from 0 to -10 at 32th level).</li>
-						<li>24th level: Ghouls (with a penalty from 0 to -10 at 34th level).</li>
-						<li>26th level: Shadows (with a penalty from 0 to -10 at 36th level).</li>
-						<li>28th level: Ghasts (with a penalty from 0 to -10 at 38th level).</li>
-						<li>30th level: Wraiths (with a penalty from 0 to -10 at 40th level).</li>
-						<li>32th level: Skeleton Warriors (with a penalty from 0 to -10 at 42th level).</li>
-						<li>34th level: Mummies (with a penalty from 0 to at 44th level).</li>
-						<li>36th level: Spectres (with a penalty from 0 to at 46th level).</li>
-						<li>38th level: Vampires (with a penalty from 0 to at 48th level).</li>
-						<li>40th level: Liches (with a penalty from 0 to at 50th level).</li>
-					</ul>
-				<span class="composantes">Material Component: A light source, which is extinguished in the casting.</span></td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">The paladin causes a brilliant and blazing ray of fiery sunlight to spring forth from his/her hand. This longsword-shaped ray remains in his/her hand for the duration of the spell or until dispelled. It strikes as a +3 magical sword and deals 1d8+3 points of slashing damage, plus an additional 1d6 points points of fire damage. Creatures vulnerable to sunlight, like undead, take double damage. In addition, sunlight rays that emanate from the blade blind the paladin's opponents who suffer a -2 penalty to hit rolls, as long as their remains in melee.<br>
+				Starting at 20th level, the paladin creates a Sunblade of Disruption that may utterly destroy the following undead creatures if they fail their Saving Throw vs. Death (with a penalty increased according to the paladin level, up to a -10 penalty):<br><br>
+
+				<span style="margin-left: 1%">– 20th level: Skeletons (with a penalty from 0 to -10 at 30th level).</span><br>
+				<span style="margin-left: 1%">– 22th level: Zombies (with a penalty from 0 to -10 at 32th level).</span><br>
+				<span style="margin-left: 1%">– 24th level: Ghouls (with a penalty from 0 to -10 at 34th level).</span><br>
+				<span style="margin-left: 1%">– 26th level: Shadows (with a penalty from 0 to -10 at 36th level).</span><br>
+				<span style="margin-left: 1%">– 28th level: Ghasts (with a penalty from 0 to -10 at 38th level).</span><br>
+				<span style="margin-left: 1%">– 30th level: Wraiths (with a penalty from 0 to -10 at 40th level).</span><br>
+				<span style="margin-left: 1%">– 32th level: Skeleton Warriors (with a penalty from 0 to -10 at 42th level).</span><br>
+				<span style="margin-left: 1%">– 34th level: Mummies (with a penalty from 0 to at 44th level).</span><br>
+				<span style="margin-left: 1%">– 36th level: Spectres (with a penalty from 0 to at 46th level).</span><br>
+				<span style="margin-left: 1%">– 38th level: Vampires (with a penalty from 0 to at 48th level).</span><br>
+				<span style="margin-left: 1%">– 40th level: Liches (with a penalty from 0 to at 50th level).</span></td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwpa318b.jpg" title="gwpa318.spl" /></td>
@@ -1679,17 +1952,16 @@
 		</table><br>
 		<p style="font-size:90%;text-align: right;"><a href="#spells">BACK TO SPELLS LIST</a>
 
-		<hr>
-<!-- ============== S p e l l s   -   L4 ================ -->
-		<a name="leve4" id="level4"></a>
-		<h2 style="border-top: dotted 2px #d0d0d0; background-color: rgba(48, 48, 48, 0.6); margin-top: 2%;"><span class="com">L4</span>4th Level spells</h2><br>
-
+<hr>
+		<h3>
+			<a name="level4" id="level4"></a>4th Level
+		</h3>
 		<p>
-			Starting at 15th level, a Diamond Knight may cast the following 4th level divine spells.
+			Starting at 15th level, a Diamond Knight may cast the following 4th divine spells.
 		</p><br>
 
 		<table style="margin-left: 80px;line-height: 170%;" summary="Liste des sorts de niveau 4">
-			<tr style= "line-height: 300%;">
+			<tr style= "line-height: 170%;">
 				<th WIDTH=50>Icon</th>
 				<th>Spell</th>
 				<th>School</th>
@@ -1714,16 +1986,13 @@
 				<td>None</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				The Diamond Knight grants his/her allies a better protection against dragons. They gain a +2 bonus to Armor Class against dragons and a +1 bonus to Saving Throw vs. Breath for every ten levels of the paladin. In addition, they also gain a limited protection from damage of whichever one of five energy types the knight selects: acid, electricity, fire, cold or poison-. The recipients gain 10% resistance against the energy type chosen, increased by 1% per level of the knight. This spell absorbs only damage, whether magical or non magical, and does not protect from unfortunate side effects, such as drowning in acid (since drowning damage comes from lack of oxygen) or becoming encased in ice.<br><br>
-				<span class="composantes">Material Component: A chunk of platinum worth at least 25 gp (slightly less than 1 ounce).</span></td>
-
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">The Diamond Knight grants his/her allies a better protection against dragons. They gain a +2 bonus to Armor Class against dragons and a +1 bonus to Saving Throw vs. Breath for every ten levels of the paladin. In addition, they also gain a limited protection from damage of whichever one of five energy types the knight selects: acid, electricity, fire, cold or poison-. The recipients gain 10% resistance against the energy type chosen, increased by 1% per level of the knight. This spell absorbs only damage, whether magical or non magical, and does not protect from unfortunate side effects, such as drowning in acid (since drowning damage comes from lack of oxygen) or becoming encased in ice.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwsangmb.jpg" title="gwsangm.spl" /></td>
 				<td><span style="color: #FFCC33;">Blood of the Martyr</span></td>
 				<td>Necromancy</td>
-				<td>Healing, Good</td>
+				<td>Healing</td>
 				<td>1</td>
 				<td>Visual range of the caster</td>
 				<td>1 creature</td>
@@ -1732,8 +2001,7 @@
 				<td>None</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Facing dragons is no sinecure. This is the reason why the Diamond Knight has at his/her disposal a special altruistic healing spell that he/she usually casts in battle to support a companion in great danger. Thus he/she may transfer at least 20 own Hit Points (5 + 1 per level) directly to a creature within visual range. Of course, he/she loses them by suffering damage while the creature takes the transferred Hit Points as if receiving a cure wounds spell. Note that the creature cannot gain more Hit Points than its maximum allows; any excess points are lost.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Facing dragons is no sinecure. This is the reason why the Diamond Knight has at his/her disposal a special altruistic healing spell that he/she usually casts in battle to support a companion in great danger. Thus he/she may transfer at least 20 own Hit Points (5 + 1 per level) directly to a creature within visual range. Of course, he/she loses them by suffering damage while the creature takes the transferred Hit Points as if receiving a cure wounds spell. Note that the creature cannot gain more Hit Points than its maximum allows; any excess points are lost.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwpa409b.jpg" title="gwpa409.spl" /></td>
@@ -1748,8 +2016,7 @@
 				<td>None</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				This spell protects the target from all forms of death magic for the duration of the spell. This includes, but is not limited to, Disintegrate; Power Word, Kill; Death Spell; and Finger of Death.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">This spell protects the target from all forms of death magic for the duration of the spell. This includes, but is not limited to, Disintegrate; Power Word, Kill; Death Spell; and Finger of Death.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwpuidrb.jpg" title="gwpuidr.spl" /></td>
@@ -1764,8 +2031,7 @@
 				<td>none</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				The paladin calls upon his/her patron Bahamut to grant him/her power for a short period. His/Her Strength, Constitution, Dexterity and Charisma are all raised by 5, and he/she gains a +4 bonus to Armor Class. Moreover, he/she gains a special bonus of 1 temporary Hit Point per level. Finally, he/she is immune to magic sleep and paralysis effects. The effects last for the duration of the spell or until dispelled.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">The paladin calls upon his/her patron Bahamut to grant him/her power for a short period. His/Her Strength, Constitution, Dexterity and Charisma are all raised by 5, and he/she gains a +4 bonus to Armor Class. Moreover, he/she gains a special bonus of 1 temporary Hit Point per level. Finally, he/she is immune to magic sleep and paralysis effects. The effects last for the duration of the spell or until dispelled.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwpa415b.jpg" title="gwpa415.spl" /></td>
@@ -1780,8 +2046,7 @@
 				<td>None</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				When Farsight is cast, the caster is able to view an area of an unexplored map. After casting the spell, simply click on a section of the map that you want to view. For the duration of the spell, the caster can spy on that area, noting creatures and fortifications.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">When Farsight is cast, the caster is able to view an area of an unexplored map. After casting the spell, simply click on a section of the map that you want to view. For the duration of the spell, the caster can spy on that area, noting creatures and fortifications.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwpa403b.jpg" title="gwpa403.spl" /></td>
@@ -1796,8 +2061,7 @@
 				<td>None</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				While under the effects of this spell, the recipient becomes immune to anything that affects his/her movement. This includes the effects of Web, Hold Person, Grease, and Entangle.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">While under the effects of this spell, the recipient becomes immune to anything that affects his/her movement. This includes the effects of Web, Hold Person, Grease, and Entangle.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwmanbsb.jpg" title="gwmanbs.spl" /></td>
@@ -1812,8 +2076,7 @@
 				<td>None</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				The paladin radiates part of his/her personal aura of courage to instill courage in his/her allies within a 30-ft. radius, raising their morale to its highest and immunising them to fear. The recipients' morale will gradually reset to normal as the duration runs out. If they are affected by magical fear, this is negated. In addition, they are galvanized and gain a +2 bonus to hit rolls.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">The paladin radiates part of his/her personal aura of courage to instill courage in his/her allies within a 30-ft. radius, raising their morale to its highest and immunising them to fear. The recipients' morale will gradually reset to normal as the duration runs out. If they are affected by magical fear, this is negated. In addition, they are galvanized and gain a +2 bonus to hit rolls.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwepsteb.jpg" title="gwepste.spl" /></td>
@@ -1828,11 +2091,11 @@
 				<td>None</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				The paladin channels holy power into his/her sword that disappears and is replaced with a Holy Sword +5. This sword remains in his/her hand for the duration of the spell or until dispelled. It strikes as a +5 magical sword in terms of to hit and damage bonuses as well as the type of creatures it can hit, and deals an extra 2d6 points points of damage against evil opponents. In addition, the sword also projects a Magic Circle against Evil 10-ft. in diameter (as the spell), centered around the paladin's hand. The circle moves with the paladin and persists as long as he grips the sword. Within its range, the circle of power grants the paladin 50% of Magic Resistance and forbids evil opponents to cast spells. Opponents may not make Saving Throws to resist the circle of power and must leave the range of the circle to regain normal use of their spell and spell-like abilities. At last, the holy sword dispels magic on successful hit; the chance of the dispel succeeding is determined by the level of the paladin.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">The paladin channels holy power into his/her sword that disappears and is replaced with a Holy Sword +5. This sword remains in his/her hand for the duration of the spell or until dispelled. It strikes as a +5 magical sword in terms of to hit and damage bonuses as well as the type of creatures it can hit, and deals 2d6 an extra 2d6 points points of damage against evil opponents. In addition, the sword also projects a Magic Circle against Evil 10-ft. in diameter (as the spell), centered around the paladin's hand. The circle moves with the paladin and persists as long as he grips the sword. Within its range, the circle of power grants the paladin 50% of Magic Resistance and forbids evil opponents to cast spells. Opponents may not make Saving Throws to resist the circle of power and must leave the range of the circle to regain normal use of their spell and spell-like abilities. At last, the holy sword dispels magic on successful hit; the chance of the dispel succeeding is determined by the level of the paladin.<br>
 				This spell is not cumulative with Bless Blade or any other spell that might modify the weapon in any way.<br>
 				Starting at 25th level, the paladin invokes special types of holy sword with additional properties:<br>
-					<ul style="margin-left: 1%;width: 96%;line-height: 150%">
+
+					<ul style="margin-left: -1%;width: 96%;line-height: 150%">
 						<li>Protector (25th level): The sword alerts the paladin to the presence of evil within a 60-ft. radius by generating a soft hum. All evil creatures in this radius hear a disturbing siren-like sound, audible only to them. Any affected creature who fails to save vs. Paralysis will continue to hear the siren ringing in his ears for the 1d4+1 rounds, with similar effects as a deafness spell.</li>
 						<li>Revitalizor (30th level): The sword imbues the paladin with part of its energy, enabling him/her to regenerate 1 Hit Point per second as long as he/she wields it.</li>
 						<li>Redeemer (35th level): The Magic Circle against Evil also causes all evil creatures within the area of effect to succumb to the effects of a fear spell if they fail a Saving Throw vs. Spells (with a -4 penalty).</li>
@@ -1853,8 +2116,7 @@
 				<td>Special</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				At this level of mastery, the paladin does not need to lay his/her hand upon a living creature, but he/she has only to briefly focus on it to channel positive energy that cures 3d8 Hit Points +1 per caster level (up to a maximum of +15). Curing is permanent only insofar as the creature does not sustain further damage; caused wounds will heal - or can be cured - just as any normal injury.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">At this level of mastery, the paladin does not need to lay his/her hand upon a living creature, but he/she has only to briefly focus on it to channel positive energy that cures 3d8 Hit Points +1 per caster level (up to a maximum of +15). Curing is permanent only insofar as the creature does not sustain further damage; caused wounds will heal—or can be cured—just as any normal injury.<br>
 				The spell does not affect creatures without corporeal bodies or of extraplanar origin. Since undead are powered by negative energy, this spell deals damage to them rather than curing them. An affected undead creature may apply magic resistance, and roll a successful Saving Throw vs. Spell to halve damage.</td>
 			</tr>
 			<tr>
@@ -1870,8 +2132,7 @@
 				<td>None</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				When this spell is cast, the life energy level of the recipient is raised. This reverses any previous life energy level drain of the creature by a force or monster. The casting of this spell is very draining on the paladin and he will likely require rest immediately after the casting, as it will cause days' worth of fatigue almost instantaneously.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">When this spell is cast, the life energy level of the recipient is raised. This reverses any previous life energy level drain of the creature by a force or monster. The casting of this spell is very draining on the paladin and he will likely require rest immediately after the casting, as it will cause days' worth of fatigue almost instantaneously.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwbclpgb.jpg" title="gwbclpg.spl" /></td>
@@ -1886,9 +2147,7 @@
 				<td>None</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				This spell functions like Platinum Shield, except that it affects multiple allies at a distance. It grants them a defensive bonus by bestowing an enchanted coordination on their attacks and defenses. his allows a group of creatures to act as a single unit for a single battle or encounter. The effect is always centered on the caster, but affects all allies within a 20-ft. radius. Those affected can move outside of this area after the spell is cast and still enjoy the benefits of the defensive bonus. Each affected creature gains a +2 bonus to Armor Class, with an additional +1 bonus every 5 levels of the paladin (up to a maximum of 5 at 30th level), for 1 turn or until dispelled.<br><br>
-				<span class="composantes">Material Component: A small parchment with a bit of holy text written upon it.</span></td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">This spell functions like Platinum Shield, except that it affects multiple allies at a distance. It grants them a defensive bonus by bestowing an enchanted coordination on their attacks and defenses. his allows a group of creatures to act as a single unit for a single battle or encounter. The effect is always centered on the caster, but affects all allies within a 20-ft. radius. Those affected can move outside of this area after the spell is cast and still enjoy the benefits of the defensive bonus. Each affected creature gains a +2 bonus to Armor Class, with an additional +1 bonus every 5 levels of the paladin (up to a maximum of 5 at 30th level), for 1 turn or until dispelled.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwpa413b.jpg" title="gwpa413.spl" /></td>
@@ -1903,8 +2162,7 @@
 				<td>None</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				This spell affords the paladin or the touched creature partial protection from undead monsters with Negative Energy Plane connections (such as vampires), and certain weapons and spells that drain energy levels. The Negative Plane Protection spell opens a channel to the Positive Energy Plane, possibly offsetting the effects of the negative energy attack. A protected creature struck by a negative energy attack is protected against any form of level draining for the duration of the spell. The protected creature suffers only normal Hit Point damage from the attack and does not suffer any drain of experience. The divine aura of protection of the paladin increases the duration of the spell by one turn for every ten levels of the paladin.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">This spell affords the paladin or the touched creature partial protection from undead monsters with Negative Energy Plane connections (such as vampires), and certain weapons and spells that drain energy levels. The Negative Plane Protection spell opens a channel to the Positive Energy Plane, possibly offsetting the effects of the negative energy attack. A protected creature struck by a negative energy attack is protected against any form of level draining for the duration of the spell. The protected creature suffers only normal Hit Point damage from the attack and does not suffer any drain of experience. The divine aura of protection of the paladin increases the duration of the spell by one turn for every ten levels of the paladin.<br>
 				This spell cannot be cast on the Negative Energy Plane.</td>
 			</tr>
 			<tr>
@@ -1920,8 +2178,7 @@
 				<td>None</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				This spell removes all toxins from the body, both natural and magical in nature. When this spell is cast upon a poisoned individual, it immediately neutralizes any poison and restores 10 lost Hit Points. This spell will also cure any diseases that the target might be suffering from, as well as blindness and deafness.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">This spell removes all toxins from the body, both natural and magical in nature. When this spell is cast upon a poisoned individual, it immediately neutralizes any poison and restores 10 lost Hit Points. This spell will also cure any diseases that the target might be suffering from, as well as blindness and deafness.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwptnlyb.jpg" title="gwptnly.spl" /></td>
@@ -1930,15 +2187,13 @@
 				<td>Protection</td>
 				<td>7</td>
 				<td>30 ft.</td>
-				<td>10-ft. radius</td>
+				<td>15-ft. radius</td>
 				<td>2 rounds/level</td>
 				<td>None</td>
 				<td>None</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				This spell is similar to Protection from Evil, 10' radius, and protects the recipient from lycanthropes creatures. In addition, all allied creatures within a 15-ft. radius are affected individually by Protection from Lycanthropes. It creates a magical barrier around the recipients at a distance of one foot that moves with them: All attacks made by lycanthropes creatures against the protected creature receive a penalty of -2 to each attack roll, and any saving throws caused by such attacks are made by the protected creature with a +2 bonus. This effect lasts for the duration (5 rounds per level) or until dispelled.<br><br>
-				<span class="composantes">Material Component: A  small silver dagger.</span></td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">This spell is similar to Protection from Evil, 10' radius, and protects the recipient from lycanthropes creatures. In addition, all allied creatures within a 15-ft. radius are affected individually by Protection from Lycanthropes. It creates a magical barrier around the recipients at a distance of one foot that moves with them: All attacks made by lycanthropes creatures against the protected creature receive a penalty of -2 to each attack roll, and any saving throws caused by such attacks are made by the protected creature with a +2 bonus. This effect lasts for the duration (5 rounds per level) or until dispelled.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwcd233b.jpg" title="gwcd233.spl" /></td>
@@ -1953,8 +2208,7 @@
 				<td>None</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				When this spell is cast, all allied creatures within a 15-ft. radius are affected individually by Protection From Evil. It creates a magical barrier around the recipients at a distance of one foot. The barrier moves with the recipient and has two major effects: First, all attacks made by evil or evilly enchanted creatures against the protected creature receive a penalty of -2 to each attack roll. Second, summoned demons cannot target protected creatures.</td>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">When this spell is cast, all allied creatures within a 15-ft. radius are affected individually by Protection From Evil. It creates a magical barrier around the recipients at a distance of one foot. The barrier moves with the recipient and has two major effects: First, all attacks made by evil or evilly enchanted creatures against the protected creature receive a penalty of -2 to each attack roll. Second, summoned demons cannot target protected creatures.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwrejchb.jpg" title="gwrejch.spl" /></td>
@@ -1969,27 +2223,26 @@
 				<td>Special</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				The paladin calls upon his/her deity to act as a bridge between her and the Prime Material Plane, causing a shock wave that releases magic of tremendous power centered on the paladin and reaching up to a 40-ft. radius. It affects only enemy chaotic creatures within the area of effect. The ill effects vary depending on the target's Hit Dice:<br>
-					<ul style="margin-left: 1%;width: 96%;line-height: 150%">
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">The paladin calls upon his/her deity to act as a bridge between her and the Prime Material Plane, causing a shock wave that releases magic of tremendous power centered on the paladin and reaching up to a 40-ft. radius. It affects only enemy chaotic creatures within the area of effect. The ill effects vary depending on the target's Hit Dice:<br>
+
+					<ul style="margin-left: -1%;width: 96%;line-height: 150%">
 						<li>Equal to paladin level: Deafened for 5 rounds with a 50% chance of spell failure.</li>
 						<li>Up to paladin level -5: Slowed and deafened for 5 rounds with a 75% chance of spell failure.</li>
 						<li>Up to paladin level -10: Paralyzed, slowed and deafened for 5 rounds.</li>
 					</ul>
 				These effects are instantaneous, cumulative and last for the duration of the spell or until dispelled. No saving throw is allowed to avoid them. Creatures whose HD exceed the paladin level are unaffected.<br><br>
 				In addition, a shimmering blue aura of holy energy surrounds the paladin for one turn granting him/her the following traits:<br>
-					<ul style="margin-left: 1%;width: 96%;line-height: 150%">
+					<ul style="margin-left: -1%;width: 96%;line-height: 150%">
 						<li>A +2 bonus to Armor Class against outsiders.</li>
 						<li>The ability to instantly banished back to its home plane a chaotic extraplanar creature whose hit dices do not exceed the paladin level. The banishment effect allows a Saving Throw vs. Spell (with a -4 penalty, -1 for every 10 levels of the paladin) to negate (magic resistance applies). A creature so banished cannot return for at least 24 hours.</li>
 					</ul>
-				This spell is incredibly powerful, thus it is not possible to cast it twice a day.<br><br>
-				<span class="composantes">Focus: A tiny reliquary containing some sacred relic, worth at least 500 gp.</span></td>
+				This spell is incredibly powerful, thus it is not possible to cast it twice a day.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwrejevb.jpg" title="gwrejev.spl" /></td>
-				<td><span style="color: #FFCC33;">Reject Evil</span></td>
+				<td><span style="color: #FFCC33;">Reject Evil
 				<td>Invocation</td>
-				<td>Combat, Protection, Good</td>
+				<td>Combat, Good, Protection</td>
 				<td>5</td>
 				<td>0</td>
 				<td>40-ft. radius</td>
@@ -1998,9 +2251,9 @@
 				<td>Special</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				The paladin calls upon his/her deity to act as a bridge between her and the Prime Material Plane, causing a shock wave that releases magic of tremendous power centered on the paladin and reaching up to a 40-ft. radius. It affects only enemy evil creatures within the area of effect. The ill effects vary depending on the target's Hit Dice:<br>
-					<ul style="margin-left: 1%;width: 96%;line-height: 150%">
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">The paladin calls upon his/her deity to act as a bridge between her and the Prime Material Plane, causing a shock wave that releases magic of tremendous power centered on the paladin and reaching up to a 40-ft. radius. It affects only enemy evil creatures within the area of effect. The ill effects vary depending on the target's Hit Dice:<br>
+
+					<ul style="margin-left: -1%;width: 96%;line-height: 150%">
 						<li>Equal to paladin level: Deafened for 5 rounds with a 50% chance of spell failure.</li>
 						<li>Up to paladin level -5: Slowed and deafened for 5 rounds with a 75% chance of spell failure.</li>
 						<li>Up to paladin level -5: Stunned, slowed and deafened for 5 rounds.</li>
@@ -2008,12 +2261,11 @@
 					</ul>
 				These effects are instantaneous, cumulative and last for the duration of the spell or until dispelled. No saving throw is allowed to avoid them, except vs Death (with a -1 penalty -1 for every 10 levels of the paladin). Creatures whose HD exceed the paladin level are unaffected.<br><br>
 				In addition, a shimmering golden aura of holy energy surrounds the paladin for one turn granting him/her the following traits:<br>
-					<ul style="margin-left: 1%;width: 96%;line-height: 150%">
+					<ul style="margin-left: -1%;width: 96%;line-height: 150%">
 						<li>A +2 bonus to Armor Class against outsiders.</li>
 						<li>The ability to instantly banished back to its home plane an evil extraplanar creature whose hit dices do not exceed the paladin level. The banishment effect allows a Saving Throw vs. Spell (with a -4 penalty, -1 for every 10 levels of the paladin) to negate (magic resistance applies). A creature so banished cannot return for at least 24 hours.</li>
 					</ul>
-				This spell is incredibly powerful, thus it is not possible to cast it twice a day.<br><br>
-				<span class="composantes">Focus: A tiny reliquary containing some sacred relic, worth at least 500 gp.</span></td>
+				This spell is incredibly powerful, thus it is not possible to cast it twice a day.</td>
 			</tr>
 			<tr>
 				<td><img src="images/icons/gwauravb.jpg" title="gwaurav.spl" /></td>
@@ -2028,9 +2280,8 @@
 				<td>none</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				A ray of sunlight beams down upon the knight who is bathed in an unearthly glow for the duration of the spell, as if a Daylight spell had been cast on him/her, and he/she gains a +4 bonus to Charisma.<br>
-				If he/she die, his/her body burns away into an explosive blast of energy in a 66-ft. radius burst centered where he/she fell, dealing 2d6 points of damage per caster level (up to a maximum of 20d6) to all evil creatures in the burst area. In addition, the victims are automatically blinded for 2 rounds. Magic resistance cannot prevent this damage, but a successful Saving Throw reduces it to half. Good creatures in the area are healed by the same amount, and undead take double this damage (without any Saving Throw).<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">A ray of sunlight beams down upon the knight who is bathed in an unearthly glow for the duration of the spell, as if a Daylight spell had been cast on him/her, and he/she gains a +4 bonus to Charisma.<br>
+				If he/she die, his/her body burns away into an explosive blast of energy in a 66-ft. radius burst centered where you fell, dealing 2d6 points of damage per caster level (up to a maximum of 20d6) to all evil creatures in the burst area. In addition, the victims are automatically blinded for 2 rounds. Magic resistance cannot prevent this damage, but a successful Saving Throw reduces it to half. Good creatures in the area are healed by the same amount, and undead take double this damage (without any Saving Throw).<br>
 				The body of the paladin is disintegrated upon explosion, so he/she cannot be raised with a Raise Dead spell. However, spells that do not require an intact body, such as Resurrection, can be used to bring him/her back to life as normal.</td>
 			</tr>
 			<tr>
@@ -2046,8 +2297,7 @@
 				<td>None</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				The paladin shields one creature in a nimbus of holy energy that prevents any 1st-, 2nd-, 3rd-, or 4th-level spell effects from penetrating, like does a Globe of Invulnerability. However, any type of spell can be cast out of the nimbus without affecting it. 5th- and higher level spells are not affected by the nimbus.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">The paladin shields one creature in a nimbus of holy energy that prevents any 1st-, 2nd-, 3rd-, or 4th-level spell effects from penetrating, like does a Globe of Invulnerability. However, any type of spell can be cast out of the nimbus without affecting it. 5th- and higher level spells are not affected by the nimbus.<br>
 				In addition, the holy nimbus grants the recipient a +2 bonus to Armor Class and a significant protection to all forms of physical, magical and energy damage, equal to the level of the paladin. In return, the paladin resistance against these attacks is reduced by 10%. The effects last for the duration of the spell or until dispelled.</td>
 			</tr>
 			<tr>
@@ -2060,46 +2310,175 @@
 				<td>1 Medium or smaller humanoid or monstrous humanoid</td>
 				<td>1 round/level</td>
 				<td>Neg.</td>
-				<td>Yes</td>
+				<td>None</td>
 			</tr>
 			<tr>
-				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">
-				Sometimes a paladin prefers to capture an enemy to bring him to trial or to question him, rather than kill him. By means of this spell, the paladin creates shining golden manacles around the target's wrists and ankles. A successful Saving Throw vs. Spell (with a -1 penalty for every 10 levels of the paladin) allows the target to dodge the forming manacles; otherwise it is bound at its wrists and ankles.<br>
+				<td colspan="10" style="padding-left:10px;padding-right:10px;text-align: justify;line-height: 160%">Sometimes a paladin prefers to capture an enemy to bring him to trial or to question him, rather than kill him. By means of this spell, the paladin creates shining golden manacles around the target's wrists and ankles. A successful Saving Throw vs. Spell (with a -1 penalty for every 10 levels of the caster) allows the target to dodge the forming manacles; otherwise it is bound at its wrists and ankles.<br>
 				The manacles automatically scale to fit any medium or smaller humanoid creature. While imprisoned by the manacles, the target cannot do any actions requiring the use of its hands (attack or cast spells) and can move only 5 feet per round.</td>
 			</tr>
 		</table><br>
 		<p style="font-size:90%;text-align: right;"><a href="#spells">BACK TO SPELLS LIST</a>
 
 
-		<address>
-			<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; Spells</span> &#8226; <a href="#top">BACK TO TOP</a>
-		</address>
-	  </div>
+			<address>
+				<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; Spells</span> &#8226; <a href="#top">BACK TO TOP</a>
+			</address>
+		</div>
 
-<!-- ======================= C r e d i t s ====================== -->
-<!-- ======================= V e r s i o n s ====================== -->
+	<!-- ======================= C r e d i t s ====================== -->
+	  <a name="credits" id="credits"></a>
+		<div class="content">
+		<h2>
+			Credits and Acknowledgements
+		</h2><br>
+
+		<h4>
+			  Author: <a href="https://www.baldursgateworld.fr/lacouronne/members/freddy_gwendo.html">Freddy_Gwendo (aka Gwendolyne)</a>
+		</h4>
+
+<hr>
+		<h3>
+			Special Acknowledgements to:
+		</h3>
+
+  		<ul>
+			<li>
+			  <a href="https://www.baldursgateworld.fr"><acronym title="Copper Coronet">La Couronne de Cuivre</acronym></a> team for hosting the mod.
+ 			</li>
+			<li>
+			  The creators of the Baldur's Gate series: <a href="http://www.bioware.com/">Bioware</a> and <a href="http://www.obsidian.net/">Black Isle Studios</a>.
+ 			</li>
+			<li>
+			  Isaya for his invaluable help, his suggestions and his constant support for coding hot points.
+			</li>
+			<li>
+			  Deratiseur for kits creation.
+			</li>
+			<li>
+			  Luren for his his help and support to create graphical items. Without him, you would not be able to use a lift or fight Tarasques because they would have never seen the light of day.
+			</li>
+			<li>
+			  Cocrane for looking for graphical assets to insert in the mod, and for drawing the Dragons Pass map.
+			</li>
+			<li>
+			  Graoumf and Lulubaleyette for proofreading the French version.
+			</li>
+			<li>
+			  Thanks to artists from <a href="https://www.pinterest.fr/">Pinterest</a> for their portraits.
+ 			</li>
+			<li>
+			  Everyone else from the <a href="https://www.baldursgateworld.fr">La Couronne de Cuivre</a>, <a href="https://www.gibberlings3.net/forums/">The Gibberlings Three</a>, <a href="http://www.shsforums.net/">Spellhold Studios</a> forums, and the other Infinity Engine gaming and modding communities who offered their help and support.
+			</li>
+			<li>etc.
+ 			</li>
+		</ul><br>
+
+<hr>
+		<h3>
+			Programs/tools used in creation:
+		</h3>
+
+		<ul>
+			<li>
+			  <a href="http://www.weidu.org/%7Ethebigg/"><acronym title="Weimer Dialogue Utility">WeiDU</acronym></a>, by Wes Weimer, the bigg and Wisp.
+			</li>
+			<li>
+			  <a href="http://forums.pocketplane.net/index.php/topic,25153.msg314249.html#msg314249">Near Infinity</a>, by Jon Olav Hauglid, FredSRichardson, and Argent77.
+			</li>
+			<li>
+			  <a href="https://www.gibberlings3.net/mods/tools/dltcep/"><acronym title="Dragonlance Total Conversion Editor Pro">DLTCEP</acronym></a>, by Avenger.
+			</li>
+			<li>
+			  <a href="https://gibberlings3.github.io/iesdp/"><acronym title="Infinity Engine Structures Description Project">IESDP</acronym></a>, maintained by igi and lynx.
+ 			</li>
+			<li>
+			  <a href="https://www.gibberlings3.net/mods/tools/debug/">G3 Debugging Suite</a>, by CamDawg.
+			</li>
+
+			<li>
+			  <a href="http://www.teambg.eu/?page=tools&amp;cat=32">BAM Workshop</a>, by Glenn Flansburg.
+			</li>
+			<li>
+			  <a href="http://www.shsforums.net/topic/57564-bamworkshop/">BAMWorkshop 2</a>, by Andrew Bridges.
+			</li>
+			<li>
+			  <a href="http://www.shsforums.net/index.php?showtopic=42359">BAM Batcher</a>, by Miloch.
+			</li>
+			<li>
+			  <a href="https://www.adobe.com/products/photoshop.html">Adobe Photoshop</a>
+			</li>
+			<li>
+			  <a href="http://www.gimp.org/"><acronym title="GNU Image Manipulation Program">GIMP</acronym></a>, by the GIMP team.
+			</li>
+			<li>
+			  <a href="https://www.blender.org/">Blender</a>, by the Blender Foundation.
+			</li>
+
+			<li>
+			  <a href="http://notepad-plus-plus.org/">Notepad++</a>, by the Notepad++ team, Don Ho, and the spellcheck plug-in.
+ 			</li>
+			<li>
+			  <a href="http://www.shsforums.net/files/file/1048-weidu-highlighter-for-notepad/">WeiDU Notepad++ Highlighters </a>, by Argent77.
+			</li>
+			<li>
+			  <a href="http://www.bulkrenameutility.co.uk/">Bulk Rename Utility</a>, by TGRMN Software.
+			</li>
+			<li>to be completed...
+			</li>
+		</ul><br>
+
+<hr>
+		<h3>
+			Copyrights Information
+		</h3><br>
+
+		  <div class="important" style="color: #303030; background-color: #999999;">
+			<p>Menace sur le Royaume de Diamant Éternel is not developed, supported, or endorsed by BioWare&trade; or Interplay/BlackIsle, Overhaul, Beamdog or the Wizards of the Coast. It was developed by Freddy_Gwendo (aka Gwendolyne), based on material from the game Baldur's Gate II and its expansion.</p>
+			<p>Baldur's Gate II: Shadows of Amn and Baldur's Gate II: Throne of Bhaal &copy; TSR, Inc. The BioWare Infinity Engine is &copy; BioWare Corp. All other trademarks and copyrights are property of their respective owners.</p>
+<br>
+			<p>This mod was created to be freely enjoyed by all Baldur's Gate II players, and its content is free of rights. However, it should not be sold, published, compiled or redistributed in any form without the consent of the author.</p>
+<br>
+			<p>If there are any copyright issues or this statement needs revision, then please contact me and advise me what to do about it. Most notably, if you see any artwork in this mod that might conflict with Copyright rules, please let me know as soon as possible, and I will remove the conflicting content immediately.</p>
+		  </div><br>
+		<p>
+			The modding community for the Infinity Engine has been going strong for more than 10 years now, and is the culmination of thousands of unpaid modding hours by fellow fans of the game. Modders produce their best work and players get the best, well-supported mods when we all work together.
+		</p>
+		<p>
+			There are two big ways to upset this harmony. One is to claim someone else's work as your own. The second is to host and redistribute a mod without permission from the author(s).
+		</p>
+		<p>
+			Be kind to your fellow players and modders. Don't do either.
+		</p><br>
+
+
+			<address>
+				<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; Credits and Acknowledgements</span> &#8226; <a href="#top">BACK TO TOP</a>
+			</address>
+		</div>
+
+	<!-- ======================= V e r s i o n s ====================== -->
 	  <a name="versions" id="versions"></a>
-	  <div class="content" id="versionHistory">
-
+		<div class="content">
 		<h2>
 			Version History
 		</h2><br>
 
 		<p class="version">
-			Version Alpha 1.0.0 &nbsp;(date)
+			Version 1.0.0 - date (format : Mois jour, année)
 		</p>
 
-		<ul style="text-align:justify;">
+		<ul>
 			<li>Initial release.</li>
 		</ul>
 
 
-		<address>
-			<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; Version History</span> &#8226; <a href="#top">BACK TO TOP</a>
-		</address>
-	  </div>
+			<address>
+				<span class="footer">Menace sur le Royaume de Diamant Éternel &gt; Version History</span> &#8226; <a href="#top">BACK TO TOP</a>
+			</address>
+		</div>
 
-	 </div>
 	</div>
-  </body>
+  </div>
+</body>
 </html>
+
