@@ -1,7 +1,7 @@
 ![Latest Release](https://img.shields.io/static/v1?label=version&message=v0.0.1%20alpha&color=gold)
 ![Platform](https://img.shields.io/static/v1?label=platform&message=windows%20%7C%20Mac%20%7C%20linux&color=informational)
 ![Language](https://img.shields.io/static/v1?label=language&message=English%20%7C%20French&color=limegreen)
-<a href="README_EN.md"><img align="right" src="diamant_eternel/readme/images/uk-flag-32.png" title="English Readme"></a>
+<a href="README_EN.md"><img align="right" src="diamant_eternel/readmes/images/uk-flag-32.png" title="English Readme"></a>
 
 
 <div align="center"><h1>Menace sur le Royaume de Diamant Éternel (WIP)</h1>
@@ -21,7 +21,7 @@
 
 ## 
 
-[Consulter le lisez-moi du mod](https://spellholdstudios.github.io/readmes/diamant_eternel/readme/diamant_eternel-readme-english.html)
+[Consulter le lisez-moi du mod](https://gwendolynefreddy.github.io/docs/diamant_eternel/menace-readme-french.html)
 
 ## 
 
