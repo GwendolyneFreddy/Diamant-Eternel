@@ -116,7 +116,7 @@ Si vous pouvez retarder la mise à jour du patch en plein milieu d'un partie modd
 
 Menace sur le Royaume de Diamant Éternel pour Windows est livré et installé avec WeiDU, et est diffusé sous forme d'archive.
 
-Vous devez extraire les fichiers de l'archive dans votre répertoire de jeu (*le dossier qui contient le fichier CHITIN.KEY*) à l'aide de <a href="http://www.7-zip.org/download.html">7zip</a> ou de <a href="http://www.rarlab.com/download.htm">WinRAR</a>. Une fois l'archive extraite correctement, vous devriez trouver le répertoire :file_folder: diamant_eternel et le fichier setup-diamant_eternel.exe dans votre répertoire de jeu. Pour installer le mod, il suffit de double-cliquer sur **`setup-diamant_eternel.exe`** et de suivre les instructions affichées à l'écran.
+Vous devez extraire les fichiers de l'archive dans votre répertoire de jeu (*le dossier qui contient le fichier CHITIN.KEY*) à l'aide de <a href="https://www.7-zip.org/download.html">7zip</a> ou de <a href="https://www.rarlab.com/download.htm">WinRAR</a>. Une fois l'archive extraite correctement, vous devriez trouver le répertoire :file_folder: diamant_eternel et le fichier setup-diamant_eternel.exe dans votre répertoire de jeu. Pour installer le mod, il suffit de double-cliquer sur **`setup-diamant_eternel.exe`** et de suivre les instructions affichées à l'écran.
 
 Vous pouvez lancer **`setup-diamant_eternel.exe`** dans votre répertoire de jeu pour réinstaller, désinstaller, ou encore changer des composants.
 

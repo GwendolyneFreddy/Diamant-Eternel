@@ -16,7 +16,7 @@
 
 [![Created Badge](https://badges.pufler.dev/created/GwendolyneFreddy/Diamant-Eternel?style=plastic)](https://badges.pufler.dev) ![GitHub repo size](https://img.shields.io/github/repo-size/GwendolyneFreddy/Diamant-Eternel?style=plastic) [![Visits Badge](https://badges.pufler.dev/visits/GwendolyneFreddy/Diamant-Eternel?color=cyan&style=plastic)](https://badges.pufler.dev) 
 ![Maintenance](https://img.shields.io/static/v1?label=maintained%3F&message=yes&color=greenlight&style=plastic)
-![GitHub contributors](https://img.shields.io/github/contributors/GwendolyneFreddy/Diamant-Eternel?color=blueviolet&style=plastic) [![Contributors Display](https://badges.pufler.dev/contributors/GwendolyneFreddy/Diamant-Eternel?size=30&padding=5&bots=true)](https://badges.pufler.dev) [![Commits Badge](
+![GitHub contributors](https://img.shields.io/github/contributors/GwendolyneFreddy/Diamant-Eternel?color=blueviolet&style=plastic) [![Contributors Display](https://badges.pufler.dev/contributors/GwendolyneFreddy/Diamant-Eternel?size=30&padding=5&bots=true)](https://badges.pufler.dev)
 
 ## 
 
@@ -111,7 +111,7 @@ The Enhanced Editions are actively supported games. Please note that every patch
 
 Menace sur le Royaume de Diamant Éternel for Windows is distributed as a compressed archive and includes a WeiDU installer.
 
-Extract the contents of the mod archive into the folder of the game you wish to modify (*the folder which contains the "CHITIN.KEY" file*), using <a href="http://www.7-zip.org/download.html">7zip</a>, <a href="http://www.rarlab.com/download.htm">WinRAR</a>, or another file compression utility that handles .zip files. On successful extraction, there should be a :file_folder: diamant_eternel folder and a setup-diamant_eternel.exe file in your game folder. To install, double-click **`setup-diamant_eternel.exe`** and follow the instructions on screen.
+Extract the contents of the mod archive into the folder of the game you wish to modify (*the folder which contains the "CHITIN.KEY" file*), using <a href="https://www.7-zip.org/download.html">7zip</a>, <a href="https://www.rarlab.com/download.htm">WinRAR</a>, or another file compression utility that handles .zip files. On successful extraction, there should be a :file_folder: diamant_eternel folder and a setup-diamant_eternel.exe file in your game folder. To install, double-click **`setup-diamant_eternel.exe`** and follow the instructions on screen.
 
 Run **`setup-diamant_eternel.exe`** in your game folder to reinstall, un-install or otherwise change the components settings.
 
