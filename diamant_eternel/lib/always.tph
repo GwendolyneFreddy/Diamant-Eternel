@@ -1,0 +1,273 @@
+/* ===================================================== *
+ *  v 1.0.0                                              *
+ *                A L W A Y S   B L O C K                *
+ *                                                       *
+ * ===================================================== */
+
+// Concept borrowed from DavidW's Immutability and encapsulation in mod design ( https://github.com/Gibberlings3/immutable )
+
+
+/* =================================================================== *
+ *  This code only runs once, even if you install lots of components.  *
+ * =================================================================== */
+
+ACTION_IF !VARIABLE_IS_SET always_once_section BEGIN
+
+	SILENT
+	CLEAR_EVERYTHING
+	OUTER_SET always_once_section = 1
+
+	/* -------------------------- *
+	 *    Sod: Modmerge check.    *
+	 * -------------------------- */
+
+	ACTION_IF ((FILE_EXISTS ~dlc/sod-dlc.zip~) OR (FILE_EXISTS ~sod-dlc.zip~)) BEGIN FAIL @1 END // Modmerge check
+
+
+	/* -------------------------------------------------------------------------------- *
+	 *    Determines which game is installed and if the game is an Enhanced Edition.    *
+	 * -------------------------------------------------------------------------------- */
+
+	OUTER_SET is_tutu    = (GAME_IS ~tutu tutu_totsc~) ? 1 : 0                         // tutu
+	OUTER_SET is_bgt     = (GAME_IS ~bgt~) ? 1 : 0                                     // bgt
+	OUTER_SET is_tob     = (GAME_IS ~tob~ AND (is_tutu = 0 ) AND (is_bgt = 0)) ? 1 : 0 // classical ToB standalone
+
+	OUTER_SET is_bg2ee   = ((GAME_IS "bg2ee") AND NOT (GAME_IS ~eet~)) ? 1 : 0         // b2gee standalone
+	OUTER_SET is_eet     = (GAME_IS ~eet~) ? 1 : 0                                     // eet
+	OUTER_SET is_ee      = (GAME_IS ~bg2ee eet~) ? 1 : 0                               // EE game
+	OUTER_SET is_classic = ((is_ee = 0)) ? 1 : 0                                       // based on classical ToB engine
+
+
+	/* -------------------------------------------------------------------------- *
+	 *    Loads Cross-platform variables according to which game is installed.    *
+	 * -------------------------------------------------------------------------- */
+
+	ACTION_IF is_tutu BEGIN
+		INCLUDE ~%MOD_FOLDER%/lib/cpmvars/gw_tutu_cpmvars.tpa~
+		PRINT @2 // ~Tutu install detected.~
+	END
+	ACTION_IF is_bgt BEGIN
+		INCLUDE ~%MOD_FOLDER%/lib/cpmvars/gw_bgt_cpmvars.tpa~
+		PRINT @3 // ~BGT install detected.~
+	END
+	ACTION_IF is_tob BEGIN
+		INCLUDE ~%MOD_FOLDER%/lib/cpmvars/gw_bg2_cpmvars.tpa~
+		PRINT @4 // ~Throne of Bhaal install detected.~
+	END
+	ACTION_IF is_bg2ee BEGIN
+		INCLUDE ~%MOD_FOLDER%/lib/cpmvars/gw_bg2_cpmvars.tpa~
+		PRINT @5 // ~Baldur's Gate II Enhanced Edition install detected.~
+	END
+	ACTION_IF is_eet BEGIN
+		INCLUDE ~%MOD_FOLDER%/lib/cpmvars/gw_eet_cpmvars.tpa~
+		PRINT @6 // ~Enhanced Edition Trilogy install detected.~
+	END
+	INCLUDE ~%MOD_FOLDER%/lib/general/gw_diamant_cpmvars.tpa~  // Shared general macros library defining cross-platform mod variables (Bibliothèque de macros générales définissant des variables à utiliser selon le jeu).
+	SILENT
+
+
+	/* ------------------------ *
+	 *    Detects other mods    *
+	 * ------------------------ */
+
+	// Detects ToBEx
+	OUTER_SET is_tobex      =  (FILE_EXISTS ~tobex_ini/tobexcore.ini~) ? 1 : 0
+
+	// Detects Infinity Animations
+	OUTER_SET is_ia         =   MOD_IS_INSTALLED ~setup-infinityanimations.tp2~ ~0~// (MOD_IS_INSTALLED "infinityanimations.tp2" (ID_OF_LABEL "infinityanimations" "ia_main"))
+ 
+	// Detects 1pp
+	OUTER_SET is_1pp        =   MOD_IS_INSTALLED ~1pp.tp2~ ~101~
+	OUTER_SET is_1pp_staff  = ((MOD_IS_INSTALLED ~1pp.tp2~ ~207~) AND (MOD_IS_INSTALLED ~1pp.tp2~ ~400~)) ? 1 : 0   // 1ppv4: Wizards' Staves (core)
+	OUTER_SET is_1pp_staff0 = ((MOD_IS_INSTALLED ~1pp.tp2~ ~204~) AND (is_1pp_staff = 0)) ? 1 : 0                   // 1ppv4: Colourable Quarterstaves without 1ppv4: Wizards' Staves (core)
+	OUTER_SET is_1pp_helmet =  (MOD_IS_INSTALLED ~1pp.tp2~ ~208~) ? 1 : 0                                           // 1ppv4: Additional Helmet Animations (core)
+	OUTER_SET is_1pp_swblbw = ((MOD_IS_INSTALLED ~1pp.tp2~ ~210~) AND (MOD_IS_INSTALLED ~1pp.tp2~ ~400~)) ? 1 : 0   // 1ppv4: Increased paperdoll object variety (core)
+	OUTER_SET is_1pp_400    =  (MOD_IS_INSTALLED ~1pp.tp2~ ~400~) ? 1 : 0                                           // 1ppv4: Core updates and item patches
+	OUTER_SET is_1pp_401    =  (MOD_IS_INSTALLED ~1pp.tp2~ ~401~) ? 1 : 0                                           // 1ppv4: Improved projectile effects
+
+	// Detects Item Revisions
+	OUTER_SET is_item_rev   =   MOD_IS_INSTALLED ~setup-item_rev.tp2~ ~0~ // ACTION_IF (FILE_EXISTS_IN_GAME ~dvsrv3.mrk~) BEGIN
+
+	// Detects Spell Revisions
+	OUTER_SET is_spell_rev  =  (MOD_IS_INSTALLED ~setup-spell_rev.tp2~ ~0~ OR FILE_EXISTS_IN_GAME ~dvimhere.mrk~) ? 1 : 0
+/*TODO: What about this?
+COPY ~spell_rev\shared\dvimhere.mrk~      ~override~  // Used to detect if SR is installed
+COPY ~spell_rev\shared\dvsrv3.mrk~      ~override~  // Used to detect if SR V3 is installed
+COPY ~spell_rev\shared\dvsrv4here.mrk~      ~override~  // Used to detect if SR V4 is installed*/
+
+	/* TODO Detects IWD spellsystem is_iwd_arcane is_iwd_divine
+	LAF check_label STR_VAR label=dw#iwdspells_arcane RET dw_iwd_arcane=value END
+	ACTION_IF ( (MOD_IS_INSTALLED "iwdification.tp2" 30) || dw_iwd_arcane || is_iwd ) BEGIN
+		OUTER_SET iwd_arcane=1
+	END ELSE BEGIN
+		OUTER_SET iwd_arcane=0
+	END
+	LAF check_label STR_VAR label=dw#iwdspells_divine RET dw_iwd_divine=value END
+	ACTION_IF ( (MOD_IS_INSTALLED "iwdification.tp2" 40) || dw_iwd_divine || is_iwd ) BEGIN
+		OUTER_SET iwd_divine=1
+	END ELSE BEGIN
+		OUTER_SET iwd_divine=0
+	END*/
+
+
+	/* -------------------------- *
+	 *    Creates a blank file    *
+	 * -------------------------- */
+
+<<<<<<<< .../diamant_eternel-inline/blank
+
+>>>>>>>>
+
+
+	/* ------------------------------------------------------- *
+	 *    Sets default variables if they're not set already    *
+	 * ------------------------------------------------------- */
+
+	ACTION_IF (is_ee) BEGIN
+		OUTER_SPRINT ee_file "_ee"
+	END ELSE BEGIN
+		OUTER_SPRINT ee_file ""
+	END
+
+
+	INCLUDE ~%MOD_FOLDER%/lib/immutable.tph~  // Immutability installation and variables declarations
+
+	OUTER_SPRINT configuration-default "diamant_eternel-config-default.ini"     // default configuration file to read default configuration options.
+	OUTER_SPRINT configuration-user    "diamant_eternel-config-user.ini"        // user .ini file, not included inside mod archive. If exists, it will overwrite diamant_eternel-config-degault.ini file configuration options.
+
+
+
+	/* --------------------------------------------------------------------------- *
+	 *    Loads in any shared function libraries (general macros and functions)    *
+	 * --------------------------------------------------------------------------- */
+
+	INCLUDE ~%MOD_FOLDER%/lib/general/gw_read_configuration.tph~    // Library of functions and macros reading ini config files (Bibliothèque de fonctions et de macros lisant les options de configuration).
+//	INCLUDE ~%MOD_FOLDER%/lib/ps_recursive_copy.tpa~        // Sam's library allowing to recursively search into a parent directory, then copy files to a destination directory.
+//	INCLUDE ~%MOD_FOLDER%/lib/gw_handle_audio.tpa~          // 
+	INCLUDE ~%MOD_FOLDER%/lib/general/gw_functions.tpa~            	// Shared general functions and macros library (Bibliothèque de fonctions et de macros générales).
+
+/*	ACTION_IF (is_ee OR is_1pp_staff OR is_1pp_staff0 OR is_1pp_400 OR is_1pp_401 OR is_1pp_swblbw) BEGIN
+		INCLUDE ~%MOD_FOLDER%/lib/1pp_macros.tpa~					// Loads 1PP macros dealing with items coloring.
+		LAM ~Locations~												// DEFINES location field values needed to alter items' colors.
+		INCLUDE ~%MOD_FOLDER%/lib/1pp_compatibility.tph~			// Loads functions restoring items coloration for EE games or if 1PP relevant components are installed.
+	END*/
+
+
+//	INCLUDE "%scsroot%/lib/alter_script.tpa"
+//	INCLUDE ~%scsroot%/ds/ds.tph~
+	//////////////////////////////////////////////////
+	//    Loads in any shared function libraries    //
+	//////////////////////////////////////////////////
+//	INCLUDE ~%mod_root%/lib/functions.tph~		//
+
+
+	/* -------------------------------------- *
+	 *    Reading .ini configuration files    *
+	 * -------------------------------------- */
+
+	ACTION_IF (VARIABLE_IS_SET configuration-default) BEGIN
+		OUTER_SPRINT ini_to_read "%MOD_FOLDER%/%configuration-default%"
+		LAF ~GW_DISPLAY_MESSAGE~ INT_VAR gw_log = 1 gw_force = 1 STR_VAR gw_message = "CONTROL ini file to read = %ini_to_read%" END
+		LAM ~gw_read_ini_file~
+	END
+
+	ACTION_IF (VARIABLE_IS_SET configuration-user) BEGIN
+		OUTER_SPRINT ini_to_read "%MOD_FOLDER%/%configuration-user%"
+		LAF ~GW_DISPLAY_MESSAGE~ INT_VAR gw_log = 1 gw_force = 1 STR_VAR gw_message = "CONTROL ini file to read = %ini_to_read%" END
+		LAM ~gw_read_ini_file~
+	END
+
+	LAM ~gw_check_config_variables~
+	PRINT @13 /* ~LIST OF CONFIGURATION OPTIONS SET FOR INSTALLATION:
+---------------------------------------------------
+    gw_debug_variable    = %gw_debug_variable%
+    gw_force_tra_rebuild = %gw_force_tra_rebuild%
+    gw_destrier_name     = %gw_destrier_name%
+    gw_unicorn_name      = %gw_unicorn_name%
+    gw_language_bam      = %gw_language_bam%
+    gw_mos_mosaic        = %gw_mos_mosaic%
+---------------------------------------------------*/
+
+	PRINT @14 // ~CONTROL Game installed    ==>    ToB = %is_tob%  -  BGT = %is_bgt%  -  Tutu = %is_tutu%  -  BG2EE = %is_bg2ee%  -  EET = %is_eet%~
+
+	PRINT @15 // ~INSTALLED MODS: is_tobex = %is_tobex%  -  is_ia = %is_ia%  -  is_1pp = %is_1pp%  -  is_item_rev = %is_item_rev%  -  is_spell_rev = %is_spell_rev%~
+	SILENT
+
+
+	/* ----------------------------------------------------------------------- *
+	*    Installation des animations de background selon la langue choisie.    *
+	* ------------------------------------------------------------------------ */
+
+	ACTION_IF ("%gw_language_bam%" STRING_EQUAL "AUTO") BEGIN
+		LAF ~GW_FIND_MOD_LANGUAGE~ RET gw_language_bam = GW_bam_language GW_game_lang END
+/*	END ELSE BEGIN
+		LAM ~GW_FIND_GAME_LANGUAGE~
+		OUTER_SPRINT gw_language_bam "%GW_game_lang%"*/
+	END
+	ACTION_TO_LOWER gw_language_bam
+
+	PRINT @16 // ~LANGUAGES : game = %GW_game_lang% - mod = %LANGUAGE% - bam = %gw_language_bam%~
+	SILENT
+
+
+	/* ----------------------------------------- *
+	 *    Install ToB Extender (Windows only)    * TODO
+	 * ----------------------------------------- *
+
+	ACTION_IF (!is_ee && !FILE_EXISTS "tobex_ini/tobextweak.ini") BEGIN
+
+		OUTER_SPRINT ~TOBEX_MOD_DIRECTORY~ ~%mod_root%~
+		LOAD_TRA ~%mod_root%/tobex_redist/tobex.tra~
+		INCLUDE ~%mod_root%/tobex_redist/tobex.tpa~
+		SILENT
+
+	END*/
+
+
+	/* ----------------------------------------------------- *
+	 *         Convert strings to UTF-8 for EE games         *
+	 * ----------------------------------------------------- *
+	 *  Sort out languages (doing it a slightly nonstandard  *
+	 *  way to keep the main mod directory immutable).       *
+	 * ----------------------------------------------------- */
+
+	// Converts once .tra files
+	LAF ~check_ini~ STR_VAR ini = gw_force_tra_rebuild RET force_tra_rebuild = value END
+
+	ACTION_DEFINE_ARRAY GW#noconvert BEGIN gw_setup END
+	ACTION_DEFINE_ARRAY GW#reload BEGIN  END
+//	ACTION_DEFINE_ARRAY GW#reload BEGIN gw_cartes gw_creat gw_cutscenes gw_items gw_jrnl gw_npc gw_sorts gw_triggers gwchap1 gwcddial gwfood gwgwendy gwtome55 END
+
+	LAF ~handle_charsets_immutably~ INT_VAR force_tra_rebuild RET gw_tra_loc END
+
+	// TRAs declared in LANGUAGE must be reloaded - by hand, because of the copying (for non-EE version.
+	LOAD_TRA ~%MOD_FOLDER%/lang/%base_language%/gw_setup.tra~ ~%MOD_FOLDER%/lang/%LANGUAGE%/gw_setup.tra~
+
+END	// of ACTION_IF !VARIABLE_IS_SET always_once_section BEGIN
+
+
+/* ==================================== *
+ *  This code runs once per component.  *
+ * ==================================== */
+
+/* -------------------------------------------------------------- *
+ * tra loading needs to go here to avoid edge-case runtime errors *
+ * -------------------------------------------------------------- */
+
+//LOAD_TRA ~%gw_tra_loc%/%base_language%/gw_setup.tra~ ~%gw_tra_loc%/%LANGUAGE%/gw_setup.tra~ // do this again just in case
+
+
+//INCLUDE "%scsroot%/lib/alter_effect.tpa" // these overwrite standard functions, which get reset each time
+
+/* -------------------------------------------------------------- *
+////  Load in any shared tra files
+ * -------------------------------------------------------------- */
+
+//LOAD_TRA "%gw_tra_loc%/%base_language%/shared.tra" "%gw_tra_loc%/%LANGUAGE%/shared.tra"
+
+/* -------------------------------------------------------------- *
+////  anything else you want to do
+ * -------------------------------------------------------------- */
+
+//INCLUDE ~%mod_root%/lib/general/gw_prereqs.tpa~		// Bibliothèque de fonctions et de macros définissant les variables de compatibilité avec les jeux et les autres mods.
+

@@ -1,0 +1,664 @@
+/* =========================================================== *
+ *                                                             *
+ *                   I N S T A L L A T I O N                   *
+ *                                                             *
+ * =========================================================== */
+
+
+/* ============================================ *
+ *             Installation process             *
+ * ============================================ */
+
+/* ----------------------------------------------------------------------------- *
+ *  always.tpa, immutable.tph, gw_read_configuration.tph and gw_prereqs.tph.tpa  *
+ * ----------------------------------------------------------------------------- */
+@0     = ~v0.2.0-alpha~
+@1     = ~Your SoD game needs to be mod-merged before mods can be installed on this game. Check the readme for more information and a link to download the DLC Merger.~
+
+@2     = ~Tutu install detected.~
+@3     = ~BGT install detected.~
+@4     = ~BG2:ToB install detected.~
+@5     = ~Baldur's Gate II Enhanced Edition install detected.~
+@6     = ~Enhanced Edition Trilogy install detected.~
+
+@11    = ~Configuration option %variable_0% value (%wrong_value%) does not match its scope and has been reset to its default value (%default%).~
+@12    = ~Configuration option %variable_0% does not exist and has been set to its default value (%default%).~
+@13    = ~LIST OF CONFIGURATION OPTIONS SET FOR INSTALLATION:
+---------------------------------------------------
+    gw_debug_variable    = %gw_debug_variable%
+    gw_force_tra_rebuild = %gw_force_tra_rebuild%
+    gw_destrier_name     = %gw_destrier_name%
+    gw_unicorn_name      = %gw_unicorn_name%
+    gw_language_bam      = %gw_language_bam%
+    gw_mos_mosaic        = %gw_mos_mosaic%
+---------------------------------------------------~
+
+@14    = ~===============================================================================================
+  CONTROL Game installed    ==>    ToB = %is_tob%  -  BGT = %is_bgt%  -  Tutu = %is_tutu%  -  BG2EE = %is_bg2ee%  -  EET = %is_eet%
+===============================================================================================~
+
+@15    = ~INSTALLED MODS:
+--------------------------------------------------------------------------------------
+  is_tobex = %is_tobex%  -  is_ia = %is_ia%  -  is_1pp = %is_1pp%  -  is_item_rev = %is_item_rev%  -  is_spell_rev = %is_spell_rev%
+--------------------------------------------------------------------------------------~
+
+@16    = ~LANGUAGES : game = %GW_game_lang% - mod = %LANGUAGE% - bam = %gw_language_bam%~
+
+@21    = ~CONTROL mod %module%	-	component = %component%	-	variable = %mod%	-	folder = %directory%	-	setup = %setup%~
+@22    = "CONTROL installation compatibility with mod %module% (Classical = %CL% - Enhanced = %EE%)	==>	variable %mod%_IS_INSTALLED = %value% [$GWCompat(~%mod%~) = %GWCompat% - $GWModRep(~%mod%~) = %directory%]"
+@23    = ~1PP_IS_INSTALLED = %1PP_IS_INSTALLED%
+IA_IS_INSTALLED = %IA_IS_INSTALLED%
+SOLAUFEIN_IS_INSTALLED = %SOLAUFEIN_IS_INSTALLED%
+IR_IS_INSTALLED = %IR_IS_INSTALLED%
+SR_IS_INSTALLED = %SR_IS_INSTALLED%
+STIVAN1_IS_INSTALLED = %STIVAN1_IS_INSTALLED%
+STIVAN2_IS_INSTALLED = %STIVAN2_IS_INSTALLED%~
+@25    = ~Mod %GWMod_to_check% is installed.~
+@26    = ~Mod %GWMod_to_check% found in game folder, but is not installed.~
+@27    = ~Mod %GWMod_to_check% is not decompressed in game folder.~
+
+/* --------------------- *
+ *  gw_double_check.tph  *
+ * --------------------- */
+@31    = ~
+******************************************************************************
+*  WARNING!        WARNING!        WARNING!        WARNING!        WARNING!  *
+******************************************************************************
+*                                                                            *
+* This mod requires 1PP v4.2.0 to be installed.                              *
+* Moreover, to ensure compatibility with 1PP color settings, it checks the   *
+* game palettes' sizes and replaces them if needed with 1PP v4.2.0 ones.     *
+* The original palettes will be restored at un-install.                      *
+*                                                                            *
+******************************************************************************~
+@32    = ~INSTALLATION ABORTED: Install 1PP v4.2.0 (or higher) before this mod.~
+
+@33    = ~
+******************************************************************************
+*  WARNING!        WARNING!        WARNING!        WARNING!        WARNING!  *
+******************************************************************************
+*                                                                            *
+* This mod requires Infinity Animations to be installed.                     *
+* Without it, many summoning spells and creatures will not get their brand   *
+* new animations.                                                            *
+*                                                                            *
+******************************************************************************~
+@34    = ~INSTALLATION ABORTED: Install Infinity Animations v6.0.0 (or higher) before this mod.~
+
+@35    = ~CONTROL %GWPalette%.bmp palette size = %sizePal% - 1PP = %size1PP%~
+@36    = ~Copying 1PP extended palette %SOURCE_FILE% file.~
+
+@41    = ~
+  OPCODES used by the game:
+---------------------------
+  GW_switch_177_324 = %GW_switch_177_324%
+  GW_switch_177_326 = %GW_switch_177_326%
+  GW_switch_147_171 = %GW_switch_147_171%
+  GW_switch_206_324 = %GW_switch_206_324%
+---------------------------~
+
+/* --------------------------------- *
+ *  SHARED with Infinity Animations  *
+ * --------------------------------- */
+// ps_recursive_copy.tpa
+// ---------------------
+@310    = ~%BASH_FOR_FILE% already exists in %DestinationDir% and will be overwritten.~
+@311    = ~%BASH_FOR_FILE% already exists in the game and will be overwritten.~
+@320    = ~  ==> Folder %iacontent% (#%archives%) content copied to override: %Count% files (configuration option ia_%iacontent% = %variable%)~
+@321    = ~  ==> Folder %iacontent% (#%archives%) content not copied to override (configuration option ia_%iacontent% = %variable%)~
+@322    = ~  ==> Folder %iacontent% (#%archives%) content copied to override: %Count% files~
+
+// 110_animate_ee.tph
+// ------------------
+@331    = ~!!! WARNING : No free creature animation slot found for %GWNewAnim% !!!~
+
+// 110_animate.tph
+@332    = ~  ==> Animation %inifile% ini file installed: %GW_nv_ini%.ini~
+@333    = ~  ==> Animation %inifile% ini file not installed.~
+@334    = ~  ==> %countf% animation file(s) from folder %copy_from% copied to override.~
+@335    = ~  ==> Animation %2dafile% 2da file installed: %donnees_3%.2da~
+
+@301 = ~!!! WARNING !!! : l'animation %GW_anim_to_add% ne dispose pas de ses fichiers BAM. Veuillez les installer sinon le jeu plantera.~
+@302 = ~!!! WARNING !!! : l'animation %GW_anim_to_add% ne dispose pas de son fichier INI. Veuillez l'installer sinon le jeu plantera.~
+@303 = ~!!! WARNING !!! : l'animation %GW_anim_to_add% ne dispose pas de ses fichiers BAM et INI. Veuillez les installer sinon le jeu plantera.~
+
+// miscellaneous .tpa or .tph files
+@323 = ~  ==> %countf% speficic EE missing %folder% animation file(s) installed.~
+@324 = ~  ==> %countf% IE missing %folder% animation file(s) installed.~
+@325 = ~  ==> %countf% IA missing %folder% animation file(s) installed.~
+@326 = ~  ==> ini file %SOURCE_FILE% patched and fixed.~
+
+
+/* ================ *
+ *  MAIN COMPONENT  *
+ * ================ */
+
+@100   = ~Menace sur le Royaume de Diamant Eternel~
+@10001 = ~This mod requires BG2:ToB with ToBEx and BG2 Fixpack, or BG2:EE patched to v2.0 or higher to be installed.~
+@10100 = ~===============================================
+        ***** PATCHING .IDS FILES *****
+===============================================
+~
+// 100_ids.tph
+// -----------
+@10101 = ~Please be patient, listing all creatures %GW_ids_file% values may take a few moments...~
+@10102 = ~Adding new values in %GW_ids_file%.ids file available slots.~
+@10103 = ~----------------------------
+ END of PATCHING .IDS FILES
+----------------------------
+~
+// 110_animate.tph
+// ---------------
+@10110 = ~===============================================================
+        ***** INSTALLING NEW CREATURES ANIMATIONS *****
+            (Sorry, this step may take a moment...)
+===============================================================
+~
+@10111 = ~Copying new animations to the game (this may take a while) ...~ // ~Copying BAM files ...~ 
+@10112 = ~-----------------------------------------------------
+ END of new creature animations INSTALLATION PROCESS
+-----------------------------------------------------
+~
+
+
+@122  = ~
+=========================
+ PATCHING .2DA FILES ...
+=========================~
+//@11  = ~      - Modification du fichier TOOLTIP.2DA -
+//~
+
+
+@10200 = ~======================================================
+        ***** INSTALLING NEW PROJECTILES *****
+======================================================
+~
+@10201 = ~---------------------------------------------
+ END of new projectiles INSTALLATION PROCESS
+---------------------------------------------
+~
+
+
+/*---------------------------------------------------------------------------
+@9=~This component can take a few minutes to install; please be patient~
+@7999=~Please be patient, this may take a moment...~
+@7999=~Merci de patienter, cela peut prendre un peu de temps...~
+@1 = ~This step may take a few moments ...~
+@1 = ~Cette etape peut prendre quelques instants...~
+@12 = ~Cette etape peut demander quelques instants...~
+@14 = ~Desole, cette etape peut demander quelques minutes...~
+@14 = ~Sorry, this step may take several minutes...~
+@100000 = ~Scanning available NPCs and fixing a few bugs, this may take a moment.~
+@100000 = ~Passage en revue des PNJs disponibles et correction de quelques bugs,
+cela peut prendre un moment.~
+
+@410001 = ~Adjusting NPC class/kit references (this may take some time) ...~
+@410001 = ~Ajustement des references aux classes/kits des PNJs : en cours... (cela pourrait prendre un peu de temps)~
+
+@20 = ~Replacing _LOW creature animations (this may take a while) ...~
+@20  = ~Remplacement des animations de creature _LOW (veuillez patienter)...~
+@23 = ~Copie des nouvelles animations to the game (this may take a while) ...~
+@23  = ~Copie des nouvelles animations dans le jeu (veuillez patienter)...~
+@73 = ~Patching character-based creatures (this may take a while) ...~
+@73  = ~Modification des personnages non joueurs (veuillez patienter)...~
+@106 = ~Corrige les references des creatures dans les cartes (veuillez patienter)...~
+@106 = ~Correcting area creature references (this may take a while) ...~
+@3 = ~Ce mod necessite l'installation de BG2:ToB, BG:EE, BG2:EE ou IWD:EE.~
+@3 = ~This mod requires BG2:ToB, BG:EE, BG2:EE or IWD:EE to be installed.~
+@100 = ~Ce composant necessite l'installation de BG:EE, BG2:EE ou d'IWD:EE.~
+@100 = ~This component requires BG:EE, BG2:EE or IWD:EE to be installed.~
+@50 = ~Jeu en version Enhanced Edition requis.~
+@50 = ~Enhanced Edition game is required.~
+@53 = ~Seulement disponible pour IWD:EE.~
+@53 = ~Only available for IWD:EE.~
+
+@26 = ~This component requires the main component.~
+@26  = ~Ce composant necessite le composant principal.~
+
+@52 = ~Composant principal requis.~
+@52 = ~Main component required.~
+@102 = ~Le composant principal est pre-requis.~
+@101 = ~Ce composant requiert l'installation prealable du composant principal.~
+@101 = ~This component requires the main component to be installed.~
+@26 = ~This component requires the main component.~
+@26  = ~Ce composant necessite le composant principal.~
+
+@102 = ~Aucun emplacement (slot) d'animation n'est disponible.~
+@102 = ~No free creature animation slot found.~
+*/
+/*
+@1 = ~Installez l'extension Trône de Bhaal avant d'installer ce module.~
+*/
+
+
+/*@201 = ~
+============================================================
+                           IMAGES
+============================================================
+~
+*/
+@10210 = ~========================================================
+        ***** INSTALLING VVC and VEF FILES *****
+========================================================
+~
+@10211 = ~-------------------------------------------------
+ END of .vvc and .vef files INSTALLATION PROCESS
+-------------------------------------------------
+~
+
+@10220 = ~==============================================
+        ***** INSTALLING EFFECTS *****
+==============================================
+~
+@10221 = ~-------------------------------------------
+ END of effects files INSTALLATION PROCESS
+-------------------------------------------
+~
+
+@10230 = ~================================================
+        ***** INSTALLING CREATURES *****
+================================================
+~
+@10231 = ~-----------------------------------------------------------
+ END of creatures INSTALLATION PROCESS (230_Creatures.tpa)
+-----------------------------------------------------------
+~
+@10232 = ~-----------------------------------------------
+ END of NPC INSTALLATION PROCESS (230_NPC.tpa)
+-----------------------------------------------
+~
+@10233 = ~--------------------------------------------
+ END of new .cre files INSTALLATION PROCESS
+--------------------------------------------
+~
+
+/*@204 = ~      - Paladins et Royaume de Diamant Eternel -~
+@205 = ~      - Armee de Demil -~
+@206 =~      - Cercle des Tenebres -~
+@207 = ~      - Dragons -~
+@208 = ~      - Humanoides -~
+@209 = ~      - Morts-Vivants -~
+@210 = ~      - Demons -~
+@211 = ~      - Monstres -~
+@212 = ~      - Divers -~
+@210 = ~      - Creatures convoquees -~*/
+
+
+@10240 = ~============================================
+        ***** INSTALLING ITEMS *****
+============================================
+~
+@10241 = ~-------------------------------------------------------------
+ END of weapons INSTALLATION PROCESS (241_Armes.tph)
+-------------------------------------------------------------
+~
+@10242 = ~-----------------------------------------------------------------
+ END of d'Installation des Armures (242_Armures.tph) TERMINEE
+-----------------------------------------------------------------
+~
+@10243 = ~------------------------------------------------------------------------
+ END of d'Installation des Equipements (243_Equipement.tph) TERMINEE
+------------------------------------------------------------------------
+~
+@10244 = ~-----------------------------------------------------------------
+ END of d'Installation des Potions (244_Potions.tph) TERMINEE
+-----------------------------------------------------------------
+~
+@10245 = ~-----------------------------------------------------------------------
+ END of d'Installation des Objets magiques (245_Magie.tph) TERMINEE
+-----------------------------------------------------------------------
+~
+@10246 = ~-------------------------------------------------------------------------
+ END of d'Installation des Objets divers (246_ObjetsDiv.tph) TERMINEE
+-------------------------------------------------------------------------
+~
+@10247 = ~---------------------------------------------------------------
+ END of  d'Installation des Livres (247_Livres.tph) TERMINEE
+---------------------------------------------------------------
+~
+@10248 = ~----------------------------------------------------------------
+ END of d'Installation des Tresors (248_Tresor.tph) TERMINEE
+----------------------------------------------------------------
+~
+@10249 = ~=========================================================
+        ***** COMPOSANT NOURRITURE : OBJETS *****
+=========================================================
+~
+@102490 = ~-----------------------------------------------------------------------------
+ PROCEDURE d'Installation des fichiers .itm du Composant Nourriture TERMINEE
+-----------------------------------------------------------------------------
+~
+@10250 = ~----------------------------------------------------------------------------
+ PROCEDURE d'Installation des Trophees et Corps (250_Trophees.tph) TERMINEE
+----------------------------------------------------------------------------
+~
+@10251 = ~----------------------------------------------------------------------------------
+ PROCEDURE d'Installation des Clefs et Pierres gardiennes (251_Cles.tph) TERMINEE
+----------------------------------------------------------------------------------
+~
+@252 = ~
+      - Citadelle-
+~
+@10253 = ~------------------------------------------------------------------------
+ PROCEDURE d'Installation des Objets des mines (253_Mines.tph) TERMINEE
+------------------------------------------------------------------------
+~
+
+@10300 = ~=============================================
+        ***** INSTALLING SPELLS *****
+=============================================
+~
+@10301 = ~--------------------------------------------------------------------
+ PROCEDURE d'Installation des sorts divers (300_Sorts.tph) TERMINEE
+--------------------------------------------------------------------
+~
+
+@10305 = ~------------------------------
+ INSTALLING DETECTABLE SPELLS
+------------------------------~
+@10306 = ~--------------------------------------------
+ INSTALLATION de DETECTABLE SPELLS TERMINEE
+--------------------------------------------~
+
+@10310 = ~===========================================
+        ***** INSTALLING KITS *****
+===========================================
+~
+@103101 = ~DIAMOND KNIGHT : Installation des sorts de caracteristiques terminee
+~
+@103102 = ~DIAMOND KNIGHT : Capacites installees
+~
+@103103 = ~DIAMOND KNIGHT : HLA installees
+~
+@103104 = ~DIAMOND KNIGHT : INSTALLATION des SORTS de NIVEAU 1 TERMINEE
+------------------------------------------------------------------
+~
+@103105 = ~DIAMOND KNIGHT : INSTALLATION des SORTS de NIVEAU 2 TERMINEE
+------------------------------------------------------------------
+~
+@103106 = ~DIAMOND KNIGHT : INSTALLATION des SORTS de NIVEAU 3 TERMINEE
+------------------------------------------------------------------
+~
+@103107 = ~DIAMOND KNIGHT : INSTALLATION des SORTS de NIVEAU 4 TERMINEE
+------------------------------------------------------------------
+~
+@103111 = ~UNICORN RIDER : Installation des sorts de caracteristiques terminee
+~
+@103112 = ~UNICORN RIDER : HLA installees
+----------------------------------------
+~
+@103113 = ~UNICORN RIDER : INSTALLATION des SORTS de NIVEAU 1 TERMINEE
+---------------------------------------------------------------------
+~
+@103114 = ~UNICORN RIDER : INSTALLATION des SORTS de NIVEAU 2 TERMINEE
+---------------------------------------------------------------------
+~
+@103115 = ~UNICORN RIDER : INSTALLATION des SORTS de NIVEAU 3 TERMINEE
+---------------------------------------------------------------------
+~
+@103116 = ~UNICORN RIDER : INSTALLATION des SORTS de NIVEAU 4 TERMINEE
+---------------------------------------------------------------------
+~
+@103118 = ~-------------------------------------------------------------------
+ Installation des Armes et des Objets crees par les sorts des Kits
+-------------------------------------------------------------------
+~
+@103119 = ~--------------------------------------------
+ END of d'Installation des Kits TERMINEE
+--------------------------------------------
+~
+@10320 = ~====================================================
+        ***** INSTALLING DIVINE SPELLS *****
+====================================================
+~
+@10321 = ~------------------------------------------------------------------------------
+ END of d'Installation des Sorts de Pretre (320_Sorts_Pretre.tph) TERMINEE
+------------------------------------------------------------------------------
+~
+@10330 = ~------------------------------------------------------------------------------
+ END of d'Installation des Sorts de Druide (330_Sorts_Druide.tph) TERMINEE
+------------------------------------------------------------------------------
+~
+@10340 = ~====================================================
+        ***** INSTALLING ARCANE SPELLS *****
+====================================================
+~
+@10341 = ~---------------------------------------------------------------------------
+ END of d'Installation des Sorts Profanes (340_Sorts_Mage.tph) TERMINEE
+---------------------------------------------------------------------------
+~
+
+@10350 = ~=====================================================
+        ***** INSTALLING DRAGONS SPELLS *****
+=====================================================
+~
+@10351 = ~--------------------------------------------------------------------------------
+ END of d'Installation des Sorts de Dragons (350_Sorts_Dragons.tph) TERMINEE
+--------------------------------------------------------------------------------
+~
+
+@10360 = ~==========================================================================
+        ***** INSTALLING SORTS du COMPOSANT NOURRITURE *****
+==========================================================================
+~
+@10361 = ~---------------------------------------------------------------------
+ END of d'Installation des Sorts du Composant Nourriture TERMINEE
+---------------------------------------------------------------------
+~
+
+@10390 = ~---------------------------------------------------------------------
+ END of d'Installation des Parchemins (2_Parchemins.tph) TERMINEE
+---------------------------------------------------------------------
+~
+@10391 = ~-----------------------------------------------------------------------
+ END of d'Installation des Parchemins (390_Parchemins.tpa) TERMINEE
+-----------------------------------------------------------------------
+~
+
+@10400 = ~=============================================
+        ***** INSTALLING STORES *****
+=============================================
+~
+@10401 = ~-----------------------------------------------------------------
+ END of d'Installation des Magasins (400_Stores.tph) TERMINEE
+-----------------------------------------------------------------
+~
+
+@10500 = ~================================================
+        ***** INSTALLING DIALOGUES *****
+================================================
+~
+@10501 = ~---------------------------------------------------------------------
+ END of d'Installation des Dialogues (500_Dialogues.tph) TERMINEE
+---------------------------------------------------------------------
+~
+
+@10600 = ~==============================================
+        ***** INSTALLING SCRIPTS *****
+==============================================
+~
+@10601 = ~---------------------------------------------------------
+ END of d'Installation des Scripts de cartes TERMINEE
+---------------------------------------------------------
+~
+@10602 = ~-----------------------------------------------------------------------
+ END of d'Installation des Scripts de regions et de pieges TERMINEE
+-----------------------------------------------------------------------
+~
+@10603 = ~------------------------------------------------------------
+ END of d'Installation des Scripts de creatures TERMINEE
+------------------------------------------------------------
+~
+@10604 = ~-----------------------------------------------------------------------
+ END of d'Installation des Scripts du composant Nourriture TERMINEE
+-----------------------------------------------------------------------
+~
+//      - Scripts modifies -
+
+@10700 =~============================================
+        ***** INSTALLING AREAS *****
+============================================
+~
+@10701 = ~----------------------------------------------------
+ END of New areas INSTALLING PROCESS (700_maps.tph)
+----------------------------------------------------
+~
+
+@10800 =~==================================================
+        ***** INSTALLING SOUND FILES *****
+==================================================
+~
+
+/*
+@0 = ~Customisation des fichiers BAM selon la langue d'installation~
+@1 = ~Utiliser la langue d'installation (par defaut)~
+@2 = ~Fichiers BAM en VO (francais)~
+@3 = ~Fichiers BAM en anglais~
+@4 = ~Fichiers BAM en allemand~
+@5 = ~Fichiers BAM en espagnol~
+@6 = ~Fichiers BAM en italien~
+@7 = ~Fichiers BAM en russe~
+*/
+/*
+	REQUIRE_PREDICATE FILE_EXISTS_IN_GAME ~ui.menu~ @100		// Enhanced Edition game patched to v2.0 or higher required.
+BEGIN @1														// ~Utiliser la langue d'installation (par defaut)~
+//	REQUIRE_COMPONENT ~setup-Diamant_Eternel.tp2~ 100 @103		// Component "Selected options" not selected.
+	SUBCOMPONENT @0												// ~Customisation des fichiers BAM selon la langue d'installation~
+	DESIGNATED 10
+LAF ~GW_FIND_LANGUAGE~ RET GW_code_language END
+ACTION_CLEAR_ARRAY ~GW_language_code~
+
+BEGIN @2														// ~Fichiers BAM en VO (francais)~
+	SUBCOMPONENT @0												// ~Customisation des fichiers BAM selon la langue d'installation~
+	DESIGNATED 20
+LAF ~GW_FIND_LANGUAGE~ STR_VAR GW_language = "francais" RET GW_code_language END
+ACTION_CLEAR_ARRAY ~GW_language_code~
+
+BEGIN @3														// ~Fichiers BAM en anglais~
+	SUBCOMPONENT @0												// ~Customisation des fichiers BAM selon la langue d'installation~
+	DESIGNATED 20
+LAF ~GW_FIND_LANGUAGE~ GW_language = "english" RET GW_code_language END
+ACTION_CLEAR_ARRAY ~GW_language_code~
+
+BEGIN @4														// ~Fichiers BAM en allemand~
+	SUBCOMPONENT @0												// ~Customisation des fichiers BAM selon la langue d'installation~
+	DESIGNATED 20
+LAF ~GW_FIND_LANGUAGE~ GW_language = "german" RET GW_code_language END
+ACTION_CLEAR_ARRAY ~GW_language_code~
+
+BEGIN @5														// ~Fichiers BAM en espagnol~
+	SUBCOMPONENT @0												// ~Customisation des fichiers BAM selon la langue d'installation~
+	DESIGNATED 20
+LAF ~GW_FIND_LANGUAGE~ RET GW_language = "spanish" GW_code_language END
+ACTION_CLEAR_ARRAY ~GW_language_code~
+
+BEGIN @6														// ~Fichier BAM en italien~
+	SUBCOMPONENT @0												// ~Customisation des fichiers BAM selon la langue d'installation~
+	DESIGNATED 20
+LAF ~GW_FIND_LANGUAGE~ RET GW_language = "italian" GW_code_language END
+ACTION_CLEAR_ARRAY ~GW_language_code~
+
+BEGIN @7														// ~Fichier BAM en russe~
+	SUBCOMPONENT @0												// ~Customisation des fichiers BAM selon la langue d'installation~
+	DESIGNATED 20
+LAF ~GW_FIND_LANGUAGE~ RET GW_language = "russian" GW_code_language END
+ACTION_CLEAR_ARRAY ~GW_language_code~
+
+
+@900 = ~Test !~
+
+@1  = ~Fichiers de base~
+@2  = ~Module Gwendolyne~
+
+@1000 = ~Lire le fichier Readme~
+@1005 = ~Lire le fichier ReadMe maintenant~
+@1010 = ~Lire le fichier ReadMe apres l'installation~
+@1020 = ~Ne pas lire le fichier ReadMe~
+
+@4 = ~Cette etape peut prendre du temps...~
+@5 = ~Les elements de ce composant sont inclus dans un autre module deja installe.~
+
+@20 = ~Installer les composants necessaires des autres modules~
+//@21 = ~      - Empilement illimite des munitions, bijoux, potions, parchemins... -
+//~
+//@22 = ~      - Avatar de mage pour Imoen -
+//~
+@30 = ~Citadelle de Diamant Eternel~
+@41 = ~
+      - Forge de -~
+@42 = ~      - Objets de l'Ordre -
+~
+@43 = ~      - Objets du Rituel -
+~
+
+
+@15 = ~Coup de main de Gwendolyne~
+
+@19 = ~Le composant est deja installe.~
+*/
+
+/* DEPREECATED
+@10011 = ~
+*******************************************************************************
+* ATTENTION !     ATTENTION !     ATTENTION !     ATTENTION !     ATTENTION ! *
+*******************************************************************************
+*                                                                             *
+* Ce module necessite comme pre-requis l'installation de 1PP.                 *
+* Puisque ce n'est pas le cas, plusieurs sorts (notamment Chargeur spirituel  *
+* et Cavalerie spirituelle qui convoquent des esprits de Chevaliers de        *
+* Diamant et de Chevaucheuses de licorne dotes de casques et de boucliers     *
+* necessitant 1PP) ne fonctionneront pas.                                     *
+* Par ailleurs, pour assurer la compatibilite avec certains codes couleurs,   *
+* ce mod verifie la taille des palettes de votre installation et les remplace *
+* par celles de 1PP. Les palettes vanilla seront retablies lors de la         *
+* desinstallation de ce mod.                                                  *
+*******************************************************************************~
+@10012 = ~
+AVEZ-VOUS COMPRIS L'AVERTISSEMENT ?
+-----------------------------------
+
+(1) Tapez 1 pour continuer l'installation sans 1PP.
+(2) Tapez 2 pour abandonner l'installation.~
+
+@10021 = ~
+*******************************************************************************
+* ATTENTION !     ATTENTION !     ATTENTION !     ATTENTION !     ATTENTION ! *
+*******************************************************************************
+*                                                                             *
+* Ce module necessite comme pre-requis l'installation de Infinity Animations. *
+* Puisque ce n'est pas le cas, plusieurs sorts (notamment Chargeur spirituel  *
+* et Cavalerie spirituelle qui convoquent des esprits de Chevaliers de        *
+* Diamant et de Chevaucheuses de licorne avec leurs montures - chevaux et     *
+* licornes).ne fonctionneront pas.                                            *
+*******************************************************************************~
+@10022 = ~
+AVEZ-VOUS COMPRIS L'AVERTISSEMENT ?
+-----------------------------------
+
+(1) Tapez 1 pour continuer l'installation sans Infinity Animations.
+(2) Tapez 2 pour abandonner l'installation.~
+*/
+
+/* ============================================================== *
+ * Saisie d'un nom pour la licorne de la Chevaucheuse de Licorne. *
+ * ============================================================== *
+
+@10051 = ~VEUILLEZ SAISIR LE NOM DU DESTRIER DE VOTRE PALADIN :~	// PLEASE ENTER A NAME FOR YOUR PALADIN WARHORSE:
+@10052 = ~-----------------------------------------------------
+ VOUS AVEZ SAISI :      "%GWdestrier%"
+-----------------------------------------------------~				// YOU ENTERED:      "%destrier%"
+@10053 = ~ACCEPTEZ-VOUS ce nom : "%GWdestrier%" ?
+
+TAPEZ [Y] pour le confirmer.
+APPUYEZ sur n'importe quelle autre touche pour saisir un autre nom.~
+
+@10055 = ~VEUILLEZ SAISIR LE NOM DE LA LICORNE DE VOTRE CHEVAUCHEUSE :~	// PLEASE ENTER A NAME FOR YOUR RIDER UNICORN:
+@10056 = ~-----------------------------------------------------
+ VOUS AVEZ SAISI :      "%GWlicorne%"
+-----------------------------------------------------~
+@10057 = ~ACCEPTEZ-VOUS ce nom : "%GWlicorne%" ?
+
+TAPEZ [Y] pour le confirmer.
+APPUYEZ sur n'importe quelle autre touche pour saisir un autre nom.~
+*/
+

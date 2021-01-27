@@ -1,0 +1,206 @@
+/* =========================================================== *
+ *  v 1.0.0                                                    *
+ *                I M M U T A B L E   B L O C K                *
+ *                                                             *
+ * =========================================================== */
+
+// Concept borrowed and adapted from DavidW's Immutability and encapsulation in mod design ( https://github.com/Gibberlings3/immutable )
+// Two subsections: a part that defines the functions, and a part that actually gets run when this is INCLUDED.
+
+/* =================================================================== *
+ *  This code only runs once, even if you install lots of components.  *
+ * =================================================================== */
+
+ACTION_IF !VARIABLE_IS_SET GW_immutable_initialise BEGIN
+
+	OUTER_SET GW_immutable_initialise = 1
+	SILENT
+
+	/* ---------------------------------------- *
+	 *    Sanity check for AUTO_EVAL_STRINGS    *
+	 * ---------------------------------------- */
+
+	OUTER_SPRINT var testers
+	OUTER_SPRINT players var
+	ACTION_IF !(~%%players%%~ STRING_EQUAL ~testers~) BEGIN
+		FAIL ~AUTO_EVAL_STRINGS is not set (you need to include it in your tp2 preamble to use Immutability and encapsulation concept)~
+	END
+
+	/* ----------------------------------------------------------------------------------------- *
+	 *    Sets the default variables defining relevant locations if they are not set already.    *
+	 * ----------------------------------------------------------------------------------------- */
+
+    // Sets mod_root to the mod directory.
+	ACTION_IF !VARIABLE_IS_SET mod_root BEGIN
+		OUTER_SPRINT mod_root "%TP2_NAME%"
+	END
+
+	// Sets external_loc to a common location where backups etc can be stored, so we don't clutter the user directory too much.
+	ACTION_IF !VARIABLE_IS_SET external_loc BEGIN
+		OUTER_SPRINT external_loc "weidu_external"
+	END
+
+	// Sets tra_base to the name of the subfolder in where tra files are stored.
+	ACTION_IF !VARIABLE_IS_SET tra_base BEGIN
+		OUTER_SPRINT tra_base "lang"
+	END
+
+	// Sets rel_iconv_path to the location of the "iconv" folder where iconv program (needed for UTF-8 conversions) lives.
+	ACTION_IF !VARIABLE_IS_SET rel_iconv_path BEGIN
+		OUTER_SPRINT rel_iconv_path "lang/iconv"
+	END
+
+	// Sets base_language to a language that is guaranteed to have all strings present.
+	ACTION_IF !VARIABLE_IS_SET base_language BEGIN
+		OUTER_SPRINT base_language "french"
+	END
+
+
+	/* ----------------------------------- *
+	 *    Creates the external folders.    *
+	 * ----------------------------------- */
+
+	MKDIR "%external_loc%"
+	MKDIR "%external_loc%/workspace"
+	MKDIR "%external_loc%/data/%MOD_FOLDER%"
+	MKDIR "%external_loc%/markers"
+	MKDIR "%external_loc%/lang"
+	MKDIR "%external_loc%/lang/%MOD_FOLDER%"
+
+	ACTION_IF !FILE_EXISTS "%external_loc%/readme.txt" BEGIN
+		COPY + "%MOD_FOLDER%/lib/resource/weidu_external_readme.txt" "%external_loc%/readme.txt"
+	END
+
+
+	/* ------------------------------------------------ *
+	 *    Sets variables for the external locations.    *
+	 * ------------------------------------------------ */
+
+	OUTER_SPRINT workspace     "%external_loc%/workspace"
+	OUTER_SPRINT data_loc      "%external_loc%/data/%MOD_FOLDER%"
+	OUTER_SPRINT marker_loc    "%external_loc%/markers"
+	OUTER_SPRINT ext_lang_loc  "%external_loc%/lang/%MOD_FOLDER%"
+
+
+	/* -------------------------- *
+	 *    Creates a blank file    *
+	 * -------------------------- */
+
+<<<<<<<< .../diamant_eternel-inline/blank
+
+>>>>>>>>
+
+
+	/* ----------------------------------------------------------------------------------------------------- *
+	 *    Gets the debug variable from .ini (do this manually, ini reading function isn't installed yet).    *
+	 * ----------------------------------------------------------------------------------------------------- *
+
+	ACTION_IF FILE_EXISTS "%mod_root%/%configuration-default%" BEGIN
+		COPY - "%mod_root%/%configuration-default%" "%workspace%"
+			REPLACE_EVALUATE "gw_debug_variable[ =]+\([0-9]+\)" BEGIN
+				SET gw_debug_variable = MATCH1
+			END
+			"" // doesn't matter, this is COPY -
+		BUT_ONLY
+	END ELSE BEGIN
+		OUTER_SET gw_debug_variable = 0
+	END
+	LAF ~GW_DISPLAY_MESSAGE~  INT_VAR gw_force = 1 STR_VAR gw_message = "@7" END // ~CONTROL Game installed    ==>    ToB = %is_tob%  -  BGT = %is_bgt%  -  Tutu = %is_tutu%  -  BG2EE = %is_bg2ee%  -  EET = %is_eet%~
+	LAF ~GW_DISPLAY_MESSAGE2~ INT_VAR gw_force = 1 STR_VAR gw_message = "@7" END
+*/
+
+	VERBOSE
+
+END // of ACTION_IF !VARIABLE_IS_SET GW_immutable_initialise BEGIN
+
+
+
+/* =========================== *
+ *  FUNCTIONS DEFINITION PART  *
+ * =========================== */
+
+/* --------------------------------------------------------------------------------------------------- *
+ *  Immutable version of HANDLE_CHARSETS                                                               *
+ *  Assumes "mod_root" has been set to your mod directory, and "workspace" to your working directory.  *
+ * --------------------------------------------------------------------------------------------------- */
+
+DEFINE_ACTION_FUNCTION ~handle_charsets_immutably~
+    INT_VAR force_tra_rebuild = 0
+    STR_VAR tra_base          = lang
+            base_language     = french
+            iconv_path        = ""
+    RET     gw_tra_loc
+BEGIN
+
+	// Do conversions (EE only)
+	ACTION_IF is_ee BEGIN
+
+		OUTER_SPRINT versionstring @0
+
+		OUTER_INNER_PATCH_SAVE versionstring "%versionstring%" BEGIN
+			REPLACE_TEXTUALLY " " ""
+		END
+
+		OUTER_SPRINT gw_tra_loc "%ext_lang_loc%"
+		OUTER_SPRINT marker_name "%marker_loc%/gw_%MOD_FOLDER%_%versionstring%_languages_installed.mrk"
+
+		ACTION_IF (!FILE_EXISTS ~%marker_name%~ || gw_force_tra_rebuild) BEGIN
+
+			LAF HANDLE_CHARSETS
+				INT_VAR infer_charsets = 1
+				STR_VAR tra_path = ~%MOD_FOLDER%/%tra_base%~
+						noconvert_array = GW#noconvert
+						reload_array = GW#reload
+						out_path = "%gw_tra_loc%"
+			END
+
+		  ACTION_IF ("%LANGUAGE%" STRING_COMPARE_CASE "%base_language%") BEGIN
+
+			LAF HANDLE_CHARSETS
+				INT_VAR infer_charsets = 1
+				STR_VAR language = "%base_language%"
+						tra_path = "%MOD_FOLDER%/%tra_base%"
+						noconvert_array = GW#noconvert
+						reload_array = GW#reload
+						out_path = "%gw_tra_loc%"
+			END		  
+		  END
+
+
+			COPY ~.../diamant_eternel-inline/blank~ ~%marker_name%~
+/*			MKDIR "%gw_tra_loc%/%LANGUAGE%"
+			ACTION_BASH_FOR "%mod_root%/%tra_base%/%LANGUAGE%" ".*\.tra" BEGIN
+				COPY "%BASH_FOR_FILESPEC%" "%gw_tra_loc%/%LANGUAGE%"
+			END
+			ACTION_MATCH "%LANGUAGE%" WITH
+				"%base_language%" BEGIN END
+				DEFAULT
+					MKDIR "gw_%tra_loc%/%base_language%"
+					ACTION_BASH_FOR "%mod_root%/%tra_base%/%base_language%" ".*\.tra" BEGIN
+					COPY "%BASH_FOR_FILESPEC%" "gw_%tra_loc%/%base_language%"
+				END
+			END
+
+		// guess iconv path if not given
+			ACTION_IF "%iconv_path%" STRING_EQUAL_CASE "" BEGIN
+				OUTER_SPRINT iconv_path "%mod_root%/%rel_iconv_path%"
+			END
+			LAF HANDLE_CHARSETS
+				INT_VAR infer_charsets = 1
+				STR_VAR iconv_path
+						tra_path = ~%gw_tra_loc%~
+						noconvert_array = GW#noconvert
+						reload_array = GW#reload
+						default_language = french
+			END
+*/
+		END // of ACTION_IF (!FILE_EXISTS ~%marker_name%~ || gw_force_tra_rebuild)
+
+	// on non-EE, just set the tra loc
+	END ELSE BEGIN
+
+		OUTER_SPRINT gw_tra_loc "%MOD_FOLDER%/%tra_base%"
+
+	END // of ACTION_IF is_ee
+
+END // of DEFINE_ACTION_FUNCTION

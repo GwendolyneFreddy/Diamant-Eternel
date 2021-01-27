@@ -1,0 +1,66 @@
+/*=============================================================================== *
+ *  v 1.0.0                                                                       *
+ *                                                                                *
+ *          C H E C K S    F O R    P R E - R E Q U I S I T E    M O D S          *
+ *                                                                                *
+ *=============================================================================== */
+
+
+/* ==================================================== *
+ *  Vérification de l'installation des mods 1PP et IA.  *
+ *  Checks if 1PP and IA are installed.                 *
+ * ==================================================== */
+
+/* 1ppv4: Additional Shield Animations not installed
+ACTION_IF (is_classic) AND (is_1pp = 0) BEGIN
+	PRINT @31
+	FAIL  @32  // ~INSTALLATION ABORTED: Install 1PP v4.2.0 (or higher) before this mod.~
+END*/
+
+// Infinity Animations not installed
+ACTION_IF (is_classic) AND (is_ia = 0) BEGIN
+	PRINT @33
+	FAIL  @34  // ~INSTALLATION ABORTED: Install Infinity Animations v6.0.0 (or higher) before this mod.~
+END
+
+
+/* ==================================================================================================================== *
+ *  Petite assurance pour que les créatures et les objets utilisant la palette étendue de 1PP ne plantent pas le jeu !  *
+ *  Light insurance preventing creatures and items using 1PP extended palettes to clash the game!                       *
+ * ==================================================================================================================== */
+
+ACTION_IF (is_classic) BEGIN
+
+	ACTION_FOR_EACH GWPalette IN MPALETTE MPAL256 BEGIN
+
+		ACTION_IF FILE_EXISTS_IN_GAME ~%GWPalette%.bmp~ BEGIN
+
+			COPY_EXISTING - ~%GWPalette%.bmp~ ~%workspace%~
+
+				PATCH_MATCH ~%GWPalette%~ WITH
+					MPALETTE BEGIN	SET size1PP = 9272 END
+					DEFAULT			SET size1PP = 196664
+				END
+
+			OUTER_SET sizePal = %SOURCE_SIZE%
+			LAF ~GW_DISPLAY_MESSAGE~ INT_VAR gw_log = 1 STR_VAR gw_message = "@35" END // ~CONTROL %GWPalette%.bmp palette size = %sizePal% - 1PP = %size1PP%~
+
+			ACTION_IF (sizePal != %size1PP%) BEGIN
+				PRINT @36  // ~Copying 1PP extended palette %SOURCE_FILE% file.~
+				SILENT
+				COPY ~%MOD_FOLDER%/resources/%GWPalette%.bmp~ ~override~
+			END
+
+		END
+
+	END
+
+END
+
+LAF ~GW_DISPLAY_MESSAGE~ INT_VAR gw_force = 1 gw_log = 1 STR_VAR gw_message = "@41" END /* ~OPCODES used by the game:
+---------------------------
+  GW_switch_177_324 = %GW_switch_177_324%
+  GW_switch_177_326 = %GW_switch_177_326%
+  GW_switch_147_171 = %GW_switch_147_171%
+  GW_switch_206_324 = %GW_switch_206_324%
+---------------------------~*/

@@ -11,8 +11,8 @@
 </div><br>
 
 
-<p>**Author:** <a href="https://www.baldursgateworld.fr/lacouronne/members/freddy_gwendo.html">Freddy_Gwendo (aka Gwendolyne)</a>  
-**Mod forum:** <a href="https://www.baldursgateworld.fr/lacouronne/menace-sur-le-royaume-de-diamant-eternel/">Menace sur le Royaume de Diamant Éternel</a>
+**Author:** <a href="https://www.baldursgateworld.fr/lacouronne/members/freddy_gwendo.html">Freddy_Gwendo (aka Gwendolyne)</a>  
+**Mod forum:** <a href="https://www.baldursgateworld.fr/lacouronne/menace-sur-le-royaume-de-diamant-eternel/">Menace sur le Royaume de Diamant Éternel</a>  
 
 [![Created Badge](https://badges.pufler.dev/created/GwendolyneFreddy/Diamant-Eternel?style=plastic)](https://badges.pufler.dev) ![GitHub repo size](https://img.shields.io/github/repo-size/GwendolyneFreddy/Diamant-Eternel?style=plastic) [![Visits Badge](https://badges.pufler.dev/visits/GwendolyneFreddy/Diamant-Eternel?color=cyan&style=plastic)](https://badges.pufler.dev) 
 ![Maintenance](https://img.shields.io/static/v1?label=maintained%3F&message=yes&color=greenlight&style=plastic)
@@ -34,7 +34,7 @@
 ## <a name="intro" id="intro"></a>Overview
 
 <center><img src="diamant_eternel/readmes/images/diamant1.jpg" title="Menace sur le Royaume de Diamant Éternel"></center>
-<div align="right">Lux et Umbra by Chaos-Draco DeviantArt &copy;2009-2018 Chaos-Draco</div>
+<div align="right">Lux et Umbra by Chaos-Draco DeviantArt &copy;2009-2018 Chaos-Draco</div><br>
 
 **Menace sur le royaume de Diamant Éternel** is a French mod designed to provide more than a huge quest, without being a total conversion. A tiny part takes place in BG2 Shadows of Amn, but the main part is played in the Throne of Bhaal extension.<br><br>
 You liked Excalibur, did not you? But have you ever wondered why every woman character is treated as a pest? Guinevere adultery, Morgane the wicked... Why do Paladin Orders recrute only men?<br><br>

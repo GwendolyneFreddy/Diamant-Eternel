@@ -1,0 +1,251 @@
+/* =========================================================================================== *
+ *  v 1.0.0                                                                                    *
+ *                R E A D I N G   I N I   C O N F I G U R A T I O N   F I L E S                *
+ *                                                                                             *
+ * =========================================================================================== */
+
+
+/* ========================================================================================= *
+ *  MACRO gw_read_ini_file : READS an .ini file (lit un fichier .ini).                       *
+ * ----------------------------------------------------------------------------------------- *
+ *  This WeiDU action macro reads the configuration options values set in "%ini_to_read%"    *
+ *  file and writes them into GW_ini_var.                                                    *
+ *  ini key values are treated case-insensitive.                                             *
+ *  (Initially wrote for AL|EN, but borrowed from CamDawg's most efficient version).         *
+ * ========================================================================================= */
+
+DEFINE_ACTION_MACRO ~gw_read_ini_file~
+BEGIN
+
+	LOCAL_SPRINT key ""
+	ACTION_IF FILE_EXISTS "%ini_to_read%" BEGIN
+		COPY - ~%ini_to_read%~ ~%workspace%~
+			REPLACE_EVALUATE ~^\([^ %TAB%%WNL%]+\) *= *\([^%WNL%$]+\)~
+				BEGIN
+					// key must start line and cannot contain whitespace - value is everything after the "=" until the newline/end
+					SPRINT key "%MATCH1%"
+					TO_LOWER key
+					TEXT_SPRINT $GW_ini_var(~%key%~) ~%MATCH2%~
+				END
+			~~
+		END
+
+END
+
+
+/* ============================================================== *
+ *  FUNCTION check_ini : CHECKS an ini value (case-insensitive).  *
+ * -------------------------------------------------------------- *
+ *  Borrowed from CamDawg.                                        *
+ * ============================================================== */
+
+DEFINE_PATCH_FUNCTION ~check_ini~
+    STR_VAR ini = ""
+    RET     value
+BEGIN
+
+	PATCH_IF !VARIABLE_IS_SET $GW_ini_var(~%ini%~) BEGIN
+		SPRINT value 0
+//		SPRINT value 4
+	END ELSE BEGIN
+		SPRINT value $GW_ini_var(~%ini%~)
+	END
+
+END
+
+DEFINE_ACTION_FUNCTION ~check_ini~
+    STR_VAR ini = ""
+    RET     value
+BEGIN
+
+	OUTER_PATCH "" BEGIN
+		LPF ~check_ini~ STR_VAR ini RET value END
+	END
+
+END
+
+
+/* =============================================================================================================== *
+ *  MACRO gw_check_config_variables : CHECKS configuration options values validity.                                *
+ *                                    VÉRIFIE la validité des options de configuration.                            *
+ * --------------------------------------------------------------------------------------------------------------- *
+ *  Cette macro vérifie que la valeurs des options de configuration des fichiers configuration-default.ini et      *
+ *  configuration-user.ini sont présentes et conformes ; sinon, elle leur assigne leur valeur par défaut (définie  *
+ *  dans l'array GW_ini_variables_check).                                                                          *
+ * --------------------------------------------------------------------------------------------------------------- *
+ *  This macro checks if configuration option values (in configuration-default.ini & configuration-user.ini) are   *
+ *  set and not mismatched. If not, it will revert them to their default values (GW_ini_variables_check array).    *
+ * =============================================================================================================== */
+
+ACTION_CLEAR_ARRAY GW_ini_variables_check
+ACTION_DEFINE_ASSOCIATIVE_ARRAY GW_ini_variables_check BEGIN
+//	VARIABLE          VALUES : TYPE MIN MAX  => DEFAULT
+	gw_debug_variable,			N,	 0,	 3	 => 0
+	gw_force_tra_rebuild,		N,	 0,	 1	 => 0
+	gw_mos_mosaic,				N,	 0,	 1	 => 0
+	gw_language_bam,			A,	"", ""	 => AUTO
+	gw_destrier_name,			A,	"", ""	 => "Mon cheval"
+	gw_unicorn_name,			A,	"", ""	 => "Flèche d'argent"
+END
+
+DEFINE_ACTION_MACRO ~gw_check_config_variables~
+BEGIN
+
+	ACTION_PHP_EACH GW_ini_variables_check AS variable => default BEGIN
+
+		ACTION_IF (VARIABLE_IS_SET $GW_ini_var(~%variable_0%~)) BEGIN
+			// integer
+			ACTION_IF ("%variable_1%" STR_EQ "N") BEGIN
+				ACTION_IF (NOT(IS_AN_INT $GW_ini_var(~%variable_0%~)) || ($GW_ini_var(~%variable_0%~) > %variable_3% ) || ($GW_ini_var(~%variable_0%~) < %variable_2%)) BEGIN
+					OUTER_TEXT_SPRINT wrong_value $GW_ini_var(~%variable_0%~)
+					OUTER_TEXT_SPRINT $GW_ini_var(~%variable_0%~) "%default%"
+					PRINT @11 // ~Configuration option %variable_0% value (%wrong_value%) does not match its scope and has been reset to its default value (%default%).~
+				END
+			// alphanumeric
+			END ELSE BEGIN
+				ACTION_IF ("%variable_0%" STR_EQ "gw_language_bam") // et AUTO ???
+						&& (NOT ($GW_ini_var(~%variable_0%~) STR_EQ "FR")) && (NOT ($GW_ini_var(~%variable_0%~) STR_EQ "US"))
+						&& (NOT ($GW_ini_var(~%variable_0%~) STR_EQ "DE")) && (NOT ($GW_ini_var(~%variable_0%~) STR_EQ "IT"))
+						&& (NOT ($GW_ini_var(~%variable_0%~) STR_EQ "RU")) && (NOT ($GW_ini_var(~%variable_0%~) STR_EQ "SP"))
+				BEGIN
+					OUTER_TEXT_SPRINT wrong_value $GW_ini_var(~%variable_0%~)
+					OUTER_TEXT_SPRINT $GW_ini_var(~%variable_0%~) "%default%"
+					PRINT @11
+				END
+			END	// of ACTION_IF ("%variable_1%" STR_EQ "N")
+
+		END ELSE BEGIN	// variable is not set
+
+			OUTER_TEXT_SPRINT $GW_ini_var(~%variable_0%~) "%default%"
+			PRINT @12 // ~Configuration option %variable_0% does not exist and has been set to its default value (%default%).~
+
+		END
+
+		OUTER_SPRINT value $GW_ini_var(~%variable_0%~)
+		OUTER_SPRINT "%variable_0%" EVAL "%value%"
+
+		LAF ~GW_DISPLAY_MESSAGE~ INT_VAR gw_log = 1 STR_VAR gw_message = "CONTROL GW_CHECK_CONFIG_VARIABLES: %variable_0% = %value% - type = %variable_1% - min = %variable_2% - max = %variable_3% - default = %default%" END
+
+	END	// of ACTION_PHP_EACH GW_ini_variables_check AS variable => default
+	ACTION_CLEAR_ARRAY GW_ini_variables_check
+
+END	// of DEFINE_ACTION_MACRO
+
+
+/* ======================================================================================================================================== *
+ *  FUNCTION GW_FIND_MOD_LANGUAGE : DÉFINITION du suffixe à utiliser pour personnaliser des fichiers BAM de décor de certaines cartes.      *
+ *                                  DEFINES which suffix must be used to customize background BAM files in a few areas.                     *
+ * ---------------------------------------------------------------------------------------------------------------------------------------- *
+ *  Retourne la variable "GW_bam_language" qui détermine le suffixe utilisé pour les fichiers bam concernés (FR, DE, IT, RU, SP ou US).     *
+ *  Par défaut, il s'agit par ordre de priorité de 1) la langue d'installation du jeu, 2) la langue d'installation du mod, 3) le français.  *
+ * ---------------------------------------------------------------------------------------------------------------------------------------- *
+ *  Returns variable "GW_bam_language" which defines which suffix will be used to display background bam files (FR, DE, IT, RU, SP or US).  *
+ *  By default, it prioritizes 1) the game installation language, 2) the mod installation language, 3) French.                              *
+ * ======================================================================================================================================== */
+
+DEFINE_ACTION_FUNCTION ~GW_FIND_MOD_LANGUAGE~
+    STR_VAR GW_language = %LANGUAGE%
+    RET     GW_bam_language
+            GW_game_lang
+BEGIN
+
+	OUTER_SPRINT GW_bam_language ""
+
+	// 1. Finds in which language the game is installed
+	LAM ~GW_FIND_GAME_LANGUAGE~
+	LAF ~GW_DISPLAY_MESSAGE~ INT_VAR gw_debug = 2 gw_log = 1 STR_VAR gw_message = "CONTROL GW_FIND_GAME_LANGUAGE ==> GW_game_lang = %GW_game_lang%" END
+
+	ACTION_CLEAR_ARRAY ~GW_language_bam_code~
+	ACTION_DEFINE_ASSOCIATIVE_ARRAY ~GW_language_bam_code~ BEGIN
+		english		=> US
+		french		=> FR
+		german		=> DE
+		italian		=> IT
+		russian		=> RU
+		spanish		=> ES
+	END
+
+	ACTION_PHP_EACH GW_language_bam_code AS donnees => suffix BEGIN
+
+		ACTION_IF ("%GW_bam_language%" STRING_EQUAL "") AND ("%gw_language_bam%" STRING_EQUAL "AUTO") BEGIN
+
+			// 2. Background bam files will be installed in game language.
+			ACTION_IF ("%suffix%" STRING_EQUAL "%GW_game_lang%") BEGIN
+
+				OUTER_SPRINT GW_bam_language EVAL ~%suffix%~
+				LAF ~GW_DISPLAY_MESSAGE~ INT_VAR gw_debug = 2 gw_log = 1 STR_VAR gw_message = "CONTROL GW_FIND_MOD_LANGUAGE ==> GW_bam_language = %GW_bam_language%" END
+
+			END ELSE BEGIN
+
+				// 3. Background bam files will be installed in mod installation language.
+				ACTION_IF ("%GW_language%" STRING_EQUAL "%donnees_0%") BEGIN
+
+					OUTER_SPRINT GW_bam_language $GW_language_bam_code(~%GW_language%~)
+
+				END
+
+			END
+
+		END
+
+		ACTION_IF ("%GW_bam_language%" STRING_EQUAL "") AND ("%gw_language_bam%" STR_CMP "AUTO") BEGIN
+			OUTER_SPRINT GW_bam_language ~%gw_language_bam%~
+			LAF ~GW_DISPLAY_MESSAGE~ INT_VAR gw_debug = 2 gw_log = 1 STR_VAR gw_message = "CONTROL GW_FIND_MOD_LANGUAGE ==> GW_bam_language = %GW_bam_language%" END
+		END
+
+	END
+
+	// 3. Background bam files will be installed in French.
+	ACTION_IF ("%GW_bam_language%" STRING_EQUAL "") BEGIN OUTER_SPRINT GW_bam_language ~FR~ END
+
+	ACTION_CLEAR_ARRAY ~GW_language_bam_code~
+
+END	// of DEFINE_ACTION_FUNCTION
+
+
+
+/* ================================================================================ *
+ *  MACRO GW_FIND_GAME_LANGUAGE : TROUVE dans quelle langue le jeu a été installé.  *
+ *                                CHECKS game's localization.                       *
+ * -------------------------------------------------------------------------------- *
+ *  Retourne la variable "GW_game_lang" - Returns "GW_game_lang" variable.          *
+ * ================================================================================ */
+
+DEFINE_ACTION_MACRO ~GW_FIND_GAME_LANGUAGE~
+BEGIN
+
+	// EE games: language is defined by WeiDU EE_LANGUAGE variable
+	ACTION_IF (is_ee) BEGIN
+
+		LAF SUBSTRING INT_VAR start = 3 length = 2 STR_VAR string = EVAL "%EE_LANGUAGE%" RET GW_game_lang = substring END
+
+	// Classical games: we must find in which language the game is installed (look for string #6913 and compare it with foreign languages strings).
+	END ELSE BEGIN
+
+		ACTION_GET_STRREF 6913 collier
+		LAF ~GW_DISPLAY_MESSAGE~ INT_VAR gw_debug = 2 gw_log = 1 STR_VAR gw_message = "CONTROL collier = %collier%" END
+
+		ACTION_FOR_EACH lang_tra IN ~pt_br~ ~zh_cn~ ~de_de~ ~es_es~ ~fr_fr~ ~it_it~ ~ja_jp~ ~ko_kr~ ~ru_ru~ ~en_us~ BEGIN //~cs_cz~ ~hu_hu~ ~pl_pl~ ~tr_tr~ ~uk_ua~
+
+			ACTION_IF NOT VARIABLE_IS_SET %GW_game_lang% BEGIN
+
+				LAF SUBSTRING INT_VAR start = 3 length = 2 STR_VAR string = EVAL "%lang_tra%" RET lang = substring END
+				LAF ~GW_DISPLAY_MESSAGE~ INT_VAR gw_debug = 2 gw_log = 1 STR_VAR gw_message = "CONTROL GW_game_lang NOT SET ==> lang_tra = %lang_tra% - lang = %lang%" END
+				WITH_TRA ~%MOD_FOLDER%/lang/string_%lang%.tra~ BEGIN
+					OUTER_SPRINT neck_string @6913
+				END
+
+				ACTION_IF NOT (~%collier%~ STRING_CONTAINS_REGEXP ~%neck_string%~) BEGIN
+					OUTER_SPRINT GW_game_lang EVAL ~%lang%~
+					LAF ~GW_DISPLAY_MESSAGE~ INT_VAR gw_debug = 2 gw_log = 1 STR_VAR gw_message = "CONTROL 6913 = %collier% ==> string_%lang% = %neck_string% - GAME LANGUAGE = %GW_game_lang%" END
+				END
+
+			END
+
+		END
+
+	END
+	ACTION_TO_UPPER GW_game_lang
+	LAF ~GW_DISPLAY_MESSAGE~ INT_VAR gw_debug = 2 gw_log = 1 STR_VAR gw_message = "CONTROL GW_FIND_GAME_LANGUAGE ==> GAME LANGUAGE = %GW_game_lang%" END
+
+END	// of DEFINE_ACTION_MACRO

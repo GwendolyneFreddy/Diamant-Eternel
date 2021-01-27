@@ -1,0 +1,2799 @@
+/*=============================================================================== *
+ *  v 1.0.0                                                                       *
+ *                                                                                *
+ *           F O N C T I O N S    e t    M A C R O S    D I V E R S E S           *
+ *                                                                                *
+ *       M I S C E L L A N E O U S    F U N C T I O N S    &    M A C R O S       *
+ *                                                                                *
+ *=============================================================================== */
+
+// VERIF "ADD_SPELL_CFEFFECT"	05.08.2016 : Modification de la fonction GW_DEF_PROJECTILE et transfert dans GW_Pro_fonctions_macros.tpa
+// 30.01.2017 : Ajout du paramètre2 2 dans BG2EE pour Spell: Protection from Spell [206]
+/* ================================================================================================================================================================================= *
+ *                                                                                                                                                                                   *
+ *  LISTE des FONCTIONS INFORMATIVES - LIST of PROMPTING FUNCTIONS                                                                                                                   *
+ *  --------------------------------------------------------------                                                                                                                   *
+ *  - FUNCTION GW_DISPLAY_MESSAGE               : AFFICHE un message dans la fenêtre d'installation de WeiDU ET/OU l'ÉCRIT dans le fichier DEBUG.                   => line #    94  *
+ *                                                DISPLAYS a message in WeiDU windows while installation process and/or WRITES it in DEBUG file.                                     *
+0	- FUNCTION GW_REINCLUDE                     : INTÉGRATION d'une sous-routine tp2 dans une routine (PATCH et ACTION).											=> line #   366-  *
+                                                  GENERATE and RUN an include WeiDU process (tp*) into another one (PATCH and ACTION).                                               *
+0	- FONCTION GW_REINCLUDE_MESSAGE_AF          : INTÉGRATION d'un message dans un fichier .txt pour débogage pendant le développement.								=> line #   408-  *
+                                                  
+ *                                                                                                                                                                                   *
+ *  LISTE des FONCTIONS & MACROS GÉNÉRALES - LIST of GENERAL FUNCTIONS & MACROS                                                                                                      *
+ *  ---------------------------------------------------------------------------                                                                                                      *
+ *  - FONCTION GW_DEF_FUNCTIONS_FILE			: DÉFINITION des noms des fonctions à intégrer dans les sous-routines de patch des fichiers CRE, ITM et SPL.        => line #   84  *
+ *                                                DEFINES which functions to use when patching CRE, ITM and SPL files with GW_REINCLUDE function.                                    *
+ *  - FONCTION GW_DEF_OFFSETS_FILE              : DÉFINITION des offsets généraux des fichiers SPL, ITM et CRE (DEFINES CRE, ITM and SPL files mains offsets.).     => line #  113  *
+ *  - FUNCTION GW_DEF_OFFSETS_FILE              : DÉFINITION des offsets généraux des fichiers SPL, ITM et CRE.                        => line #  25  *
+ *                                                DEFINES the main offsets used to patch SPL, ITM and CRE files.                                      *
+	- MACRO GW_READ_THIS_2DA					: LECTURE d'un fichier 2da (initialise arrays with 2da entries).													=> line #  215-  *
+	- MACRO GW_READ_2DA_BUT_NO					: LECTURE des fichiers 2DA dont les valeurs sont différentes de "no".												=> line #  269-  *
+	- FONCTION GW_FIND_SECONDARY_TYPE			: RECHERCHE de la valeur d'une école de magie secondaire.															=> line #  326-  *
+0	- FONCTION et MACRO GW_REMODE_END_at_eof	: Supprime la chaîne de caractères "END" à la fin d'un fichier.														=> line #  453-  *
+0	- FONCTION GW_ADD_END_at_eof				: Ajoute la chaîne de caractères "END" à la fin d'un fichier.														=> line #  497-  *
+ *                                                                                                                                                                                   *
+   LISTE des FONCTIONS et MACROS de COLORATION
+   -------------------------------------------
+	- MACRO GW_ITEM_COLOR_LOCATIONS				: DÉFINITION des variables de localisation des couleurs des objets.													=> line #  518-  *
+	- MACRO GW_ITEM_COLOR_CLEAR					: SUPPRESSION des effets de coloration existants.																	=> line #  565-  *
+	- FONCTION GW_DEF_RGB_COLOR					: DÉFINITION du code RGB pour les effets de recoloration à partir des valeurs R G B.								=> line #  581-  *
+	- FONCTION GW_DEF_SPEED_COLOR				: DÉFINITION du champ "Location and Speed" pour les effets de recoloration à partir des valeurs Location et Speed.	=> line #  593-  *
+	- FONCTION GW_ADD_COLOR_EFFECT				: AJOUT automatique d'un effet de coloration à un fichier CRE ou ITM.												=> line #  605-  *
+ *                                                                                                                                                                                   *
+   LISTE des FONCTIONS de CRÉATION de FICHIERS
+   -------------------------------------------
+	- FONCTION GW_CLONE_VVC						: CLONAGE d'un fichier VVC à partir de tables (arrays).																=> line #  650-  *
+	- FONCTION GW_CREATE_EFFECT					: CRÉATION d'effets à partir de tables (arrays).																	=> line #  735-  *
+ *                                                                                                                                                                                   *
+   LISTE des FONCTIONS COMMUNES aux OBJETS, SORTS et CRÉATURES
+   -----------------------------------------------------------
+	- FONCTION GW_ADD_HEADERS					: CLONAGE et/ou AJOUT de headers.																					=> line #  932-  *
+VER	- FONCTION GW_LEARN_SPELL					: PARAMÉTRAGE des variables d'apprentissage d'un sort.																=> line # 1650-  *
+	- FONCTION GW_EFFECTS_BYPASS_MIRROR_IMAGE	: AJOUT automatique du flag Bypass mirror image (BIT24) sur tous les effets.										=> line #  971-  *
+	- FONCTION GW_SEARCH_OPCODE					: RECHERCHE de la présence d'un opcode dans les extended headers d'un fichier										=> line # OK 1057-  *
+	- FONCTION GW_SEARCH_OPCODE_FEATURE			: RECHERCHE de la présence d'un opcode dans les effets globaux d'un fichier.										=> line # OK 1103-  *
+>	- FONCTION GW_EFFECT_TO_CLONE				: CLONAGE d'un effet selon la valeur de son opcode et de son paramètre 2.											=> line # -  *
+0	- FONCTION GW_EFFECT112_TO_CLONE			: CLONAGE de l'effet 112 pour ajouter des armes magiques à dissiper.												=> line # OK-  *
+0	- FONCTION GW_ADD_OPCODE_206				: AJOUT automatique d'une immunité à un sort dans un fichier ITM, SPL ou CRE.										=> line # OK 1602-  *
+	- FONCTION GW_MODIF_EFFECT_BY_OPCODE		: REMPLACEMENT des paramètres 1 et 2 d'un effet selon la valeur de son opcode.										=> line # 1323-  *
+	- FONCTION GW_MODIFY_ST_BONUS				: MODIFICATION du bonus-malus de Jet de sauvegarde.         														=> line # 1382-  *
+>	- FONCTION GW_MODIF_EFFECT_BY_RESOURCE		: REMPLACEMENT des paramètres et/ou des probabilités d'occurrence d'un effet selon sa ressource.					=> lige # 1481-  *
+0	- FONCTION GW_MODIF_EFFECT_139				: REMPLACEMENT des paramètres d'un effet 139 selon sa durée.														=> line # 1544-  *
+ *                                                                                                                                                                                   *
+ * ================================================================================================================================================================================= */
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ *
+ *	PATCH_IF (ou/or ACTION_IF) gw_debug_variable :                                                                                                  *
+ *  ----------------------------------------------                                                                                                  *
+ *	INTÉGRATION d'un message dans un fichier .txt et/ou dans le fichier DEBUG pour débogage pendant le développement :                              *
+ *	0 = aucun message	-	1 = vérifie certains points clé intermédiaires	-	2 = tous les points clé intermédiaires	-	3 = tous les messages.  *
+ * ------------------------------------------------------------------------------------------------------------------------------------------------ *
+ *	WRITE a comment in a txt file and/or PRINT it in the DEBUG file for debugging purpose during development stage:                                 *
+ *	0 = no message		-	1 = check a few intermediate key points			-	2 = all intermediate key points			-	3 = all messages.       *
+ * ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+// stolen from BG2 Tweak Pack at G3	(extra_regexp_vars.tph)
+OUTER_INNER_PATCH ~12~ BEGIN
+	WRITE_BYTE 1 0x09
+	READ_ASCII 1 tab (1)	// 0x09, tab
+	WRITE_BYTE 1 0x0a
+	READ_ASCII 1 lnl (1)	// 0x0a, Linux
+	WRITE_BYTE 0 0x0d
+	READ_ASCII 0 mnl (1)	// 0x0d, Mac
+	READ_ASCII 0 wnl (2)	// 0x0d0a, Windows
+END
+
+
+/* ============================================================================ *
+ *                                                                              *
+ *                 F O N C T I O N S    I N F O R M A T I V E S                 *
+ *                    P R O M P T I N G    F U N C T I O N S                    *
+ *                                                                              *
+ * ============================================================================ */
+
+/* =================================================================================================================================== *
+ *  FUNCTION GW_DISPLAY_MESSAGE : AFFICHE un message dans la fenêtre d'installation de WeiDU ET/OU l'ÉCRIT dans le fichier DEBUG.      *
+ *                                DISPLAYS a message in WeiDU windows while installation process and/or WRITES it in DEBUG file.       *
+ * ----------------------------------------------------------------------------------------------------------------------------------- *
+ *  Cette fonction affiche le message %gw_message% si la variable %gw_debug% est inférieure à la variable %gw_debug_variable% (0 par   *
+ *  défaut dans le fichier diamant_eternel-config-default.ini).                                                                        *
+ *  Note : il s'agit d'une fonction dimorphe, c-à-d qu'elle peut être utilisée aussi bien PATCH qu'en ACTION.                          *
+ *  This function display %gw_message% if variable %gw_debug% is lower than %gw_debug_variable% (set to 0 by default in the file       *
+ *  diamant_eternel-config-default.ini).                                                                                               *
+ *  Note: it is a dimorphic function, aka both a PACH and ACTION functions.                                                            *
+ * ----------------------------------------------------------------------------------------------------------------------------------- *
+ *  INTEGER VARIABLES :                                                                                                                *
+ *      - gw_debug   = print the message if greater than %gw_debug_variable (0 = no message - 1 = check a few intermediate key points  *
+ *                     2 = all intermediate key points - 3 = all messages).                                                            *
+ *      - gw_force   = automatically force the message (0 = no - 1 = yes).                                                             *
+ *      - gw_log     = of set to 1, the message is only echoed to setup-diamant_eternel.debug.                                         *
+ *  STRING VARIABLE :                                                                                                                  *
+ *      - gw_message = message to be displayed or printed (maybe a @nnn strref, #nnn strref, or plein text ("message to display").     *
+ * =================================================================================================================================== */
+
+DEFINE_DIMORPHIC_FUNCTION ~GW_DISPLAY_MESSAGE~
+    INT_VAR gw_debug   = 0
+            gw_force   = 0
+            gw_log     = 0
+    STR_VAR gw_message = ""
+BEGIN
+
+	ACTION_IF (((gw_force) OR (gw_debug_variable > gw_debug)) AND ("%gw_message%" STR_CMP "")) BEGIN
+
+		ACTION_IF IS_AN_INT ~%gw_message%~ BEGIN
+			OUTER_SPRINT gw_message (AT gw_message)
+		END ELSE BEGIN
+			ACTION_IF "%gw_message%" STRING_MATCHES_REGEXP "^@" = 0 BEGIN
+				OUTER_INNER_PATCH_SAVE gw_message "%gw_message%" BEGIN
+					REPLACE_TEXTUALLY "@" ""
+				END
+				OUTER_SPRINT gw_message (AT gw_message)
+			END ELSE BEGIN
+			OUTER_SPRINT gw_message EVAL "%gw_message%"
+			END
+		END
+
+		ACTION_IF gw_log BEGIN
+			LOG "%gw_message%"
+			SILENT
+		END ELSE BEGIN
+			PRINT "%gw_message%"
+			SILENT
+		END
+	END
+
+END
+
+DEFINE_DIMORPHIC_FUNCTION ~GW_DISPLAY_MESSAGE2~
+    INT_VAR gw_debug   = 0
+            gw_force   = 0
+            gw_log     = 0
+    STR_VAR gw_message = ""
+BEGIN
+
+//	ACTION_IF ((gw_force) OR ((gw_debug_variable > gw_debug) AND ("%gw_message%" STR_CMP ""))) BEGIN
+	ACTION_IF (((gw_force) OR (gw_debug_variable > gw_debug)) AND ("%gw_message%" STR_CMP "")) BEGIN
+
+		ACTION_IF IS_AN_INT ~%gw_message%~ BEGIN
+			OUTER_SPRINT gw_message (AT gw_message)
+		END ELSE BEGIN
+			OUTER_SNPRINT 1 tra_ref ~%gw_message%~ 
+				ACTION_IF ~%tra_ref%~ STR_EQ ~@~ BEGIN
+				OUTER_SET len = STRING_LENGTH ~%gw_message%~
+				ACTION_IF (len > 1) BEGIN
+					LAF SUBSTRING INT_VAR start = 1 length = ~%len%~ -1 STR_VAR string = EVAL "%gw_message%" RET gw_message = substring END
+				END
+				OUTER_SPRINT gw_message (AT %gw_message%)
+			END ELSE BEGIN
+				OUTER_SPRINT gw_message ~%gw_message%~
+			END
+		END
+
+		ACTION_IF gw_log BEGIN
+			LOG "%gw_message%"
+			SILENT
+		END ELSE BEGIN
+			PRINT "%gw_message%"
+			SILENT
+		END
+
+	END
+
+END
+
+/*DEFINE_PATCH_FUNCTION ~GW_DISPLAY_MESSAGE~
+	INT_VAR gw_debug   = 0
+            gw_force   = 0
+	STR_VAR gw_message = ""
+BEGIN
+	PATCH_IF ((gw_force) OR ((gw_debug_variable > gw_debug) AND ("%gw_message%" STR_CMP ""))) BEGIN
+		PATCH_IF IS_AN_INT ~%gw_message%~ BEGIN
+			SPRINT gw_message (AT gw_message)
+		END ELSE BEGIN
+			PATCH_IF "%gw_message%" STRING_MATCHES_REGEXP "^@" = 0 BEGIN
+				INNER_PATCH_SAVE gw_message "%gw_message%" BEGIN
+					REPLACE_TEXTUALLY "@" ""
+				END
+				SPRINT gw_message (AT gw_message)
+			END ELSE BEGIN
+			SPRINT gw_message EVAL "%gw_message%"
+			END
+		END
+		PATCH_PRINT "%gw_message%"
+	END
+END
+
+DEFINE_PATCH_FUNCTION ~GW_DISPLAY_MESSAGE2~
+	INT_VAR gw_debug   = 0
+            gw_force   = 0
+	STR_VAR gw_message = ""
+BEGIN
+	PATCH_IF ((gw_force) OR ((gw_debug_variable > gw_debug) AND ("%gw_message%" STR_CMP ""))) BEGIN
+		PATCH_IF IS_AN_INT ~%gw_message%~ BEGIN
+			SPRINT gw_message (AT gw_message)
+		END ELSE BEGIN
+			SNPRINT 1 tra_ref ~%gw_message%~ 
+			PATCH_IF ~%tra_ref%~ STR_EQ ~@~ BEGIN
+				len = STRING_LENGTH ~%gw_message%~
+				PATCH_IF (len > 1) BEGIN
+					LPF SUBSTRING INT_VAR start = 1 length = ~%len%~ -1 STR_VAR string = EVAL "%gw_message%" RET gw_message = substring END
+				END
+				SPRINT gw_message (AT %gw_message%)
+			END ELSE BEGIN
+				SPRINT gw_message ~%gw_message%~
+			END
+		END
+		PATCH_PRINT "%gw_message%"
+	END
+END
+
+
+DEFINE_ACTION_FUNCTION ~GW_DISPLAY_MESSAGE~
+	INT_VAR gw_debug   = 0
+            gw_force   = 0
+	STR_VAR gw_message = ""
+BEGIN
+	OUTER_PATCH "" BEGIN
+		LPF ~GW_DISPLAY_MESSAGE~ INT_VAR gw_debug gw_force STR_VAR gw_message END
+	END
+END
+
+DEFINE_ACTION_FUNCTION ~GW_DISPLAY_MESSAGE2~
+	INT_VAR gw_debug   = 0
+            gw_force   = 0
+	STR_VAR gw_message = ""
+BEGIN
+	OUTER_PATCH "" BEGIN
+		LPF ~GW_DISPLAY_MESSAGE2~ INT_VAR gw_debug gw_force STR_VAR gw_message END
+	END
+END
+*/
+
+
+/* ============================================================================ *
+ *                                                                              *
+ *         F O N C T I O N S    e t    M A C R O S    G É N É R A L E S         *
+ *          G E N E R A L    F U N C T I O N S    a n d    M A C R O S          *
+ *                                                                              *
+ * ============================================================================ */
+
+/* ============================================================================================================================================= *
+ *  FUNCTION GW_DEF_FUNCTIONS_FILE : DÉFINITION des noms des fonctions à intégrer dans les sous-routines de patch des fichiers CRE, ITM et SPL.  *
+ *                                   DEFINES which functions to use when patching CRE, ITM and SPL files with GW_REINCLUDE function.             *
+ * ============================================================================================================================================= */
+
+DEFINE_PATCH_FUNCTION ~GW_DEF_FUNCTIONS_FILE~
+	INT_VAR GW_Itm_Headers	= 0	// Prise en compte des effets non globaux des objets	==>		0 = N	-	1 = Y.
+	RET		GW_Fonction_Add		// Intitulé de la fonction ajoutant un effet (ADD_CRE_EFFECT, ADD_ITEM_EFFECT, ADD_ITEM_EQEFFECT ou ADD_SPELL_EFFECT).
+			GW_Fonction_Del		// Intitulé de la fonction supprimant un effet (DELETE_CRE_EFFECT, DELETE_ITEM_EFFECT, DELETE_ITEM_EQEFFECTou DELETE_SPELL_EFFECT).
+			timing				// Valeur du champ timing : 0 - 2 - 9
+BEGIN
+
+	READ_ASCII 0 sig (3)
+	PATCH_MATCH ~%sig%~ WITH
+		CRE	BEGIN SPRINT GW_Fonction_Add "ADD_CRE_EFFECT"	SPRINT GW_Fonction_Del "DELETE_CRE_EFFECT"		SET timing = 9	END
+		ITM	BEGIN
+			PATCH_IF ("%GW_Itm_Headers%" = 0) BEGIN	// Pour effets globaux.
+				SPRINT GW_Fonction_Add "ADD_ITEM_EQEFFECT"	SPRINT GW_Fonction_Del "DELETE_ITEM_EQEFFECT"	SET timing = 2
+			END ELSE BEGIN							// Pour effets des headers.
+				SPRINT GW_Fonction_Add "ADD_ITEM_EFFECT"	SPRINT GW_Fonction_Del "DELETE_ITEM_EFFECT"		SET timing = 0
+			END
+		END
+		SPL	BEGIN SPRINT GW_Fonction_Add "ADD_SPELL_EFFECT"	SPRINT GW_Fonction_Del "DELETE_SPELL_EFFECT"	SET timing = 0	END
+		DEFAULT
+	END
+
+END	// of DEFINE_PATCH_FUNCTION
+
+
+/* ============================================================================================== *
+ *  FUNCTION GW_DEF_OFFSETS_FILE : DÉFINITION des offsets généraux des fichiers SPL, ITM et CRE.  *
+ *                                 DEFINES CRE, ITM and SPL files mains offsets.                  *
+ *                                LOADS the main offsets used to patch SPL, ITM and CRE files.  *
+ *  FUNCTION GW_DEF_OFFSETS_FILE : DÉFINITION des offsets généraux des fichiers SPL, ITM et CRE.   *
+ *                                 DEFINES the main offsets used to patch SPL, ITM and CRE files.  *
+ * ----------------------------------------------------------------------------------------------- *
+ *  Lancée une seule fois avant de modifier un ou plusieurs fichiers.                               *
+ *  Launched once before patching one or several files.                                             *
+ * ============================================================================================== */
+
+DEFINE_PATCH_FUNCTION ~GW_DEF_OFFSETS_FILE~
+    STR_VAR GW_file_sig = ""                // file type
+    RET     GW_oe                           // Extended Header offset
+            GW_oc                           // Extended Header count
+            GW_al                           // Extended Header length (ability length)
+            GW_fx                           // Feature blocks offset
+            GW_fi                           // Equipping-Casting feature blocks index
+            GW_fc                           // Equipping Feature Blocks count
+            GW_min_size                     // Minimum size
+BEGIN
+
+	PATCH_IF ("%GW_file_sig%" STR_CMP "") BEGIN SPRINT sig EVAL "%GW_file_sig%" END ELSE BEGIN READ_ASCII 0 sig (3) END
+	PATCH_MATCH ~%sig%~ WITH
+		ITM	BEGIN	SET GW_oe = 0x64        // Extended Header offset
+					SET GW_oc = 0x68        // Extended Header count
+					SET GW_al = 0x38        // Extended Header length (ability length)
+					SET GW_fx = 0x6a        // Feature blocks offset
+					SET GW_fi = 0x6e        // Equipping feature blocks index
+					SET GW_fc = 0x70        // Equipping Feature Blocks count
+					SET GW_min_size = 0x71  // Minimum size
+		END
+		SPL	BEGIN	SET GW_oe = 0x64        // Extended Header offset
+					SET GW_oc = 0x68        // Extended Header count
+					SET GW_al = 0x28        // Extended Header length (ability length)
+					SET GW_fx = 0x6a        // Feature Block Table offset
+					SET GW_fi = 0x6e        // Casting Feature Block offset
+					SET GW_fc = 0x70        // Casting Feature Block count
+					SET GW_min_size = 0x71  // Minimum size
+		END
+		CRE BEGIN	SET GW_oe = 0           // Extended Header offset
+					SET GW_oc = 0           // Extended Header count
+					SET GW_al = 0           // Extended Header length (ability length)
+					SET GW_fx = 0x2c4       // Effects offset
+					SET GW_fi = 0           // Casting Feature Block offset
+					SET GW_fc = 0x2c8       // Effects count
+					SET GW_min_size = 0x2d3 // Minimum size
+		END
+		DEFAULT
+	END
+
+END	// of DEFINE_PATCH_FUNCTION
+
+DEFINE_ACTION_FUNCTION ~GW_DEF_OFFSETS_FILE~
+    STR_VAR GW_file_sig = ""
+    RET     GW_oe
+            GW_oc
+            GW_al
+            GW_fx
+            GW_fi
+            GW_fc
+            GW_min_size
+BEGIN
+
+	OUTER_PATCH "" BEGIN
+		LPF ~GW_DEF_OFFSETS_FILE~ STR_VAR GW_file_sig RET GW_oe GW_oc GW_al GW_fx GW_fi GW_fc GW_min_size END
+	END
+
+END
+
+
+/* ======================================================================================= *
+ * MACRO GW_READ_THIS_2DA : LECTURE d'un fichier 2da (initialise arrays with 2da entries). *
+ * --------------------------------------------------------------------------------------- *
+ * Création de variables du type $GW_2da(~%2da%~ ~%row%~ ~%col%~)                          *
+ * ======================================================================================= */
+
+DEFINE_PATCH_MACRO ~GW_READ_THIS_2DA~ BEGIN
+
+	REPLACE_TEXTUALLY ~%wnl%~ ~%lnl%~
+	REPLACE_TEXTUALLY ~^2DA +V1\.0[%lnl%%mnl%].*[%lnl%%mnl%]~ ~~	// remove first two lines
+
+// read entries.
+// -------------
+	COUNT_2DA_COLS num_cols
+	SET num_cols -= 1												// account for extra column with row names
+	SET $GW_2da(~%2da%~ ~num_cols~) = num_cols
+	COUNT_2DA_ROWS num_cols num_rows								// counts how many rows have at least num_cols entries
+	SET num_rows -= 1												// account for extra row with column names
+	SET $GW_2da(~%2da%~ ~num_rows~) = num_rows
+
+// read file.
+// ----------
+	READ_2DA_ENTRIES_NOW ~read_%2da%~ num_cols
+	FOR (i = 0 ; i < num_cols ; ++i) BEGIN							// get column names
+		READ_2DA_ENTRY_FORMER ~read_%2da%~ 0 i col
+		SPRINT $GW_2da(~%2da%~ ~col_%i%~) ~%col%~
+	END
+	FOR (i = 0 ; i < num_rows ; ++i) BEGIN
+		READ_2DA_ENTRY_FORMER ~read_%2da%~ (i + 1) 0 row			// start reading from the first real row
+		SPRINT $GW_2da(~%2da%~ ~row_%i%~) ~%row%~
+		FOR (j = 0 ; j < num_cols ; ++j) BEGIN						// get row, col values
+			READ_2DA_ENTRY_FORMER ~read_%2da%~ (i + 1) (j + 1) value
+			SPRINT col $GW_2da(~%2da%~ ~col_%j%~)
+			SPRINT $GW_2da(~%2da%~ ~%row%~ ~%col%~) ~%value%~
+
+			PATCH_IF gw_debug_variable > 2 BEGIN
+				PATCH_MATCH ~%2da%~ WITH
+					xxx GWCRECOL skilldex skillrac BEGIN	// savemonk saveprs saverog savewar savewiz savecndh savecng THAC0 GWTHAC0 hpconbon GWHPCLAS intmod lore lorebonus mxsplbrd mxspldru mxsplpal mxsplprs mxsplran mxsplsrc mxsplwis mxsplwiz profs weapprof repstart skillbrd skillrng splsrckn strtgold wspatck
+						PATCH_PRINT "CONTROLE 2da : $GW_2da(~%2da%~ ~%row%~ ~%col%~) = %value%"	END
+					DEFAULT
+				END
+			END
+			PATCH_IF gw_debug_variable > 0 BEGIN
+				PATCH_MATCH ~%2da%~ WITH	// GWItemAC GWITMUSE GWITMRES	GWITMBAM GWITMCOL GWITMGLO GWColors
+					xxx BEGIN
+						PATCH_PRINT "CONTROLE 2da : $GW_2da(~%2da%~ ~%row%~ ~%col%~) = %value%"	END
+					DEFAULT
+				END
+			END
+		END	// of FOR columns
+	END		// of FOR rows
+END			// of DEFINE_PATCH_MACRO
+
+
+/* ============================================================================================== *
+ * MACRO GW_READ_2DA_BUT_NO : LECTURE des fichiers 2DA dont les valeurs sont différentes de "no". *
+ * ---------------------------------------------------------------------------------------------- *
+ * Création de variables du type $GW_2da(~%2da%~ ~%row%~ ~%col%~)                                 *
+ * ============================================================================================== */
+
+DEFINE_PATCH_MACRO ~GW_READ_2DA_BUT_NO~ BEGIN
+
+	REPLACE_TEXTUALLY ~%wnl%~ ~%lnl%~
+	REPLACE_TEXTUALLY ~^2DA +V1\.0[%lnl%%mnl%].*[%lnl%%mnl%]~ ~~	// remove first two lines
+
+// read entries.
+// -------------
+	COUNT_2DA_COLS num_cols
+	SET num_cols -= 1												// account for extra column with row names
+	SET $GW_2da(~%2da2~ ~num_cols~) = num_cols
+	COUNT_2DA_ROWS num_cols num_rows								// counts how many rows have at least num_cols entries
+	SET num_rows -= 1												// account for extra row with column names
+	SET $GW_2da(~%2da2%~ ~num_rows~) = num_rows
+
+// read file.
+// ----------
+	READ_2DA_ENTRIES_NOW ~read_%2da%~ num_cols
+	FOR (i = 0 ; i < num_cols ; ++i) BEGIN							// get column names
+		READ_2DA_ENTRY_FORMER ~read_%2da%~ 0 i col
+		SPRINT $GW_2da(~%2da2%~ ~col_%i%~) ~%col%~
+	END
+	FOR (i = 0 ; i < num_rows ; ++i) BEGIN
+		READ_2DA_ENTRY_FORMER ~read_%2da%~ (i + 1) 0 row			// start reading from the first real row
+		SPRINT $GW_2da(~%2da2%~ ~row_%i%~) ~%row%~
+		FOR (j = 0 ; j < num_cols ; ++j) BEGIN						// get row, col values
+			READ_2DA_ENTRY_FORMER ~read_%2da%~ (i + 1) (j + 1) value
+			PATCH_IF ("%value%" STRING_COMPARE_CASE "no") BEGIN
+				SPRINT col $GW_2da(~%2da2%~ ~col_%j%~)
+				SPRINT $GW_2da(~%2da2%~ ~%row%~ ~%col%~) ~%value%~
+
+				PATCH_IF gw_debug_variable > 1 BEGIN
+					PATCH_MATCH ~%2da2%~ WITH	// GWCREIMM GWCREREG GWFoodEx
+						xxx BEGIN
+							PATCH_PRINT "CONTROLE 2da : $GW_2da(~%2da2%~ ~%row%~ ~%col%~) = %value%"	END
+						DEFAULT
+					END
+				END
+				PATCH_IF gw_debug_variable > 0 BEGIN
+					PATCH_MATCH ~%2da2%~ WITH	//
+						xxx BEGIN
+							PATCH_PRINT "CONTROLE 2da : $GW_2da(~%2da2%~ ~%row%~ ~%col%~) = %value%"	END
+						DEFAULT
+					END
+				END
+
+			END	// of PATCH_IF ("%value%" STRING_COMPARE_CASE "no")
+		END		// of FOR colonne
+	END			// of FOR ligne
+END				// of DEFINE_PATCH_MACRO
+
+
+/* ========================================================================================= *
+ * FONCTION GW_FIND_SECONDARY_TYPE : RECHERCHE de la valeur d'une école de magie secondaire. *
+ * ----------------------------------------------------------------------------------------- *
+ * Création de la variable $GW_sectype(~msectype~ ~%GW_sectype_to_find%~)                    *
+ * ========================================================================================= */
+
+DEFINE_ACTION_FUNCTION ~GW_FIND_SECONDARY_TYPE~
+	STR_VAR	GW_sectype_to_find = ""		// École secondaire à trouver dans le fichier msectype.2da
+	RET		GW_sectype_found			// Y = École secondaire trouvée	-	no = École secondaire absente
+			GW_sectype_value			// Valeur de l'École secondaire trouvée dans le fichier msectype.2da
+BEGIN
+
+	OUTER_SPRINT GW_sectype_found "no"
+	OUTER_SET GW_sectype_value = "-99"
+	ACTION_IF "%GW_sectype_to_find%" STR_CMP "" BEGIN
+		ACTION_IF (FILE_CONTAINS_EVALUATED (msectype.2da "%GW_sectype_to_find%")) BEGIN
+			ACTION_IF NOT VARIABLE_IS_SET $GW_sectype(~msectype~ ~%GW_sectype_to_find%~) BEGIN
+				COPY_EXISTING - ~msectype.2da~ ~override~
+					READ_2DA_ENTRIES_NOW r2da_msectype 2
+					FOR (i = 1 ; i < r2da_msectype ; ++i) BEGIN
+						READ_2DA_ENTRY_FORMER r2da_msectype i 0 sectype
+						PATCH_IF ("%sectype%" STRING_EQUAL_CASE "%GW_sectype_to_find%") BEGIN
+							SET $GW_sectype(~msectype~ ~%GW_sectype_to_find%~) = i - 1
+							SET GW_sectype_value = $GW_sectype(~msectype~ ~%GW_sectype_to_find%~)
+							SPRINT GW_sectype_found "Y"
+							PATCH_IF gw_debug_variable > 2 BEGIN
+								PATCH_PRINT "CONTROLE GW_sectype_found = %GW_sectype_found%	-	$GW_sectype(~msectype~ ~%GW_sectype_to_find%~) = %GW_sectype_value%"
+							END
+						END
+					END
+				BUT_ONLY
+			END ELSE BEGIN
+				OUTER_SPRINT GW_sectype_found "Y"
+				OUTER_SET GW_sectype_value = $GW_sectype(~msectype~ ~%GW_sectype_to_find%~)
+			END
+		END
+	END
+END	// of DEFINE_ACTION_FUNCTION
+
+
+/* ============================================================================================================= *
+ * FUNCTIONS GW_REINCLUDE : INTÉGRATION d'une sous-routine tp2 dans une routine (PATCH et ACTION).               *
+ *							GENERATE and RUN an include WeiDU process (tp*) into another one (PATCH and ACTION). *
+ * ------------------------------------------------------------------------------------------------------------- *
+ * Écrit la liste de commandes "input" dans un fichier temporaire, puis l'exécute automatiquement.               *
+ * Write the commands lists 'input" into a temporary file, then run it.                                          *
+ * ============================================================================================================= */
+
+DEFINE_PATCH_FUNCTION ~GW_REINCLUDE~
+	STR_VAR	input = ""		// List of commands or functions to launch.
+BEGIN
+
+	PATCH_SILENT
+	INNER_ACTION BEGIN
+		<<<<<<<< temp_file
+			%input%
+		>>>>>>>>
+		COPY - temp_file ~temp_file2~ EVALUATE_BUFFER
+	END
+	PATCH_IF gw_debug_variable > 2 BEGIN
+		PATCH_PRINT ~%input%~
+	END
+	PATCH_REINCLUDE ~temp_file2~
+	PATCH_VERBOSE
+
+END	// of DEFINE_PATCH_FUNCTION
+
+
+DEFINE_ACTION_FUNCTION ~GW_REINCLUDE~
+	STR_VAR	input = ""
+BEGIN
+
+	SILENT
+	<<<<<<<< temp_file
+		%input%
+	>>>>>>>>
+	COPY - temp_file ~temp_file2~ EVALUATE_BUFFER
+	ACTION_IF gw_debug_variable > 2 BEGIN
+		PRINT ~%input%~
+	END
+	REINCLUDE ~temp_file2~
+	VERBOSE
+
+END	// of DEFINE_ACTION_FUNCTION
+
+
+/* =================================================================================================================================================== *
+ * FONCTION GW_REINCLUDE_MESSAGE_AF : INTÉGRATION d'un message dans un fichier .txt pour débogage pendant le développement (si GW_debug_variable > 0). *
+ * =================================================================================================================================================== */
+
+DEFINE_PATCH_FUNCTION ~GW_REINCLUDE_MESSAGE_AF~
+	STR_VAR	input_file_txt	= ""	// Fichier txt dans lequel est écrit le message.
+			input_valeur	= ""	// Valeur à écrire entre le bloc1 et le bloc2.
+			input_bloc1		= ""	// Premier bloc à écrire.
+			input_bloc2		= ""	// Deuxième bloc à écrire.
+			input_bloc3		= ""	// Troisième bloc à écrire.
+			input_mess_AF	= ""	// Message à écrire en court-circuitant les valeurs précédentes.
+BEGIN
+
+	PATCH_SILENT
+	PATCH_IF ("%input_bloc1%" STRING_COMPARE_CASE "") BEGIN
+		SPRINT input_mess_AF EVAL "~  ==>   %input_bloc1% %input_valeur%%input_bloc2%%input_bloc3%~"
+	END ELSE BEGIN
+		SPRINT input_mess_AF EVAL "~  ==>   Valeur %input_valeur% manquante pour traitement%input_bloc2%%input_bloc3%~"
+	END
+	PATCH_IF gw_debug_variable > 1 BEGIN
+		PATCH_PRINT ~%input_file_txt% - %input_mess_AF%~
+	END
+	INNER_ACTION BEGIN LAF ~GW_REINCLUDE_MESSAGE_AF~ STR_VAR input_file_AF = EVAL "%input_file_txt%" input_AF = EVAL "%input_mess_AF%" END
+	END
+	PATCH_VERBOSE
+
+END	// of DEFINE_PATCH_FUNCTION
+
+// TODO : modifier le nom du fichier txt en variable.
+DEFINE_ACTION_FUNCTION ~GW_REINCLUDE_MESSAGE_AF~
+	STR_VAR input_AF		= ""	// Texte à écrite
+			input_file_AF	= ""	// Fichier dans lequel on écrit le message.
+BEGIN
+
+	<<<<<<<< temp_file
+		SILENT
+		APPEND_OUTER ~%input_file_AF%~ %input_AF%
+		VERBOSE
+	>>>>>>>>
+	COPY - temp_file ~temp_file2~ EVALUATE_BUFFER
+	REINCLUDE ~temp_file2~
+
+END	// of DEFINE_ACTION_FUNCTION
+
+
+
+/* ===================================================================================== *
+ *                                                                                       *
+ *         F O N C T I O N S    e t    M A C R O S    d e    C O L O R A T I O N         *
+ *                                                                                       *
+ * ===================================================================================== */
+
+/* ================================================================================================= *
+ * MACRO GW_ITEM_COLOR_LOCATIONS : DÉFINITION des variables de localisation des couleurs des objets. *
+ * ------------------------------------------------------------------------------------------------- *
+ * Appelée par la librairie GW_Itm_fonctions_macros.tpa                                              *
+ * ------------------------------------------------------------------------------------------------- *
+ * MACRO GW_ITEM_COLOR_CLEAR	 : SUPPRESSION des effets de coloration existants.                   *
+ * ------------------------------------------------------------------------------------------------- *
+ * Reprises des macros de 1ppv4.1.0 pour une meilleure compatibilité (et un peu de paresse...).      *
+ * ================================================================================================= */
+
+DEFINE_ACTION_MACRO ~GW_ITEM_COLOR_LOCATIONS~ BEGIN
+// for weapons
+	OUTER_SET wgrey = 16	// Quillons or Crossguard
+	OUTER_SET wteal = 17	// STAF : sous la pointe et sur le bas et au milieu
+	OUTER_SET wpink = 18	//
+	OUTER_SET wyellow = 19	//
+	OUTER_SET wred = 20		// Grip (usually not visible as it's in the characters hand)
+	OUTER_SET wblue = 21	// Blade or major portion of weapon
+	OUTER_SET wgreen = 22	//
+// STAF : 16 - 17 - 21 - 18 - 17 - 21 - 18 - 21 - 17 - 16
+// for helmets
+	OUTER_SET hgrey = 48	// Helm ornamentation - i.e. wings
+	OUTER_SET hteal = 49	// Helm ornamentation - i.e. feathers/horsehair
+	OUTER_SET hpink = 50	// Helm ornamentation - i.e. feathers/horsehair
+	OUTER_SET hyellow = 51	//
+	OUTER_SET hred = 52		// Helm face
+	OUTER_SET hblue = 53	// Helm - the main covering
+	OUTER_SET hgreen = 54	//
+// for shields
+	OUTER_SET sgrey = 32	// Shield hub
+	OUTER_SET steal = 33	// Shield interior
+	OUTER_SET spink = 34	// Shield panelling - Helmet misc
+	OUTER_SET syellow = 35	//
+	OUTER_SET sred = 36		//
+	OUTER_SET sblue = 37	// Shield rim
+	OUTER_SET sgreen = 38	//
+// for armour
+	OUTER_SET agrey = 0		// Belt Buckle (on armour) or amulets (on robes) - entire body for some animations
+	OUTER_SET ateal = 1		// Minor colour
+	OUTER_SET apink = 2		// Major colour
+	OUTER_SET ayellow = 3	// Skin colour
+	OUTER_SET ared = 4		// Strap colour (on armour) or minor trimming (on robes - the centre strip down a robe and the hem on some robes)
+	OUTER_SET ablue = 5		// Armor colour (and major trimming on robe - cross trim and cape trim on robe of archmagi)
+	OUTER_SET agreen = 6	// Hair colour
+
+END	// of DEFINE_ACTION_MACRO
+
+
+DEFINE_PATCH_MACRO ~GW_ITEM_COLOR_CLEAR~ BEGIN	// Suppression des opcodes de coloration existants.
+
+	PATCH_FOR_EACH op IN 7 8 9 BEGIN	// VOIR AF TODO 51 52
+		LPF ~DELETE_ITEM_EQEFFECT~ INT_VAR opcode_to_delete = op END
+	END
+
+END	// of DEFINE_PATCH_MACRO
+
+
+/* ============================================================================================================================================== *
+ * FONCTION GW_DEF_RGB_COLOR   : DÉFINITION du code RGB pour les effets de recoloration à partir des valeurs Red Green Blue.                      *
+ * FONCTION GW_DEF_SPEED_COLOR : DÉFINITION du champ "Location and Speed" pour les effets de recoloration à partir des valeurs Location et Speed. *
+ * ---------------------------------------------------------------------------------------------------------------------------------------------- *
+ * Utilisées pour calculer les variables de la fonction GW_ADD_COLOR_EFFECT.                                                                      *
+ * ============================================================================================================================================== */
+
+DEFINE_PATCH_FUNCTION ~GW_DEF_RGB_COLOR~
+	INT_VAR	GW_red	 = 0	// Valeur "rouge"
+			GW_green = 0	// Valeur "vert"
+			GW_blue	 = 0	// Valeur "bleu"
+	RET		GW_color_RGB	// Valeur du paramètre 1 de l'opcode de colorisation (concaténation des valeurs R G B).
+BEGIN
+
+	SET GW_color_RGB = (GW_red << 8) + (GW_green << 16) + (GW_blue << 24)
+
+END	// of DEFINE_PATCH_FUNCTION
+
+
+DEFINE_PATCH_FUNCTION ~GW_DEF_SPEED_COLOR~
+	INT_VAR	GW_location	 = 0	// Valeur de l'emplacement où appliquer l'effet de coloration.
+			GW_speed	 = 0	// Valeur de la vitesse de pulsation de la couleur.
+	RET		GW_color_speed		// Valeur du paramètre 2 de l'opcode de colorisation (concaténation des valeurs location et speed).
+BEGIN
+
+	SET GW_color_speed = (GW_location) + (GW_speed << 16)
+
+END	// of DEFINE_PATCH_FUNCTION
+
+
+/* ===================================================================================================== *
+ * FONCTION GW_ADD_COLOR_EFFECT : AJOUT automatique d'un effet de coloration à un fichier CRE ou ITM.    *
+ * ----------------------------------------------------------------------------------------------------- *
+ * Ajoute un effet de coloration (7, 9, 8) défini selon la variable GW_color_macro (colour, pulse, glow) *
+ * et dont les valeurs RGB ont été définies au préalable.                                                *
+ * ----------------------------------------------------------------------------------------------------- *
+ * Lancée par de nombreuses routines et de fonctions (GW_ITM_COLORATION, GW_ITM_GLOW, GW_CLONE_ARME...). *
+ * ===================================================================================================== */
+
+DEFINE_PATCH_FUNCTION ~GW_ADD_COLOR_EFFECT~
+	STR_VAR	GW_color_macro = "no"	// "colour", "pulse" ou "glow".
+BEGIN
+
+	PATCH_MATCH ~%GW_color_macro%~ WITH
+		colour	BEGIN	SET parameter1 = GW_gradient	// set colour gradient
+						SET parameter2 = GW_location	// set colour location
+						SPRINT input_add_col_eff "LPF ~%GW_Fonction_Add%~ INT_VAR opcode = 7 target = 1 timing parameter1 parameter2 END"
+						LPF ~GW_REINCLUDE~ STR_VAR input = EVAL "%input_add_col_eff%" END
+		END
+		pulse	BEGIN	LPF ~GW_DEF_RGB_COLOR~ INT_VAR GW_red GW_green GW_blue RET GW_color_RGB END
+						LPF ~GW_DEF_SPEED_COLOR~ INT_VAR GW_location GW_speed RET GW_color_speed END
+						SET parameter1 = GW_color_RGB	// set RGB value
+						SET parameter2 = GW_color_speed	// set location and speed
+						SPRINT input_add_col_eff "LPF ~%GW_Fonction_Add%~ INT_VAR opcode = 9 target = 1 timing parameter1 parameter2 END"
+						LPF ~GW_REINCLUDE~ STR_VAR input = EVAL "%input_add_col_eff%" END
+		END
+		glow	BEGIN	LPF ~GW_DEF_RGB_COLOR~ INT_VAR GW_red GW_green GW_blue RET GW_color_RGB END
+						SET parameter1 = GW_color_RGB	// set RGB value
+						SET parameter2 = GW_location	// set colour location
+						SPRINT input_add_col_eff "LPF ~%GW_Fonction_Add%~ INT_VAR opcode = 8 target = 1 timing parameter1 parameter2 END"
+						LPF ~GW_REINCLUDE~ STR_VAR input = EVAL "%input_add_col_eff%" END
+		END
+		DEFAULT
+	END
+
+END	// of DEFINE_PATCH_MACRO
+
+
+
+/* ===================================================================================== *
+ *                                                                                       *
+ *         F O N C T I O N S    d e    C R É A T I O N    d e    F I C H I E R S         *
+ *                                                                                       *
+ * ===================================================================================== */
+
+/* ============================================================================= *
+ * FONCTION GW_CLONE_VVC : CLONAGE d'un fichier vvc à partir de tables (arrays). *
+ * ----------------------------------------------------------------------------- *
+ * Utilisée par la routine 210_vvc.tph                                           *
+ * ============================================================================= */
+
+DEFINE_PATCH_FUNCTION ~GW_CLONE_VVC~
+BEGIN
+
+	PATCH_SILENT
+	READ_BYTE	 0x18 "drawing1"
+/*  SHORT Display flags :
+bit0: Transparent - bit1: Translucent - bit2: Translucent shadow - bit3: Blended - bit4: Mirror X axis - bit5: Mirror Y axis - bit6: Clipped - bit7: Copy from back - bit8: Clear fill
+bit9: 3d blend (DLTCEP Glow (blend 2) - bit10: Not covered by wall - bit 11: Persist through timestop - bit12: Ignore dream palette - bit13: 2d blend - bit14-15: Unused	*/
+	READ_BYTE	 0x1a "colour1"
+/*	SHORT colour flags - bit0: Not light source - bit1: Light source - bit2: Internal brightness - bit3: Timestopped - bit4: Unused - bit5: Internal gamma - bit6: Non-reserved palette
+bit7: Full palette - bit8: Unused - bit9: Sepia	- bit10-15: Unknown */
+	READ_LONG	 0x20 "sequencing1"
+/* LONG Sequence flags
+bit0: Looping - bit1: Special lighting - bit2: Modify for height - bit3: Draw animation - bit4: Custom palette - bit5: Purgeable - bit6: Not covered by wallgroups
+bit7: Mid-level brighten - bit8: High-level brighten - bit9-32: Unknown	*/
+	WRITE_ASCIIE 0x08 "%donnees_0%" #8	// Bam
+	WRITE_ASCIIE 0x78 "%donnees_1%" #8	// Son
+	WRITE_ASCIIE 0x80 "%donnees_9%" #8	// Son2
+	WRITE_LONG	 0x34 "%donnees_3%"		// Frame rate
+	WRITE_LONG	 0x28 "%donnees_4%"		// X position
+	WRITE_LONG	 0x2c "%donnees_5%"		// Y position
+	WRITE_LONG	 0x4c "%donnees_6%"		// Z position
+	WRITE_LONG	 0x68 "%donnees_2%"		// Séquence
+
+// Traitement de la variable Blend : N : no blend (bit3 : Blended)	-	T : Translucent (bit1)	- 3 = 3D blend ou Glow (blend2)
+	PATCH_MATCH ~%donnees_7%~ WITH
+		N	BEGIN	WRITE_BYTE	0x18 ("%drawing1%" BAND 0b11110111) END		// supprime le flag Blended
+		T	BEGIN	WRITE_BYTE	0x18 ("%drawing1%" BAND 0b11110111)			// supprime le flag Blended
+					READ_BYTE	0x18 "drawing1"
+					WRITE_BYTE	0x18 ("%drawing1%" BOR 0b00000010)	END		// ajoute le flag Translucent
+		TT	BEGIN	WRITE_SHORT 0x18 (THIS BAND BNOT BIT3)					// supprime le flag Blended
+					WRITE_SHORT 0x18 THIS | BIT0 | BIT1				END		// ajoute les flags Transparent et Translucent
+		3	BEGIN	WRITE_SHORT 0x18 THIS | BIT3 | BIT9				END		// ajoute Blend et 3D Blended
+/*READ_BYTE	0x19 "drawing2"	WRITE_BYTE	0x19 ("%drawing2%" BOR 0b00000010)	*/
+		T3	BEGIN	//WRITE_BYTE	0x18 ("%drawing1%" BAND 0b11110111)			// supprime le flag Blended
+					WRITE_SHORT 0x18 (THIS BAND BNOT BIT3)																	// supprime Druidic exclusion
+					WRITE_SHORT 0x18 THIS | BIT1 | BIT9	END					// ajoute Transluscent et 3D blend
+		DEFAULT
+	END
+
+// Traitement de la variable Looping (bit0)
+	PATCH_MATCH ~%donnees_8%~ WITH
+		L	BEGIN	WRITE_BYTE 0x20 ("%sequencing1%" BOR 0b00000001) END // ajoute le flag "looping"
+		DEFAULT
+	END
+
+// Traitement de la variable Brighten : 1 Brighten (bit5 : Internal gamma)	-	2 Mid et High-level brighten	-	3 Brighten + Mid et High-level brighten	- IB : Internal brightness
+	PATCH_MATCH ~%donnees_10%~ WITH
+		1	BEGIN	READ_BYTE   0x1a "colour1"	WRITE_BYTE 0x1a ("%colour1%" BOR 0b00100000) END	// ajoute le flag "Internal gamma"
+		2	BEGIN	WRITE_LONG  0x20 THIS | BIT7 | BIT8	END											// Mid et High-level brighten
+		3	BEGIN	WRITE_SHORT 0x1a THIS | BIT5													// ajoute le flag "Internal gamma"
+					WRITE_LONG  0x20 THIS | BIT7 | BIT8	END											// Mid et High-level brighten 020 1c9
+		IB	BEGIN	WRITE_SHORT 0x1a THIS | BIT2											END		// ajoute le flag "Internal brightness"
+		DEFAULT
+	END
+
+// Traitement de la variable Not covered by wallgroups (bit6)
+	PATCH_MATCH ~%donnees_11%~ WITH
+		C	BEGIN	READ_BYTE 0x20 "sequencing1"	WRITE_BYTE 0x20 ("%sequencing1%" BOR 0b01000000) END // ajoute le flag "Not covered by wallgroups"
+				//	WRITE_LONG 0x20 THIS | BIT6 // ajoute "Not covered by wallgroups"
+		DEFAULT
+	END
+// Traitement de la variable Flying : Modify for height (bit2)
+	PATCH_MATCH ~%donnees_12%~ WITH
+		F	BEGIN	READ_BYTE 0x20 "sequencing1"	WRITE_BYTE 0x20 ("%sequencing1%" BOR 0b00000100) END // ajoute le flag "Flying"
+				//	WRITE_LONG 0x20 THIS | BIT2 // ajoute "Flying"
+		DEFAULT
+	END
+
+// Traitement de la variable Darken
+	PATCH_MATCH ~%donnees_13%~ WITH
+		D	BEGIN	READ_BYTE 0x1a "colour1"	WRITE_BYTE 0x1a ("%colour1%" BOR 0b00000001) END // ajoute le flag "darken"
+		DEFAULT
+	END
+
+	PATCH_VERBOSE
+END	// of DEFINE_PATCH_FUNCTION
+
+
+/* =================================================================================== *
+ * FONCTION GW_CREATE_EFFECT : CRÉATION d'effets à partir de tables (arrays).          *
+ * ----------------------------------------------------------------------------------- *
+ * La variable GW_effect_group permet de customiser la création selon le type d'effet. *
+ * ----------------------------------------------------------------------------------- *
+ * Utilisée par la routine 220_Effets.tph                                              *
+ * =================================================================================== */
+
+DEFINE_PATCH_FUNCTION ~GW_CREATE_EFFECT~
+	STR_VAR GW_effect_group = ""		// Groupe d'effet (summon...)
+BEGIN
+
+	PATCH_SILENT
+	SET par1 = EVAL "%donnees_4%"
+	SET par2 = EVAL "%donnees_5%"
+	PATCH_IF (GW_EE) AND ("%donnees_0%" = 146) AND (par1 = 0) AND ("%donnees_5%" = 1) BEGIN		// TODO voir signification
+		PATCH_IF ("%effet_sort%" STR_EQ "GWCanCaV") OR ("%effet_sort%" STR_EQ "GWExaltL") BEGIN SET par2 = 2 END
+	END
+	WRITE_LONG	 0x10 "%donnees_0%"		// opcode
+	WRITE_LONG	 0x14 "%donnees_1%"		// cible
+	WRITE_LONG	 0x18 "%donnees_12%"	// power
+	SET GW_special = 0
+	PATCH_MATCH ~%donnees_0%~ WITH
+		206	139 BEGIN
+			PATCH_IF NOT (IS_AN_INT "%donnees_4%") BEGIN
+				SET par1 = "-1"
+			END ELSE BEGIN
+				PATCH_IF (STRING_LENGTH "%donnees_4%" > 6)	BEGIN
+					SET par1 = RESOLVE_STR_REF ((AT %donnees_4%))
+				END ELSE BEGIN										// Sinon, on va chercher le nom de l'objet dans le fichier dialog.tlk
+					SET par1 = EVAL "%donnees_4%"
+				END
+			END END
+		328		BEGIN SET GW_special = 1	END
+		DEFAULT
+	END
+	WRITE_LONG	 0x1c EVAL "%par1%"			// paramètre 1
+	WRITE_LONG	 0x20 EVAL "%par2%"			// paramètre 2
+	WRITE_SHORT	 0x24 "%donnees_2%"			// timing
+	WRITE_SHORT	 0x28 "%donnees_3%"			// duration
+	WRITE_SHORT	 0x2c "%donnees_9%"			// probabilité 1
+	WRITE_SHORT	 0x2e "%donnees_8%"			// probabilité 2
+	WRITE_ASCIIE 0x30 "%donnees_16%"		// ressource
+	WRITE_LONG	 0x38 "%donnees_10%"		// Dice Thrown
+	WRITE_LONG	 0x3c "%donnees_11%"		// Dice Sides
+	WRITE_LONG	 0x40 "%donnees_13%"		// saving throw
+	WRITE_LONG	 0x44 "%donnees_14%"		// save bonus
+	WRITE_LONG	 0x48 GW_special			// special
+	WRITE_LONG	 0x5c "%donnees_15%"		// resist dispel
+	WRITE_LONG	 0x60 "%donnees_6%"			// paramètre 3 (Bonus-Malus - Charges #2)
+	WRITE_LONG	 0x64 "%donnees_7%"			// paramètre 4 (Charges #3)
+	PATCH_IF ("%GW_effect_group%" STRING_COMPARE_CASE "summon" = 0) BEGIN
+		WRITE_ASCIIE 0x70 ~%donnees_17%~ #8	// vvc
+	END
+	PATCH_VERBOSE
+END	// of DEFINE_PATCH_FUNCTION
+
+
+
+/*
+DEFINE_PATCH_MACRO ~ADD_SPELL_CASTING_FEATURE~ BEGIN
+	PATCH_IF (BUFFER_LENGTH > GW_min_size) THEN BEGIN
+		PATCH_IF (~%SOURCE_EXT%~ STRING_EQUAL_CASE ~spl~ = 1) BEGIN GW_al = 0x28 END ELSE BEGIN GW_al = 0x38 END
+		PATCH_IF (~%SOURCE_EXT%~ STRING_EQUAL_CASE ~cre~ = 1) BEGIN GW_insert_bytes = 0x108 END ELSE BEGIN GW_insert_bytes = 0x30 END
+		PATCH_MATCH ~%SOURCE_EXT%~ WITH
+			ITM BEGIN	SET GW_fx_type = 0 END				// ITM_V10_GEN_EFFECTS (0x6a 4 0x70 2 0x6e 2 0x30)
+			SPL	BEGIN	SET GW_fx_type = 0 END				// SPL_V10_GEN_EFFECTS (0x6a 4 0x70 2 0x6e 2 0x30)
+			DEFAULT		READ_BYTE 0x33 GW_fx_type ELSE 2	// CRE_V10_EFFECTS (0x2c4 4 0x2c8 4 0 0 0x108)
+		END
+		READ_LONG	GW_oe abil_off		// Extended Header offset
+		READ_SHORT	GW_oc abil_num		// Extended Header count
+		READ_LONG	GW_fx fx_off		// Feature Block Table offset
+		READ_SHORT	GW_fi eq_eff_indx	// Casting Feature Block offset	- Index into equipping feature blocks
+		READ_SHORT	GW_fc eq_eff_count	// Casting Feature Block count
+
+		INSERT_BYTES (fx_off + eq_eff_indx) GW_insert_bytes
+
+		WRITE_SHORT (fx_off +        (0x08 * GW_fx_type) + eq_eff_indx) GW_opcode
+		WRITE_BYTE	(fx_off + 0x02 + (0x08 * GW_fx_type) + eq_eff_indx) GW_target
+		WRITE_BYTE	(fx_off + 0x03 + (0x08 * GW_fx_type) + eq_eff_indx) GW_power
+		WRITE_LONG	(fx_off + 0x04 + (0x08 * GW_fx_type) + eq_eff_indx) GW_parameter1
+		WRITE_LONG	(fx_off + 0x08 + (0x08 * GW_fx_type) + eq_eff_indx) GW_parameter2
+		WRITE_BYTE	(fx_off + 0x0c + (0x08 * GW_fx_type) + eq_eff_indx) GW_timing
+		WRITE_BYTE	(fx_off + 0x0d + (0x08 * GW_fx_type) + eq_eff_indx) GW_resist_dispel
+		WRITE_LONG	(fx_off + 0x0e + (0x08 * GW_fx_type) + eq_eff_indx) GW_duration
+		WRITE_BYTE	(fx_off + 0x12 + (0x08 * GW_fx_type) + eq_eff_indx) GW_probability1
+		WRITE_BYTE	(fx_off + 0x13 + (0x08 * GW_fx_type) + eq_eff_indx) GW_probability2
+		WRITE_ASCIIE (fx_off + 0x14 + (0x08 * GW_fx_type) + eq_eff_indx) ~%GW_resource%~ #8
+		WRITE_LONG	(fx_off + 0x1c + (0x08 * GW_fx_type) + eq_eff_indx) GW_dicenumber
+		WRITE_LONG	(fx_off + 0x20 + (0x08 * GW_fx_type) + eq_eff_indx) GW_dicesize
+		WRITE_LONG	(fx_off + 0x24 + (0x08 * GW_fx_type) + eq_eff_indx) GW_savingthrow
+		WRITE_LONG	(fx_off + 0x28 + (0x08 * GW_fx_type) + eq_eff_indx) GW_savebonus
+
+// correcting global effects number - Casting Feature Block count
+		WRITE_SHORT GW_fc (eq_eff_count + 1)
+
+// correcting 1st effect index
+		FOR (i = 0 ; i < abil_num ; ++i) BEGIN
+			READ_SHORT (abil_off + i * GW_al + 0x20) 1st_effect_index
+			PATCH_IF (1st_effect_index > eq_eff_indx)									// if abilility after eq effects
+				  OR ((1st_effect_index = eq_eff_indx) AND (eq_eff_count = 0)) BEGIN
+				WRITE_SHORT (abil_off + i * GW_al + 0x20) (1st_effect_index + 1)		// increase 1 effect 1st_effect_index1 by 1
+			END
+		END
+	END
+END	// of DEFINE_PATCH_FUNCTION
+*/
+/* VOIR
+FOR (i = 0 ; i < eq_eff_count ; i += 1) BEGIN
+		READ_SHORT (fx_off + (0x08 * GW_fx_type) + ((eq_eff_indx + i * (0x30 + (0xd8 * GW_fx_type))))) opcode ELSE 0
+		PATCH_IF ("%opcode%" = "%GW_opcode_to_check%") BEGIN		// Vérification de l'existence de l'opcode.
+			READ_LONG  (fx_off + 0x08 + (0x10 * GW_fx_type) + ((eq_eff_indx + i * (0x30 + (0xd8 * GW_fx_type))))) parameter2
+			PATCH_IF ("%GW_param2_to_check%" != "-99") BEGIN		// Vérification de l'existence de la valeur du Paramètre 2 à modifier.
+				PATCH_IF ("%GW_param2_to_check%" = "%parameter2%") BEGIN
+					PATCH_IF GW_debug_variable > 2 BEGIN
+						PATCH_PRINT "%SOURCE_FILE%	-	GW_ef = %GW_ef%	-	effect = %i%	-	opcode = %opcode% - parameter2 = %parameter2%."
+					END
+				END	// of PATCH_IF ("%GW_param2_to_check%" = "%parameter2%")
+			END		// of PATCH_IF ("%GW_param2_to_check%" != "-99")
+		END			// of PATCH_IF ("%opcode%" = "%GW_opcode_to_check%")
+END					// of looping through effects
+
+         READ_SHORT (fx_off        + (0x08 * fx_type) + ((abil_fx_idx + i) * (0x30 + (0xd8 * fx_type)))) o_opcode
+          READ_BYTE  (fx_off + 0x02 + (0x0a * fx_type) + ((abil_fx_idx + i) * (0x30 + (0xd8 * fx_type)))) o_target
+          READ_BYTE  (fx_off + 0x03 + (0x0d * fx_type) + ((abil_fx_idx + i) * (0x30 + (0xd8 * fx_type)))) o_power
+          READ_LONG  (fx_off + 0x04 + (0x10 * fx_type) + ((abil_fx_idx + i) * (0x30 + (0xd8 * fx_type)))) o_parameter1
+          READ_LONG  (fx_off + 0x08 + (0x10 * fx_type) + ((abil_fx_idx + i) * (0x30 + (0xd8 * fx_type)))) o_parameter2
+          READ_BYTE  (fx_off + 0x0c + (0x10 * fx_type) + ((abil_fx_idx + i) * (0x30 + (0xd8 * fx_type)))) o_timing
+          READ_BYTE  (fx_off + 0x0d + (0x47 * fx_type) + ((abil_fx_idx + i) * (0x30 + (0xd8 * fx_type)))) o_resist_dispel
+          READ_LONG  (fx_off + 0x0e + (0x12 * fx_type) + ((abil_fx_idx + i) * (0x30 + (0xd8 * fx_type)))) o_duration
+          READ_BYTE  (fx_off + 0x12 + (0x12 * fx_type) + ((abil_fx_idx + i) * (0x30 + (0xd8 * fx_type)))) o_probability1
+          READ_BYTE  (fx_off + 0x13 + (0x13 * fx_type) + ((abil_fx_idx + i) * (0x30 + (0xd8 * fx_type)))) o_probability2
+          READ_ASCII (fx_off + 0x14 + (0x14 * fx_type) + ((abil_fx_idx + i) * (0x30 + (0xd8 * fx_type)))) o_resource
+          READ_LONG  (fx_off + 0x1c + (0x14 * fx_type) + ((abil_fx_idx + i) * (0x30 + (0xd8 * fx_type)))) o_dicenumber
+          READ_LONG  (fx_off + 0x20 + (0x14 * fx_type) + ((abil_fx_idx + i) * (0x30 + (0xd8 * fx_type)))) o_dicesize
+          READ_LONG  (fx_off + 0x24 + (0x14 * fx_type) + ((abil_fx_idx + i) * (0x30 + (0xd8 * fx_type)))) o_savingthrow
+          READ_LONG  (fx_off + 0x28 + (0x14 * fx_type) + ((abil_fx_idx + i) * (0x30 + (0xd8 * fx_type)))) o_savebonus
+
+ SET base = (fx_off + ((abil_fx_idx + i) * (0x30 + (0xd8 * fx_type))))
+ // overwrite the cloned effect with the new variables, if specified
+            PATCH_IF (opcode >= 0)        BEGIN WRITE_SHORT (base        + (0x08 * fx_type)) opcode        END
+            PATCH_IF (target >= 0)        BEGIN WRITE_BYTE  (base + 0x02 + (0x0a * fx_type)) target        END
+            PATCH_IF (power >= 0)         BEGIN WRITE_BYTE  (base + 0x03 + (0x0d * fx_type)) power         END
+            PATCH_IF (parameter1 >= 0)    BEGIN WRITE_LONG  (base + 0x04 + (0x10 * fx_type)) parameter1    END
+            PATCH_IF (parameter2 >= 0)    BEGIN WRITE_LONG  (base + 0x08 + (0x10 * fx_type)) parameter2    END
+            PATCH_IF (timing >= 0)        BEGIN WRITE_BYTE  (base + 0x0c + (0x10 * fx_type)) timing        END
+            PATCH_IF (resist_dispel >= 0) BEGIN WRITE_BYTE  (base + 0x0d + (0x47 * fx_type)) resist_dispel END
+            PATCH_IF (duration >= 0)      BEGIN WRITE_LONG  (base + 0x0e + (0x12 * fx_type)) duration      END
+            PATCH_IF (probability1 >= 0)  BEGIN WRITE_BYTE  (base + 0x12 + (0x12 * fx_type)) probability1  END
+            PATCH_IF (probability2 >= 0)  BEGIN WRITE_BYTE  (base + 0x13 + (0x13 * fx_type)) probability2  END
+            PATCH_IF (dicenumber >= 0)    BEGIN WRITE_LONG  (base + 0x1c + (0x14 * fx_type)) dicenumber    END
+            PATCH_IF (dicesize >= 0)      BEGIN WRITE_LONG  (base + 0x20 + (0x14 * fx_type)) dicesize      END
+            PATCH_IF (savingthrow >= 0)   BEGIN WRITE_LONG  (base + 0x24 + (0x14 * fx_type)) savingthrow   END
+            PATCH_IF (savebonus >= "-10") BEGIN WRITE_LONG  (base + 0x28 + (0x14 * fx_type)) savebonus     END
+            PATCH_IF (special >= 0)       BEGIN WRITE_LONG  (base + 0x2c + (0x14 * fx_type)) special       END
+            PATCH_IF ("%resource%" STRING_COMPARE_CASE "SAME" != 0) BEGIN
+              WRITE_ASCIIE (base + 0x14 + (0x14 * fx_type)) "%resource%" #8
+            END
+*/
+
+/*
+DEFINE_PATCH_MACRO ~colour~ BEGIN
+	SET target = 1				// target type
+	SET timing = 2				// timing type
+	SET parameter1 = gradient	// set colour gradient
+	SET parameter2 = location	// set location
+	LPF ~ADD_ITEM_EQEFFECT~ INT_VAR opcode = 7 target timing parameter1 parameter2 END
+END
+
+DEFINE_PATCH_MACRO ~pulse~ BEGIN
+	SET target = 1										// target type
+	SET timing = 2										// timing type
+	SET setrgb = (setb << 24)+(setg << 16)+(setr << 8)	// Set RGB
+	SET parameter1 = setrgb
+	SET settwo = (location) + (speed << 16)				// Set location and speed
+	SET parameter2 = settwo
+	LPF ~ADD_ITEM_EQEFFECT~ INT_VAR opcode = 9 target timing parameter1 parameter2 END
+END
+
+DEFINE_PATCH_MACRO ~glow~ BEGIN
+	SET target = 1											// target type
+	SET timing = 2											// timing type
+	SET setrgb = (setr << 8) + (setg << 16) + (setb << 24)	// Set RGB
+	SET parameter1 = setrgb
+	SET parameter2 = location								// set location
+	LPF ~ADD_ITEM_EQEFFECT~ INT_VAR opcode = 8 target timing parameter1 parameter2 END
+END
+*/
+
+
+
+/* ================================================================================================================== *
+ *                                                                                                                    *
+ *         F O N C T I O N S    C O M M U N E S   a u x   S O R T S  ,  O B J E T S   e t   C R É A T U R E S         *
+ *                                                                                                                    *
+ * ================================================================================================================== */
+
+/* ========================================================= *
+ * FONCTION GW_ADD_HEADERS : CLONAGE et/ou AJOUT de headers. *
+ * --------------------------------------------------------- *
+ * Creates copies of the first header up to GW_Headers       *
+ * Or creates empty headers if there is no header.           *
+ * Borrowed from atweaks fill_headers                        *
+ * ========================================================= */
+
+DEFINE_PATCH_FUNCTION ~GW_ADD_HEADERS~
+	INT_VAR GW_Headers  = 20		// Nb of headers to obtain.
+	STR_VAR GW_file_sig = ""		// Type de fichier à patcher. "" signifie que l'on va chercher automatiquement les valeurs selon le type de fichier.
+									// ITM, SPL ou CRE permettent d'utiliser cette fonction avec la fonction GW_DEF_OFFSETS_FILE.
+BEGIN
+
+	LPF ~GW_DEF_OFFSETS_FILE~ STR_VAR GW_file_sig RET GW_oe GW_oc GW_al GW_fx GW_fi GW_fc GW_min_size END
+	READ_LONG   GW_oe ao	// "abil_off"
+	READ_SHORT  GW_oc na	// "abil_num"
+	READ_LONG   GW_fx eo	// "fx_off"
+	GW_number = GW_Headers - na
+	PATCH_IF gw_debug_variable > 2 BEGIN
+		PATCH_PRINT "%DEST_FILE%	-	CONTROLE GW_DEF_OFFSETS_FILE	-	al = %GW_al%	-	ao = %ao% a %GW_oe%	-	na = %na% a %GW_oc%	-	eo = %eo% a %GW_fx%	- Nb de Headers a obtenir = %GW_Headers% -> Nombre de headers a ajouter = %GW_number%."
+	END
+	FOR (i = 0 ; i < GW_number ; ++i) BEGIN
+		PATCH_IF na > 0 BEGIN						// Clonage du header
+			READ_ASCII	 ao ab_copy (GW_al)
+			INSERT_BYTES ao + GW_al*na GW_al
+			WRITE_ASCIIE ao + GW_al*na "%ab_copy%"
+		END ELSE BEGIN								// Création sans copie du header.
+			INSERT_BYTES ao GW_al
+		END
+		++na
+		eo += GW_al
+	END
+	WRITE_SHORT GW_oc na
+	WRITE_LONG  GW_fx eo
+
+END	// of DEFINE_PATCH_FUNCTION
+
+
+/* ==================================================================================================================== *
+ * FONCTION GW_EFFECTS_BYPASS_MIRROR_IMAGE : AJOUT automatique du flag Bypass mirror image (BIT24) sur tous les effets. *
+ * ==================================================================================================================== */
+
+DEFINE_PATCH_FUNCTION ~GW_EFFECTS_BYPASS_MIRROR_IMAGE~
+BEGIN
+
+	LPF ~GW_DEF_OFFSETS_FILE~ RET GW_oe GW_oc GW_al GW_fx GW_fi GW_fc GW_min_size END
+	READ_LONG  GW_oe "abil_off"
+	READ_SHORT GW_oc "abil_num"
+	READ_LONG  GW_fx "fx_off"
+	FOR (i = 0 ; i < abil_num ; ++i) BEGIN											// pour chaque abilitie
+		READ_SHORT ("%abil_off%" + 0x1e + GW_al*i) "abil_fx_num"
+		READ_SHORT ("%abil_off%" + 0x20 + GW_al*i) "abil_fx_idx"
+		FOR (j = 0 ; j < abil_fx_num ; ++j) BEGIN									// pour chaque effet
+			WRITE_LONG (fx_off + 0x24 + (0x30 * (j + abil_fx_idx))) THIS | BIT24	// ajoute Bypass mirror image
+		END
+	END
+
+END	// of DEFINE_PATCH_FUNCTION
+
+// VERIFIER si utile
+DEFINE_PATCH_FUNCTION ~GW_REMOVE_EFFECTS_BYPASS_MIRROR_IMAGE~
+BEGIN
+
+	LPF ~GW_DEF_OFFSETS_FILE~ RET GW_oe GW_oc GW_al GW_fx GW_fi GW_fc GW_min_size END
+	READ_LONG  GW_oe "abil_off"
+	READ_SHORT GW_oc "abil_num"
+	READ_LONG  GW_fx "fx_off"
+	FOR (i = 0 ; i < abil_num ; ++i) BEGIN													// pour chaque abilitie
+		READ_SHORT ("%abil_off%" + 0x1e + GW_al*i) "abil_fx_num"
+		READ_SHORT ("%abil_off%" + 0x20 + GW_al*i) "abil_fx_idx"
+		FOR (j = 0 ; j < abil_fx_num ; j = j + 1) BEGIN										// pour chaque effet
+			WRITE_LONG (fx_off + 0x24 + (0x30 * (j + abil_fx_idx))) (THIS BAND NOT BIT24)	// remove Bypass mirror image
+		END
+	END
+
+END	// of DEFINE_PATCH_FUNCTION
+
+
+/* ============================================================================= *
+ * FONCTION GW_ADD_HEADERS_LAST : AJOUT des derniers headers jusqu'au niveau 50. *
+ * ============================================================================= */
+/*
+DEFINE_PATCH_FUNCTION ~GW_ADD_HEADERS_LAST~
+	INT_VAR GW_max_level = 50	// dernier niveau à ajouter
+BEGIN
+
+	LPF ~GW_DEF_OFFSETS_FILE~
+	RET	GW_oe		// Extended Header offset
+		GW_oc		// Extended Header count
+		GW_al		// Extended Header length (ability length)
+		GW_fx		// Feature blocks offset
+		GW_fi		// Equipping-Casting feature blocks index
+		GW_fc		// Equipping Feature Blocks count
+		GW_min_size	// Minimum size
+	END
+	READ_LONG  GW_oe abil_off
+	READ_SHORT GW_oc abil_num
+	READ_LONG  GW_fx fx_off
+// read data from last ability
+	READ_SHORT (abil_off + 0x10 + (GW_al * (abil_num - 1))) "min_lev"
+	READ_SHORT (abil_off + 0x1e + (GW_al * (abil_num - 1))) "abil_fx_num"
+	READ_SHORT (abil_off + 0x20 + (GW_al * (abil_num - 1))) "abil_fx_idx"
+	SET "abil_insert" = (abil_off + (GW_al * abil_num))
+	PATCH_IF ("%min_lev%" < GW_max_level) BEGIN										// s'il n'y a pas 50 (GW_max_level) headers
+		READ_ASCII (fx_off + (0x30 * abil_fx_idx)) "effects" (abil_fx_num * 0x30)	// reads whole block of effects from last ability
+		READ_ASCII (abil_off + (GW_al * (abil_num - 1))) "ability" (GW_al)			// reads last ability
+		FOR (index = GW_max_level ; index > min_lev ; index = (index - 1)) BEGIN	// now extend headers
+			INSERT_BYTES (fx_off + (0x30 * abil_fx_idx)) (abil_fx_num * 0x30)		// inserts bytes
+			WRITE_ASCIIE (fx_off + (0x30 * abil_fx_idx)) "%effects%"				// clones existing effects
+			INSERT_BYTES (abil_insert       ) GW_al									// inserts bytes
+			WRITE_ASCIIE (abil_insert       ) "%ability%"							// clones existing ability
+			WRITE_SHORT  (abil_insert + 0x10) "%index%"								// minimum level
+			WRITE_SHORT  (abil_insert + 0x1e) "%abil_fx_num%"
+			WRITE_SHORT  (abil_insert + 0x20) (abil_fx_idx + (abil_fx_num * (index - min_lev)))
+			SET "fx_off" = (fx_off + GW_al)
+			SET "abil_num" = (abil_num + 1)
+		END
+		WRITE_LONG  GW_fx fx_off
+		WRITE_SHORT GW_oc abil_num
+	END
+
+END	// of DEFINE_PATCH_FUNCTION
+*/
+
+/* =========================================================================================================================== *
+ * FONCTION GW_SEARCH_OPCODE : RECHERCHE de la présence d'un opcode dans les extended headers d'un fichier.                    *
+ * --------------------------------------------------------------------------------------------------------------------------- *
+ * FUNCTION GW_SEARCH_OPCODE_FEATURE : RECHERCHE de la présence d'un opcode dans les effets globaux d'un fichier.              *
+ * --------------------------------------------------------------------------------------------------------------------------- *
+ * Utilisées par les bibliothèques GW_Cre_fonctions_macros.tpa et 310_Sorts_Kits.tph et par la fonction GW_CLONE_CUTSCENE_CRE. *
+ * =========================================================================================================================== */
+
+DEFINE_PATCH_FUNCTION ~GW_SEARCH_OPCODE~
+	INT_VAR	GW_opcode_to_check = "-99"	// Pas de vérification
+	RET		GW_opcode_checked			// Valeur retournée	==> 0 = pas d'opcode	-	1 = opcode présent dans le fichier
+BEGIN
+
+	SET GW_opcode_checked = 0
+	PATCH_IF ("%GW_opcode_to_check%" != "-99") BEGIN
+		PATCH_IF (GW_oe = 0) BEGIN				// Creatures : NO Extended Headers !
+			SET abil_off = 0
+			SET abil_num = 0
+		END ELSE BEGIN
+			READ_LONG  GW_oe abil_off
+			READ_SHORT GW_oc abil_num
+			READ_LONG  GW_fx fx_off
+		END
+		FOR (i = 0 ; i < abil_num ; ++i) BEGIN									// pour chaque abilitie
+			READ_SHORT (abil_off + 0x1e + GW_al*i) "abil_fx_num"
+			READ_SHORT (abil_off + 0x20 + GW_al*i) "abil_fx_idx"
+			FOR (j = 0 ; j < abil_fx_num ; ++j) BEGIN							 // pour chaque effet
+				PATCH_IF (GW_opcode_checked = 0) BEGIN
+					READ_SHORT (fx_off + (0x30 * (j + abil_fx_idx))) "opcode"
+					PATCH_IF (opcode = "%GW_opcode_to_check%") BEGIN			// Vérification de l'existence de l'opcode.
+						SET GW_opcode_checked = 1
+						PATCH_IF gw_debug_variable > 1 BEGIN
+							PATCH_PRINT "%SOURCE_FILE%	-	opcode = %opcode%	-	# effet = %j%."
+						END
+					END	// of PATCH_IF ("%opcode%" = "%GW_opcode_to_check%")
+				END		// of PATCH_IF (GW_opcode_checked = 0)
+			END			// of looping through effects
+		END				// of looping through headers
+		PATCH_IF gw_debug_variable > 1 BEGIN
+			PATCH_IF (GW_opcode_checked = 1) BEGIN
+				PATCH_PRINT "%SOURCE_FILE% A MODIFIER POUR AJOUTER DES EFFETS SUPPLÉMENTAIRES DE L'OPCODE #%GW_opcode_to_check% avec la FONCTION GW_SEARCH_OPCODE."
+			END
+		END
+	END		// of PATCH_IF ("%GW_opcode_to_check%" != "-99")
+END			// of DEFINE_PATCH_FUNCTION
+
+
+DEFINE_PATCH_FUNCTION ~GW_SEARCH_OPCODE_FEATURE~
+	INT_VAR	GW_opcode_to_check = "-99"	// Pas de vérification
+	RET		GW_opcode_checked			// Valeur retournée	==> 0 = pas d'opcode	-	1 = opcode présent dans le fichier
+BEGIN
+
+	SET GW_opcode_checked = 0
+	PATCH_IF ("%GW_opcode_to_check%" != "-99") BEGIN
+		READ_LONG  GW_fx fx_off
+		READ_SHORT GW_fi eq_eff_indx											// Index into equipping feature blocks
+		READ_SHORT GW_fc eq_eff_count
+		PATCH_MATCH ~%SOURCE_EXT%~ WITH
+			ITM BEGIN	SET GW_fx_type = 0 END									// ITM_V10_GEN_EFFECTS (0x6a 4 0x70 2 0x6e 2 0x30)
+			SPL	BEGIN	SET GW_fx_type = 0 END									// SPL_V10_GEN_EFFECTS (0x6a 4 0x70 2 0x6e 2 0x30)
+			DEFAULT		SET eq_eff_indx = 0	READ_BYTE 0x33 GW_fx_type ELSE 2	// CRE_V10_EFFECTS (0x2c4 4 0x2c8 4 0 0 0x108)
+		END
+//		PATCH_PRINT "%DEST_RES%	-	GW_fx_type %GW_fx_type%	-	GW_fx %fx_off%	-	GW_fi %eq_eff_indx%	-	GW_fc %eq_eff_count%."
+		FOR (i = 0 ; i < eq_eff_count ; ++i) BEGIN
+			PATCH_IF (GW_opcode_checked = 0) BEGIN
+				READ_SHORT (fx_off + (0x08 * GW_fx_type) + ((eq_eff_indx + i * (0x30 + (0xd8 * GW_fx_type))))) opcode ELSE 0
+//				SET offset = (fx_off + (0x08 * GW_fx_type) + ((eq_eff_indx + i * (0x30 + (0xd8 * GW_fx_type)))))
+//				PATCH_PRINT "%DEST_RES%	-	offset = %offset%	=>	opcode = %opcode%"
+				PATCH_IF ("%opcode%" = "%GW_opcode_to_check%") BEGIN			// Vérification de l'existence de l'opcode.
+					SET GW_opcode_checked = 1
+					PATCH_IF gw_debug_variable > 1 BEGIN
+						PATCH_PRINT "%SOURCE_FILE%	-	CONTROLE FONCTION GW_SEARCH_OPCODE_FEATURE	-	opcode = %opcode%	==>	# effet = %i%."
+					END
+				END	// of PATCH_IF ("%opcode%" = "%GW_opcode_to_check%")
+			END		// of PATCH_IF (GW_opcode_checked = 0)
+		END			// of looping through effects
+	END		// of PATCH_IF ("%GW_opcode_to_check%" != "-99")
+
+END			// of DEFINE_PATCH_FUNCTION
+
+
+/* ===================================================================================================== *
+ * FONCTION GW_EFFECT_TO_CLONE : CLONAGE d'un effet selon la valeur de son opcode et de son paramètre 2. *
+ * ===================================================================================================== */
+// AF TODO Vérifier l'implantation automatique des ressources
+/*DEFINE_PATCH_FUNCTION ~GW_EFFECT_TO_CLONE~
+	INT_VAR GW_opcode_to_check	= "-99"	// Pas de vérification
+			GW_param1_to_check	= "-99"	// Pas de vérification
+			GW_param2_to_check	= "-99"	// Pas de vérification
+			GW_global_effects	= 0		// Pas de vérification des effets globaux (1 = uniquement les effets globaux - 2 = tous les effets)
+BEGIN
+//	check_globals       = 1			check_headers       = 1
+	PATCH_MATCH ~GW_global_effects~ WITH
+		0 BEGIN SET GW_check_globals = 0
+				SET GW_check_headers = 1 END
+		1 BEGIN SET GW_check_globals = 1
+				SET GW_check_headers = 0 END
+		2 BEGIN SET GW_check_globals = 1
+				SET GW_check_headers = 1 END
+		DEFAULT SET GW_check_globals = 0
+				SET GW_check_headers = 0
+	END
+	PATCH_IF ("%GW_opcode_to_check%" != "-99") BEGIN
+
+		PATCH_IF ("%GW_check_headers%" = 1) BEGIN	// On traite d'abord les extended headers.
+			SET GW_effect_to_clone = 0
+			PATCH_IF (GW_oe = 0) BEGIN				// Creatures : NO Extended Headers !
+				SET abil_off = 0
+				SET abil_num = 0
+			END ELSE BEGIN
+				READ_LONG  GW_oe abil_off
+				READ_SHORT GW_oc abil_num
+				READ_LONG  GW_fx fx_off
+			END
+			FOR (i = 0 ; i < abil_num ; ++i) BEGIN						// pour chaque abilitie
+				READ_SHORT ("%abil_off%" + 0x1e + GW_al*i) "abil_fx_num"
+				READ_SHORT ("%abil_off%" + 0x20 + GW_al*i) "abil_fx_idx"
+				FOR (j = 0 ; j < abil_fx_num ; ++j ) BEGIN				// pour chaque effet
+					PATCH_IF (GW_effect_to_clone = 0) BEGIN
+						READ_SHORT (fx_off +        (0x30 * (j + abil_fx_idx))) opcode
+						READ_LONG  (fx_off + 0x08 + (0x30 * (j + abil_fx_idx))) parameter2
+						PATCH_IF ("%opcode%" = "%GW_opcode_to_check%") BEGIN					// Vérification de l'existence de l'opcode.
+							PATCH_IF ("%GW_param2_to_check%" != "-99") BEGIN					// Vérification de l'existence de la valeur du Paramètre 2 à modifier.
+								PATCH_IF ("%GW_param2_to_check%" = "%parameter2%") BEGIN
+									PATCH_IF gw_debug_variable > 2 BEGIN
+										PATCH_PRINT "%SOURCE_FILE%	-	GW_ef = %GW_ef%	-	# effect = %j%	-	opcode = %opcode% - parameter2 = %parameter2%."
+									END
+									SET GW_effect_to_clone = 1
+									READ_BYTE  (fx_off + 0x02 + (0x30 * (j + abil_fx_idx))) target			// enregistre la cible de l'effet
+									READ_BYTE  (fx_off + 0x03 + (0x30 * (j + abil_fx_idx))) power			// enregistre la puissance de l'effet
+									READ_LONG  (fx_off + 0x04 + (0x30 * (j + abil_fx_idx))) parameter1		// enregistre paramètre 1 de l'effet
+									READ_BYTE  (fx_off + 0x0c + (0x30 * (j + abil_fx_idx))) timing			// enregistre le timing de l'effet
+									READ_BYTE  (fx_off + 0x0d + (0x30 * (j + abil_fx_idx))) resist_dispel	// enregistre la MR de l'effet
+									READ_LONG  (fx_off + 0x0e + (0x30 * (j + abil_fx_idx))) duration		// enregistre la duree de l'effet
+									READ_BYTE  (fx_off + 0x12 + (0x30 * (j + abil_fx_idx))) probability1	// enregistre la probabilité 1 de l'effet
+									READ_BYTE  (fx_off + 0x13 + (0x30 * (j + abil_fx_idx))) probability2	// enregistre la probabilité 2 de l'effet
+									READ_ASCII (fx_off + 0x14 + (0x30 * (j + abil_fx_idx))) resource (8) NULL
+									READ_LONG  (fx_off + 0x1c + (0x30 * (j + abil_fx_idx))) dicenumber		// enregistre le nb de dés de l'effet
+									READ_LONG  (fx_off + 0x20 + (0x30 * (j + abil_fx_idx))) dicesize		// enregistre le nb de faces des dés de l'effet
+									READ_LONG  (fx_off + 0x24 + (0x30 * (j + abil_fx_idx))) savingthrow		// enregistre le JS de l'effet
+									READ_LONG  (fx_off + 0x28 + (0x30 * (j + abil_fx_idx))) savebonus		// enregistre le bonus de JS de l'effet
+								END	// of PATCH_IF ("%GW_param2_to_check%" = "%parameter2%")
+							END		// of PATCH_IF ("%GW_param2_to_check%" != "-99")
+						END			// of PATCH_IF ("%opcode%" = "%GW_opcode_to_check%")
+					END				// of PATCH_IF (GW_effect_to_clone = 0)
+				END					// of looping through effects
+				PATCH_IF (GW_effect_to_clone = 1) BEGIN
+					PATCH_FOR_EACH GW_projo IN ~%GWDag51%~ ~%GWDag52%~ BEGIN
+						LPF CLONE_EFFECT INT_VAR check_globals = 0 header = %i% multi_match = 1 match_opcode = %opcode% match_parameter2 = %parameter2% parameter2 = (%GW_projo% - 1) STR_VAR insert = last END
+					END
+				END					// PATCH_IF (GW_effect_to_clone = 1)
+			END						// of looping through headers
+				PATCH_IF (GW_effect_to_clone = 1) BEGIN
+					PATCH_IF gw_debug_variable > 0 BEGIN
+							PATCH_PRINT "%SOURCE_FILE% MODIFIE POUR AJOUTER AUX EFFETS LA PROTECTION CONTRE LES NOUVEAUX PROJECTILES."
+					END
+				END
+		END							// of PATCH_IF ("%GW_check_headers%" = 1)
+
+		PATCH_IF ("%GW_check_globals%" = 1) BEGIN	// On traite ensuite les effets globaux.
+			SET GW_effect_to_clone = 0
+			PATCH_MATCH ~%SOURCE_EXT%~ WITH
+				ITM BEGIN	SET GW_fx_type = 0 END				// ITM_V10_GEN_EFFECTS (0x6a 4 0x70 2 0x6e 2 0x30)
+				SPL	BEGIN	SET GW_fx_type = 0 END				// SPL_V10_GEN_EFFECTS (0x6a 4 0x70 2 0x6e 2 0x30)
+				DEFAULT		READ_BYTE 0x33 GW_fx_type ELSE 2	// CRE_V10_EFFECTS (0x2c4 4 0x2c8 4 0 0 0x108)
+			END
+			READ_LONG  GW_fx fx_off
+			READ_SHORT GW_fi eq_eff_indx	// Index into equipping feature blocks
+			READ_SHORT GW_fc eq_eff_count
+			FOR (i = 0 ; i < eq_eff_count ; ++i) BEGIN
+				PATCH_IF (GW_effect_to_clone = 0) BEGIN
+					READ_SHORT (fx_off + (0x08 * GW_fx_type) + ((eq_eff_indx + i) * (0x30 + (0xd8 * GW_fx_type)))) opcode ELSE 0
+					PATCH_IF ("%opcode%" = "%GW_opcode_to_check%") BEGIN		// Vérification de l'existence de l'opcode.
+						READ_LONG (fx_off + 0x08 + (0x10 * GW_fx_type) + ((eq_eff_indx + i) * (0x30 + (0xd8 * GW_fx_type)))) parameter2
+						PATCH_IF ("%GW_param2_to_check%" != "-99") BEGIN		// Vérification de l'existence de la valeur du Paramètre 2 à modifier.
+							PATCH_IF ("%GW_param2_to_check%" = "%parameter2%") BEGIN
+								PATCH_IF gw_debug_variable > 2 BEGIN
+									PATCH_PRINT "%SOURCE_FILE%	-	GW_ef = %GW_ef%	-	effect = %i%	-	opcode = %opcode% - parameter2 = %parameter2%."
+								END
+								SET GW_effect_to_clone = 1
+								*/
+/*								READ_BYTE  (fx_off + 0x02 + (0x0a * GW_fx_type) + ((eq_eff_indx + i * (0x30 + (0xd8 * GW_fx_type))))) target
+								READ_BYTE  (fx_off + 0x03 + (0x0d * GW_fx_type) + ((eq_eff_indx + i * (0x30 + (0xd8 * GW_fx_type))))) power
+								READ_LONG  (fx_off + 0x04 + (0x10 * GW_fx_type) + ((eq_eff_indx + i * (0x30 + (0xd8 * GW_fx_type))))) parameter1
+								READ_BYTE  (fx_off + 0x0c + (0x10 * GW_fx_type) + ((eq_eff_indx + i * (0x30 + (0xd8 * GW_fx_type))))) timing
+								READ_BYTE  (fx_off + 0x0d + (0x47 * GW_fx_type) + ((eq_eff_indx + i * (0x30 + (0xd8 * GW_fx_type))))) resist_dispel
+								READ_LONG  (fx_off + 0x0e + (0x12 * GW_fx_type) + ((eq_eff_indx + i * (0x30 + (0xd8 * GW_fx_type))))) duration
+								READ_BYTE  (fx_off + 0x12 + (0x12 * GW_fx_type) + ((eq_eff_indx + i * (0x30 + (0xd8 * GW_fx_type))))) probability1
+								READ_BYTE  (fx_off + 0x13 + (0x13 * GW_fx_type) + ((eq_eff_indx + i * (0x30 + (0xd8 * GW_fx_type))))) probability2
+								READ_ASCII (fx_off + 0x14 + (0x14 * GW_fx_type) + ((eq_eff_indx + i * (0x30 + (0xd8 * GW_fx_type))))) resource (8) NULL
+								READ_LONG  (fx_off + 0x1c + (0x14 * GW_fx_type) + ((eq_eff_indx + i * (0x30 + (0xd8 * GW_fx_type))))) dicenumber
+								READ_LONG  (fx_off + 0x20 + (0x14 * GW_fx_type) + ((eq_eff_indx + i * (0x30 + (0xd8 * GW_fx_type))))) dicesize
+								READ_LONG  (fx_off + 0x24 + (0x14 * GW_fx_type) + ((eq_eff_indx + i * (0x30 + (0xd8 * GW_fx_type))))) savingthrow
+								READ_LONG  (fx_off + 0x28 + (0x14 * GW_fx_type) + ((eq_eff_indx + i * (0x30 + (0xd8 * GW_fx_type))))) savebonus
+*//*							END	// of PATCH_IF ("%GW_param2_to_check%" = "%parameter2%")
+						END		// of PATCH_IF ("%GW_param2_to_check%" != "-99")
+					END			// of PATCH_IF ("%opcode%" = "%GW_opcode_to_check%")
+				END				// of PATCH_IF (GW_effect_to_clone = 0)
+			END					// of looping through effects
+			PATCH_IF (GW_effect_to_clone = 1) BEGIN
+				PATCH_FOR_EACH GW_projo IN ~%GWDag51%~ ~%GWDag52%~ BEGIN
+					LPF CLONE_EFFECT INT_VAR check_globals = 1 check_headers = 0 multi_match = 1 match_opcode = %opcode% match_parameter2 = %parameter2% parameter2 = (%GW_projo% - 1) STR_VAR insert = last END
+				END
+				PATCH_IF gw_debug_variable > 0 BEGIN
+						PATCH_PRINT "%SOURCE_FILE% MODIFIE POUR AJOUTER LES EFFETS GLOBAUX de PROTECTION CONTRE LES NOUVEAUX PROJECTILES."
+				END
+			END					// PATCH_IF (GW_effect_to_clone = 1)
+		END						// of PATCH_IF ("%GW_check_globals%" = 1)
+
+
+	END							// of PATCH_IF ("%GW_opcode_to_check%" != "-99")
+
+END	// of DEFINE_PATCH_FUNCTION
+*/
+
+/* =========================================================================================================== *
+ * FONCTION GW_EFFECT112_TO_CLONE : CLONAGE de l'effet 112 pour ajouter des armes magiques à dissiper.         *
+ * ----------------------------------------------------------------------------------------------------------- *
+ * Vérifie l'existence de l'opcode #112 dans les effets et clone l'effet avec la ressource GW_resource_to_add. *
+ * ----------------------------------------------------------------------------------------------------------- *
+ * Utilisée par la routine 310_Sorts_Kits.tph.                                                                 *
+ * =========================================================================================================== */
+/*
+DEFINE_PATCH_FUNCTION ~GW_EFFECT112_TO_CLONE~
+	STR_VAR GW_resource_to_add = same			// Pas de vérification
+BEGIN
+
+	PATCH_IF ("%GW_resource_to_add%" STRING_COMPARE_CASE "same") BEGIN
+
+		SET GW_effect_to_clone = 0
+		PATCH_IF (GW_oe = 0) BEGIN								// Creatures : NO Extended Headers !
+			SET abil_off = 0
+			SET abil_num = 0
+		END ELSE BEGIN
+			READ_LONG  GW_oe abil_off
+			READ_SHORT GW_oc abil_num
+			READ_LONG  GW_fx fx_off
+		END
+		FOR (i = 0 ; i < abil_num ; ++i) BEGIN					// pour chaque abilitie
+			READ_SHORT (abil_off + 0x1e + GW_al*i) "abil_fx_num"
+			READ_SHORT (abil_off + 0x20 + GW_al*i) "abil_fx_idx"
+			FOR (j = 0 ; j < abil_fx_num ; ++j) BEGIN			// pour chaque effet
+				PATCH_IF (GW_effect_to_clone = 0) BEGIN			// On n'a pas trouvé d'effet 112 à cloner.
+					READ_SHORT (fx_off +        (0x30 * (j + abil_fx_idx))) opcode
+					READ_LONG  (fx_off + 0x14 + (0x30 * (j + abil_fx_idx))) resource
+					PATCH_IF (opcode = 112) BEGIN				// Vérification de l'existence de l'opcode #112.
+						PATCH_IF ("%GW_resource_to_add%" STRING_COMPARE_CASE "%resource%") BEGIN
+							SET GW_effect_to_clone = 1
+						END	// PATCH_IF ("%GW_resource_to_add%" STRING_COMPARE_CASE "%resource%" = 0)
+					END		// of PATCH_IF (opcode = 112)
+				END			// of PATCH_IF (GW_effect_to_clone = 0)
+			END				// of looping through effects
+			PATCH_IF (GW_effect_to_clone = 1) BEGIN				// On a trouvé un opcode 112 à cloner.
+				LPF CLONE_EFFECT INT_VAR check_globals = 0 header = i multi_match = 1 match_opcode = 112 STR_VAR insert = last resource = EVAL "%GW_resource_to_add%" END
+			END				// PATCH_IF (GW_effect_to_clone = 1)
+		END					// of looping through headers
+		PATCH_IF (GW_effect_to_clone = 1) BEGIN
+			PATCH_IF gw_debug_variable > 1 BEGIN
+				PATCH_PRINT "%SOURCE_FILE% MODIFIE POUR AJOUTER LA DISSIPATION DE L'ARME %GW_resource_to_add%."
+			END
+		END
+	END						// of PATCH_IF ("%GW_resource_to_add%" STRING_COMPARE_CASE "same")
+
+END							// DEFINE_PATCH_FUNCTION
+*/
+
+/* ================================================================================================================= *
+ * FONCTION GW_MODIF_EFFECT_BY_OPCODE : REMPLACEMENT des paramètres 1 et 2 d'un effet selon la valeur de son opcode. *
+ * ----------------------------------------------------------------------------------------------------------------- *
+ * Créé spécialement car la fonction ALTER_EFFECT ne prend pas en compte les valeurs négatives.                      *
+ * Modifie les valeurs des champs paramètre 1 et 2 par une valeur négative.                                          *
+ * ----------------------------------------------------------------------------------------------------------------- *
+ * Utilisée par les routines 300_Sorts.tph et 360_SortsBouffe.tph.                                                   *
+ * ================================================================================================================= */
+
+DEFINE_PATCH_FUNCTION ~GW_MODIF_EFFECT_BY_OPCODE~
+	INT_VAR GW_opcode_to_check	= "-99"	// Opcode à vérifier		==> -99 = Pas de vérification
+			GW_new_parameter1	= "-99"	// Paramètre1 à saisir		==> -99 = Pas de saisie
+			GW_new_parameter2	= "-99"	// Paramètre2 à saisir		==> -99 = Pas de saisie
+			GW_param1_to_check	= "-99"	// Paramètre1 à vérifier	==> -99 = Pas de vérification
+			GW_param2_to_check	= "-99"	// Paramètre1 à vérifier	==> -99 = Pas de vérification
+BEGIN
+
+	PATCH_IF ("%GW_opcode_to_check%" != "-99") BEGIN
+		LPF ~GW_DEF_OFFSETS_FILE~ RET GW_oe GW_oc GW_al GW_fx GW_fi GW_fc GW_min_size END
+		READ_LONG  GW_oe abil_off
+		READ_SHORT GW_oc abil_num
+		READ_LONG  GW_fx fx_off
+		FOR (i = 0 ; i < abil_num ; ++i) BEGIN
+			READ_SHORT ("%abil_off%" + 0x1e + GW_al*i) "abil_fx_num"
+			READ_SHORT ("%abil_off%" + 0x20 + GW_al*i) "abil_fx_idx"
+			FOR (j = 0 ; j < abil_fx_num ; ++j) BEGIN
+				READ_SHORT ("%fx_off%" +        (0x30 * (j + %abil_fx_idx%))) "opcode"	// Opcode to check
+				READ_LONG  ("%fx_off%" + 0x04 + (0x30 * (j + %abil_fx_idx%))) "param1"	// Parameter 1 to check
+				READ_LONG  ("%fx_off%" + 0x08 + (0x30 * (j + %abil_fx_idx%))) "param2"	// Parameter 2 to check
+				PATCH_IF ("%opcode%" = "%GW_opcode_to_check%") BEGIN					// Vérification de l'existence de l'opcode.
+					PATCH_IF ("%GW_param1_to_check%" != "-99") BEGIN					// Vérification de l'existence de la valeur saisie du Paramètre 1 à modifier.
+						PATCH_IF ("%GW_param1_to_check%" = "%param1%") BEGIN
+							PATCH_IF (("%GW_new_parameter1%" != "-99") AND ("%GW_new_parameter1%" != "%param1%")) BEGIN
+								WRITE_LONG ("%fx_off%" + 0x04 + (0x30 * (j + %abil_fx_idx%))) EVAL "%GW_new_parameter1%"
+							END
+						END
+					END ELSE BEGIN														// Aucune valeur du Paramètre 1 à vérifier : on saisit automatiquement la nouvelle valeur.
+						PATCH_IF (("%GW_new_parameter1%" != "-99") AND ("%GW_new_parameter1%" != "%param1%")) BEGIN
+							WRITE_LONG ("%fx_off%" + 0x04 + (0x30 * (j + %abil_fx_idx%))) EVAL "%GW_new_parameter1%"
+						END
+					END	// of PATCH_IF ("%GW_param1_to_check%" != "-99")
+					PATCH_IF ("%GW_param2_to_check%" != "-99") BEGIN					// Vérification de l'existence de la valeur saisie du Paramètre 2 à modifier.
+						PATCH_IF ("%GW_param2_to_check%" = "%param2%") BEGIN
+							PATCH_IF (("%GW_new_parameter2%" != "-99") AND ("%GW_new_parameter2%" != "%param2%")) BEGIN
+								WRITE_LONG ("%fx_off%" + 0x08 + (0x30 * (j + %abil_fx_idx%))) EVAL "%GW_new_parameter2%"
+							END
+						END
+					END ELSE BEGIN														// Aucune valeur du Paramètre 2 à vérifier : on saisit automatiquement la nouvelle valeur.
+						PATCH_IF (("%GW_new_parameter2%" != "-99") AND ("%GW_new_parameter2%" != "%param2%")) BEGIN
+							WRITE_LONG ("%fx_off%" + 0x08 + (0x30 * (j + %abil_fx_idx%))) EVAL "%GW_new_parameter2%"
+						END
+					END	// of PATCH_IF ("%GW_param2_to_check%" != "-99")
+				END		// of PATCH_IF ("%opcode%" = "%GW_opcode_to_check%")
+			END			// of looping through effects
+		END				// of looping through headers
+	END					// of PATCH_IF ("%GW_opcode_to_check%" != "-99")
+END						// of DEFINE_PATCH_FUNCTION
+
+
+/* ======================================================================================= *
+ * FONCTION GW_MODIFY_ST_BONUS : MODIFICATION du bonus-malus d'un Jet de sauvegarde.       *
+ * --------------------------------------------------------------------------------------- *
+ * Modifie la valeur du bonus-malus du Jet de sauvegarde des effets avec possibilité de .  *
+ * choisir le type de Jet de sauvegarde (GW_ST), l'ancien bonus (GW_oldbonus), voire le    *
+ * numéro de l'effet (GW_num_effect).                                                      *
+ * Fonction créée car les fonctions WeiDU n'enregistrent pas les valeurs négatives.        *
+ * --------------------------------------------------------------------------------------- *
+ * Utilisée par les routines 241_Armes.tph et 310_Sorts_Kits.tph.                          *
+ * ======================================================================================= */
+
+DEFINE_PATCH_FUNCTION ~GW_MODIFY_ST_BONUS~
+	INT_VAR GW_header_to_check = 0		// checks this header. 0 for all headers
+			GW_ST			= "-99"		// saving throw à vérifier
+			GW_num_effect	= "-99"		// numéro de l'effet à vérifier
+			GW_oldbonus		= "-99"		// ancien bonus à modifier
+			GW_newbonus		= "-99"		// nouveau bonus à saisir
+BEGIN
+
+	PATCH_IF (GW_oe = 0) BEGIN			// Creatures : NO Extended Headers !
+		SET abil_off = 0
+		SET abil_num = 0
+	END ELSE BEGIN
+		READ_LONG  GW_oe abil_off
+		READ_SHORT GW_oc abil_num
+		READ_LONG  GW_fx fx_off
+	END
+
+	PATCH_IF (GW_header_to_check = 0) BEGIN											// Checks all headers
+		SET GW_start_loop_header = 0
+		SET GW_end_loop_header	 = abil_num
+	END ELSE BEGIN																	// Checks one header in particuliar
+		SET GW_start_loop_header = (GW_header_to_check - 1)
+		SET GW_end_loop_header	 = GW_header_to_check
+	END
+
+	FOR (i = GW_start_loop_header ; i < GW_end_loop_header ; ++i) BEGIN				// looks through headers
+		READ_SHORT (abil_off + 0x1e + GW_al*i) "abil_fx_num"
+		READ_SHORT (abil_off + 0x20 + GW_al*i) "abil_fx_idx"
+		FOR (j = 0 ; j < abil_fx_num ; ++j ) BEGIN									// looks through effects
+			READ_LONG (fx_off + 0x24 + (0x30 * (j + abil_fx_idx))) ST				// enregistre le JS de l'effet
+			READ_LONG (fx_off + 0x28 + (0x30 * (j + abil_fx_idx))) savebonus		// enregistre le bonus de JS de l'effet
+			PATCH_IF gw_debug_variable > 1 BEGIN
+				PATCH_PRINT "%DEST_RES% - header = %i%	-	# effet = %j%	-	savingthrow = %ST%	-	savebonus = %savebonus%	-	GW_ST = %GW_ST%	-	GW_oldbonus = %GW_oldbonus%	-	GW_newbonus = %GW_newbonus%"
+			END
+			PATCH_IF ((GW_ST = ST) OR (GW_ST = "-99")) BEGIN
+				PATCH_IF ((GW_num_effect = "-99") OR (j = GW_num_effect - 1)) BEGIN
+					PATCH_IF ((GW_oldbonus = savebonus) OR (GW_oldbonus = "-99")) BEGIN
+						PATCH_IF ((GW_newbonus != savebonus) AND (GW_newbonus != "-99")) BEGIN
+							WRITE_LONG (fx_off + 0x28 + (0x30 * (j + abil_fx_idx))) GW_newbonus
+						END
+					END
+				END
+			END
+		END	// of looping through effects
+	END		// of looping through headers
+
+END			// of DEFINE_PATCH_FUNCTION
+
+/* Fonction destinée à EE
+DEFINE_PATCH_FUNCTION ~GW_MODIFY_ST_BONUS~
+	INT_VAR GW_header_to_check = 0		// checks this header; 0 for all headers
+			GW_oldbonus		= "-99"		// ancien bonus à modifier
+			GW_newbonus		= "-99"		// nouveau bonus à saisir
+BEGIN
+
+	PATCH_IF (GW_oe = 0) BEGIN			// Creatures : NO Extended Headers !
+		SET abil_off = 0
+		SET abil_num = 0
+	END ELSE BEGIN
+		READ_LONG  GW_oe abil_off
+		READ_SHORT GW_oc abil_num
+		READ_LONG  GW_fx fx_off
+	END
+
+	PATCH_IF (GW_header_to_check = 0) BEGIN											// Checks all headers
+		SET GW_start_loop_header = 0
+		SET GW_end_loop_header	 = abil_num
+	END ELSE BEGIN																	// Checks one header in particular
+		SET GW_start_loop_header = (GW_header_to_check - 1)
+		SET GW_end_loop_header	 = GW_header_to_check
+	END
+
+	FOR (i = GW_start_loop_header ; i < GW_end_loop_header ; ++i) BEGIN				// looks through headers
+		READ_SHORT (abil_off + 0x1e + GW_al*i) "abil_fx_num"
+		READ_SHORT (abil_off + 0x20 + GW_al*i) "abil_fx_idx"
+		FOR (j = 0 ; j < abil_fx_num ; ++j) BEGIN									// looks through effects
+			READ_LONG (fx_off + 0x28 + (0x30 * (j + abil_fx_idx))) savebonus		// enregistre le bonus de JS de l'effet
+			PATCH_IF ((GW_oldbonus = savebonus) OR (GW_oldbonus = "-99")) BEGIN
+				PATCH_IF ((GW_newbonus != savebonus) AND (GW_newbonus != "-99")) BEGIN
+					WRITE_LONG (fx_off + 0x28 + (0x30 * (j + abil_fx_idx))) GW_newbonus
+				END
+			END
+		END	// of looping through effects
+	END		// of looping through headers
+
+END	// of DEFINE_PATCH_FUNCTION
+*/
+
+/* =================================================================================================================================== *
+ * FONCTION GW_MODIF_EFFECT_BY_RESOURCE : REMPLACEMENT des paramètres et/ou des probabilités occurrence d'un effet selon sa ressource. *
+ * ----------------------------------------------------------------------------------------------------------------------------------- *
+// GW_Food_fonctions_macros.tpa FONCTION FONCTION GW_CLONE_TISANE - food.
+ * =================================================================================================================================== */
+
+DEFINE_PATCH_FUNCTION ~GW_MODIF_EFFECT_BY_RESOURCE~
+	INT_VAR GW_header_to_check = 0		// checks this header; 0 for all headers
+			GW_parameter1		 = "-99999"
+			GW_parameter2		 = "-99999"
+			GW_prob1			 = "-1"
+			GW_prob2			 = "-1"
+	STR_VAR GW_resource_to_check = "same"
+BEGIN
+
+	PATCH_IF ("%GW_resource_to_check%" STRING_COMPARE_CASE "same") BEGIN
+		LPF ~GW_DEF_OFFSETS_FILE~ RET GW_oe GW_oc GW_al GW_fx GW_fi GW_fc GW_min_size END
+		PATCH_IF (GW_oe = 0) BEGIN														// Creatures : NO Extended Headers !
+			SET abil_off = 0
+			SET abil_num = 0
+		END ELSE BEGIN
+			READ_LONG  GW_oe abil_off
+			READ_SHORT GW_oc abil_num
+			READ_LONG  GW_fx fx_off
+		END
+		PATCH_IF (GW_header_to_check = 0) BEGIN											// Checks all headers
+			SET GW_start_loop_header = 0
+			SET GW_end_loop_header	 = abil_num
+		END ELSE BEGIN																	// Checks one header in particular
+			SET GW_start_loop_header = (GW_header_to_check - 1)
+			SET GW_end_loop_header	 = GW_header_to_check
+		END
+
+		FOR (i = GW_start_loop_header ; i < GW_end_loop_header ; ++i) BEGIN				// looks through headers
+			READ_SHORT (abil_off + 0x1e + GW_al*i) "abil_fx_num"
+			READ_SHORT (abil_off + 0x20 + GW_al*i) "abil_fx_idx"
+			FOR (j = 0 ; j < abil_fx_num ; ++j) BEGIN									// looks through effects
+				READ_LONG  (fx_off + 0x04 + (0x30 * (j + abil_fx_idx))) param1			// Parameter 1 to check
+				READ_LONG  (fx_off + 0x08 + (0x30 * (j + abil_fx_idx))) param2			// Parameter 2 to check
+				READ_BYTE  (fx_off + 0x12 + (0x30 * (j + abil_fx_idx))) prob2			// Probabilité max to check
+				READ_BYTE  (fx_off + 0x13 + (0x30 * (j + abil_fx_idx))) prob1			// Probabilité min to check
+				READ_ASCII (fx_off + 0x14 + (0x30 * (j + abil_fx_idx))) ress
+				PATCH_IF ("%ress%" STRING_COMPARE_CASE "%GW_resource_to_check%" = 0) BEGIN
+					PATCH_IF ((GW_parameter1 != "-99999") AND (GW_parameter1 != param1)) BEGIN
+						WRITE_LONG (fx_off + 0x04 + (0x30 * (j +abil_fx_idx))) GW_parameter1
+					END
+					PATCH_IF ((GW_parameter2 != "-99999") AND (GW_parameter2 != param2)) BEGIN
+						WRITE_LONG (fx_off + 0x08 + (0x30 * (j + abil_fx_idx))) GW_parameter2
+					END
+					PATCH_IF ((GW_prob1 != "-1") AND (GW_prob1 != prob1)) BEGIN
+						WRITE_BYTE (fx_off + 0x13 + (0x30 * (j + abil_fx_idx))) GW_prob1
+					END
+					PATCH_IF ((GW_prob2 != "-1") AND (GW_prob2 != prob2)) BEGIN
+						WRITE_BYTE (fx_off + 0x12 + (0x30 * (j + abil_fx_idx))) GW_prob2
+					END
+				END
+			END	// of looping through effects
+		END		// of looping through headers
+	END			// of PATCH_IF ("%GW_resource_to_check%" STRING_COMPARE_CASE "same")
+
+END				// of DEFINE_PATCH_FUNCTION
+
+
+/* ==================================================================================================================== *
+ * FONCTION GW_MODIF_EFFECT_139 : REMPLACEMENT du message et/ou des probabilités d'un effet 139 selon sa durée.         *
+ * -------------------------------------------------------------------------------------------------------------------- *
+ * Permet de modifier le paramètre 1 de l'opcode #139 car la fonction ALTER_EFFECT ne prend pas en compte la valeur -1. *
+ * Possibilité de sélectionner l'opcode 139 selon ses champs durée et probabilités.                                     *
+ * -------------------------------------------------------------------------------------------------------------------- *
+ * Utilisée par les bibliothèques 320_Sorts_Pretre.tph et 360_SortsBouffe.tph.                                          *
+ * ==================================================================================================================== */
+//VERIF UTILITÉ
+DEFINE_PATCH_FUNCTION ~GW_MODIF_EFFECT_139~
+	INT_VAR GW_param139_1	= "-99"		// Valeur du paramètre 1	==> -99 = pas de changement.
+			GW_duree139		= "-1"		// Champ durée				==> -1 = pas de changement.
+			GW_prob139_1	= "-1"		// Champ probabilité min	==> -1 = pas de changement.
+			GW_prob139_2	= "-1"		// Champ probabilité max	==> -1 = pas de changement.
+BEGIN
+
+	PATCH_IF ("%GW_param139_1%" != "-99") OR ("%GW_duree139%" != "-1") BEGIN
+		LPF ~GW_DEF_OFFSETS_FILE~ RET GW_oe GW_oc GW_al GW_fx GW_fi GW_fc GW_min_size END
+		READ_LONG  GW_oe abil_off
+		READ_SHORT GW_oc abil_num
+		READ_LONG  GW_fx fx_off
+		FOR (i = 0 ; i < abil_num ; ++i) BEGIN
+			READ_SHORT ("%abil_off%" + 0x1e + GW_al*i) "abil_fx_num"
+			READ_SHORT ("%abil_off%" + 0x20 + GW_al*i) "abil_fx_idx"
+			FOR (j = 0 ; j < abil_fx_num ; ++j) BEGIN
+				READ_SHORT (fx_off +        (0x30 * (j + abil_fx_idx))) "opcode"
+				READ_LONG  (fx_off + 0x04 + (0x30 * (j + abil_fx_idx))) "param1"	// Parameter 1 to check
+				READ_LONG  (fx_off + 0x0e + (0x30 * (j + abil_fx_idx))) "duree"		// Duration to check
+				READ_BYTE  (fx_off + 0x12 + (0x30 * (j + abil_fx_idx))) "prob2"		// Probabilité max to check
+				READ_BYTE  (fx_off + 0x13 + (0x30 * (j + abil_fx_idx))) "prob1"		// Probabilité min to check
+				PATCH_IF (opcode = 139) BEGIN
+					PATCH_IF ("%GW_duree139%" != "-1") AND ("%GW_duree139%" = "%duree%") BEGIN
+						PATCH_MATCH %GW_param139_1% WITH
+							"-99"	BEGIN	SET message_139 = EVAL "%param1%" END
+							"-1"	BEGIN	SET message_139 = "-1" END
+							DEFAULT
+								PATCH_IF (STRING_LENGTH "%GW_param139_1%" > 6)	BEGIN
+									SET message_139 = RESOLVE_STR_REF ((AT %GW_param139_1%))
+								END ELSE BEGIN										// Sinon, on va chercher le message dans le fichier dialog.tlk
+									SET message_139 = EVAL "%GW_param139_1%"
+								END
+								WRITE_LONG (fx_off + 0x04 + (0x30 * (j + abil_fx_idx))) message_139
+						END
+						PATCH_IF ("%GW_prob139_1%" != "-1") AND ("%GW_prob139_1%" != "%prob1%") BEGIN
+							WRITE_BYTE (fx_off + 0x13 + (0x30 * (j + abil_fx_idx))) EVAL "%GW_prob139_1%"
+						END
+						PATCH_IF ("%GW_prob139_2%" != "-1") AND ("%GW_prob139_2%" != "%prob2%") BEGIN
+							WRITE_BYTE (fx_off + 0x12 + (0x30 * (j + abil_fx_idx))) EVAL "%GW_prob139_2%"
+						END
+					END
+				END
+			END	// of looping through effects
+		END		// of looping through headers
+	END			// of PATCH_IF ("%GW_param139_1%" != "-1") OR ("%GW_duree139%" != "-1")
+
+END				// of DEFINE_PATCH_FUNCTION
+
+// VERIFIER SI A ENLEVER
+/* ======================================================================================================== *
+ * FONCTION GW_ADD_OPCODE_206 : AJOUT automatique d'une immunité à un sort dans un fichier ITM, SPL ou CRE. *
+ * -------------------------------------------------------------------------------------------------------- *
+ * Utilisée par la bibliothèque 360_SortsBouffe.tph.                                                        *
+ * ======================================================================================================== */
+
+DEFINE_PATCH_FUNCTION ~GW_ADD_OPCODE_206~
+	INT_VAR insert_point206	= "-1"	// 0 = the effect will be inserted as the first effect of the extended header. If this variable is negative or greater than the number of effects, the effect will be inserted as the last effect. The effect is added as the last effect by default.
+			cible206		= 2		// cible = 2 Pre-Target
+			duree206		= 0		// durée
+			mess206			= "-1"	// message
+			proba206_1		= 0		// Probabilité minimum
+			proba206_2		= 100	// Probabilité maximum
+			resist206		= 0		// non-magical
+			power206		= 0
+			save206			= 0
+			savebonus206	= 0
+			GW_Itm_Headers	= 0		// Prise en compte des effets non globaux : 0 = N - 1 = Y.
+	STR_VAR resource206 = EVAL "%DEST_RES%"	// sort
+BEGIN
+
+	LPF ~GW_DEF_FUNCTIONS_FILE~ INT_VAR GW_Itm_Headers RET GW_Fonction_Add GW_Fonction_Del timing END
+	SET target			= EVAL "%cible206%"
+	SET duration		= EVAL "%duree206%"
+	PATCH_MATCH %mess206% WITH
+		"-1"	BEGIN	SET parameter1 = "-1" END
+		DEFAULT
+			PATCH_IF (STRING_LENGTH "%mess206%" > 6)	BEGIN
+				SET parameter1 = RESOLVE_STR_REF ((AT %mess206%))
+			END ELSE BEGIN								// Sinon, on va chercher le nom de l'objet dans le fichier dialog.tlk
+				SET parameter1 = EVAL "%mess206%"
+			END
+	END
+	SET probability1	= EVAL "%proba206_2%"
+	SET probability2	= EVAL "%proba206_1%"
+	SET resist_dispel	= EVAL "%resist206%"
+	SET power			= EVAL "%power206%"
+	SET savingthrow		= EVAL "%save206%"
+	SET savebonus		= EVAL "%savebonus206%"
+	SPRINT resource		  EVAL "%resource206%"
+	SET insert_point	= EVAL "%insert_point206%"
+
+	SPRINT input_add_effect206 "LPF ~%GW_Fonction_Add%~ INT_VAR insert_point opcode = 206 target timing duration parameter1 probability1 probability2 power resist_dispel savingthrow savebonus STR_VAR resource END"
+	LPF ~GW_REINCLUDE~ STR_VAR input = EVAL "%input_add_effect206%" END
+
+END	// of DEFINE_PATCH_FUNCTION
+
+
+/* ==================================================================================================== *
+ * FONCTION GW_LEARN_SPELL : PARAMÉTRAGE des variables d'apprentissage d'un sort.                       *
+ * ---------------------------------------------------------------------------------------------------- *
+ * Permet de modifier le paramétrage de l'opcode Spell: Learn Spell [147] avec la variable GW_XP_learn. *
+ * ---------------------------------------------------------------------------------------------------- *
+ * Utilisée par la routine GW_Kits.tph.                                                                 *
+ * ==================================================================================================== */
+
+DEFINE_PATCH_FUNCTION ~GW_LEARN_SPELL~
+	INT_VAR GW_XP_learn = 2		// Apprentissage automatique du sort sans gain d'XP.
+/*	Bit 1-3 : No effect (reserved for GemRB).
+	Bit 4 : If the spell is already learnt, no experience is given (excludes inventory screen).
+	Bit 5 : Learning the spell obeys mage school exclusions (excludes inventory screen).
+	Bit 6 : The spell cannot be learnt by sorcerer class (excludes inventory screen).
+	Bit 7 : Learning fails if the target has already learnt the maximum number of spells as per INTMOD.2DA for the spell's level (excludes inventory screen).	*/
+BEGIN
+
+	PATCH_SILENT
+	READ_LONG  0x64 "abil_off"
+	READ_SHORT 0x68 "abil_num"
+	READ_LONG  0x6a "fx_off"
+	FOR (i = 0 ; i < abil_num ; ++i) BEGIN											// pour chaque ability
+		READ_SHORT ("%abil_off%" + 0x1e + 0x28*i) "abil_fx_num"
+		READ_SHORT ("%abil_off%" + 0x20 + 0x28*i) "abil_fx_idx"
+		FOR (j = 0 ; j < abil_fx_num ; ++j) BEGIN									// pour chaque effet
+			READ_SHORT ("%fx_off%" + (0x30 * (j + %abil_fx_idx%))) "opcode"
+			PATCH_IF (opcode = 147) BEGIN											// Spell: Learn Spell [147]
+				PATCH_MATCH ~%GW_XP_learn%~ WITH
+					2	BEGIN	WRITE_BYTE (fx_off + 0x06 + (0x30 * (j + abil_fx_idx))) THIS | BIT0 | BIT2	END
+						// Bit 0 : Learning the spell never gives experience (including scrolls from the inventory screen).
+						// Bit 2 : Learning is always successful (including scrolls from the inventory screen).
+					DEFAULT
+				END
+			END	// of PATCH_IF (opcode = 147)
+		END
+	END
+	PATCH_VERBOSE
+
+END	// of DEFINE_PATCH_FUNCTION
+
+
+
+/* =================================================================== *
+ *                                                                     *
+ *        F O N C T I O N S   s u r   l e s   C R É A T U R E S        *
+ *                                                                     *
+ * =================================================================== */
+
+/* ================================================================================================== *
+ * MACRO GW_DEFINITION_PROFICIENCIES : Définition de la table pour patcher les nouvelles COMPÉTENCES. *
+ * ================================================================================================== */
+
+DEFINE_ACTION_MACRO ~GW_DEFINITION_PROFICIENCIES~ BEGIN
+
+	OUTER_SPRINT $proficiency(79) "PROFICIENCYBASTARDSWORD"
+	OUTER_SPRINT $proficiency(80) "PROFICIENCYLONGSWORD"
+	OUTER_SPRINT $proficiency(81) "PROFICIENCYSHORTSWORD"
+	OUTER_SPRINT $proficiency(82) "PROFICIENCYAXE"
+	OUTER_SPRINT $proficiency(83) "PROFICIENCYTWOHANDEDSWORD"
+	OUTER_SPRINT $proficiency(84) "PROFICIENCYKATANA"
+	OUTER_SPRINT $proficiency(85) "PROFICIENCYSCIMITARWAKISASHININJATO"
+	OUTER_SPRINT $proficiency(86) "PROFICIENCYDAGGER"
+	OUTER_SPRINT $proficiency(87) "PROFICIENCYWARHAMMER"
+	ACTION_IF GW_BG2EE BEGIN
+		OUTER_SPRINT $proficiency(88) "PROFICIENCYCLUB"
+	END ELSE BEGIN
+		OUTER_SPRINT $proficiency(88) "EXTRAPROFICIENCY1"
+	END
+	OUTER_SPRINT $proficiency(89) "PROFICIENCYSPEAR"
+	OUTER_SPRINT $proficiency(90) "PROFICIENCYHALBERD"
+	OUTER_SPRINT $proficiency(91) "PROFICIENCYFLAILMORNINGSTAR"
+	OUTER_SPRINT $proficiency(92) "PROFICIENCYMACE"
+	OUTER_SPRINT $proficiency(93) "PROFICIENCYQUARTERSTAFF"
+	OUTER_SPRINT $proficiency(94) "PROFICIENCYCROSSBOW"
+	OUTER_SPRINT $proficiency(95) "PROFICIENCYLONGBOW"
+	OUTER_SPRINT $proficiency(96) "PROFICIENCYSHORTBOW"
+	OUTER_SPRINT $proficiency(97) "PROFICIENCYDART"
+	OUTER_SPRINT $proficiency(98) "PROFICIENCYSLING"
+	OUTER_SPRINT $proficiency(99) "PROFICIENCY2HANDED"
+	OUTER_SPRINT $proficiency(100) "PROFICIENCYSWORDANDSHIELD"
+	OUTER_SPRINT $proficiency(101) "PROFICIENCYSINGLEWEAPON"
+	OUTER_SPRINT $proficiency(102) "PROFICIENCY2WEAPON"
+
+END	// of DEFINE_PATCH_MACRO
+
+/*CLB 	88
+Club                         115
+Crossbow                     103
+Darts                        106
+Flail/Morningstar            100
+Halberd                      99
+Long Bow                     104
+Mace                         101
+Quarter Staff                102
+Short Bow                    105
+Single Weapon Skill          113
+Sling                        107
+Spear                        98
+Sword and Shield Skill       112
+Two-Handed Weapon Skill      111
+Two Weapon Skill             114
+*/
+
+/* ----------------------------------------------------------------- *
+ * FONCTION : INTÉGRATION des données dans les fichiers de CREATURES *
+ * ----------------------------------------------------------------- */
+//DEFINE_PATCH_FUNCTION GW_MODIF_CRE
+/*
+	WRITE_LONG	0x010 // Creature flags
+	WRITE_LONG	0x018 // Creature Power Level (for summoning spells) / XP of the creature (for party members)
+	WRITE_LONG	0x020 // Permanent status flags (STATE.IDS)
+	WRITE_BYTE	0x066 // Lore (0-100)
+	WRITE_BYTE	0x06b // Fatigue (0-100)
+	WRITE_BYTE	0x06c // Intoxication (0-100)
+	WRITE_BYTE	0x274 // Specific (SPECIFIC.IDS)
+*/
+/*	INT_VAR	nvxp	= "-1"		// XP (gained for killing this creature)	-  "-1" = pas de changement
+			nvgold	= "-1"		// Gold carried								-  "-1" = pas de changement
+			nvhp	= "0"		// Current Hit Points						-	"0" = pas de changement
+			nvhpmx	= "0"		// Maximum Hit Points						-	"0" = pas de changement
+			nvrep	= "0"		// Reputation (minimum value: 0)			-	"0" = pas de changement
+			nvanim	= "-1"		// Animation ID (ANIMATE.IDS)				-  "-1" = pas de changement
+			nvhs	= "0"		// Hide In Shadows (base)					-	"0" = pas de changement
+			nvac	= "10"		// Armor Class (Natural)					-  "10" = pas de changement
+//			nvacef	= "-99"		// Armor Class (Effective)
+			nvaccr	= "0"		// Armor Class (Crushing Attacks Modifier)	-	"0" = pas de changement
+			nvacmi	= "0"		// Armor Class (Missile Attacks Modifier)	-	"0" = pas de changement
+			nvacpi	= "0"		// Armor Class (Piercing Attacks Modifier)	-	"0" = pas de changement
+			nvacsl	= "0"		// Armor Class (Slashing Attacks Modifier)	-	"0" = pas de changement
+			nvth	= "20"		// THAC0									-  "20" = pas de changement
+			nvapr	= "99"		// Number of attacks (0-10)					-  "99" = pas de changement
+			nvsvd	= "20"		// Save versus death (0-20)					-  "20" = pas de changement
+			nvsvw	= "20"		// Save versus wands (0-20)					-  "20" = pas de changement
+			nvsvp	= "20"		// Save versus polymorph (0-20)				-  "20" = pas de changement
+			nvsvb	= "20"		// Save versus breath attacks (0-20)		-  "20" = pas de changement
+			nvsvs	= "20"		// Save versus spells (0-20)				-  "20" = pas de changement
+			nvfr	= "0"		// Resist fire (0-100)						-	"0" = pas de changement
+			nvcr	= "0"		// Resist cold (0-100)						-	"0" = pas de changement
+			nver	= "0"		// Resist electricity (0-100)				-	"0" = pas de changement
+			nvar	= "0"		// Resist acid (0-100)						-	"0" = pas de changement
+			nvmr	= "0"		// Resist magic (0-100)						-	"0" = pas de changement
+			nvrs	= "0"		// Resist slashing (0-100)					-	"0" = pas de changement
+			nvrc	= "0"		// Resist crushing (0-100)					-	"0" = pas de changement
+			nvrp	= "0"		// Resist piercing (0-100)					-	"0" = pas de changement
+			nvrm	= "0"		// Resist missiles (0-100)					-	"0" = pas de changement
+			nvill	= "0"		// Detect illusion (minimum value : 0)		-	"0" = pas de changement
+			nvtrap	= "0"		// Set traps								-	"0" = pas de changement
+			nvlore	= "0"		// Lore (0-100)								-	"0" = pas de changement
+			nvlock	= "0"		// Lockpicking (minimum value: 0)			-	"0" = pas de changement
+			nvms	= "0"		// Stealth (minimum value: 0)				-	"0" = pas de changement
+			nvfrt	= "0"		// Find/disarm traps (minimum value: 0)		-	"0" = pas de changement
+			nvpick	= "0"		// Pick pockets (minimum value: 0)			-	"0" = pas de changement
+
+			nvlv1	= "0"		// Highest attained level in 1 class (0-100) -	"0" = pas de changement
+			nvlv2	= "0"		// Highest attained level in 2 class (0-100) -	"0" = pas de changement
+			nvlv3	= "0"		// Highest attained level in 3 class (0-100) -	"0" = pas de changement
+
+			nvfor	= "0"		// Strength (1-25)							-	"0"	= pas de changement
+			nvforb	= "0"		// Strength % Bonus (0-100)					-	"0"	= pas de changement
+			nvint	= "0"		// Intelligence (1-25)						-	"0"	= pas de changement
+			nvsag	= "0"		// Wisdom (1-25)							-	"0"	= pas de changement
+			nvdex	= "0"		// Dexterity (1-25)							-	"0"	= pas de changement
+			nvcon	= "0"		// Constitution (1-25)						-	"0"	= pas de changement
+			nvcha	= "0"		// Charisma (1-25)							-	"0"	= pas de changement
+
+			nvmor	= "0"		// Morale									-	"0"	= pas de changement
+			nvmorb	= "99"		// Morale break								-  "99"	= pas de changement
+			nvmorr	= "99"		// Morale Recovery Time						-  "99"	= pas de changement
+
+			nvsexe	= "99"		// Sex (from GENDER.IDS)					-  "99"	= pas de changement
+			nvreac	= "999"		// Enemy-Ally (EA.IDS)						- "999"	= pas de changement
+			nvgen	= "999"		// General (GENERAL.IDS)					- "999"	= pas de changement
+			nvrace	= "999"		// Race (RACE.IDS)							- "999"	= pas de changement
+			nvclas	= "999"		// Class (CLASS.IDS)						- "999"	= pas de changement
+			nvgend	= "999"		// Gender (GENDER.IDS)						- "999"	= pas de changement
+			nvalig	= "99"		// Alignment (ALIGNMEN.IDS)					-  "99"	= pas de changement
+			nvkit	= "999"		// Kit information (Kit.IDS)				- "999"	= pas de changement
+
+			nvmove	= "999"		// Nouvelle vitesse de déplacement
+			NPCbump	= "0"		// Ajout du Spell Effect: NPCBump [300]
+			Detinv	= "0"		// Détecte automatiquement les créatures invisibles : Spell Effect: Invisible Detection by Script [193]
+			Imback	= "0"		// Immunité à Backstab								: Ajout de Protection: Backstab [292]
+			Infrav	= "0"		// Infravision										: Ajout du State: Infravision [63]
+			cbtarmes = "0"		// Combat à deux armes sans malus inspiré du perfect two weapons fighting (for creatures with multiple weapons)
+								//													: Ajout du Stat: THAC0 Modifier (Off-Hand) [305]
+	STR_VAR	"gender"		= "same"
+			"general"		= "same"
+			"race"			= "same"
+			"reaction"		= "same"
+			"alignement"	= "same"
+			"classe"		= "same"
+			"animation"		= "same"
+			"attaques"		= "same"
+BEGIN
+	READ_LONG	0x014 "oldxp"	// XP (gained for killing this creature)
+	READ_LONG	0x01c "oldgold"	// Gold carried
+	READ_SHORT	0x024 "oldhp"	// Current Hit Points
+	READ_SHORT	0x026 "oldhpmx"	// Maximum Hit Points
+	READ_LONG	0x028 "oldanim"	// Animation ID (ANIMATE.IDS)
+	READ_BYTE	0x044 "oldrep"	// Reputation (minimum value: 0)
+	READ_BYTE	0x045 "oldhs"	// Hide In Shadows (base)
+	READ_SSHORT	0x046 "oldac"	// Armor Class (Natural)
+//	READ_SSHORT	0x048 "oldacef"	// Armor Class (Effective)
+	READ_SHORT	0x04a "oldaccr"	// Armor Class (Crushing Attacks Modifier)
+	READ_SHORT	0x04c "oldacmi"	// Armor Class (Missile Attacks Modifier)
+	READ_SHORT	0x04e "oldacpi"	// Armor Class (Piercing Attacks Modifier)
+	READ_SHORT	0x050 "oldacsl"	// Armor Class (Slashing Attacks Modifier)
+	READ_BYTE	0x052 "oldth"	// THAC0
+	READ_BYTE	0x053 "oldapr"	// Number of attacks (0-10)
+	READ_BYTE	0x054 "oldsvd"	// Save versus death (0-20)
+	READ_BYTE	0x055 "oldsvw"	// Save versus wands (0-20)
+	READ_BYTE	0x056 "oldsvp"	// Save versus polymorph (0-20)
+	READ_BYTE	0x057 "oldsvb"	// Save versus breath attacks (0-20)
+	READ_BYTE	0x058 "oldsvs"	// Save versus spells (0-20)
+	READ_BYTE	0x059 "oldfr"	// Resist fire (0-100)
+	READ_BYTE	0x05a "oldcr"	// Resist cold (0-100)
+	READ_BYTE	0x05b "older"	// Resist electricity (0-100)
+	READ_BYTE	0x05c "oldar"	// Resist acid (0-100)
+	READ_BYTE	0x05d "oldmr"	// Resist magic (0-100)
+	READ_BYTE	0x060 "oldrs"	// Resist slashing (0-100)
+	READ_BYTE	0x061 "oldrc"	// Resist crushing (0-100)
+	READ_BYTE	0x062 "oldrp"	// Resist piercing (0-100)
+	READ_BYTE	0x063 "oldrm"	// Resist missile (0-100)
+	READ_BYTE	0x064 "oldill"	// Detect illusion (minimum value : 0)
+	READ_BYTE	0x065 "oldtrap"	// Set traps
+	READ_BYTE	0x066 "oldlore"	// Lore (0-100)
+	READ_BYTE	0x067 "oldlock"	// Lockpicking (minimum value: 0)
+	READ_BYTE	0x068 "oldms"	// Stealth (minimum value: 0)
+	READ_BYTE	0x069 "oldfrt"	// Find/disarm traps (minimum value: 0)
+	READ_BYTE	0x06a "oldpick"	// Pick pockets (minimum value: 0)
+	READ_BYTE	0x234 "oldlv1"	// Highest attained level in 1 class (0-100)
+	READ_BYTE	0x235 "oldlv2"	// Highest attained level in 2 class (0-100)
+	READ_BYTE	0x236 "oldlv3"	// Highest attained level in 3 class (0-100)
+	READ_BYTE	0x237 "oldsexe"	// Sex (from gender.ids)
+	READ_BYTE	0x238 "oldfor"	// Strength (1-25)
+	READ_BYTE	0x239 "oldforb"	// Strength % Bonus (0-100)
+	READ_BYTE	0x23a "oldint"	// Intelligence (1-25)
+	READ_BYTE	0x23b "oldsag"	// Wisdom (1-25)
+	READ_BYTE	0x23c "olddex"	// Dexterity (1-25)
+	READ_BYTE	0x23d "oldcon"	// Constitution (1-25)
+	READ_BYTE	0x23e "oldcha"	// Charisma (1-25)
+	READ_BYTE	0x23f "oldmor"	// Morale
+	READ_BYTE	0x240 "oldmorb"	// Morale break
+	READ_SHORT	0x242 "oldmorr"	// Morale Recovery Time
+
+	READ_LONG	0x244 "oldkit"	// Kit information
+	READ_BYTE	0x270 "oldreac"	// Enemy-Ally (EA.IDS)
+	READ_BYTE	0x271 "oldgen"	// General (GENERAL.IDS)
+	READ_BYTE	0x272 "oldrace"	// Race (RACE.IDS)
+	READ_BYTE	0x273 "oldclas"	// Class (CLASS.IDS)
+	READ_BYTE	0x275 "oldgend"	// Gender (GENDER.IDS). Dictates the casting voice, and checked for the summoning cap.
+	READ_BYTE	0x27b "oldalig"	// Alignment (ALIGNMEN.IDS)
+
+/////////////////////////////////////////////////////////////////////////
+// ---------------------------------------------------------------------
+// Traitement des données des créatures pour intégration dans le fichier
+// ---------------------------------------------------------------------
+/////////////////////////////////////////////////
+// Intégration des données
+// -----------------------
+	PATCH_IF (("%nvxp%" > "-1") AND ("%nvxp%" != "%oldxp%")) 		BEGIN	WRITE_LONG	0x014 "%nvxp%"		END
+	PATCH_IF (("%nvgold%" > "-1") AND ("%nvgold%" != "%oldgold%")) 	BEGIN	WRITE_LONG	0x01c "%nvgold%"	END
+	PATCH_IF (("%nvhp%" > 0) AND ("%nvhp%" != "%oldhp%")) 			BEGIN	WRITE_SHORT	0x024 "%nvhp%"		END
+	PATCH_IF (("%nvhpmx%" > 0) AND ("%nvhpmx%" != "%oldhpmx%"))		BEGIN	WRITE_SHORT	0x026 "%nvhpmx%"	END
+	PATCH_IF (("%nvanim%" > 0) AND ("%nvanim%" != "%oldanim%")) 	BEGIN	WRITE_LONG	0x028 "%nvanim%"	END
+	PATCH_IF (("%nvrep%" > 0) AND ("%nvrep%" != "%oldrep%")) 		BEGIN	WRITE_BYTE	0x044 "%nvrep%"		END
+	PATCH_IF (("%nvhs%" > 0) AND ("%nvhs%" != "%oldhs%"))			BEGIN	WRITE_BYTE	0x045 "%nvhs%"		END
+	PATCH_IF (("%nvac%" != "10") AND ("%nvac%" != "%oldac%")) 		BEGIN	WRITE_SHORT	0x046 "%nvac%"		WRITE_SHORT	0x048 "%nvac%"	END
+//	PATCH_IF (("%nvacef%" != "10") AND ("%nvacef%" > "%nvac%")) 		BEGIN	WRITE_SHORT	0x048 "%nvacef%"		END
+	PATCH_IF (("%nvaccr%" != "0") AND ("%nvaccr%" != "%oldaccr%"))	BEGIN	WRITE_SHORT	0x04a "%nvaccr%"	END
+	PATCH_IF (("%nvacmi%" != "0") AND ("%nvacmi%" != "%oldacmi%"))	BEGIN	WRITE_SHORT	0x04c "%nvacmi%"	END
+	PATCH_IF (("%nvacpi%" != "0") AND ("%nvacpi%" != "%oldacpi%"))	BEGIN	WRITE_SHORT	0x04e "%nvacpi%"	END
+	PATCH_IF (("%nvacsl%" != "0") AND ("%nvacsl%" != "%oldacsl%"))	BEGIN	WRITE_SHORT	0x050 "%nvacsl%"	END
+	PATCH_IF (("%nvth%" != "20") AND ("%nvth%" != "%oldth%"))		BEGIN	WRITE_BYTE	0x052 "%nvth%"		END
+	PATCH_IF (("%nvapr%" != "99") AND ("%nvapr%" != "%oldapr%"))	BEGIN	WRITE_BYTE	0x053 "%nvapr%"		END
+	PATCH_IF (("%nvsvd%" != "20") AND ("%nvsvd%" != "%oldsvd%"))	BEGIN	WRITE_BYTE	0x054 "%nvsvd%"		END
+	PATCH_IF (("%nvsvw%" != "20") AND ("%nvsvw%" != "%oldsvw%"))	BEGIN	WRITE_BYTE	0x055 "%nvsvw%"		END
+	PATCH_IF (("%nvsvp%" != "20") AND ("%nvsvp%" != "%oldsvp%"))	BEGIN	WRITE_BYTE	0x056 "%nvsvp%"		END
+	PATCH_IF (("%nvsvb%" != "20") AND ("%nvsvb%" != "%oldsvb%"))	BEGIN	WRITE_BYTE	0x057 "%nvsvb%"		END
+	PATCH_IF (("%nvsvs%" != "20") AND ("%nvsvs%" != "%oldsvs%"))	BEGIN	WRITE_BYTE	0x058 "%nvsvs%"		END
+	PATCH_IF ("%nvfr%" > "%oldfr%") 								BEGIN	WRITE_BYTE	0x059 "%nvfr%"		WRITE_BYTE	0x05e "%nvfr%"	END
+	PATCH_IF ("%nvcr%" > "%oldcr%") 								BEGIN	WRITE_BYTE	0x05a "%nvcr%"		WRITE_BYTE	0x05f "%nvcr%"	END
+	PATCH_IF ("%nver%" > "%older%") 								BEGIN	WRITE_BYTE	0x05b "%nver%"		END
+	PATCH_IF ("%nvar%" > "%oldar%") 								BEGIN	WRITE_BYTE	0x05c "%nvar%"		END
+	PATCH_IF ("%nvmr%" > "%oldmr%") 								BEGIN	WRITE_BYTE	0x05d "%nvmr%"		END
+	PATCH_IF (("%nvrs%" > 0) AND ("%nvrs%" != "%oldrs%"))			BEGIN	WRITE_BYTE	0x060 "%nvrs%"		END
+	PATCH_IF (("%nvrc%" > 0) AND ("%nvrc%" != "%oldrc%"))			BEGIN	WRITE_BYTE	0x061 "%nvrc%"		END
+	PATCH_IF (("%nvrp%" > 0) AND ("%nvrp%" != "%oldrp%"))			BEGIN	WRITE_BYTE	0x062 "%nvrp%"		END
+	PATCH_IF (("%nvrm%" > 0) AND ("%nvrm%" != "%oldrm%"))			BEGIN	WRITE_BYTE	0x063 "%nvrm%"		END
+	PATCH_IF (("%nvill%" > 0) AND ("%nvill%" != "%oldill%"))		BEGIN	WRITE_BYTE	0x064 "%nvill%"		END
+	PATCH_IF (("%nvtrap%" > 0) AND ("%nvtrap%" != "%oldtrap%"))		BEGIN	WRITE_BYTE	0x065 "%nvtrap%"	END
+	PATCH_IF (("%nvlore%" > 0) AND ("%nvlore%" != "%oldlore%"))		BEGIN	WRITE_BYTE	0x066 "%nvlore%"	END
+	PATCH_IF (("%nvlock%" > 0) AND ("%nvlock%" != "%oldlock%"))		BEGIN	WRITE_BYTE	0x067 "%nvlock%"	END
+	PATCH_IF (("%nvms%" > 0) AND ("%nvms%" != "%oldms%"))			BEGIN	WRITE_BYTE	0x068 "%nvms%"		END
+	PATCH_IF (("%nvfrt%" > 0) AND ("%nvfrt%" != "%oldfrt%"))		BEGIN	WRITE_BYTE	0x069 "%nvfrt%"		END
+	PATCH_IF (("%nvpick%" > 0) AND ("%nvpick%" != "%oldpick%"))		BEGIN	WRITE_BYTE	0x06a "%nvpick%"	END
+
+	PATCH_IF (("%nvlv1%" > 0) AND ("%nvlv1%" != "%oldlv1%"))		BEGIN	WRITE_BYTE	0x234 "%nvlv1%"		END
+	PATCH_IF (("%nvlv2%" > 0) AND ("%nvlv2%" != "%oldlv2%"))		BEGIN	WRITE_BYTE	0x235 "%nvlv2%"		END
+	PATCH_IF (("%nvlv3%" > 0) AND ("%nvlv3%" != "%oldlv3%"))		BEGIN	WRITE_BYTE	0x236 "%nvlv3%"		END
+	PATCH_IF (("%nvsexe%" != 99) AND ("%nvsexe%" != "%oldsexe%"))	BEGIN	WRITE_BYTE	0x237 "%nvsexe%"	END
+	PATCH_IF (("%nvfor%" > 0) AND ("%nvfor%" != "%oldfor%"))		BEGIN	WRITE_BYTE	0x238 "%nvfor%"		END
+	PATCH_IF (("%nvforb%" > 0) AND ("%nvforb%" != "%oldforb%"))		BEGIN	WRITE_BYTE	0x239 "%nvforb%"	END
+	PATCH_IF (("%nvint%" > 0) AND ("%nvint%" != "%oldint%"))		BEGIN	WRITE_BYTE	0x23a "%nvint%"		END
+	PATCH_IF (("%nvsag%" > 0) AND ("%nvsag%" != "%oldsag%"))		BEGIN	WRITE_BYTE	0x23b "%nvsag%"		END
+	PATCH_IF (("%nvdex%" > 0) AND ("%nvdex%" != "%olddex%"))		BEGIN	WRITE_BYTE	0x23c "%nvdex%"		END
+	PATCH_IF (("%nvcon%" > 0) AND ("%nvcon%" != "%oldcon%"))		BEGIN	WRITE_BYTE	0x23d "%nvcon%"		END
+	PATCH_IF (("%nvcha%" > 0) AND ("%nvcha%" != "%oldcha%"))		BEGIN	WRITE_BYTE	0x23e "%nvcha%"		END
+	PATCH_IF (("%nvmor%" > 0) AND ("%nvmor%" != "%oldmor%"))		BEGIN	WRITE_BYTE	0x23f "%nvmor%"		END
+	PATCH_IF (("%nvmorb%" != 99) AND ("%nvmorb%" != "%oldmorb%"))	BEGIN	WRITE_BYTE	0x240 "%nvmorb%"	END
+	PATCH_IF (("%nvmorr%" != 99) AND ("%nvmorr%" != "%oldmorr%"))	BEGIN	WRITE_SHORT	0x242 "%nvmorr%"	END
+	PATCH_IF (("%nvkit%" > 0) AND ("%nvkit%" != "%oldkit%"))		BEGIN	WRITE_LONG	0x244 "%nvkit%"		END
+
+	PATCH_IF (("%nvreac%" != 999) AND ("%nvreac%" != "%oldreac%"))	BEGIN	WRITE_BYTE	0x270 "%nvreac%"	END
+	PATCH_IF (("%nvgen%" != 999) AND ("%nvgen%" != "%oldgen%"))		BEGIN	WRITE_BYTE	0x271 "%nvgen%"		END
+	PATCH_IF (("%nvrace%" != 999) AND ("%nvrace%" != "%oldrace%"))	BEGIN	WRITE_BYTE	0x272 "%nvrace%"	END
+	PATCH_IF (("%nvclas%" != 999) AND ("%nvclas%" != "%oldclas%"))	BEGIN	WRITE_BYTE	0x273 "%nvclas%"	END
+	PATCH_IF (("%nvgend%" != 999) AND ("%nvgend%" != "%oldgend%"))	BEGIN	WRITE_BYTE	0x275 "%nvgend%"	END
+	PATCH_IF (("%nvalig%" != 99) AND ("%nvalig%" != "%oldalig%"))	BEGIN	WRITE_BYTE	0x27b "%nvalig%"	END
+
+// Vitesse de déplacement de la créature
+	PATCH_IF ("%nvmove%" != "999") BEGIN
+		LPF DELETE_CRE_EFFECT INT_VAR opcode_to_delete = 126 END
+		LPF DELETE_CRE_EFFECT INT_VAR opcode_to_delete = 176 END
+		LPF ADD_CRE_EFFECT INT_VAR opcode = 176 target = 1 timing = 9 parameter1 = "%nvmove%" parameter2 = 1 duration = 0 sectype = 0 probability1 = 100 END
+	END
+
+// Spell Effect: NPCBump [300]
+	PATCH_IF ("%NPCbump%" = "1") BEGIN
+		LPF ADD_CRE_EFFECT INT_VAR opcode = 300 target = 1 timing = 9 parameter2 = 1 sectype = 0 END
+	END
+
+// Détection automatique des créatures invisibles : Spell Effect: Invisible Detection by Script [193]
+	PATCH_IF ("%Detinv%" = "1") BEGIN
+		LPF DELETE_CRE_EFFECT INT_VAR opcode_to_delete = 193 END
+		LPF ADD_CRE_EFFECT INT_VAR opcode = 193 target = 1 timing = 9 parameter2 = 1 sectype = 0 END
+	END
+
+// Protection: Backstab [292]
+	PATCH_IF ("%Imback%" = "1") BEGIN
+		LPF DELETE_CRE_EFFECT INT_VAR opcode_to_delete = 292 END
+		LPF ADD_CRE_EFFECT INT_VAR opcode = 292 target = 1 timing = 9 parameter2 = 1 sectype = 0 END
+	END
+
+// State: Infravision [63]
+	PATCH_IF ("%Infrav%" = "1") BEGIN
+		LPF DELETE_CRE_EFFECT INT_VAR opcode_to_delete = 63 END
+		LPF ADD_CRE_EFFECT INT_VAR opcode = 63 target = 1 timing = 9 sectype = 0 END
+	END
+
+// Combat à deux armes sans malus : Stat: THAC0 Modifier (Off-Hand) [305]
+	PATCH_IF ("%cbtarmes%" = "1") BEGIN
+		SET_BG2_PROFICIENCY ~PROFICIENCY2WEAPON~ 3
+		LPF DELETE_CRE_EFFECT INT_VAR opcode_to_delete = 305 END
+		LPF ADD_CRE_EFFECT INT_VAR opcode = 305 target = 1 timing = 9 parameter1 = 2 sectype = 0 END
+	END
+
+END
+*/
+/*
+	READ_ASCII 0xa4 "soundset" (396)
+	WRITE_EVALUATED_ASCII 0xa4 "%soundset%" #396
+		FOR (s1 = 0xa4; s1 < 0x234; s1 += 0x4) BEGIN	// Null soundset (code borrowed from Nythrun with thanks)
+			WRITE_LONG s1 ~-1~
+		END
+	SAY INITIAL_MEETING @421 SAY BATTLE_CRY1 @421 SAY BATTLE_CRY2 @422
+	SAY ATTACK1 @423 SAY ATTACK2 @424 SAY ATTACK3 @425 SAY DAMAGE @426
+	SAY DYING @427 SAY SELECT_COMMON1 @421 SAY SELECT_COMMON2 @422
+	BUT_ONLY_IF_IT_CHANGES
+*/
+
+/* -------------------------------------------------------------------------------------- *
+ * FONCTION : Intégration des SCRIPTS, DIALOGUES et PORTRAITS dans les fichiers CRÉATURES *
+ * -------------------------------------------------------------------------------------- */
+/*DEFINE_PATCH_FUNCTION GW_MODIF_SCRIPT_CRE
+	STR_VAR	nvport	= "same"		// Small Portrait				-	"same" = pas de changement
+			nvscove	= "same"		// Creature script - Override	-	"same" = pas de changement
+			nvsccla	= "same"		// Creature script - Class		-	"same" = pas de changement
+			nvscrac	= "same"		// Creature script - Race		-	"same" = pas de changement
+			nvscgen	= "same"		// Creature script - General	-	"same" = pas de changement
+			nvscdef	= "same"		// Creature script - Default	-	"same" = pas de changement
+			nvscnam	= "same"		// Scripting name				-	"same" = pas de changement
+			nvdialo	= "same"		// Dialog						-	"same" = pas de changement
+BEGIN
+	PATCH_IF ("%nvport%" STRING_COMPARE_CASE "same")	BEGIN	WRITE_ASCIIE 0x034	"%nvport%" #8	END
+	PATCH_IF ("%nvscove%" STRING_COMPARE_CASE "same")	BEGIN	WRITE_ASCIIE 0x248	"%nvscove%" #8	END
+	PATCH_IF ("%nvsccla%" STRING_COMPARE_CASE "same")	BEGIN	WRITE_ASCIIE 0x250	"%nvsccla%" #8	END
+	PATCH_IF ("%nvscrac%" STRING_COMPARE_CASE "same")	BEGIN	WRITE_ASCIIE 0x258	"%nvscrac%" #8	END
+	PATCH_IF ("%nvscgen%" STRING_COMPARE_CASE "same")	BEGIN	WRITE_ASCIIE 0x260	"%nvscgen%" #8	END
+	PATCH_IF ("%nvscdef%" STRING_COMPARE_CASE "same")	BEGIN	WRITE_ASCIIE 0x268	"%nvscdef%" #8	END
+	PATCH_IF ("%nvscnam%" STRING_COMPARE_CASE "same")	BEGIN	WRITE_ASCIIE 0x280	"%nvscnam%" #32	END
+	PATCH_IF ("%nvdial%" STRING_COMPARE_CASE "same")	BEGIN	WRITE_ASCIIE 0x2cc	"%nvdial%" #8	END
+END
+*/
+
+/* ============================================================= *
+ *                                                               *
+ *        F O N C T I O N S   s u r   l e s   O B J E T S        *
+ *                                                               *
+ * ============================================================= */
+
+
+/* ---------------------------------------------------------- *
+ * FONCTION : INTÉGRATION des données dans les fichiers ARMES *
+ * ---------------------------------------------------------- */
+/*
+READ_LONG	0x018 "oldflag"	// Flags	19	1a	1b
+	READ_BYTE 0x18 "flags"
+	PATCH_IF (("%flags%" BAND "0b00000100") = "0b00000000") BEGIN
+		WRITE_BYTE 0x18 ("%flags%" BOR 0b01000000)		// add magical flag
+		WRITE_BYTE 0x18 ("%flags%" BAND 0b10111111)		// removes magical flag
+		WRITE_BYTE 0x18 ("%flags%" BOR "0b00000100")	// droppable
+
+Bit  Byte 1 Byte 2 Byte 3 Byte 4
+BIT0 Unsellable (critical item)
+BIT1 Two-handed
+BIT2 Movable
+BIT3 Displayable
+BIT4 Cursed
+BIT5 Cannot scribe to spellbook (scrolls)
+BIT6 Magical
+BIT7 Bow
+READ_BYTE	0x19
+BIT0 Silver Unused (8)
+BIT1 Cold-Iron (9)
+BIT2 Unsellable (stolen) (10) / two handed animation Set offhand animations for 0x5###-0x6### animId series (excluding 0x64##) when weapon placed in offhand. Unused  Unused
+BIT3 Conversable (11)
+
+BIT0 Undispellable (24)
+BIT1 Toggle Critical Hits (25)
+
+	WRITE_LONG 0x18 THIS | BIT11 | BIT14 | BIT25	// ajoute No LOS required - Non-magical ability - Castable when silenced
+  0x1e 1*4 (byte) Usability bitmask
+0 Chaotic...	Cleric/Mage				Fighter/Mage/Thief	Dwarf
+1 ...Evil		Cleric/Thief			Fighter/Thief		Half-Elf
+2 ...Good		Cleric/Ranger			Mage				Halfling
+3 ...Neutral	Fighter					Mage/Thief			Human
+4 Lawful...		Fighter/Druid			Paladin				Gnome
+5 Neutral...	Fighter/Mage			Ranger				Monk
+6 Bard			Fighter/Cleric			Thief				Druid
+7 Cleric		Fighter/Mage/Cleric		Elf					Half-Orc
+  READ_BYTE  0x1e "use1"
+	WRITE_BYTE 0x1e ("%use1%" BOR 0b00000001)	// adds chaotic flag
+	WRITE_BYTE 0x1e ("%use1%" BOR 0b00000010)	// adds evil flag
+	WRITE_BYTE 0x1e ("%use1%" BOR 0b00010000)	// adds lawful flag
+	WRITE_BYTE 0x1e ("%use1%" BOR 0b00001000)	// adds ge-axis neutral flag
+	WRITE_BYTE 0x1e ("%use1%" BOR 0b00100000)	// adds lc-axis neutral flag
+	WRITE_BYTE 0x1e ("%use1%" BOR 0b01000000)	// adds bard flag
+	WRITE_BYTE 0x1e ("%use1%" BAND 0b10111111)	// removes bard flag
+  READ_BYTE  0x1f "use2"
+	WRITE_BYTE 0x1f ("%use2%" BOR 0b00000001)	// adds c/m flag
+	WRITE_BYTE 0x1f ("%use2%" BOR 0b00000010)	// adds c/t flag
+    WRITE_BYTE 0x1f ("%use2%" BAND 0b11111101)	// removes c/t flag
+	WRITE_BYTE 0x1f ("%use2%" BOR 0b00000100)	// adds c/r flag
+	WRITE_BYTE 0x1f ("%use2%" BOR 0b00001000)	// adds f flag
+    WRITE_BYTE 0x1f ("%use2%" BOR 0b00010000)	// adds f/d flag
+	WRITE_BYTE 0x1f ("%use2%" BOR 0b00100000)	// adds f/m flag
+	WRITE_BYTE 0x1f ("%use2%" BOR 0b01000000)	// adds f/c flag
+	WRITE_BYTE 0x1f ("%use2%" BOR 0b10000000)	// adds f/m/c flag
+
+	WRITE_BYTE 0x20 ("%use3%" BOR 0b10000000)	// adds elf flag
+	WRITE_BYTE 0x20 ("%use3%" BAND 0b10111111)	// removes thief flag
+	WRITE_BYTE 0x20 ("%use3%" BOR 0b01000000)	// adds thief flag
+	WRITE_BYTE 0x20 ("%use3%" BOR 0b00100000)	// adds ranger flag
+	WRITE_BYTE 0x20 ("%use3%" BAND 0b11011111)	// removes ranger flag
+	WRITE_BYTE 0x20 ("%use3%" BOR 0b00010000)	// adds paladin flag
+	WRITE_BYTE 0x20 ("%use3%" BAND 0b11101111)	// removes paladin flag
+	WRITE_BYTE 0x20 ("%use3%" BOR 0b00001000)	// adds m/t flag
+	WRITE_BYTE 0x20 ("%use3%" BAND 0b11110111)	// removes m/t flag
+	WRITE_BYTE 0x20 ("%use3%" BOR 0b00000100)	// adds mage flag
+	WRITE_BYTE 0x20 ("%use3%" BOR 0b00000010)	// adds f/t flag
+	WRITE_BYTE 0x20 ("%use3%" BOR 0b00000001)	// adds f/m/t flag
+
+	WRITE_BYTE 0x21 ("%use4%" BOR 0b10000000)	// adds half-orc flag
+	WRITE_BYTE 0x21 ("%use4%" BOR 0b01000000)	// adds druid flag
+	WRITE_BYTE 0x21 ("%use4%" BAND 0b10111111)	// removes druid flag
+	WRITE_BYTE 0x21 ("%use4%" BOR 0b00100000)	// adds monk flag
+	WRITE_BYTE 0x21 ("%use4%" BAND  0b11011111)	// removes monk flag
+	WRITE_BYTE 0x21 ("%use4%" BOR 0b00010000)	// adds gnome flag
+	WRITE_BYTE 0x21 ("%use4%" BOR 0b00000100)	// adds halfling flag
+	WRITE_BYTE 0x21 ("%use4%" BOR 0b00000010)	// adds half-elf flag
+	WRITE_BYTE 0x21 ("%use4%" BOR 0b00000001)	// adds dwarf flag
+
+
+0x0029 1 (byte) Kit Usability 1
+0 Cleric of Talos		Stalker Ranger		Diviner			Beserker Fighter
+1 Cleric of Helm		Beastmaster Ranger	Enchanter		Wizardslayer Fighter
+2 Cleric of Lathlander	Assassin Thief		Illusionist		Kensai Fighter
+3 Totemic Druid			Bounty Hunter Thief	Invoker			Cavalier Paladin
+4 Shapeshifter Druid	Swashbuckler Thief	Necromancer		Inquisiter Paladin
+5 Avenger Druid			Blade Bard			Transmuter		Undead Hunter Paladin
+6 Barbarian				Jester Bard			All (no kit)	Abjurer
+7 Wildmage				Skald Bard			Ferlain			Conjurer
+
+	WRITE_BYTE 0x29 ("%use%" BOR  0b10000000)	// adds wildmage flag
+	WRITE_BYTE 0x29 ("%use%" BOR  0b01000000)	// adds barbarian flag
+	WRITE_BYTE 0x29 ("%use%" BAND  0b10111111)	// removes barbarian flag
+	WRITE_BYTE 0x29 ("%use%" BOR  0b00100000)	// add avenger flag
+	WRITE_BYTE 0x29 ("%use%" BAND  0b11011111)	// removes avenger flag
+	WRITE_BYTE 0x29 ("%use%" BOR   0b00010000)	// adds shapeshifter flag
+	WRITE_BYTE 0x29 ("%use%" BAND  0b11101111)	// removes shapeshifter flag
+	WRITE_BYTE 0x29 ("%use%" BOR  0b00001000)	// adds totemic druid flag
+	WRITE_BYTE 0x29 ("%use%" BAND  0b11110111)	// removes totemic druid flag
+	WRITE_BYTE 0x29 ("%use%" BAND  0b11111011)	// removes lathander flag
+	WRITE_BYTE 0x29 ("%use%" BAND  0b11111101)	// removes helm flag
+	WRITE_BYTE 0x29 ("%use%" BAND  0b11111110)	// removes talos flag
+
+0x002b 1 (byte) Kit Usability 2
+	WRITE_BYTE 0x2b ("%use%" BAND  0b11101111)	// remove swashbuckler flag
+	WRITE_BYTE 0x2b ("%use%" BAND  0b11110111)	// remove bounty hunter flag
+	WRITE_BYTE 0x2b ("%use%" BAND  0b11111011)	// remove assassin flag
+	WRITE_BYTE 0x2b ("%use%" BOR 0b00000010)	// adds beastmaster flag
+	WRITE_BYTE 0x2b ("%use%" BAND 0b11111101)	// removes beastmaster flag
+	WRITE_BYTE 0x2b ("%use%" BOR 0b00000001)	// adds stalker flag
+	WRITE_BYTE 0x2b ("%use%" BAND 0b11111110)	// removes stalker flag
+
+0x002d 1 (byte) Kit Usability 3
+	WRITE_BYTE 0x2d ("%use%" BOR 0b10000000)	// adds archer flag
+	WRITE_BYTE 0x2d ("%use%" BAND 0b01111111)	// removes archer flag
+	WRITE_BYTE 0x2d ("%use%" BOR 0b00100000)	// adds transmuter flag
+	WRITE_BYTE 0x2d ("%use%" BAND 0b11011111)	// removes transmuter flag
+	WRITE_BYTE 0x2d ("%use%" BAND 0b11101111)	// removes necromancer flag
+	WRITE_BYTE 0x2d ("%use%" BAND 0b11110111)	// removes invoker flag
+	WRITE_BYTE 0x2d ("%use%" BAND 0b11111011)	// removes illusionist flag
+	WRITE_BYTE 0x2d ("%use%" BAND 0b11111101)	// removes enchanter flag
+	WRITE_BYTE 0x2d ("%use%" BAND 0b11111110)	// removes diviner flag
+
+0x002f 1 (byte) Kit Usability 4
+	WRITE_BYTE 0x2f ("%use%" BAND 0b01111111) // removes conjurer flag
+	WRITE_BYTE 0x2f ("%use%" BOR   0b01000000) // adds abjurer flag
+	WRITE_BYTE 0x2f ("%use%" BAND 0b10111111) // removes abjurer flag
+	WRITE_BYTE 0x2f ("%use%" BAND 0b11011111) // removes undead hunter flag
+	WRITE_BYTE 0x2f ("%use%" BAND 0b11101111) // removes inquisitor flag
+	WRITE_BYTE 0x2f ("%use%" BOR   0b00001000) // adds cavalier flag
+	WRITE_BYTE 0x2f ("%use%" BAND 0b11110111) // removes cavalier flag
+	WRITE_BYTE 0x2f ("%use%" BOR 0b00000100) // adds kensai flag
+	WRITE_BYTE 0x2f ("%use%" BAND 0b11111011) // removes kensai flag
+	WRITE_BYTE 0x2f ("%use%" BOR 0b00000010) // add wizslayer flag
+	WRITE_BYTE 0x2f ("%use%" BAND  0b11111101) // removes wizardslayer flag
+	WRITE_BYTE 0x2f ("%use%" BOR 0b00000001) // adds berserker flag
+	WRITE_BYTE 0x2f ("%use%" BAND 0b11111110) // removes berserker flag
+*/
+/*
+ACTION_IF (FILE_EXISTS_IN_GAME ~hgwra01.itm~) THEN BEGIN
+SET setr = 0x60 // Set Red
+SET setg = 0x00 // Set Green
+SET setb = 0x71 // Set Blue
+SET speed = 0x1E // Speed
+SET location = wgrey
+LAUNCH_PATCH_MACRO ~pulse~
+
+SET setr = 0x00 // Set Red
+SET setg = 0x00 // Set Green
+SET setb = 0xC0 // Set Blue
+SET speed = 0x14 // Speed
+SET location = wteal
+LAUNCH_PATCH_MACRO ~pulse~
+
+SET setr = 0x63 // Set Red
+SET setg = 0x63 // Set Green
+SET setb = 0xE6 // Set Blue
+SET speed = 0x0C // Speed
+SET location = wpink
+LAUNCH_PATCH_MACRO ~pulse~
+
+SET setr = 0x6D // Set Red
+SET setg = 0x6D // Set Green
+SET setb = 0xFF // Set Blue
+SET speed = 0x0C // Speed
+SET location = wblue
+LAUNCH_PATCH_MACRO ~pulse~
+
+SET setr = 0x60 // Set Red
+SET setg = 0x00 // Set Green
+SET setb = 0x71 // Set Blue
+SET speed = 0x1E // Speed
+SET location = wred
+LAUNCH_PATCH_MACRO ~pulse~
+
+ACTION_IF (FILE_EXISTS_IN_GAME ~staf08.itm~) THEN BEGIN
+
+SET setr = 0x00 // Set Red
+SET setg = 0x14 // Set Green
+SET setb = 0x14 // Set Blue
+SET location = wgrey
+LAUNCH_PATCH_MACRO ~glow~
+
+SET setr = 0x00 // Set Red
+SET setg = 0x19 // Set Green
+SET setb = 0x19 // Set Blue
+SET location = wteal
+LAUNCH_PATCH_MACRO ~glow~
+
+SET setr = 0x00 // Set Red
+SET setg = 0x28 // Set Green
+SET setb = 0x28 // Set Blue
+SET location = wpink
+LAUNCH_PATCH_MACRO ~glow~
+
+SET setr = 0x00 // Set Red
+SET setg = 0x1E // Set Green
+SET setb = 0x1E // Set Blue
+SET location = wblue
+LAUNCH_PATCH_MACRO ~glow~
+
+SET setr = 0x00 // Set Red
+SET setg = 0x28 // Set Green
+SET setb = 0x28 // Set Blue
+SET location = wred
+LAUNCH_PATCH_MACRO ~glow~
+*/
+
+/* -------------------------------------------------------------- *
+ * FONCTION : INTÉGRATION des données dans les PARCHEMINS de sort *
+ * -------------------------------------------------------------- */
+/*
+DEFINE_PATCH_FUNCTION ~GW_CREATION_SCROLL~
+	INT_VAR	nvminlv	= "-1"		// Min Level							-  "-1"	= pas de changement (0 par défaut)
+			nvminin	= "-1"		// Min Intelligence (unused in BG1)		-  "-1"	= pas de changement (9 par défaut)
+			nvminwi	= "-1"		// Min Wisdom (unused in BG1)			-  "-1"	= pas de changement (0 par défaut)
+			nvprix	= "-1"		// Price								-  "-1"	= pas de changement (100 par défaut)
+			nvstac	= "-1"		// Stack amount							-  "-1"	= pas de changement (999 par défaut)
+			nvlore	= "-1"		// Lore to ID							-  "-1"	= pas de changement (0 par défaut)
+			nvcible	= "-1"		// Target type							-  "-1"	= pas de changement
+			nvrange	= "-1"		// Range								-  "-1"	= pas de changement (1 par défaut)
+			nvopcode = "-1"		// Opcode number						-  "-1"	= pas de changement (Spell: Cast Spell (at Creature) [146] par défaut)
+			nvtarget = "-1"		// Target type							-  "-1"	= pas de changement
+			nvlevel  = "-1"		// Niveau pour lancer le sort			-  "-1"	= pas de changement (10 par défaut)
+			nvtype	 = "-1"		// Lancement rapide ou pas				-  "-1"	= pas de changement (0 par défaut)
+			nvXP	 = "-1"		// Gain d'XP							-  "-1"	= pas de changement (1 par défaut)
+
+		// ces variables ajoutent un flag (1) ou le suppriment (0)
+			flag_noevil = "-1"	// BIT1 								- "-1"	= pas de changement
+			flag_good = "-1"	// BIT2									- "-1"	= pas de changement
+			flag_pala = "-1"	// Paladins								- "-1"	= pas de changement
+			flag_kits = "-1"	// Kits : Chevalier de Diamant - Chevaucheuse de licorne	- "-1"	= pas de changement
+
+	STR_VAR	nvicone	 = "same"	// Inventory icon						-	"same"	= pas de changement
+			nviconeg = "same"	// Ground icon							-	"same"	= pas de changement (GSCRL01 par défaut)
+			nviconed = "same"	// Description icon						-	"same"	= pas de changement (CSCRL01 par défaut)
+
+			flag 	 = "same"	// Flags d'exclusion					-	"same"	= pas de changement
+
+			nvsort	 = "same"	// Sort à lancer et à apprendre			-	"same"	= pas de changement
+			nvlearn	 = "same"	// Apprentissage du sort				-	"same"	= pas de changement (Oui par défaut)
+			bougie	 = "Bgi"	// Bougie								-	"same"	= pas de changement (Oui par défaut)
+BEGIN
+
+	READ_BYTE	0x01e "olduse1"		// Usability bitmask
+	READ_BYTE	0x01f "olduse2"		// Usability bitmask
+	READ_BYTE	0x020 "olduse3"		// Usability bitmask
+	READ_BYTE	0x021 "olduse4"		// Usability bitmask
+	READ_BYTE	0x029 "oldkit1"		// Kit Usability 1
+	READ_BYTE	0x02b "oldkit2"		// Kit Usability 2
+	READ_BYTE	0x02d "oldkit3"		// Kit Usability 3
+	READ_BYTE	0x02f "oldkit4"		// Kit Usability 4
+	READ_SHORT	0x024 "oldminlv"	// Min Level
+	READ_BYTE	0x02a "oldminin"	// Min Intelligence (unused in BG1)
+	READ_BYTE	0x02e "oldminwi"	// Min Wisdom (unused in BG1)
+	READ_LONG	0x034 "oldprix"		// Price
+	READ_SHORT	0x038 "oldstac"		// Stack amount
+	READ_SHORT	0x042 "oldlore"		// Lore to ID
+	READ_LONG	0x04c "oldpoids"	// Weight
+
+	READ_ASCII	0x03a "oldicone"	// Inventory icon
+	READ_ASCII	0x044 "oldiconeg"	// Ground icon
+	READ_ASCII	0x058 "oldiconed"	// Description icon
+
+// ------------------------------------------------------------------
+// Traitement des données des objets pour intégration dans le fichier
+// ------------------------------------------------------------------
+// Exclusion
+// ---------
+	SET nvflag = 1	SET Flag_di = 0	SET Flag_en = 0	SET Flag_il = 0	SET Flag_in = 0	SET Flag_ne = 0	SET Flag_tr = 0	SET Flag_ab = 0	SET Flag_co = 0
+
+	SET Flag_cp = 0	SET Flag_cpc = 0	SET Flag_pa = 0	SET Flag_pr = 0	SET Flag_prg = 0	SET Flag_dv = 0	SET Flag_pdr = 0	SET Flag_dr = 0 SET Flag_ppr = 0 SET Flag_cdr = 0
+	SET Flag_ca = 0	SET Flag_cad = 0	SET Flag_cd = 0	//SET Flag_ = 0
+	PATCH_MATCH ~%flag%~ WITH
+		DI	BEGIN	SET Flag_di = "1"	END // Diviner
+		EN	BEGIN	SET Flag_en = "1"	END // Enchanter
+		IL	BEGIN	SET Flag_il = "1"	END // Illusionist
+		EV	BEGIN	SET Flag_in = "1"	END // Invoker
+		NE	BEGIN	SET Flag_ne = "1"	END // Necromancer
+		TR	BEGIN	SET Flag_tr = "1"	END // Transmuter
+		AB	BEGIN	SET Flag_ab = "1"	END // Abjurer
+		CO	BEGIN 	SET Flag_co = "1"	END // Conjurer
+
+		DV	BEGIN	SET Flag_dv = "1"	END // Sort divin
+		CP	BEGIN	SET Flag_cp = "1"	END // Paladins-Prêtres
+		CPC	BEGIN	SET Flag_cpc = "1"	END // Paladins-Prêtres non chaotiques
+		PA	BEGIN	SET Flag_pa = "1"	END // Paladins
+		PPR	BEGIN	SET Flag_ppr = "1"	END // Paladins-Prêtres-Rôdeurs
+		PRG	BEGIN	SET Flag_prg = "1"	END // Paladins-Rôdeurs
+		PDR	BEGIN	SET Flag_pdr = "1"	END // Paladins-Druides-Rôdeurs
+		CAD	BEGIN	SET Flag_cad = "1"	END // Cavaliers-Druides-Rôdeurs
+		CDR	BEGIN	SET Flag_cdr = "1"	END // Prêtres-Druides-Rôdeurs
+		CD	BEGIN	SET Flag_cd = "1"	END // Prêtres-Druides
+
+		CA	BEGIN	SET Flag_ca = "1"	END // Cavalier Paladin
+		PR	BEGIN	SET Flag_pr = "1"	END // Prêtres
+		DR	BEGIN	SET Flag_dr = "1"	END // Druides
+
+		RG	BEGIN	SET Flag_rg = "1"	END // Rôdeurs
+		IQ	BEGIN	SET Flag_iq = "1"	END // Inquisiter Paladin
+		UH	BEGIN	SET Flag_uh = "1"	END // Undead Hunter Paladin
+		DEFAULT		SET nvflag = "-1"
+	END
+
+// Intégration des données génériques dans le fichier
+// --------------------------------------------------
+
+	PATCH_IF (("%oldminlv%" != "%nvminlv%") AND ("%nvminlv%" != "-1"))	BEGIN	WRITE_SHORT 0x024 "%nvminlv%"	END // écrit la valeur du nouveau niveau minimum requis
+	PATCH_IF (("%oldminin%" != "%nvminin%") AND ("%nvminin%" != "-1"))	BEGIN	WRITE_BYTE	0x02a "%nvminin%"	END // écrit la valeur de la nouvelle intelligence minimum requise
+	PATCH_IF (("%oldminwi%" != "%nvminwi%") AND ("%nvminwi%" != "-1"))	BEGIN	WRITE_BYTE	0x02e "%nvminwi%"	END // écrit la valeur de la nouvelle sagesse minimum requise
+
+	PATCH_IF (("%oldprix%" != "%nvprix%") AND ("%nvprix%" != "-1")) 	BEGIN	WRITE_LONG	0x034 "%nvprix%"	END // écrit la valeur du nouveau prix
+	PATCH_IF (("%oldstac%" != "%nvstac%") AND ("%nvstac%" != "-1")) 	BEGIN	WRITE_SHORT	0x038 "%nvstac%"	END // écrit la valeur du nouvel empilement
+	PATCH_IF (("%oldlore%" != "%nvlore%") AND ("%nvlore%" != "-1")) 	BEGIN	WRITE_SHORT	0x042 "%nvlore%"	END // écrit la valeur du nouveau minimum requis pour identification
+
+	PATCH_IF (("%nvicone%" STRING_COMPARE_CASE "same") AND ("%nvicone%" STRING_COMPARE_CASE "%oldicone%"))		BEGIN	WRITE_ASCIIE 0x03a "%nvicone%" #8 END
+	PATCH_IF (("%nviconeg%" STRING_COMPARE_CASE "same") AND ("%nviconeg%" STRING_COMPARE_CASE "%oldiconeg%"))	BEGIN	WRITE_ASCIIE 0x044 "%nviconeg%" #8 END
+	PATCH_IF (("%nviconed%" STRING_COMPARE_CASE "same") AND ("%nviconed%" STRING_COMPARE_CASE "%oldiconed%"))	BEGIN	WRITE_ASCIIE 0x058 "%nviconed%" #8 END
+
+	PATCH_IF (nvflag != "-1")	BEGIN
+		PATCH_IF (Flag_di > 0)	BEGIN
+			PATCH_IF (("%oldkit3%" BAND "0b00000001") = "0b00000000") BEGIN	WRITE_BYTE 0x2d ("%oldkit3%" BOR 0b00000001) // Enlève le flag Diviner
+			END
+		END
+		PATCH_IF (Flag_en > 0)	BEGIN
+			PATCH_IF (("%oldkit3%" BAND "0b00000010") = "0b00000000") BEGIN	WRITE_BYTE 0x2d ("%oldkit3%" BOR 0b00000010) // Enlève le flag Enchanter
+			END
+		END
+		PATCH_IF (Flag_il > 0)	BEGIN
+			PATCH_IF (("%oldkit3%" BAND "0b00000100") = "0b00000000") BEGIN	WRITE_BYTE 0x2d ("%oldkit3%" BOR 0b00000100) // Enlève le flag Illusionist
+			END
+		END
+		PATCH_IF (Flag_in > 0)	BEGIN
+			PATCH_IF (("%oldkit3%" BAND "0b00001000") = "0b00000000") BEGIN	WRITE_BYTE 0x2d ("%oldkit3%" BOR 0b00001000) // Enlève le flag Invoker
+			END
+		END
+		PATCH_IF (Flag_ne > 0)	BEGIN
+			PATCH_IF (("%oldkit3%" BAND "0b00010000") = "0b00000000") BEGIN	WRITE_BYTE 0x2d ("%oldkit3%" BOR 0b00010000) // Enlève le flag Necromancer
+			END
+		END
+		PATCH_IF (Flag_tr > 0)	BEGIN
+			PATCH_IF (("%oldkit3%" BAND "0b00100000") = "0b00000000") BEGIN	WRITE_BYTE 0x2d ("%oldkit3%" BOR 0b00100000) // Enlève le flag Transmuter
+			END
+		END
+		PATCH_IF (Flag_ab > 0)	BEGIN
+			PATCH_IF (("%oldkit4%" BAND "0b01000000") = "0b00000000") BEGIN	WRITE_BYTE 0x2f ("%oldkit4%" BOR 0b01000000) // Enlève le flag Abjurer
+			END
+		END
+		PATCH_IF (Flag_co > 0)	BEGIN
+			PATCH_IF (("%oldkit4%" BAND "0b10000000") = "0b00000000") BEGIN	WRITE_BYTE 0x2f ("%oldkit4%" BOR 0b10000000) // Enlève le flag Conjurer
+			END
+		END
+
+		PATCH_IF (Flag_dv > 0)	BEGIN	// Sort divin
+			WRITE_BYTE 0x1e THIS | BIT6
+//			WRITE_BYTE 0x1f THIS | BIT4 | BIT6
+			WRITE_BYTE 0x20 THIS | BIT0 | BIT1 | BIT2 | BIT3 | BIT6
+			WRITE_BYTE 0x21 THIS | BIT5
+			WRITE_BYTE 0x29 THIS | BIT6
+		END
+		PATCH_IF (Flag_cdr > 0)	BEGIN	// Prêtres-Druides-Rôdeurs
+			PATCH_IF (("%olduse3%" BAND "0b00010000") = "0b00000000") BEGIN	WRITE_BYTE 0x20 ("%olduse3%" BOR 0b00010000) END	// Enlève le flag Paladin
+		END
+		PATCH_IF (Flag_cd > 0)	BEGIN	// Prêtres-Druides
+			WRITE_BYTE 0x1e THIS | BIT6
+			WRITE_BYTE 0x1f THIS | BIT3 | BIT5
+			WRITE_BYTE 0x20 THIS | BIT0 | BIT1 | BIT2 | BIT3 | BIT4 | BIT5 | BIT6
+			WRITE_BYTE 0x21 THIS | BIT5
+			WRITE_BYTE 0x29 THIS | BIT6 | BIT7
+		END
+		PATCH_IF (Flag_dr > 0)	BEGIN	// Druides-Rôdeurs
+			WRITE_BYTE 0x1e THIS | BIT6 | BIT7
+			WRITE_BYTE 0x1f THIS | BIT0 | BIT1 | BIT3 | BIT5 | BIT6 | BIT7
+			WRITE_BYTE 0x20 THIS | BIT0 | BIT1 | BIT2 | BIT3 | BIT4 | BIT6 | BIT7
+			WRITE_BYTE 0x21 THIS | BIT5 | BIT7
+			WRITE_BYTE 0x29 THIS | BIT6 | BIT7
+			WRITE_BYTE 0x2b THIS | BIT2 | BIT3 | BIT4 | BIT5 | BIT6 | BIT7
+			WRITE_BYTE 0x2d THIS | BIT0 | BIT1 | BIT2 | BIT3 | BIT4 | BIT5
+			WRITE_BYTE 0x2f THIS | BIT3 | BIT4 | BIT5 | BIT6 | BIT7
+		END
+		PATCH_IF (Flag_pr > 0)	BEGIN	// Prêtres
+			WRITE_BYTE 0x1e THIS | BIT6
+			WRITE_BYTE 0x1f THIS | BIT3 | BIT4 | BIT5
+			WRITE_BYTE 0x20 THIS | BIT0 | BIT1 | BIT2 | BIT3 | BIT4 | BIT5 | BIT6
+			WRITE_BYTE 0x21 THIS | BIT5 | BIT6
+			WRITE_BYTE 0x29 THIS | BIT3 | BIT4 | BIT5 | BIT6
+			WRITE_BYTE 0x2b THIS | BIT5 | BIT6 | BIT7
+			WRITE_BYTE 0x2f THIS | BIT3 | BIT4 | BIT5
+		END
+		PATCH_IF (Flag_ppr > 0)	BEGIN	// Paladins-Prêtres-Rôdeurs
+			PATCH_IF (("%olduse2%" BAND "0b00010000") = "0b00000000") BEGIN	WRITE_BYTE 0x1f ("%olduse2%" BOR 0b00010000) END	// Enlève le flag Fighter Druide
+			PATCH_IF (("%olduse4%" BAND "0b01000000") = "0b00000000") BEGIN	WRITE_BYTE 0x21 ("%olduse4%" BOR 0b01000000) END	// Enlève le flag Druide
+		END
+		PATCH_IF (Flag_pa > 0)	BEGIN	WRITE_LONG 0x1e 0x606fffeb	// Uniquement des paladins
+										WRITE_BYTE 0x29 "0"
+										WRITE_BYTE 0x2b "0"
+										WRITE_BYTE 0x2d "0"
+		END
+		PATCH_IF (Flag_cp > 0)	BEGIN	// Paladins-Prêtres
+			PATCH_IF (("%olduse2%" BAND "0b00010000") = "0b00000000") BEGIN	WRITE_BYTE 0x1f ("%olduse2%" BOR 0b00010000) END	// Enlève le flag Fighter Druide
+			PATCH_IF (("%olduse3%" BAND "0b00100000") = "0b00000000") BEGIN	WRITE_BYTE 0x20 ("%olduse3%" BOR 0b00100000) END	// Enlève le flag Ranger
+			PATCH_IF (("%olduse4%" BAND "0b01000000") = "0b00000000") BEGIN	WRITE_BYTE 0x21 ("%olduse4%" BOR 0b01000000) END	// Enlève le flag Druide
+		END
+		PATCH_IF (Flag_cpc > 0)	BEGIN	// Paladins-Prêtres non chaotiques
+			WRITE_BYTE 0x1e THIS | BIT0
+//			PATCH_IF (("%olduse1%" BAND "0b00000001") = "0b00000000") BEGIN	WRITE_BYTE 0x1f ("%olduse1%" BOR 0b00000001) END	// Enlève le flag Chaotic
+			PATCH_IF (("%olduse2%" BAND "0b00010000") = "0b00000000") BEGIN	WRITE_BYTE 0x1f ("%olduse2%" BOR 0b00010000) END	// Enlève le flag Fighter Druide
+			PATCH_IF (("%olduse3%" BAND "0b00100000") = "0b00000000") BEGIN	WRITE_BYTE 0x20 ("%olduse3%" BOR 0b00100000) END	// Enlève le flag Ranger
+			PATCH_IF (("%olduse4%" BAND "0b01000000") = "0b00000000") BEGIN	WRITE_BYTE 0x21 ("%olduse4%" BOR 0b01000000) END	// Enlève le flag Druide
+		END
+		PATCH_IF (Flag_pdr > 0)	BEGIN	// Paladins-Druides-Rôdeurs
+			WRITE_BYTE 0x1e THIS | BIT6 | BIT7
+			WRITE_BYTE 0x1f THIS | BIT0 | BIT1 | BIT3 | BIT5 | BIT6 | BIT7
+			WRITE_BYTE 0x20 THIS | BIT0 | BIT1 | BIT2 | BIT3 | BIT6
+			WRITE_BYTE 0x21 THIS | BIT5 | BIT7
+			WRITE_BYTE 0x29 THIS | BIT0 | BIT1 | BIT2 | BIT6 | BIT7
+			WRITE_BYTE 0x2b THIS | BIT2 | BIT3 | BIT4 | BIT5 | BIT6 | BIT7
+			WRITE_BYTE 0x2d THIS | BIT0 | BIT1 | BIT2 | BIT3 | BIT4 | BIT5
+			WRITE_BYTE 0x2f THIS | BIT0 | BIT1 | BIT2 | BIT6 | BIT7
+		END
+		PATCH_IF (Flag_prg > 0)	BEGIN	// Paladins-Rôdeurs
+			WRITE_BYTE 0x1e THIS | BIT6 | BIT7
+			WRITE_BYTE 0x1f THIS | BIT0 | BIT1 | BIT3 | BIT4 | BIT5 | BIT6 | BIT7
+			WRITE_BYTE 0x20 THIS | BIT0 | BIT1 | BIT2 | BIT3 | BIT6
+			WRITE_BYTE 0x21 THIS | BIT5 | BIT6 | BIT7
+			WRITE_BYTE 0x29 THIS | BIT3 | BIT4 | BIT5 | BIT6 | BIT7
+			WRITE_BYTE 0x2b THIS | BIT2 | BIT3 | BIT4 | BIT5 | BIT6 | BIT7
+			WRITE_BYTE 0x2d THIS | BIT0 | BIT1 | BIT2 | BIT3 | BIT4 | BIT5
+			WRITE_BYTE 0x2f THIS | BIT0 | BIT1 | BIT2 | BIT6 | BIT7
+		END
+
+		PATCH_IF (Flag_ca > 0)	BEGIN	// Cavaliers
+			WRITE_BYTE 0x1e THIS | BIT0 | BIT1 | BIT3 | BIT5 | BIT6 | BIT7
+			WRITE_BYTE 0x1f THIS | BIT0 | BIT1 | BIT2 | BIT3 | BIT4 | BIT5 | BIT6 | BIT7
+			WRITE_BYTE 0x20 THIS | BIT0 | BIT1 | BIT2 | BIT3 | BIT5 | BIT6
+			WRITE_BYTE 0x21 THIS | BIT5 | BIT6 | BIT7
+			WRITE_BYTE 0x29 THIS | BIT0 | BIT1 | BIT2 | BIT3 | BIT4 | BIT5 | BIT6 | BIT7
+			WRITE_BYTE 0x2b THIS | BIT0 | BIT1 | BIT2 | BIT3 | BIT4 | BIT5 | BIT6 | BIT7
+			WRITE_BYTE 0x2d THIS | BIT0 | BIT1 | BIT2 | BIT3 | BIT4 | BIT5 | BIT7
+			WRITE_BYTE 0x2f THIS | BIT0 | BIT1 | BIT2 | BIT4 | BIT5 | BIT6 | BIT7
+*/
+/*			WRITE_LONG 0x1e 0xe06fffeb	// Uniquement des cavaliers
+			WRITE_BYTE 0x29 0xff	// 255	11111111
+			WRITE_BYTE 0x2b 0xff	// 255	11111111
+			WRITE_BYTE 0x2d 0xbf	// 191	10111111
+			WRITE_BYTE 0x2f 0xf7	// 247	11110111
+			WRITE_BYTE 0x1e THIS & BIT0 & BIT1 & BIT3 & BIT5 & BIT6 & BIT7	END
+*//*		END
+
+		PATCH_IF (Flag_cad > 0)	BEGIN	// Cavaliers-Druides-Rôdeurs
+			WRITE_BYTE 0x1e THIS | BIT6 | BIT7
+			WRITE_BYTE 0x1f THIS | BIT0 | BIT1 | BIT3 | BIT5 | BIT6 | BIT7
+			WRITE_BYTE 0x20 THIS | BIT0 | BIT1 | BIT2 | BIT3 | BIT6
+			WRITE_BYTE 0x21 THIS | BIT5 | BIT7
+			WRITE_BYTE 0x29 THIS | BIT6 | BIT7
+			WRITE_BYTE 0x2b THIS | BIT2 | BIT3 | BIT4 | BIT5 | BIT6 | BIT7
+			WRITE_BYTE 0x2d THIS | BIT0 | BIT1 | BIT2 | BIT3 | BIT4 | BIT5
+			WRITE_BYTE 0x2f THIS | BIT0 | BIT1 | BIT2 | BIT4 | BIT5 | BIT6 | BIT7
+		END
+
+	END
+
+	PATCH_IF (flag_noevil > 0)	BEGIN
+		READ_BYTE 0x1e "olduse1"
+		PATCH_IF (("%olduse1%" BAND "0b00000010") = "0b00000000") BEGIN	WRITE_BYTE 0x1e ("%olduse1%" BOR 0b00000010) // Enlève le flag Evil
+		END
+	END
+
+	PATCH_IF (flag_good > 0)	BEGIN
+		READ_BYTE 0x1e "olduse1"
+		PATCH_IF (("%olduse1%" BAND "0b00000010") = "0b00000000") BEGIN	WRITE_BYTE 0x1e ("%olduse1%" BOR 0b00000010) // Enlève le flag Evil
+		END
+		READ_BYTE 0x1e "newuse1"
+		PATCH_IF (("%newuse1%" BAND "0b00001000") = "0b00000000") BEGIN	WRITE_BYTE 0x1e ("%newuse1%" BOR 0b00001000) // Enlève le flag Neutral
+		END
+		READ_BYTE 0x1e "nvuse1"
+		PATCH_IF (("%nvuse1%" BAND "0b00000100") != "0b00000000") BEGIN	WRITE_BYTE 0x1e ("%nvuse1%" BAND 0b11111011) // Ajoute le flag Good
+		END
+	END
+
+
+	PATCH_IF (flag_pala > 0)	BEGIN	WRITE_LONG 0x1e 0x606fffeb	// Uniquement des paladins
+										WRITE_BYTE 0x29 "0"
+										WRITE_BYTE 0x2b "0"
+										WRITE_BYTE 0x2d "0"
+	END
+// Chevalier de Diamant (CD)
+	PATCH_IF (flag_kits = 1)	BEGIN	WRITE_LONG  0x1e 0x606fffeb	// Uniquement des paladins
+										WRITE_BYTE  0x29 "0"
+										WRITE_BYTE  0x2b "0"
+										WRITE_BYTE  0x2d "0"
+										WRITE_BYTE  0x26 15 // Force
+										WRITE_BYTE  0x2c 12 // Dextérité
+										WRITE_BYTE  0x2e 15 // Sagesse
+										WRITE_BYTE  0x30 12 // Constitution
+										WRITE_SHORT 0x32 17	// Charisme
+	END
+// Chevaucheuse de licorne (CL)
+	PATCH_IF (flag_kits = 2)	BEGIN	WRITE_LONG  0x1e 0x606fffeb	// Uniquement des paladins
+										WRITE_BYTE  0x29 "0"
+										WRITE_BYTE  0x2b "0"
+										WRITE_BYTE  0x2d "0"
+										WRITE_BYTE  0x2c 16 // Dextérité
+										WRITE_BYTE  0x2e 15 // Sagesse
+										WRITE_SHORT 0x32 17	// Charisme
+	END
+
+// Intégration des données du header de lancement de sort.
+// -------------------------------------------------------
+	READ_LONG  0x64 "abil_off"					// Offset to extended headers
+	READ_SHORT 0x68 "abil_num"					// Count of extended headers
+	READ_SHORT ("%abil_off%" + 0x0c) oldcible	// Target type
+	READ_SHORT ("%abil_off%" + 0x0e) oldrange	// Range
+
+// VERIFIER
+	PATCH_IF (("%nvcible%" != 146) OR (("%oldlore%" != "%nvlore%") AND ("%nvlore%" != "-1")))	BEGIN
+		LPF GW_ITEM_MODIF_HEADER	INT_VAR	type_new = "-1" header = 1 target = EVAL "%nvcible%" range = EVAL "%nvrange%" STR_VAR icon = EVAL "%nvicone%" END
+	END
+
+	PATCH_IF (("%nvopcode%" != 146) OR ("%nvtarget%" != "-1") OR ("%nvlevel%" != "-1") OR ("%nvtype%" != "-1") OR ("%nvsort%" STRING_COMPARE_CASE "same"))	BEGIN
+		LPF ALTER_ITEM_EFFECT	INT_VAR check_headers = 1 header = 1 match_opcode = 146 new_opcode = EVAL "%nvopcode%" target = EVAL "%nvtarget%"
+										parameter1 = EVAL "%nvlevel%" parameter2 = EVAL "%nvtype%"		STR_VAR resource = EVAL "%nvsort%" END
+	END
+
+// Intégration des données du header d'apprentissage du sort
+// ---------------------------------------------------------
+	PATCH_IF ("%nvlearn%" STRING_COMPARE_CASE "same" = 0) BEGIN
+		PATCH_MATCH ~%nvXP%~ WITH
+			1	BEGIN END
+			2	BEGIN
+				READ_LONG  0x64 "abil_off"	// Offset to extended headers
+				READ_SHORT 0x68 "abil_num"	// Count of extended headers
+				READ_LONG  0x6a "fx_off"
+				FOR (i = 0 ; i < abil_num ; ++i) BEGIN													// pour chaque abilitie
+					READ_SHORT ("%abil_off%" + 0x1e + 0x38*i) "abil_fx_num"
+					READ_SHORT ("%abil_off%" + 0x20 + 0x38*i) "abil_fx_idx"
+					FOR (j = 0 ; j < abil_fx_num ; ++j) BEGIN											// pour chaque effet
+						READ_SHORT ("%fx_off%" + (0x30 * (j + %abil_fx_idx%))) "opcode"
+						PATCH_IF (opcode = 147) BEGIN													// Spell: Learn Spell [147]
+							WRITE_BYTE (fx_off + 0x06 + (0x30 * (j + abil_fx_idx))) THIS | BIT0 | BIT2	// Bit 0: Learning the spell never gives experience (including scrolls from the inventory screen)
+																										// Bit 2: Learning is always successful (including scrolls from the inventory screen)
+							WRITE_ASCIIE (fx_off + 0x14 + (0x30 * (j + abil_fx_idx))) "%nvsort%" #8
+						END
+					END
+				END
+				LPF ADD_ITEM_EFFECT INT_VAR opcode = 215 target = 1 duration = 4 parameter2 = 1 header = 2 STR_VAR resource = SPCONTIN END	// Graphics: Play 3D Effect [215]
+				LPF ADD_ITEM_EFFECT INT_VAR opcode = 139 target = 1 timing = 1 parameter1 = RESOLVE_STR_REF (@7140601) header = 2 END		// a appris un nouveau sort
+				END
+			DEFAULT
+		END
+	END ELSE BEGIN
+		LPF ALTER_ITEM_HEADER	INT_VAR header = 2 new_header_type = 1 END	// Suppression du header d'apprentissage du sort
+		LPF DELETE_ITEM_HEADER	INT_VAR header_type = 1 END
+	END
+
+	PATCH_IF ("%bougie%" STRING_COMPARE_CASE "Con" = 0) BEGIN	// Suppression du header de lancement de sort
+		WRITE_SHORT 0x01c 0	// 0-Misc/Book
+		WRITE_LONG  0x04c 1	// écrit la valeur du nouveau poids
+		LPF ALTER_ITEM_HEADER	INT_VAR header = 2	STR_VAR icon = EVAL "%nvicone%" END
+		LPF ALTER_ITEM_HEADER	INT_VAR header = 1 new_header_type = 1 END
+		LPF DELETE_ITEM_HEADER	INT_VAR header_type = 1 END
+	END
+
+	PATCH_IF ("%bougie%" STRING_COMPARE_CASE "Bgie" = 0) BEGIN
+		WRITE_SHORT 0x01c 0	// 0-Misc/Book
+		WRITE_LONG  0x04c 1	// écrit la valeur du nouveau poids
+	END
+
+END
+*/
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+DEFINE_PATCH_FUNCTION GW_ALTER_AREA_REGION
+  INT_VAR type        = "-1" // region type at 0x20; negative values mean no change
+          cursor      = "-1" // cursor type at 0x34; negative values mean no change
+          info_strref = "-1" // Information text (for info points) at 0x64; negative values mean no change
+          trap_detect = "-1" // difficulty of trap detection at 0x68; negative values mean no change
+          trap_remove = "-1" // difficulty of trap removal at 0x6a; negative values mean no change
+          trapped     = "-1" // is trapped? at 0x6c; negative values mean no change
+          detected    = "-1" // is detected? at 0x6e; negative values mean no change
+          // flag_ vars affect flags starting at 0x60; 0 means remove flag, 1 means add flag, -1 no change
+          flag_locked           = "-1" // locked, bit0
+          flag_resets           = "-1" // trap resets, bit1
+          flag_party_required   = "-1" // party required, bit2
+          flag_trap_detectable  = "-1" // trap can be detected, bit3
+          flag_trap_enemies     = "-1" // trap can be set off by enemies, bit4
+          flag_tutorial         = "-1" // tutorial trigger, bit5
+          flag_trap_npcs        = "-1" // trap can be set off by npcs, bit6
+          flag_silent           = "-1" // silent trigger, bit7
+          flag_deactivated      = "-1" // deactivated, bit8
+          flag_impassable_npc   = "-1" // can not be passed by npcs, bit9
+          flag_activation_point = "-1" // use activation point, bit10
+          flag_connect_to_door  = "-1" // connected to door, bit11
+  STR_VAR trig_name     = ""     // required, at 0x00, used to match region
+          dest_area     = "same" // changes destination area at 0x38; "same" means no change
+          ent_name      = "same" // changes entrance name at 0x40; "same" means no change
+          door_key      = "same" // resref of key to unlock at 0x74; "same" means no change
+          region_script = "same" // resref of region script at 0x7c; "same" means no change
+BEGIN
+
+  READ_SHORT 0x5a trig_num
+  READ_LONG  0x5c trig_off
+  FOR (index = 0 ; index < trig_num ; ++index) BEGIN
+    READ_ASCII (trig_off +        (index * 0xc4)) "trig_name_file" (32) NULL
+    PATCH_IF ("%trig_name%" STRING_COMPARE_CASE  "%trig_name_file%" = 0) BEGIN
+      PATCH_IF ("%type%" >= 0)					BEGIN WRITE_SHORT (trig_off + 0x20 + (index * 0xc4)) "%type%"        END
+      PATCH_IF ("%cursor%" >= 0)				BEGIN WRITE_LONG  (trig_off + 0x34 + (index * 0xc4)) "%cursor%"      END
+      PATCH_IF ("%info_strref%" >= 0)			BEGIN WRITE_LONG  (trig_off + 0x64 + (index * 0xc4)) "%info_strref%" END
+      PATCH_IF ("%trap_detect%" >= 0)			BEGIN WRITE_SHORT (trig_off + 0x68 + (index * 0xc4)) "%trap_detect%" END
+      PATCH_IF ("%trap_remove%" >= 0)			BEGIN WRITE_SHORT (trig_off + 0x6a + (index * 0xc4)) "%trap_remove%" END
+      PATCH_IF ("%trapped%" >= 0)				BEGIN WRITE_SHORT (trig_off + 0x6c + (index * 0xc4)) "%trapped%"     END
+      PATCH_IF ("%detected%" >= 0)				BEGIN WRITE_SHORT (trig_off + 0x6e + (index * 0xc4)) "%detected%"    END
+      PATCH_IF ("%flag_locked%" = 0)			BEGIN WRITE_BYTE (trig_off + 0x60 + (index * 0xc4)) (THIS BAND 0b11111110) END
+      PATCH_IF ("%flag_resets%" = 0)			BEGIN WRITE_BYTE (trig_off + 0x60 + (index * 0xc4)) (THIS BAND 0b11111101) END
+      PATCH_IF ("%flag_party_required%" = 0)	BEGIN WRITE_BYTE (trig_off + 0x60 + (index * 0xc4)) (THIS BAND 0b11111011) END
+      PATCH_IF ("%flag_trap_detectable%" = 0)	BEGIN WRITE_BYTE (trig_off + 0x60 + (index * 0xc4)) (THIS BAND 0b11110111) END
+      PATCH_IF ("%flag_trap_enemies%" = 0)		BEGIN WRITE_BYTE (trig_off + 0x60 + (index * 0xc4)) (THIS BAND 0b11101111) END
+      PATCH_IF ("%flag_tutorial%" = 0)			BEGIN WRITE_BYTE (trig_off + 0x60 + (index * 0xc4)) (THIS BAND 0b11011111) END
+      PATCH_IF ("%flag_trap_npcs%" = 0)			BEGIN WRITE_BYTE (trig_off + 0x60 + (index * 0xc4)) (THIS BAND 0b10111111) END
+      PATCH_IF ("%flag_silent%" = 0)			BEGIN WRITE_BYTE (trig_off + 0x60 + (index * 0xc4)) (THIS BAND 0b01111111) END
+      PATCH_IF ("%flag_deactivated%" = 0)		BEGIN WRITE_BYTE (trig_off + 0x61 + (index * 0xc4)) (THIS BAND 0b11111110) END
+      PATCH_IF ("%flag_impassable_npc%" = 0)	BEGIN WRITE_BYTE (trig_off + 0x61 + (index * 0xc4)) (THIS BAND 0b11111101) END
+      PATCH_IF ("%flag_activation_point%" = 0)	BEGIN WRITE_BYTE (trig_off + 0x61 + (index * 0xc4)) (THIS BAND 0b11111011) END
+      PATCH_IF ("%flag_connect_to_door%" = 0)	BEGIN WRITE_BYTE (trig_off + 0x61 + (index * 0xc4)) (THIS BAND 0b11110111) END
+      PATCH_IF ("%flag_locked%" = 1)			BEGIN WRITE_BYTE (trig_off + 0x60 + (index * 0xc4)) (THIS BOR BIT0) END
+      PATCH_IF ("%flag_resets%" = 1)			BEGIN WRITE_BYTE (trig_off + 0x60 + (index * 0xc4)) (THIS BOR BIT1) END
+      PATCH_IF ("%flag_party_required%" = 1)	BEGIN WRITE_BYTE (trig_off + 0x60 + (index * 0xc4)) (THIS BOR BIT2) END
+      PATCH_IF ("%flag_trap_detectable%" = 1)	BEGIN WRITE_BYTE (trig_off + 0x60 + (index * 0xc4)) (THIS BOR BIT3) END
+      PATCH_IF ("%flag_trap_enemies%" = 1)		BEGIN WRITE_BYTE (trig_off + 0x60 + (index * 0xc4)) (THIS BOR BIT4) END
+      PATCH_IF ("%flag_tutorial%" = 1)			BEGIN WRITE_BYTE (trig_off + 0x60 + (index * 0xc4)) (THIS BOR BIT5) END
+      PATCH_IF ("%flag_trap_npcs%" = 1)			BEGIN WRITE_BYTE (trig_off + 0x60 + (index * 0xc4)) (THIS BOR BIT6) END
+      PATCH_IF ("%flag_silent%" = 1)			BEGIN WRITE_BYTE (trig_off + 0x60 + (index * 0xc4)) (THIS BOR BIT7) END
+      PATCH_IF ("%flag_deactivated%" = 1)		BEGIN WRITE_BYTE (trig_off + 0x61 + (index * 0xc4)) (THIS BOR BIT0) END
+      PATCH_IF ("%flag_impassable_npc%" = 1)	BEGIN WRITE_BYTE (trig_off + 0x61 + (index * 0xc4)) (THIS BOR BIT1) END
+      PATCH_IF ("%flag_activation_point%" = 1)	BEGIN WRITE_BYTE (trig_off + 0x61 + (index * 0xc4)) (THIS BOR BIT2) END
+      PATCH_IF ("%flag_connect_to_door%" = 1)	BEGIN WRITE_BYTE (trig_off + 0x61 + (index * 0xc4)) (THIS BOR BIT3) END
+      PATCH_IF ("%dest_area%" STRING_COMPARE_CASE "same") BEGIN // if script not set to same
+        WRITE_ASCIIE (trig_off + 0x38 + (index * 0xc4)) "%dest_area%" #8 // value from str_var
+      END
+      PATCH_IF ("%ent_name%" STRING_COMPARE_CASE "same") BEGIN // if script not set to same
+        WRITE_ASCIIE (trig_off + 0x40 + (index * 0xc4)) "%ent_name%" #32 // value from str_var
+      END
+      PATCH_IF ("%door_key%" STRING_COMPARE_CASE "same") BEGIN // if script not set to same
+        WRITE_ASCIIE (trig_off + 0x74 + (index * 0xc4)) "%door_key%" #8 // value from str_var
+      END
+      PATCH_IF ("%region_script%" STRING_COMPARE_CASE "same") BEGIN // if script not set to same
+        WRITE_ASCIIE (trig_off + 0x7c + (index * 0xc4)) "%region_script%" #8 // value from str_var
+      END
+    END
+  END
+
+END
+*/
+////////////////////////////////////////////////////////////////////

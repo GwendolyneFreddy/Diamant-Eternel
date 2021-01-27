@@ -18,7 +18,6 @@
 ![Maintenance](https://img.shields.io/static/v1?label=maintenu%20%3F&message=oui&color=greenlight&style=plastic)
 ![GitHub contributors](https://img.shields.io/github/contributors/GwendolyneFreddy/Diamant-Eternel?color=blueviolet&label=contributeurs&style=plastic) [![Contributors Display](https://badges.pufler.dev/contributors/GwendolyneFreddy/Diamant-Eternel?size=30&padding=5&bots=true)](https://badges.pufler.dev)
 
-
 ## 
 
 [Consulter le lisez-moi du mod](https://gwendolynefreddy.github.io/docs/diamant_eternel/menace-readme-french.html)
