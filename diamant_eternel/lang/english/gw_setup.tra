@@ -129,26 +129,30 @@ STIVAN2_IS_INSTALLED = %STIVAN2_IS_INSTALLED%~
 @326 = ~  ==> ini file %SOURCE_FILE% patched and fixed.~
 
 
+
 /* ================ *
  *  MAIN COMPONENT  *
  * ================ */
-
 @100   = ~Menace sur le Royaume de Diamant Eternel~
 @10001 = ~This mod requires BG2:ToB with ToBEx and BG2 Fixpack, or BG2:EE patched to v2.0 or higher to be installed.~
+
+/* ------------- *
+ *  100_ids.tph  *
+ * ------------- */
 @10100 = ~===============================================
         ***** PATCHING .IDS FILES *****
 ===============================================
 ~
-// 100_ids.tph
-// -----------
 @10101 = ~Please be patient, listing all creatures %GW_ids_file% values may take a few moments...~
-@10102 = ~Adding new values in %GW_ids_file%.ids file available slots.~
+@10102 = ~Adding new entries in %GW_ids_file%.ids file available slots.~
 @10103 = ~----------------------------
  END of PATCHING .IDS FILES
 ----------------------------
 ~
-// 110_animate.tph
-// ---------------
+
+/* ----------------- *
+ *  110_animate.tph  *
+ * ----------------- */
 @10110 = ~===============================================================
         ***** INSTALLING NEW CREATURES ANIMATIONS *****
             (Sorry, this step may take a moment...)

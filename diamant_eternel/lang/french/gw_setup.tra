@@ -137,15 +137,16 @@ STIVAN2_IS_INSTALLED = %STIVAN2_IS_INSTALLED%~
 @326 = ~  ==> fichier ini %SOURCE_FILE% modifie et corrige~
 
 
+
 /* ===================== *
  *  COMPOSANT PRINCIPAL  *
  * ===================== */
-
 @100   = ~Menace sur le Royaume de Diamant Eternel~
 @10001 = ~Ce module requiert l'installation de BG2:ToB avec ToBEx et le BG2 Fixpack, ou de BG2:EE beneficiant du patch v2.0 ou ulterieur.~
 
-// 100_ids.tph
-// -----------
+/* ------------- *
+ *  100_ids.tph  *
+ * ------------- */
 @10100 = ~==========================================================
         ***** MODIFICATION des FICHIERS .IDS *****
 ==========================================================
@@ -156,8 +157,10 @@ STIVAN2_IS_INSTALLED = %STIVAN2_IS_INSTALLED%~
  PROCEDURE de modification des fichiers .IDS TERMINEE
 ------------------------------------------------------
 ~
-// 110_animate.tph
-// ---------------
+
+/* ----------------- *
+ *  110_animate.tph  *
+ * ----------------- */
 @10110 = ~==============================================================================
         ***** INSTALLATION des NOUVELLES ANIMATIONS de CREATURES *****
             (desole, le processus peut prendre un peu de temps...)

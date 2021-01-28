@@ -1,0 +1,231 @@
+/* ============================================================================================================= *
+ *  v 1.0.0                                                                                                      *
+ *         I N S T A L L A T I O N    E T    M O D I F I C A T I O N    D E S   F I C H I E R S   .I D S         *
+ *                                                                                                               *
+ *                   I D S    F I L E S    I N S T A L L A T I O N    A N D    P A T C H I N G                   *
+ *                                                                                                               *
+ * ============================================================================================================= */
+
+/* ============================================================================================= *
+ *  LISTE des PROCÉDURES - PROCESS LISTING :                                                     *
+ *  ----------------------------------------                                                     *
+ *  I.   MODIFICATION des FICHIERS IDS        -   PATCHING IDS FILES              => line #  25  *
+ *  II.  AJOUT de NOUVELLES VALEURS RACES     -   ADDING NEW RACE VALUES          => line #  90  *
+ *  III. AJOUT de NOUVELLES VALEURS CLASSES   -   ADDING NEW CLASS VALUES         => line # 111
+ *  IV.  AJOUT de NOUVELLES VALEURS SPECIFIC  -   ADDING NEW SPECIFIC VALUES      => line # 151
+ *  V.   AJOUT de NOUVELLES VALEURS GENERAL   -   ADDING NEW GENERAL VALUES       => line # 195
+ * ============================================================================================= */
+
+
+PRINT @10100 // ~***** PATCHING .IDS FILES *****~
+SILENT
+//COPY ~%MOD_FOLDER%/2da/copy~  ~override~
+
+/* ============================================================ *
+ *  I                                                           *
+ *  MODIFICATION des FICHIERS IDS  (emprunté au BG2 Fixpack)    *
+ *  PATCHING IDS FILES             (borrowed from BG2 Fixpack)  *
+ * ============================================================ */
+
+// Possibly missing IDS entries
+// ----------------------------
+INCLUDE ~%MOD_FOLDER%/lib/filetype/ids_entries_gtimes.tph~
+INCLUDE ~%MOD_FOLDER%/lib/filetype/ids_entries_tob2soa.tph~
+// Supprimés depuis que le BG2 Fixpack est un pré-requis (removed since BG2 Fixpack is pre requisite) : ids_entries_animate.tph ids_entries_anisnd.tph ids_entries_spell.tph
+
+
+// STATE.IDS additions (mirrors G3 BG2 Fixpack, SCS and IESDP code)
+// ----------------------------------------------------------------
+
+/* -------------------------------------------------------------------------------------------------- *
+ *   	ADDs CamDawg's custom IsValidForPartyDialogue state used throughout ninde. Thanks Cam!        *
+ * -------------------------------------------------------------------------------------------------- *
+ *  covers STATE_CONFUSED, STATE_FEEBLEMINDED, STATE_SILENCED, STATE_DEAD, STATE_ACID_DEATH,          *
+ *  STATE_FLAME_DEATH, STATE_EXPLODING_DEATH, STATE_STONE_DEATH, STATE_FROZEN_DEATH, STATE_HELPLESS,  *
+ *  STATE_STUNNED, STATE_PANIC, STATE_BERSERK, STATE_SLEEPING                                         *
+ * -------------------------------------------------------------------------------------------------- */
+APPEND ~state.ids~ ~0x80101FEF CD_STATE_NOTVALID~		UNLESS ~CD_STATE_NOTVALID~
+
+/* ---------------------------------------------------------------------------------------------------------------------- *
+ *   	Adds CamDawg's custom state needed to fix Dead() triggers that don't use DVs. Thanks Cam!                         *
+ * ---------------------------------------------------------------------------------------------------------------------- *
+ *  covers STATE_DEAD, STATE_ACID_DEATH, STATE_FLAME_DEATH, STATE_EXPLODING_DEATH, STATE_STONE_DEATH, STATE_FROZEN_DEATH  *
+ * ---------------------------------------------------------------------------------------------------------------------- */
+APPEND ~state.ids~ ~0x00000FC0 STATE_REALLY_DEAD~		UNLESS ~0x00000FC0 STATE_REALLY_DEAD~
+
+APPEND ~state.ids~ ~0x00102029 STATE_HARMLESS~			UNLESS ~0x00102029 STATE_HARMLESS~			// includes Feeblemind, Charmed, Helpless, Stunned, Sleeping
+APPEND ~state.ids~ ~0x60400010 STATE_ILLUSIONS~			UNLESS ~0x60400010 STATE_ILLUSIONS~			// includes Invisible, Imp. Invisibility, Mirror Image, Blur
+APPEND ~state.ids~ ~0x80040004 STATE_RANGED_TARGET~		UNLESS ~0x80040004 STATE_RANGED_TARGET~		// includes Blind, Confused, Panic
+APPEND ~state.ids~ ~0x00000029 STATE_IMMOBILE~			UNLESS ~0x00000029 STATE_IMMOBILE~			// includes Helpless, Stunned, Sleeping
+APPEND ~state.ids~ ~0x00400010 STATE_NOT_TARGETABLE~	UNLESS ~0x00400010 STATE_NOT_TARGETABLE~	// includes Improved Invisibility and plain Invisibility
+APPEND ~state.ids~ ~0x8010202D STATE_DISABLED~			UNLESS ~0x8010202D STATE_DISABLED~			// includes Helpless, Stunned, Panic, Sleeping, Charmed, Feebleminded, Confused
+APPEND ~state.ids~ ~0x00400010 STATE_NOT_VISIBLE~		UNLESS ~STATE_NOT_VISIBLE~					// Invisibility & Improved Invisibility
+APPEND ~state.ids~ ~0x8014202D STATE_OUT_OF_ACTION~		UNLESS ~STATE_OUT_OF_ACTION~
+
+
+// Imprisoned summon fix: see cdwi917a.spl, cdwi910.eff, cdwi917a.eff, spin580.spl, spin626.spl, spin788.spl, spwi910.spl, spwi917.spl
+// -----------------------------------------------------------------------------------------------------------------------------------
+APPEND ~gender.ids~ ~66 IMPRISONED_SUMMONED~ UNLESS ~^66 ~
+
+
+// Eliminates duplicate SHADOW entries
+// -----------------------------------
+COPY_EXISTING ~race.ids~ ~override~
+	REPLACE_TEXTUALLY ~^149[ %TAB]+SHADOW\([ %TAB%%LNL%%MNL%%WNL%]\)~ ~149 STATUE\1~
+BUT_ONLY
+APPEND ~race.ids~ ~199 ETTIN~ UNLESS ~^199[ %TAB]+ETTIN[ %TAB%%LNL%%MNL%%WNL%]~
+APPEND ~race.ids~ ~114 SIRINE~ UNLESS ~^114[ %TAB]+SIRINE[ %TAB%%LNL%%MNL%%WNL%]~
+
+
+// Fixing KIT.IDS
+// --------------
+ACTION_IF is_classic BEGIN
+	INCLUDE ~%MOD_FOLDER%/lib/filetype/ids_entries_kit.tph~
+END
+
+
+INCLUDE ~%MOD_FOLDER%/lib/filetype/gw_ids_lib.tpa~	// Loads library of fonctions and macros patching .IDS files.
+
+/* ============================================================================================================== *
+ *  II                                                                                                            *
+ *                        AJOUT  de  NOUVELLES  VALEURS  RACE   -   ADD  NEW  RACE  VALUES                        *
+ *                                                                                                                *
+ *  Ajout de nouvelles valeurs race de créatures après vérification et actualisation du fichier race.ids.         *
+ *  Adds new creatures race values after checking their validity and updating race.ids file.                      *
+ *                                                                                                                *
+ * ============================================================================================================== */
+
+// 1. Vérifie que toutes les valeurs race des créatures sont bien contenues dans le fichier race.ids. - Checks race.ids file contains all creatures race offsets values.
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+OUTER_SPRINT GW_ids_file "race"
+PRINT @10101 // ~Please be patient, listing all creatures %GW_ids_file% values may take a few moments...~
+
+SILENT // Pour reposer les yeux !
+COPY_EXISTING ~%GW_ids_file%.ids~ ~%data_loc%~ // Copies a workspace clone in external folder
+OUTER_SPRINT GW_ids_temp "%data_loc%/%GW_ids_file%"
+LAM ~GW_VERIF_IDS_FILE~
+
+COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
+	PATCH_IF (SOURCE_SIZE > 0x2d3) BEGIN
+		READ_BYTE 0x272 race
+		LPF ~GW_VERIF_IDS_CODE~ INT_VAR GW_cre_ids = EVAL "%race%" STR_VAR GW_ids_file GW_ids_temp END
+	END
+BUT_ONLY
+
+
+// 2. Insère de nouvelles valeurs race dans les premiers emplacements disponibles du fichier race.ids. - Adds new race values in the first race.ids available slots.
+// -----------------------------------------------------------------------------------------------------------------------------------------------------------------
+PRINT @10102 // ~Adding new entries in %GW_ids_file%.ids file available slots.~
+
+SILENT
+ACTION_FOR_EACH newrace IN ~ABOLETH~ ~BEETLE~ ~DRIDER~ ~HALF_DRAGON~ ~MYCONID~ ~SHRIEKER~ ~TARASQUE~ BEGIN	// ~PLANT~ AASIMAR BIRD BUGBEAR CHIMERA FEYR GOBLIN HARPY HOOK_HORROR KEG LIZARDMAN MAMMAL MINOTAUR REPTILE SALAMANDER SHAMBLING_MOUND SIMULACRUM SPECTRAL_UNDEAD TREANT WILL-O-WISP YETI
+	LAF ~GW_ADD_IDS_ENTRY~ STR_VAR GW_new_ident = EVAL "%newrace%" GW_ids_file END
+END
+
+LAF ~sort_ids~ STR_VAR ids = EVAL "%GW_ids_file%" END
+LAF ~sort_ids~ STR_VAR ids = EVAL "%GW_ids_temp%" END
+
+
+/* ============================================================================================================== *
+ * III                                                                                                            *
+ *                      AJOUT  de  NOUVELLES  VALEURS  CLASSE   -   ADD  NEW  CLASS  VALUES                       *
+ *                                                                                                                *
+ *  Ajout de nouvelles valeurs classe de créatures après vérification et actualisation du fichier class.ids.      *
+ *  Adds new creatures class values after checking validity and updating class.ids file.                          *
+ *                                                                                                                *
+ * ============================================================================================================== */
+
+// 1. Vérifie que toutes les valeurs class des créatures sont bien contenues dans le fichier class.ids. - Checks class.ids file contains all creatures class offsets values.
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+OUTER_SPRINT GW_ids_file "class"
+PRINT @10101
+
+SILENT
+COPY_EXISTING ~%GW_ids_file%.ids~ ~%data_loc%~
+OUTER_SPRINT GW_ids_temp "%data_loc%/%GW_ids_file%"
+LAM ~GW_VERIF_IDS_FILE~
+
+COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
+	PATCH_IF (SOURCE_SIZE > 0x2d3) BEGIN
+		READ_BYTE 0x273 class
+		LPF ~GW_VERIF_IDS_CODE~ INT_VAR GW_cre_ids = EVAL "%class%" STR_VAR GW_ids_file GW_ids_temp END
+	END
+BUT_ONLY
+
+
+// 2. Insère de nouvelles valeurs class dans les premiers emplacements disponibles du fichier class.ids. - Adds new class values in the first class.ids available slots.
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+PRINT @10102
+
+SILENT
+ACTION_FOR_EACH newclass IN ~HORSE~ ~UNICORN~ ~SNAKE~ ~SCORPION~ ~GOLEM_AMBER~ ~SPECTRAL_TROLL~ BEGIN	// ELEMENTAL_WATER (222 SPECTRAL_TROLL) WIGHT
+	LAF ~GW_ADD_IDS_ENTRY~ STR_VAR GW_new_ident = EVAL "%newclass%" GW_ids_file END
+END
+
+LAF ~sort_ids~ STR_VAR ids = EVAL "%GW_ids_file%" END
+LAF ~sort_ids~ STR_VAR ids = EVAL "%GW_ids_temp%" END
+VERBOSE
+
+
+
+/* =============================================================================================================== *
+ * IV                                                                                                              *
+ *                    AJOUT  de  NOUVELLES  VALEURS  SPECIFIC   -   ADD  NEW  SPECIFICS  VALUES                    *
+ *                                                                                                                 *
+ *  Ajout de nouvelles valeurs specific de créatures après vérification et actualisation du fichier specific.ids.  *
+ *  Adds new creatures specific values after checking validity and updating specific.ids file.                     *
+ *                                                                                                                 *
+ * =============================================================================================================== */
+
+// 1. Vérifie que toutes les valeurs specific des créatures sont bien contenues dans le fichier specific.ids. - Checks specific.ids file contains all creatures specific offsets values.
+// -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+OUTER_SPRINT GW_ids_file "specific"
+PRINT @10101
+
+SILENT
+COPY_EXISTING ~%GW_ids_file%.ids~ ~%data_loc%~
+OUTER_SPRINT GW_ids_temp "%data_loc%/%GW_ids_file%"
+LAM ~GW_VERIF_IDS_FILE~
+
+COPY_EXISTING_REGEXP GLOB ~^.+\.cre$~ ~override~
+	PATCH_IF (SOURCE_SIZE > 0x2d3) BEGIN
+		READ_BYTE 0x274 spec
+		LPF ~GW_VERIF_IDS_CODE~ INT_VAR GW_cre_ids = EVAL "%spec%" STR_VAR GW_ids_file GW_ids_temp END
+	END
+BUT_ONLY
+
+
+// 2. Insère de nouvelles valeurs specific dans les premiers emplacements disponibles du fichier specific.ids. - Adds new specific values in the first specific.ids available slots.
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+PRINT @10102
+
+SILENT
+ACTION_FOR_EACH newspecific IN ~BLACK_DRAGON~ ~BLUE_DRAGON~ ~GREEN_DRAGON~ ~RED_DRAGON~ ~WHITE_DRAGON~ ~BRASS_DRAGON~ ~BRONZE_DRAGON~ ~COPPER_DRAGON~ ~GOLD_DRAGON~ ~SILVER_DRAGON~
+	~AMETHYST_DRAGON~ ~CRYSTAL_DRAGON~ ~EMERALD_DRAGON~ ~SAPPHIRE_DRAGON~ ~TOPAZE_DRAGON~ ~BROWN_DRAGON~ ~DEEP_DRAGON~ ~PRISMATIC_DRAGON~ ~PURPLE_DRAGON~ ~RATTELYR_DRAGON~ ~SHADOW_DRAGON~
+	~YELLOW_DRAGON~ ~CHANT_DRAGON~ ~FANG_DRAGON~ ~MERCURY_DRAGON~ ~MIST_DRAGON~ ~STEEL_DRAGON~ ~CHAOS_DRAGON~ ~HOWLING_DRAGON~ ~PYROCLASTIC_DRAGON~ ~RUST_DRAGON~ ~ARBOREAL_DRAGON~
+	~AXIAL_DRAGON~ ~BATTLE_DRAGON~ ~OCEANUS_DRAGON~ ~RADIANT_DRAGON~ ~ADAMANTITE_DRAGON~ ~DEVOUR_BRAIN_DRAGON~ ~SORCELLERIE_DRAGON~ ~ZOMBIE_DRAGON~ ~VAMPIRIC_DRAGON~ ~DRACOLICH~
+	~FLYING_SUMMONED~ ~FLYING_CREATURE~ ~FIRE_CREATURE~ ~MUMMY~ ~REVENANT~ ~INTANGIBLE~ ~DARKNESS_CULTIST~ BEGIN
+	LAF ~GW_ADD_IDS_ENTRY~ STR_VAR GW_new_ident = EVAL "%newspecific%" GW_ids_file END
+END
+
+LAF ~sort_ids~ STR_VAR ids = EVAL "%GW_ids_file%" END
+LAF ~sort_ids~ STR_VAR ids = EVAL "%GW_ids_temp%" END
+
+
+
+/* ============================================================================================================== *
+ * V                                                                                                              *
+ *                     AJOUT  de  NOUVELLES  VALEURS  GENERAL   -   ADD  NEW  GENERAL  VALUES                     *
+ *                                                                                                                *
+ *  Ajout de nouvelles valeurs general de créatures dans le fichier general.ids.                                  *
+ *  Adds new creatures general values to general.ids file.                                                        *
+ *                                                                                                                *
+ * ============================================================================================================== */
+
+SILENT
+LAF ~GW_ADD_IDS_ENTRY~ INT_VAR GW_clone = 0 STR_VAR GW_new_ident = PLANT GW_ids_file = general END
+//LAF ~sort_ids~ STR_VAR ids = general END
+
+CLEAR_IDS_MAP
+
+PRINT @10103 //  ~END of PATCHING .IDS FILES~

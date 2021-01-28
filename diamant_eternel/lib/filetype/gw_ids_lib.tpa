@@ -1,0 +1,560 @@
+/* ============================================================================== *
+ *  v 1.0.0                                                                       *
+ *                                                                                *
+ *        F U N C T I O N S    &    M A C R O S    :    I D S    F I L E S        *
+ *                                                                                *
+ * ============================================================================== */
+
+/* ================================================================================================================================================================================ *
+ *                                                                                                                                                                                  *
+ *  LIST of (LISTE des) FUNCTIONS & MACROS                                                                                                                                          *
+ *  --------------------------------------                                                                                                                                          *
+ *  - MACRO GW_VERIF_IDS_FILE    :  RECHERCHE des doublons dans un fichier .IDS avant de vérifier que ce fichier contient la valeur d'un champ d'un fichier .CRE.   => line #  24   *
+ *                                  LOOKS for duplicate values in an IDS file before checking this IDS file contains all creatures offsets values.                                  *
+ *  - FUNCTION GW_VERIF_IDS_CODE :  VÉRIFIE que la valeur d'un champ d'une créature est bien contenue dans le fichier .IDS correspondant.                           => line #  60   *
+ *                                  CHECKS if an IDS file contains the value used by a .CRE file.                                                                                   *
+ *  - FUNCTION GW_ADD_IDS_ENTRY  :  INSÈRE une nouvelle valeur dans le premier emplacement (slot) disponible du fichier .IDS correspondant.                         => line # 118   *
+ *                                  ADDS a new IDS entry in the first IDS file available slot.                                                                                      *
+ *  - FUNCTION & MACRO sort_ids  :  RÉÉCRIT un fichier IDS en le classant par ordre numérique - REWRITE an IDS file after sorting it into numerical order.          => line # 177   *
+ *  - FUNCTION gw_sort_hex_ids   :  RÉÉCRIT un fichier IDS en le classant par ordre hexadécimal - REWRITE an IDS file after sorting it into hexadecimal order.      => line # 447   *
+ *                                                                                                                                                                                  *
+ * ================================================================================================================================================================================ */
+
+/* ============================================================================================================================================================================= *
+ *  MACRO GW_VERIF_IDS_FILE : RECHERCHE des doublons dans un fichier .IDS avant de vérifier que ce fichier contient la valeur d'un champ d'un fichier .CRE.                      *
+ *                            LOOKS for duplicate values in an IDS file (e.g. 202 LONG_BOW & 202 MAGE_ALL) before checking this IDS file contains all creatures offsets values.  *
+ * ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- *
+ *  Lancée une seule fois avant de modifier un fichier IDS (%GW_ids_file%), elle écrit deux tables recensant les valeurs disponibles dans le fichier GW_ids_file :               *
+ *  $GW_array1_ids("%GW_ids_file%" "%index%") & $GW_array2_ids("%GW_ids_file%" "%index%"). Ces tables permettront de déterminer si le fichier GW_ids_file contient bien toutes   *
+ *  les valeurs utilisées par les fichiers .CRE du jeu, et de lui ajouter, le cas échéant, de nouvelles valeurs n'écrasant pas les valeurs utilisées par le jeu.                 *
+ * ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- *
+ * Run only once before patching an IDS file (%GW_ids_file%), it builds two arrays listing all values available in GW_ids_file file: $GW_array1_ids("%GW_ids_file%" "%index%")   *
+ * & $GW_array2_ids("%GW_ids_file%" "%index%"). They will allow to check if GW_ids_file contains all related values used by .CRE files, then, if needed, to add new IDS values   *
+ * without overwriting needed or existing ones.                                                                                                                                  *
+ * ============================================================================================================================================================================= */
+
+DEFINE_ACTION_MACRO ~GW_VERIF_IDS_FILE~
+BEGIN
+
+	COPY_EXISTING - ~%GW_ids_file%.ids~ ~override~
+
+		REPLACE_TEXTUALLY ~^IDS +V1\.0[%WNL%]+~ ~~	// removes first line
+		READ_2DA_ENTRIES_NOW GW_verif_file_ids 2
+
+		FOR (i = 0 ; i < GW_verif_file_ids ; ++i) BEGIN
+			READ_2DA_ENTRY_FORMER GW_verif_file_ids i 0 index
+			READ_2DA_ENTRY_FORMER GW_verif_file_ids i 1 str
+			PATCH_IF NOT VARIABLE_IS_SET $GW_array1_ids("%GW_ids_file%" "%index%") BEGIN
+				SPRINT $GW_array1_ids("%GW_ids_file%" "%index%") "%str%"
+			END ELSE BEGIN
+				PATCH_IF NOT VARIABLE_IS_SET $GW_array2_ids("%GW_ids_file%" "%index%") BEGIN
+					SPRINT $GW_array2_ids("%GW_ids_file%" "%index%") "%str%"
+				END
+			END
+		END
+
+END	// of DEFINE_ACTION_MACRO
+
+
+/* =========================================================================================================================================================================== *
+ * FUNCTION GW_VERIF_IDS_CODE : VÉRIFIE que la valeur d'un champ d'une créature est bien contenue dans le fichier .IDS correspondant.                                          *
+ *                              CHECKS if an IDS file contains the value used by a .CRE file.                                                                                  *
+ * --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- *
+ * Lancée pour vérifier que la valeur %GW_cre_ids% d'un fichier .CRE est bien contenue dans le fichier .IDS correspondant (%GW_ids_file%) à partir des deux tables             *
+ * $GW_array1_ids("%GW_ids_file%" "%index%") et $GW_array2_ids("%GW_ids_file%" "%index%") définies par la macro GW_VERIF_IDS_FILE. Si ce n'est pas le cas, la fonction ajoute  *
+ * cette référence dans un clone du fichier .IDS (%GW_ids_temp%) situé dans le répertoire externe "%data_loc%.                                                                 *
+ * --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- *
+ * Run to check if %GW_ids_file% IDS file contains the %GW_cre_ids% .CRE file value. Existence is read from the two arrays $GW_array1_ids("%GW_ids_file%" "%index%") and       *
+ * $GW_array2_ids("%GW_ids_file%" "%index%") build by the above macro GW_VERIF_IDS_FILE.                                                                                       *
+ * If not, this function adds the value into the .IDS clone file (%GW_ids_temp%) in external %data_loc% folder.                                                                *
+ * =========================================================================================================================================================================== */
+
+DEFINE_PATCH_FUNCTION ~GW_VERIF_IDS_CODE~
+    INT_VAR GW_cre_ids  = 0   // Valeur du champ du fichier .CRE - .CRE file offset value
+    STR_VAR GW_ids_file = ""  // .IDS game file
+            GW_ids_temp = ""  // .IDS clone file (%data_loc%/%GW_ids_file%)
+BEGIN
+
+	PATCH_IF //(GW_cre_ids > 0) AND
+			 (NOT VARIABLE_IS_SET $GW_array1_ids("%GW_ids_file%" "%GW_cre_ids%")) AND
+			 (NOT VARIABLE_IS_SET $GW_array2_ids("%GW_ids_file%" "%GW_cre_ids%")) BEGIN
+
+		INNER_ACTION BEGIN
+			COPY_EXISTING - ~%GW_ids_temp%.ids~ ~override~
+				REPLACE_TEXTUALLY ~^IDS +V1\.0[%WNL%]+~ ~~	// removes first line
+				READ_2DA_ENTRIES_NOW GW_verif_ids 2
+				SET GW_noajout = 0
+
+				FOR (i = 0 ; i < GW_verif_ids ; ++i) BEGIN
+					PATCH_IF (GW_noajout != 1) BEGIN
+						READ_2DA_ENTRY_FORMER GW_verif_ids i 0 index
+						READ_2DA_ENTRY_FORMER GW_verif_ids i 1 label
+						PATCH_IF (GW_cre_ids != index) BEGIN
+							SET GW_nv_index = GW_cre_ids
+						END ELSE BEGIN
+							SET GW_noajout = 1
+							i = GW_verif_ids
+						END
+					END
+				END
+
+				PATCH_IF (%GW_noajout% != 1) BEGIN
+					PATCH_IF ("%GW_nv_index%" < 10) BEGIN SPRINT GW_nv_label "UNKNOWN_VANILLA_00%GW_nv_index%" END	// AND ("%label%" STR_CMP ~~ = 0) ne semble pas être utile
+					PATCH_IF (("%GW_nv_index%" > 9) AND ("%GW_nv_index%" < 100)) BEGIN SPRINT GW_nv_label "UNKNOWN_VANILLA_0%GW_nv_index%" END
+					PATCH_IF ("%GW_nv_index%" > 99) BEGIN SPRINT GW_nv_label "UNKNOWN_VANILLA_%GW_nv_index%" END
+					INNER_ACTION BEGIN APPEND_OUTER ~%GW_ids_temp%.ids~ ~%GW_nv_index% %GW_nv_label%~ UNLESS ~%GW_nv_label%~ SILENT END
+
+						SPRINT $GW_array1_ids("%GW_ids_file%" "%GW_nv_index%") "%GW_nv_label%"
+						SPRINT $GW_array2_ids("%GW_ids_file%" "%GW_nv_label%") ""
+				END
+		END	// of INNER_ACTION
+
+	END		// of PATCH_IF (NOT VARIABLE_IS_SET $GW_array1_ids("%GW_ids_file%" "%GW_cre_ids%")) AND (NOT VARIABLE_IS_SET $GW_array2_ids("%GW_ids_file%" "%GW_cre_ids%"))
+
+END			// of DEFINE_PATCH_FUNCTION
+
+
+/* =========================================================================================================================================================================== *
+ * FUNCTION GW_ADD_IDS_ENTRY : INSÈRE une nouvelle valeur dans le premier emplacement (slot) disponible du fichier .IDS correspondant.                                         *
+ *                             ADDS a new IDS entry in the first available slot.                                                                                               *
+ * --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- *
+ * Insère la valeur %GW_new_ident% dans le premier emplacement disponible du fichier %GW_ids_file%. Par défaut (1), la variable %GW_clone% permet d'ajouter aussi cette valeur *
+ * au fichier cloné %GW_ids_temp%. Pour ne pas modifier le fichier cloné, il suffit de déclarer la variable %GW_clone% à 0.                                                    *
+ * --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- *
+ * Adds %GW_new_ident% value in the first %GW_ids_file% available slot. By default (1), variable %GW_clone% also adds this value in the cloned %GW_ids_temp% IDS file.         *
+ * If you don't need to modify %GW_ids_temp% file, set %GW_clone% to 0.                                                                                                        *
+ * =========================================================================================================================================================================== */
+
+DEFINE_ACTION_FUNCTION ~GW_ADD_IDS_ENTRY~
+  INT_VAR GW_minIndex  = 0    // Minimum IDS value to consider. (Default: 0)
+          GW_maxIndex  = 255  // Maximum IDS value to consider. (Default: 255)
+          GW_clone     = 1    // Cas particulier des fichiers ids temporaires. - Special case: if set to 1, also appends new value to the cloned %GW_ids_temp% IDS file.
+  STR_VAR GW_ids_file  = ""   // Game IDS file to append
+          GW_new_ident = ""   // New IDS string entry
+BEGIN
+
+	SILENT
+	OUTER_SET GW_new_value = "-1"
+	ACTION_IF (GW_minIndex < 0) BEGIN OUTER_SET GW_minIndex = 0 END
+	ACTION_IF (GW_maxIndex < GW_minIndex) BEGIN OUTER_SET GW_maxIndex = GW_minIndex END
+	ACTION_IF (FILE_EXISTS_IN_GAME ~%GW_ids_file%.ids~) BEGIN
+
+		// Looks for available IDS slot
+		ACTION_IF (GW_new_value = "-1") BEGIN
+			OUTER_PATCH ~~ BEGIN
+				FOR (value = GW_minIndex ; value <= GW_maxIndex ; ++value) BEGIN
+					PATCH_IF (GW_clone = 0) BEGIN
+						LOOKUP_IDS_SYMBOL_OF_INT GW_lookup_value ~%GW_ids_file%~ value
+					END ELSE BEGIN
+						LOOKUP_IDS_SYMBOL_OF_INT GW_lookup_value ~%GW_ids_temp%~ value
+					END
+					PATCH_IF (~%GW_lookup_value%~ STRING_EQUAL ~%value%~) BEGIN
+						SET GW_new_value = value
+						SET value = GW_maxIndex + 1
+					END
+				END
+			END
+		END
+
+		// Adds new entry
+		ACTION_IF (GW_new_value != "-1") BEGIN
+			APPEND ~%GW_ids_file%.ids~ ~%GW_new_value% %GW_new_ident%~ UNLESS ~%GW_new_ident%~
+			ACTION_IF (GW_clone = 1) BEGIN
+				APPEND_OUTER ~%GW_ids_temp%.ids~ ~%GW_new_value% %GW_new_ident%~ UNLESS ~%GW_new_ident%~
+			END
+			OUTER_SET GW_new_value = IDS_OF_SYMBOL (~%GW_ids_file%~ ~%GW_new_ident%~)
+			ACTION_IF (GW_new_value < GW_minIndex OR GW_new_value > GW_maxIndex) BEGIN
+				OUTER_SET GW_new_value = "-1"
+			END
+		END
+
+	END	// of ACTION_IF (FILE_EXISTS_IN_GAME ~%GW_ids_file%.ids~)
+
+END		// of DEFINE_ACTION_FUNCTION
+
+
+/* ========================================================================================================================================== *
+ * FUNCTION sort_ids : RÉÉCRIT un fichier IDS en le classant par ordre numérique - REWRITE an IDS file after sorting it into numerical order. *
+ * ------------------------------------------------------------------------------------------------------------------------------------------ *
+ * Courtesy of DavidW and Camdawg (stratagems) and adapted for my needs.                                                                      *
+ * ========================================================================================================================================== */
+
+DEFINE_ACTION_FUNCTION ~sort_ids~
+	STR_VAR ids = ""  // IDS file to be sorted and rewrite.
+BEGIN
+
+	ACTION_CLEAR_ARRAY ids_entries
+	OUTER_SET max = 0
+
+	ACTION_IF ("%ids%" STRING_CONTAINS_REGEXP "%data_loc%" != 0) BEGIN
+		COPY_EXISTING ~%ids%.ids~ ~override~
+			LPM ~sort_ids~
+		BUT_ONLY
+		COPY ".../diamant_eternel-inline/blank" ~override/%ids%.ids~
+			LPM ~rewrite_ids~
+	END ELSE BEGIN
+		COPY ~%ids%.ids~ ~%ids%.ids~
+			LPM ~sort_ids~
+		BUT_ONLY
+		COPY ".../diamant_eternel-inline/blank" ~%ids%.ids~
+			LPM ~rewrite_ids~
+	END
+/*	COPY_EXISTING "%ids%.ids" override
+		LPM ~sort_ids~ //STR_VAR ids END
+		READ_2DA_ENTRIES_NOW ids_array 2
+		// top row is either 'IDS V1.0', or a single row entry, or blank
+		PATCH_IF INDEX_BUFFER ("IDS *V1.0")>=0 BEGIN
+			SPRINT top_row "IDS V1.0"
+		END ELSE BEGIN
+			COUNT_2DA_ROWS 1 rowcount_1
+			PATCH_IF rowcount_1=ids_array BEGIN
+				SPRINT top_row " "
+			END ELSE BEGIN
+				READ_2DA_ENTRY 0 0 1 top_row
+			END
+		END
+		FOR (i = 0 ; i < ids_array ; ++i) BEGIN
+			READ_2DA_ENTRY_FORMER ids_array i 0 num
+			PATCH_IF IS_AN_INT num BEGIN
+				SET max = (num > max) ? num : max
+				READ_2DA_ENTRY_FORMER ids_array i 1 val
+				PATCH_IF "%val%" STRING_COMPARE_CASE DMWW_UNUSED_FOR_DELETION BEGIN
+					PATCH_IF VARIABLE_IS_SET $ids_entries("%num%") BEGIN
+						SPRINT temp $ids_entries("%num%")
+						SPRINT $ids_entries("%num%") "%temp% %val%"
+					END ELSE BEGIN
+						SPRINT $ids_entries("%num%") "%val%"
+					END
+				END
+			END
+		END
+	BUT_ONLY
+
+	COPY ".../diamant_eternel-inline/blank" "override/%ids%.ids"
+		LPM ~rewrite_ids~ //STR_VAR ids END
+		INSERT_2DA_ROW 0 2 "DW_SORT_IDS_PLACEHOLDER"
+		SET rowcount = 0
+		FOR (num =0 ; num <= max ; ++num) BEGIN
+			PATCH_IF VARIABLE_IS_SET $ids_entries("%num%") BEGIN
+				SPRINT list $ids_entries("%num%")
+				WHILE "%list%" STRING_COMPARE "" BEGIN
+					LPF return_first_entry STR_VAR list RET entry list END
+					SPRINT check "%num%--%entry%"
+					PATCH_IF !VARIABLE_IS_SET "%check%" BEGIN
+						INSERT_2DA_ROW rowcount 2 "%num% %entry%"
+						SET rowcount+=1
+						SPRINT "%check%" ""
+					END
+				END
+			END
+		END
+		REPLACE_TEXTUALLY "DW_SORT_IDS_PLACEHOLDER" "%top_row%"
+*/
+END	// of DEFINE_ACTION_FUNCTION
+
+DEFINE_PATCH_MACRO ~sort_ids~
+BEGIN
+
+	READ_2DA_ENTRIES_NOW ids_array 2
+
+	// top row is either 'IDS V1.0', or a single row entry, or blank
+	PATCH_IF (INDEX_BUFFER ("IDS *V1.0") >= 0) BEGIN
+		SPRINT top_row "IDS V1.0"
+	END ELSE BEGIN
+		COUNT_2DA_ROWS 1 rowcount_1
+		PATCH_IF (rowcount_1 = ids_array) BEGIN
+			SPRINT top_row " "
+		END ELSE BEGIN
+			READ_2DA_ENTRY 0 0 1 top_row
+		END
+	END
+
+	FOR (i = 0 ; i < ids_array ; ++i) BEGIN
+		READ_2DA_ENTRY_FORMER ids_array i 0 num
+		PATCH_IF IS_AN_INT num BEGIN
+			SET max = (num > max) ? num : max
+			READ_2DA_ENTRY_FORMER ids_array i 1 val
+			PATCH_IF ("%val%" STRING_COMPARE_CASE DMWW_UNUSED_FOR_DELETION) BEGIN
+				PATCH_IF VARIABLE_IS_SET $ids_entries("%num%") BEGIN
+					SPRINT temp $ids_entries("%num%")
+					SPRINT $ids_entries("%num%") "%temp% %val%"
+				END ELSE BEGIN
+					SPRINT $ids_entries("%num%") "%val%"
+				END
+			END
+		END
+	END
+
+END	// of DEFINE_PATCH_MACRO
+
+DEFINE_PATCH_MACRO ~rewrite_ids~
+BEGIN
+
+	INSERT_2DA_ROW 0 2 "DW_SORT_IDS_PLACEHOLDER"
+	SET rowcount = 0
+	FOR (num = 0 ; num <= max ; ++num) BEGIN
+		PATCH_IF VARIABLE_IS_SET $ids_entries("%num%") BEGIN
+			SPRINT list $ids_entries("%num%")
+			WHILE "%list%" STRING_COMPARE "" BEGIN
+				LPF return_first_entry STR_VAR list RET entry list END
+				SPRINT check "%num%--%entry%"
+				PATCH_IF !VARIABLE_IS_SET "%check%" BEGIN
+					INSERT_2DA_ROW rowcount 2 "%num% %entry%"
+					SET rowcount+=1
+					SPRINT "%check%" ""
+				END
+			END
+		END
+	END
+	REPLACE_TEXTUALLY "DW_SORT_IDS_PLACEHOLDER" "%top_row%"
+
+END	// of DEFINE_PATCH_MACRO
+
+
+/* --------------------------------------------------------------------------------------------------------------------------------- *
+ * FUNCTION return_first_entry : as a patch or action, take a list of variables, return the first entry, and strip it from the list. *
+ * --------------------------------------------------------------------------------------------------------------------------------- */
+
+DEFINE_PATCH_FUNCTION ~return_first_entry~
+	STR_VAR list	  = ""
+			separator = " "
+	RET list
+		entry
+BEGIN
+
+	// clean out any "\n"; process separator
+	INNER_PATCH_SAVE list ~%list%~ BEGIN
+		REPLACE_TEXTUALLY ~%WNL%~ ~~
+		REPLACE_TEXTUALLY ~%LNL%~ ~~
+		REPLACE_TEXTUALLY ~%MNL%~ ~~
+		REPLACE_TEXTUALLY ~%TAB%~ ~ ~
+	END
+
+	LPF strip_spaces_from_string STR_VAR string = ~%list%~ RET list = string END
+
+	PATCH_IF "%list%" STRING_EQUAL_CASE "" BEGIN  // return nothing if string is empty
+		SPRINT entry ""
+		SPRINT list ""
+	END ELSE BEGIN
+		INNER_PATCH ~%list%~ BEGIN READ_ASCII 0 first_char (1) END
+			PATCH_IF (~%first_char%~ STRING_EQUAL ~"~ || ~%first_char%~ STRING_EQUAL "~") BEGIN
+				SPRINT ~divider~ ~%first_char%~
+				INNER_PATCH_SAVE ~list~ ~%list%~ BEGIN DELETE_BYTES 0 1 END // take off the " or ~
+			END ELSE BEGIN
+				SPRINT ~divider~ ~%separator%~
+			END
+		SET end_of_first = INDEX (~%divider%~ ~%list%~)
+		PATCH_IF (end_of_first < 0) BEGIN // this should only happen if there are no " or ~
+			SPRINT entry ~%list%~
+			SPRINT list ~~
+		END ELSE BEGIN
+			INNER_PATCH_SAVE ~list~ ~%list%~ BEGIN
+				READ_ASCII 0 entry (~end_of_first~)
+				DELETE_BYTES 0 (end_of_first + 1)
+			END
+		END
+		LPF strip_spaces_from_string STR_VAR string = ~%list%~ RET list = string END
+		LPF strip_quotes_from_string STR_VAR string = ~%entry%~ RET entry = string END
+		LPF strip_spaces_from_string STR_VAR string = ~%entry%~ RET entry = string END
+	END
+
+END
+
+DEFINE_ACTION_FUNCTION ~return_first_entry~
+	STR_VAR list	  = ""
+			separator = " "
+	RET list
+		entry
+BEGIN
+
+	OUTER_INNER_PATCH ~~ BEGIN
+		LPF return_first_entry STR_VAR list separator RET list = list entry=entry END
+	END
+
+END
+
+
+/* -------------------------------------------------------------------------------------------------------- *
+ * FUNCTION strip_spaces_from_string : take a string, strip any initial or trailing whitespace [recursive]. *
+ * -------------------------------------------------------------------------------------------------------- */
+
+DEFINE_PATCH_FUNCTION ~strip_spaces_from_string~
+	STR_VAR string = ""
+	RET		string
+BEGIN
+
+	PATCH_IF !(~%string%~ STRING_EQUAL ~~) BEGIN
+
+		PATCH_IF (INDEX ("\( \|%MNL%\|%WNL%\|%LNL%\|%TAB%\)" ~%string%~) = 0) BEGIN
+			INNER_PATCH_SAVE ~string~ ~%string%~ BEGIN DELETE_BYTES 0 1 END
+			LPF strip_spaces_from_string STR_VAR string RET string = string END
+		END
+
+		PATCH_IF !(~%string%~ STRING_EQUAL ~~) BEGIN
+			PATCH_IF RINDEX ("\( \|%MNL%\|%WNL%\|%LNL%\|%TAB%\)" ~%string%~) = (STRING_LENGTH ~%string%~ -1) BEGIN
+			INNER_PATCH_SAVE ~string~ ~%string%~ BEGIN DELETE_BYTES (BUFFER_LENGTH - 1) 1 END
+			LPF strip_spaces_from_string STR_VAR string RET string = string END
+			END
+		END
+
+	END
+
+END
+
+DEFINE_ACTION_FUNCTION strip_spaces_from_string
+	STR_VAR string = ""
+	RET		string
+BEGIN
+
+	OUTER_INNER_PATCH "" BEGIN
+		LPF strip_spaces_from_string STR_VAR string RET string = string END
+	END
+
+END
+
+
+/* ------------------------------------------------------------------------------------- *
+ * FUNCTION strip_quotes_from_string : take a string, strip initial or trailing ~ and ". *
+ * ------------------------------------------------------------------------------------- */
+
+DEFINE_PATCH_FUNCTION ~strip_quotes_from_string~
+	STR_VAR string = ""
+	RET		string
+BEGIN
+
+	SET string_length = STRING_LENGTH ~%string%~
+
+	PATCH_MATCH string_length WITH
+		0 BEGIN
+			LPF ~GW_DISPLAY_MESSAGE~ INT_VAR gw_force = 1 STR_VAR gw_message = "Warning: you just tried to remove quotes from an empty string. Deliberate?" END
+		END
+		DEFAULT
+			INNER_PATCH_SAVE string ~%string%~ BEGIN
+				SET lastloc = string_length - 1
+				PATCH_FOR_EACH loc IN ~%lastloc%~ 0 BEGIN  // must be this way around!
+					READ_ASCII 0 symbol (1)
+					PATCH_IF (~%symbol%~ STRING_EQUAL ~"~ OR ~%symbol%~ STRING_EQUAL "~") BEGIN
+						DELETE_BYTES loc 1
+					END
+				END
+			END
+	END
+
+END
+
+
+/* ==================================================================================================================================== *
+ *  FUNCTION gw_sort_hex_ids : SORTS an IDS file into hexadecimal order - RÉÉCRIT un fichier IDS en le classant par ordre hexadécimal.  *
+ * ------------------------------------------------------------------------------------------------------------------------------------ *
+ *  Courtesy of DavidW and Camdawg (stratagems) and adapted for specific ANIMATE.ids and ANISND.ids files (Infinity Animations).        *
+ * ==================================================================================================================================== */
+
+DEFINE_ACTION_FUNCTION ~gw_sort_hex_ids~
+	STR_VAR ids = ""
+BEGIN
+
+//	ACTION_IF gw_sort_ids BEGIN: only used by Infinity Animations
+
+		ACTION_CLEAR_ARRAY ids_entries
+		OUTER_SET max = 0
+
+		COPY_EXISTING ~%ids%.ids~ ~override~
+			LPM ~gw_sort_hex_ids~
+		BUT_ONLY
+
+		COPY ".../diamant_eternel-inline/blank" ~override/%ids%.ids~
+			LPM ~gw_rewrite_hex_ids~
+
+//	END
+
+END
+
+DEFINE_PATCH_MACRO ~gw_sort_hex_ids~
+BEGIN
+
+	PATCH_IF ("%SOURCE_RES%" STR_CMP "animate") BEGIN
+		SET num_cols = 3
+	END ELSE BEGIN
+		SET num_cols = 2
+	END
+
+	READ_2DA_ENTRIES_NOW ids_array num_cols //2
+
+	// top row is either 'IDS V1.0', or a single row entry, or blank
+	PATCH_IF (INDEX_BUFFER ("IDS *V1.0") >= 0) BEGIN
+		SPRINT top_row "IDS V1.0"
+	END ELSE BEGIN
+		COUNT_2DA_ROWS 1 rowcount_1
+		PATCH_IF (rowcount_1 = ids_array) BEGIN
+			SPRINT top_row " "
+		END ELSE BEGIN
+			READ_2DA_ENTRY 0 0 1 top_row
+		END
+	END
+//	PATCH_PRINT "top_row = %top_row%"
+
+	SPRINT list ""
+	FOR (i = 0 ; i < ids_array ; ++i) BEGIN
+		READ_2DA_ENTRY_FORMER ids_array i 0 num
+		PATCH_IF IS_AN_INT num BEGIN
+			SET max = (num > max) ? num : max
+			PATCH_IF num_cols = 2 BEGIN
+				READ_2DA_ENTRY_FORMER ids_array i 1 val
+			END ELSE BEGIN
+				READ_2DA_ENTRY_FORMER ids_array i 1 2da
+				READ_2DA_ENTRY_FORMER ids_array i 2 val
+			END
+			PATCH_IF ("%val%" STRING_COMPARE_CASE DMWW_UNUSED_FOR_DELETION) BEGIN
+				PATCH_IF VARIABLE_IS_SET $ids_entries("%num%") BEGIN // This control is useless for our purpose, but...
+					SPRINT temp $ids_entries("%num%")
+					PATCH_IF VARIABLE_IS_SET 2da BEGIN
+						SPRINT $ids_entries("%num%") "%temp% %2da%"
+					END
+					SPRINT $ids_entries("%num%") "%temp% %val%"
+				END ELSE BEGIN
+					// Work around to handle sensitive case in arrays.
+					TO_UPPER %num%
+					INNER_PATCH_SAVE num ~%num%~ BEGIN REPLACE_TEXTUALLY ~^0X~ ~0x~ END
+					PATCH_IF VARIABLE_IS_SET 2da BEGIN
+					SPRINT $ids_2da("%num%") "%2da%"
+					END
+					SPRINT $ids_entries("%num%") "%val%"
+				END
+					LPF ~HEX_TO_DEC_NUMBER~ STR_VAR hexNumber = EVAL ~%num%~ RET dec_value END
+					SPRINT list "%list% %dec_value%"
+			END
+		END
+	END
+
+END	// of DEFINE_PATCH_MACRO
+
+DEFINE_PATCH_MACRO ~gw_rewrite_hex_ids~
+BEGIN
+
+	INSERT_2DA_ROW 0 2 "DW_SORT_IDS_PLACEHOLDER"
+	SET rowcount = 0
+	FOR (num = 0 ; num <= max ; ++num) BEGIN
+		PATCH_IF (~%list%~ STRING_CONTAINS_REGEXP "%num%" = 0) BEGIN
+			LPF ~TO_HEX_NUMBER~ INT_VAR value = num minDigits = 4 RET hexNumber END
+			TO_UPPER %hexNumber%
+			SPRINT num EVAL "0x%hexNumber%"
+			PATCH_IF VARIABLE_IS_SET $ids_entries("%num%") BEGIN
+				PATCH_IF num_cols = 2 BEGIN
+					SPRINT entry $ids_entries("%num%")
+					INSERT_2DA_ROW rowcount 2 "%num% %entry%"
+				END ELSE BEGIN
+					SPRINT 2da $ids_2da("%num%")
+					longueur = (7 - (STRING_LENGTH ~%2da%~))  // used for better formatting
+					FOR (lg = 0 ; lg < longueur ; ++lg) BEGIN
+						SPRINT 2da EVAL "%2da% "
+					END
+					SPRINT entry $ids_entries("%num%")
+					INSERT_2DA_ROW rowcount 3 "%num% %2da%  %entry%"
+				END
+				SET rowcount+=1
+			END
+		END
+	END
+	REPLACE_TEXTUALLY "DW_SORT_IDS_PLACEHOLDER" "%top_row%"
+
+END	// of DEFINE_PATCH_MACRO

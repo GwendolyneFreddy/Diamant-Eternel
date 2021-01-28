@@ -9,15 +9,15 @@
 
 // VERIF "ADD_SPELL_CFEFFECT"	05.08.2016 : Modification de la fonction GW_DEF_PROJECTILE et transfert dans GW_Pro_fonctions_macros.tpa
 // 30.01.2017 : Ajout du paramètre2 2 dans BG2EE pour Spell: Protection from Spell [206]
-/* ================================================================================================================================================================================= *
- *                                                                                                                                                                                   *
- *  LISTE des FONCTIONS INFORMATIVES - LIST of PROMPTING FUNCTIONS                                                                                                                   *
- *  --------------------------------------------------------------                                                                                                                   *
- *  - FUNCTION GW_DISPLAY_MESSAGE               : AFFICHE un message dans la fenêtre d'installation de WeiDU ET/OU l'ÉCRIT dans le fichier DEBUG.                   => line #    94  *
- *                                                DISPLAYS a message in WeiDU windows while installation process and/or WRITES it in DEBUG file.                                     *
-0	- FUNCTION GW_REINCLUDE                     : INTÉGRATION d'une sous-routine tp2 dans une routine (PATCH et ACTION).											=> line #   366-  *
+/* ================================================================================================================================================================================== *
+ *                                                                                                                                                                                    *
+ *  LISTE des FONCTIONS INFORMATIVES - LIST of PROMPTING FUNCTIONS                                                                                                                    *
+ *  --------------------------------------------------------------                                                                                                                    *
+ *  - FUNCTION GW_DISPLAY_MESSAGE               : AFFICHE un message dans la fenêtre d'installation de WeiDU ET/OU l'ÉCRIT dans le fichier DEBUG.                   => line #    94   *
+ *                                                DISPLAYS a message in WeiDU windows while installation process and/or WRITES it in DEBUG file.                                      *
+0	- FUNCTION GW_REINCLUDE                     : INTÉGRATION d'une sous-routine tp2 dans une routine (PATCH et ACTION).											=> line #   366  *
                                                   GENERATE and RUN an include WeiDU process (tp*) into another one (PATCH and ACTION).                                               *
-0	- FONCTION GW_REINCLUDE_MESSAGE_AF          : INTÉGRATION d'un message dans un fichier .txt pour débogage pendant le développement.								=> line #   408-  *
+0	- FONCTION GW_REINCLUDE_MESSAGE_AF          : INTÉGRATION d'un message dans un fichier .txt pour débogage pendant le développement.								=> line #   408  *
                                                   
  *                                                                                                                                                                                   *
  *  LISTE des FONCTIONS & MACROS GÉNÉRALES - LIST of GENERAL FUNCTIONS & MACROS                                                                                                      *
