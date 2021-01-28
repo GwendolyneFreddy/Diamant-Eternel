@@ -1,0 +1,62 @@
+# Windows image file caches
+# =========================
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+# ==================
+Desktop.ini
+
+# Recycle Bin used on file shares
+# ===============================
+$RECYCLE.BIN/
+
+# Windows Installer files
+# =======================
+
+# Windows shortcuts
+# =================
+*.lnk
+
+# =======================
+# Operating System Files
+# =======================
+
+# OSX
+# ===
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+# ==========
+._*
+
+
+# =================
+# ignore all files
+# =================
+*.bak
+*.bat
+*.csv
+*.7z
+*.rar
+*.zip
+# *.exe
+# dev_notes.txt
+z*.tp*
+z*.2da
+z*.ini
+_*.*
+z_*.*
+zgw*.*
+[bcgiprs][rhetloup]-flag-32.png
+TODO*.*
+
+
+# ========================================
+# ignore all files in any directory named
+# ========================================
+EX/
+Preview/
+documentation/
