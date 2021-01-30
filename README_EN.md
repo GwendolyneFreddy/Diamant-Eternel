@@ -167,8 +167,9 @@ Here is a chart listing options related to the installation process:<br><br>
 | :---: | --- | :---: | :---: | :---: |
 | gw_unicorn_name  | The name of your unicorn, if any | string | a name! ! | <strong>Flèche d'argent<strong> |
 | gw_destrier_name | The name of your paladin steed, if any | alphanumérique | a name! ! | <strong>Black Diamond<strong> |
-| gw_language_bam  | Définit la langue dans laquelle vous souhaitez installer les fichiers BAM d'information :<br>AUTO = Installation language<br>FR = French<br>US = English<br>DE = FGerman<br>IT = Italian<br>RU = Russian<br>SP = Spanish | string | AUTO, FR, US, DE, IT, RU ou SP | <strong>AUTO<strong> |
-| gw_mos_mosaic    | todo | string | 0 or 1 | <strong>1<strong> |
+| gw_language_bam  | Définit la langue dans laquelle vous souhaitez installer les fichiers BAM d'information :<br><br>AUTO = Installation language<br>FR = French<br>US = English<br>DE = FGerman<br>IT = Italian<br>RU = Russian<br>SP = Spanish | string | AUTO, FR, US, DE, IT, RU ou SP | <strong>AUTO<strong> |
+| gw_mos_mosaic    | todo | integer | 0 or 1 | <strong>1<strong> |
+| gw_seagull<br><img src="diamant_eternel\readmes\images/anim/goeland.gif" title="Goéland, par Luren" /> | Option only available for classic games.<br>Install a new seagull animation that overwrites the vanilla gull one.<br><br>Note for EE games: as it is possible to add a new slot for flying creatures, this option is automatically set to 1 and all sea gulls in new maps will benefit from it. | integer | 0 or 1 | <strong>1<strong> |
 
 <div align="right"><a href="#top">Back to top</a></div>
 

@@ -86,6 +86,7 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY GW_ini_variables_check BEGIN
 	gw_language_bam,			A,	"", ""	 => AUTO
 	gw_destrier_name,			A,	"", ""	 => "Mon cheval"
 	gw_unicorn_name,			A,	"", ""	 => "Flèche d'argent"
+	gw_seagull,					N,	 0,  1	 => 1
 END
 
 DEFINE_ACTION_MACRO ~gw_check_config_variables~
@@ -101,12 +102,18 @@ BEGIN
 					OUTER_TEXT_SPRINT $GW_ini_var(~%variable_0%~) "%default%"
 					PRINT @11 // ~Configuration option %variable_0% value (%wrong_value%) does not match its scope and has been reset to its default value (%default%).~
 				END
+				ACTION_IF (is_ee AND (~%variable_0%~ STR_EQ "gw_seagull") AND NOT ($GW_ini_var(~%variable_0%~) STR_EQ "1")) BEGIN
+					OUTER_TEXT_SPRINT wrong_value $GW_ini_var(~%variable_0%~)
+					OUTER_TEXT_SPRINT $GW_ini_var(~%variable_0%~) "%default%"
+					PRINT @11
+				END
 			// alphanumeric
 			END ELSE BEGIN
 				ACTION_IF ("%variable_0%" STR_EQ "gw_language_bam") // et AUTO ???
 						&& (NOT ($GW_ini_var(~%variable_0%~) STR_EQ "FR")) && (NOT ($GW_ini_var(~%variable_0%~) STR_EQ "US"))
 						&& (NOT ($GW_ini_var(~%variable_0%~) STR_EQ "DE")) && (NOT ($GW_ini_var(~%variable_0%~) STR_EQ "IT"))
 						&& (NOT ($GW_ini_var(~%variable_0%~) STR_EQ "RU")) && (NOT ($GW_ini_var(~%variable_0%~) STR_EQ "SP"))
+						&& (NOT ($GW_ini_var(~%variable_0%~) STR_EQ "AUTO"))
 				BEGIN
 					OUTER_TEXT_SPRINT wrong_value $GW_ini_var(~%variable_0%~)
 					OUTER_TEXT_SPRINT $GW_ini_var(~%variable_0%~) "%default%"

@@ -171,9 +171,9 @@ Voici le tableau des options concernées :<br>
 | :---: | --- | :---: | :---: | :---: |
 | gw_unicorn_name  | Le nom que vous souhaitez donner à votre licorne | alphanumérique | un nom ! | <strong>Flèche d'argent<strong> |
 | gw_destrier_name | Le nom que vous souhaitez donner à votre destrier de paladin | alphanumérique | un nom ! | <strong>Diamant noir<strong> |
-| gw_language_bam  | Defines the language used to display information BAM files:<br>AUTO = Langue d'installation<br>FR = français<br>US = anglais<br>DE = allemand<br>IT = italien<br>RU = Russe<br>SP = Espagnol | alphanumérique | AUTO, FR, US, DE, IT, RU ou SP | <strong>AUTO<strong> |
+| gw_language_bam  | Définit la langue dans laquelle vous souhaitez installer les fichiers BAM d'information :<br><br>AUTO = Langue d'installation<br>FR = français<br>US = anglais<br>DE = allemand<br>IT = italien<br>RU = Russe<br>SP = Espagnol | alphanumérique | AUTO, FR, US, DE, IT, RU ou SP | <strong>AUTO<strong> |
 | gw_mos_mosaic    | todo | numérique | 0 ou 1 | <strong>1<strong> |
-| gw_seagull<br><img src="diamant_eternel\readmes\images/anim/goeland.gif" title="Goéland, par Luren" /> | Variable modifiable uniquement pour les jeux classiques.<br>Installe une nouvelle animation de goéland qui écrase l'animation de mouette du jeu.<br><br>Note pour les jeux EE : comme le moteur du jeu permet d'ajouter des animations de créatures volantes, cette variable est automatiquement paramétrée à 1 pour que toutes les moeuttes des cartes de ce module puisse en bénéficier. | numérique | 0 ou 1 | <strong>1<strong> |
+| gw_seagull<br><img src="diamant_eternel\readmes\images/anim/goeland.gif" title="Goéland, par Luren" /> | Variable modifiable uniquement pour les jeux classiques.<br>Installe une nouvelle animation de goéland qui écrase l'animation de mouette du jeu.<br><br>Note pour les jeux EE : comme le moteur du jeu permet d'ajouter des animations de créatures volantes, cette variable est automatiquement paramétrée à 1 pour que toutes les mouettes des cartes de ce module puissent en bénéficier. | numérique | 0 ou 1 | <strong>1<strong> |
 
 <div align="right"><a href="#top">Retour en haut de page</a></div>
 
